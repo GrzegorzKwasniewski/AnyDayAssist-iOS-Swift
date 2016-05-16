@@ -8,11 +8,30 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+var userNotes:[String] = [String]()
 
+class FirstViewController: UIViewController, UITableViewDelegate {
+
+    @IBOutlet var tableView: UITableView!
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        return userNotes.count
+        
+    }
+    
+    
+    
+    // sprawdz sobie pozniej do czego to sluzy
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // some code
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
     }
 
     override func didReceiveMemoryWarning() {
