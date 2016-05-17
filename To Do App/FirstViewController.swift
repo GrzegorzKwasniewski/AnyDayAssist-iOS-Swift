@@ -18,6 +18,9 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet var toDoListTable: UITableView!
  
+    @IBAction func addNote(sender: AnyObject) {
+            promptForAnswer()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
@@ -28,6 +31,9 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = toDoList[indexPath.row]
+        //cell.detailTextLabel?.text = "Ho ho"
+        var image: UIImage = UIImage(named: "AppIcon")!
+        cell.imageView?.image = image
         return cell
     }
     
@@ -36,7 +42,11 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     }
     
     internal func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            toDoList.removeAtIndex(indexPath.row)
+            //NSUserDefaults.standardUserDefaults().setObject(toDoList, forKey: "toDoList")
+            toDoListTable.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -56,5 +66,21 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         
     }
     
+    func promptForAnswer() {
+        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .Alert)
+        ac.addTextFieldWithConfigurationHandler(nil)
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
+            let answer = ac.textFields![0] //as! UITextField
+            // do something interesting with "answer" here
+            toDoList.append(answer.text!)
+            self.toDoListTable.reloadData()
+
+        }
+        
+        ac.addAction(submitAction)
+        
+        presentViewController(ac, animated: true, completion: nil)
+    }
     
 }
