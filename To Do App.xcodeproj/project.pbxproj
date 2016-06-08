@@ -15,6 +15,7 @@
 		718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */; };
 		718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */; };
 		71944F201CEBC55200206B4F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71944F1F1CEBC55200206B4F /* AppIcon.png */; };
+		71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71944F251D08C1E500206B4F /* Database.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		718D87261CEA50C4001E7F17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		718D872D1CEA5105001E7F17 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		71944F1F1CEBC55200206B4F /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		71944F261D08C1E600206B4F /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		718D87171CEA50C4001E7F17 /* To Do App */ = {
 			isa = PBXGroup;
 			children = (
+				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
 				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 				718D871A1CEA50C4001E7F17 /* FirstViewController.swift */,
 				718D871C1CEA50C4001E7F17 /* SecondViewController.swift */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				718D871D1CEA50C4001E7F17 /* SecondViewController.swift in Sources */,
+				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
 				718D871B1CEA50C4001E7F17 /* FirstViewController.swift in Sources */,
@@ -310,6 +314,16 @@
 			);
 			currentVersion = 718D872D1CEA5105001E7F17 /* UserData.xcdatamodel */;
 			path = UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		71944F251D08C1E500206B4F /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				71944F261D08C1E600206B4F /* Database.xcdatamodel */,
+			);
+			currentVersion = 71944F261D08C1E600206B4F /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

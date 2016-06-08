@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 var toDoList = [String]()
 
@@ -52,7 +53,21 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        toDoList.append("Hello from the other side")
+        let appDell: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let contextOfOurApp: NSManagedObjectContext = appDell.managedObjectContext
+        
+        var newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
+        
+        newNote.setValue(1, forKey: "note_id")
+        newNote.setValue("Nowa notatka", forKey: "note")
+        
+        do {
+            try contextOfOurApp.save()
+            
+        } catch {
+            //TODO add popup error
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,12 +82,12 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     }
     
     func promptForAnswer() {
-        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .Alert)
+        let ac = UIAlertController(title: "Want You need TODO", message: nil, preferredStyle: .Alert)
         ac.addTextFieldWithConfigurationHandler(nil)
         
-        let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
+        let submitAction = UIAlertAction(title: "Add", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
             let answer = ac.textFields![0] //as! UITextField
-            // do something interesting with "answer" here
+            // add answear to toDoList Array
             toDoList.append(answer.text!)
             self.toDoListTable.reloadData()
 
