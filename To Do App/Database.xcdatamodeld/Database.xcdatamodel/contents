@@ -2,9 +2,8 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
     <entity name="Notes" syncable="YES">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="note_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Notes" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Notes" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>
