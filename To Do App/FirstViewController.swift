@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-var toDoList = [NSManagedObject]()
+var toDoNotes = [NSManagedObject]()
+// create contex of our App for Core Data usage
+let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
 class FirstViewController: UIViewController, UITableViewDelegate {
     
@@ -24,12 +27,12 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return toDoList.count
+        return toDoNotes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        let note = toDoList[indexPath.row]
+        let note = toDoNotes[indexPath.row]
         cell.textLabel?.text = note.valueForKey("note") as! String
         // set image for cell
         var image: UIImage = UIImage(named: "AppIcon")!
@@ -43,21 +46,17 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     internal func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            let note = toDoList[indexPath.row]
+            let note = toDoNotes[indexPath.row]
             let noteText = note.valueForKey("note") as! String
             removeFromNotes(noteText)
-            toDoList.removeAtIndex(indexPath.row)
+            toDoNotes.removeAtIndex(indexPath.row)
             toDoListTable.reloadData()
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
-        // create contex of our App
-        let appDell: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let contextOfOurApp: NSManagedObjectContext = appDell.managedObjectContext
-        
+    
         // create request for data in Core Data entity - with this we get all of our data
         var request = NSFetchRequest(entityName: "Notes")
         
@@ -67,7 +66,7 @@ class FirstViewController: UIViewController, UITableViewDelegate {
             
             // check if there is any data
             if results.count > 0 {
-                toDoList = results as! [NSManagedObject]
+                toDoNotes = results as! [NSManagedObject]
             }    
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")
@@ -106,11 +105,7 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     }
     
     func saveNote(note: String) {
-        
-        // create context for our app
-        let appDell: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let contextOfOurApp: NSManagedObjectContext = appDell.managedObjectContext
-        
+
         // create Core Data entity
         var newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
         
@@ -118,7 +113,7 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         
             do {
                 try contextOfOurApp.save()
-                toDoList.append(newNote)
+                toDoNotes.append(newNote)
         
             } catch let error as NSError{
                 print ("There was an error \(error), \(error.userInfo)")
@@ -126,10 +121,6 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     }
     
     func removeFromNotes(noteText: String) {
-        
-        // create context for our app
-        let appDell: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let contextOfOurApp: NSManagedObjectContext = appDell.managedObjectContext
         
         // create request for data in Core Data entity - with this we get all of our data
         var request = NSFetchRequest(entityName: "Notes")
