@@ -8,7 +8,7 @@
 
 import UIKit
 
-var placesToSee = [[String: String]()]
+var placesToVisit = [[String: String]()]
 var activPlace = -1
 
 class PlacesViewController: UITableViewController {
@@ -27,6 +27,11 @@ class PlacesViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+        print (placesToVisit)
+    }
 
     // MARK: - Table view data source
 
@@ -37,13 +42,13 @@ class PlacesViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return placesToSee.count
+        return placesToVisit.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = placesToSee[indexPath.row]["name"]
+        cell.textLabel?.text = placesToVisit[indexPath.row]["name"]
         return cell
     }
     
