@@ -144,7 +144,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         do {
             try contextOfOurApp.save()
-            placesToVisit.append(newPlace)
             
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")

@@ -100,7 +100,6 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         
             do {
                 try contextOfOurApp.save()
-                toDoNotes.append(newNote)
         
             } catch let error as NSError{
                 print ("There was an error \(error), \(error.userInfo)")
