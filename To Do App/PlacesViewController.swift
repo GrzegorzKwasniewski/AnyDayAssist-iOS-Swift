@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-var placesToVisit = [[String: String]()]
+var placesToVisit = [NSManagedObject]()
 var activPlace = -1
 
 class PlacesViewController: UITableViewController {
@@ -30,7 +31,14 @@ class PlacesViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
-        print (placesToVisit)
+        
+        // on first start of the app remove empty value form placesToVisit
+        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
+            placesToVisit.removeAtIndex(0)
+        }
+        
+        getDataFromEntity("Places")
+        
     }
 
     // MARK: - Table view data source
@@ -48,7 +56,8 @@ class PlacesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = placesToVisit[indexPath.row]["name"]
+        let placeMarked = placesToVisit[indexPath.row]
+        cell.textLabel?.text = placeMarked.valueForKey("title") as! String
         return cell
     }
     
@@ -63,25 +72,37 @@ class PlacesViewController: UITableViewController {
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            placesToVisit.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
     }
-    */
+    
+    func getDataFromEntity(entity: String) {
+        
+        let request = NSFetchRequest(entityName: entity)
+        
+        do {
+            // try to get data from Corde Data entity
+            let results = try contextOfOurApp.executeFetchRequest(request)
+            
+            // check if there is any data
+            if results.count > 0 {
+                placesToVisit = results as! [NSManagedObject]
+            }
+        } catch let error as NSError{
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
 
     /*
     // Override to support rearranging the table view.

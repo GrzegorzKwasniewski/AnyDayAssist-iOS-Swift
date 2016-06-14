@@ -85,7 +85,7 @@
                     <tabBarItem key="tabBarItem" title="TODO" selectedImage="Image" id="XcF-Hl-CeJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="toDoListTable" destination="Gum-zg-PMw" id="gUj-js-uCw"/>
+                        <outlet property="toDoNotesList" destination="Gum-zg-PMw" id="jQk-el-0rP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

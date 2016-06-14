@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -34,8 +35,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // else if have choosen place from table
         } else {
-            let latitude = NSString(string:placesToVisit[activPlace]["latitude"]!).doubleValue
-            let longitude = NSString(string:placesToVisit[activPlace]["longitude"]!).doubleValue
+            let latitude = placesToVisit[activPlace].valueForKey("latitude") as! Double
+            let longitude = placesToVisit[activPlace].valueForKey("longitude") as! Double
             let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
             let latDelta:CLLocationDegrees = 0.01
             let lonDelta:CLLocationDegrees = 0.01
@@ -47,14 +48,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             // add annotation with data about our place to visit
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = placesToVisit[activPlace]["name"]
-            annotation.subtitle = "Nedd to visit this place"
+            annotation.title = placesToVisit[activPlace].valueForKey("title") as! String
+            annotation.subtitle = "Need to visit this place"
             self.mapView.addAnnotation(annotation)
         }
         
         // add handler for 'longpress' on the screen
         let longPress = UILongPressGestureRecognizer(target: self, action:#selector(MapViewController.longPressGesture(_:)))
-        longPress.minimumPressDuration = 2.0
+        longPress.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPress)
 
     }
@@ -113,9 +114,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 if title == "" {
                     title = "Added \(NSDate())"
                 }
-
-                    placesToVisit.append(["name":title,"latitude":"\(newCoordinate.latitude)", "longitude":"\(newCoordinate.longitude)"])
                 
+                    self.saveMarkedPlace(title, latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
+                
+                    // add annotation to MapView
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = newCoordinate
                     annotation.title = title
@@ -128,6 +130,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func saveMarkedPlace(title: String, latitude: Double, longitude: Double) {
+
+        // create Core Data entity
+        let entityDescription = NSEntityDescription.entityForName("Places", inManagedObjectContext: contextOfOurApp)
+        let newPlace = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: contextOfOurApp)
+        
+        newPlace.setValue(title, forKey: "title")
+        newPlace.setValue(latitude, forKey: "latitude")
+        newPlace.setValue(longitude, forKey: "longitude")
+        
+        do {
+            try contextOfOurApp.save()
+            placesToVisit.append(newPlace)
+            
+        } catch let error as NSError{
+            print ("There was an error \(error), \(error.userInfo)")
+        }
     }
     
 

@@ -3,7 +3,13 @@
     <entity name="Notes" syncable="YES">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Places" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Notes" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Places" positionX="-54" positionY="0" width="128" height="90"/>
     </elements>
 </model>

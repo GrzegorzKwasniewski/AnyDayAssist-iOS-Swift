@@ -20,10 +20,10 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     // Pamiętaj - żeby działało musisz dodać w Main.StoryBoard - z TabelView do ViewController - dataSource i delegate
     // to z przeciąganiem myszką i ctrl
     
-    @IBOutlet var toDoListTable: UITableView!
+    @IBOutlet var toDoNotesList: UITableView!
  
     @IBAction func addNote(sender: AnyObject) {
-            promptForAnswer()
+            promptForNote()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -34,8 +34,9 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let note = toDoNotes[indexPath.row]
         cell.textLabel?.text = note.valueForKey("note") as! String
+        
         // set image for cell
-        var image: UIImage = UIImage(named: "AppIcon")!
+        let image: UIImage = UIImage(named: "AppIcon")!
         cell.imageView?.image = image
         return cell
     }
@@ -46,68 +47,54 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     internal func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            let note = toDoNotes[indexPath.row]
-            let noteText = note.valueForKey("note") as! String
+            let singleNote = toDoNotes[indexPath.row]
+            let noteText = singleNote.valueForKey("note") as! String
             removeFromNotes(noteText)
             toDoNotes.removeAtIndex(indexPath.row)
-            toDoListTable.reloadData()
+            toDoNotesList.reloadData()
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-    
-        // create request for data in Core Data entity - with this we get all of our data
-        var request = NSFetchRequest(entityName: "Notes")
         
-        do {
-            // try to get data from Corde Data entity
-            var results = try contextOfOurApp.executeFetchRequest(request)
-            
-            // check if there is any data
-            if results.count > 0 {
-                toDoNotes = results as! [NSManagedObject]
-            }    
-        } catch let error as NSError{
-            print ("There was an error \(error), \(error.userInfo)")
-        }
+        getDataFromEntity("Notes")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
-        toDoListTable.reloadData()
+        toDoNotesList.reloadData()
     }
     
-    func promptForAnswer() {
-        let ac = UIAlertController(title: "Want You need TODO", message: nil, preferredStyle: .Alert)
-        ac.addTextFieldWithConfigurationHandler(nil)
+    func promptForNote() {
+        let alertController = UIAlertController(title: "Want You need TODO", message: nil, preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler(nil)
         
-        let submitAction = UIAlertAction(title: "Add", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
-            let answer = ac.textFields![0]
+        let submitAction = UIAlertAction(title: "Add", style: .Default) { [unowned self, alertController] (action: UIAlertAction!) in
+            let note = alertController.textFields![0]
             
             // add answear to toDoList Array
-            self.saveNote(answer.text!)
-            self.toDoListTable.reloadData()
+            self.saveNote(note.text!)
+            self.toDoNotesList.reloadData()
 
         }
         
-        ac.addAction(submitAction)
-        presentViewController(ac, animated: true, completion: nil)
+        alertController.addAction(submitAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func saveNote(note: String) {
 
         // create Core Data entity
-        var newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
+        let newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
         
         newNote.setValue(note, forKey: "note")
         
@@ -123,10 +110,10 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     func removeFromNotes(noteText: String) {
         
         // create request for data in Core Data entity - with this we get all of our data
-        var request = NSFetchRequest(entityName: "Notes")
+        let request = NSFetchRequest(entityName: "Notes")
         request.predicate = NSPredicate(format: "note == %@", noteText)
         
-        // we need to use if we want to see actual data in our app
+        // we need to use this if we want to see actual data in our app
         request.returnsObjectsAsFaults = false
         
         do {
@@ -145,6 +132,23 @@ class FirstViewController: UIViewController, UITableViewDelegate {
             }
             
         } catch let error as NSError {
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getDataFromEntity(entity: String) {
+        
+        let request = NSFetchRequest(entityName: entity)
+        
+        do {
+            // try to get data from Corde Data entity
+            let results = try contextOfOurApp.executeFetchRequest(request)
+            
+            // check if there is any data
+            if results.count > 0 {
+                toDoNotes = results as! [NSManagedObject]
+            }
+        } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")
         }
     }
