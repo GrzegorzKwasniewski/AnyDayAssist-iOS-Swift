@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="u95-0q-UBI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gue-Id-nSf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036.5" y="-318.5"/>
+            <point key="canvasLocation" x="2923.5" y="-676.5"/>
         </scene>
         <!--TOSEE-->
         <scene sceneID="0e7-5C-mrJ">
@@ -133,7 +133,112 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tz2-fN-FrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3205.5" y="592.5"/>
+            <point key="canvasLocation" x="4003.5" y="59.5"/>
+        </scene>
+        <!--AudioNoteAdd-->
+        <scene sceneID="XOb-qY-Ccx">
+            <objects>
+                <tableViewController title="AudioNoteAdd" id="tf7-2V-z0D" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Cbu-qK-R9V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xbb-vk-IXk">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xbb-vk-IXk" id="wnj-LD-5KI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2yT-xO-sfe" kind="show" identifier="audioPlayBack" id="eWp-Xx-pbB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tf7-2V-z0D" id="hY5-Yh-O4z"/>
+                            <outlet property="delegate" destination="tf7-2V-z0D" id="AzC-p9-N5C"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Audio Notes" id="YJe-zf-nax">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="jM6-xE-9Dm">
+                            <connections>
+                                <segue destination="HXy-Ml-bRR" kind="show" identifier="audioRecord" id="x5Y-aw-5UV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbT-8p-heD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3481.5" y="873.5"/>
+        </scene>
+        <!--AudioRecord-->
+        <scene sceneID="CAG-Dz-cxV">
+            <objects>
+                <viewController title="AudioRecord" id="HXy-Ml-bRR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8s7-oC-NpB"/>
+                        <viewControllerLayoutGuide type="bottom" id="8jV-if-FI8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vSR-go-4nY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ka2-eY-aPz">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="t9h-fb-nvT"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQF-GH-fkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4003.5" y="867.5"/>
+        </scene>
+        <!--AudioPlayBack-->
+        <scene sceneID="NjM-XL-yXy">
+            <objects>
+                <viewController title="AudioPlayBack" id="2yT-xO-sfe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZZU-TM-l4B"/>
+                        <viewControllerLayoutGuide type="bottom" id="OYK-fR-RRw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aLG-4R-ocy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1Y-IE-rAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4017.5" y="1688.5"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="e7e-G7-QmO">
+            <objects>
+                <navigationController id="nQC-8u-MXw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="nhD-gQ-XHX"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BHk-cj-ZSG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tf7-2V-z0D" kind="relationship" relationship="rootViewController" id="UuW-BB-HXQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8S-vg-yAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2923.5" y="867.5"/>
         </scene>
         <!--Places View Controller-->
         <scene sceneID="Yyg-hH-0kp">
@@ -174,7 +279,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqf-8q-uuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671.5" y="592.5"/>
+            <point key="canvasLocation" x="3467.5" y="59.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="AnQ-cS-moU">
@@ -192,25 +297,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jx4-oV-Jc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="593"/>
+            <point key="canvasLocation" x="2923.5" y="59.5"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="mR6-Iu-JZg">
+        <scene sceneID="eZx-s8-djP">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="u95-0q-UBI" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gue-Id-nSf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="XWc-Hm-Y48">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="bzY-ck-6Hw">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="TG0-hq-X5z"/>
-                        <segue destination="UO3-zg-fIA" kind="relationship" relationship="viewControllers" id="j6b-D6-uXR"/>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="rxt-Bb-3Yx"/>
+                        <segue destination="UO3-zg-fIA" kind="relationship" relationship="viewControllers" id="uqm-eZ-Y2A"/>
+                        <segue destination="nQC-8u-MXw" kind="relationship" relationship="viewControllers" id="2zG-15-M43"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iwp-f7-dJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SyN-C8-U0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342" y="60"/>
+            <point key="canvasLocation" x="2224" y="75"/>
         </scene>
     </scenes>
     <resources>
