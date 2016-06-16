@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
-		718D871B1CEA50C4001E7F17 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D871A1CEA50C4001E7F17 /* FirstViewController.swift */; };
-		718D871D1CEA50C4001E7F17 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D871C1CEA50C4001E7F17 /* SecondViewController.swift */; };
+		718D871B1CEA50C4001E7F17 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D871A1CEA50C4001E7F17 /* NotesViewController.swift */; };
 		718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D871E1CEA50C4001E7F17 /* Main.storyboard */; };
 		718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 718D87211CEA50C4001E7F17 /* Assets.xcassets */; };
 		718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */; };
@@ -19,13 +18,15 @@
 		71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F2A1D0DACE300206B4F /* PlacesViewController.swift */; };
 		71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F2C1D0DCC6600206B4F /* MapViewController.swift */; };
 		71944F2F1D0DCCCD00206B4F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71944F2E1D0DCCCD00206B4F /* CoreLocation.framework */; };
+		71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F321D13254200206B4F /* AudioRecorderViewController.swift */; };
+		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
+		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		718D87151CEA50C4001E7F17 /* To Do App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		718D871A1CEA50C4001E7F17 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		718D871C1CEA50C4001E7F17 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		718D871A1CEA50C4001E7F17 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		718D871F1CEA50C4001E7F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		718D87211CEA50C4001E7F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		718D87241CEA50C4001E7F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +37,9 @@
 		71944F2A1D0DACE300206B4F /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		71944F2C1D0DCC6600206B4F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		71944F2E1D0DCCCD00206B4F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		71944F321D13254200206B4F /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewController.swift; sourceTree = "<group>"; };
+		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
+		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +76,13 @@
 			children = (
 				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
 				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
-				718D871A1CEA50C4001E7F17 /* FirstViewController.swift */,
-				718D871C1CEA50C4001E7F17 /* SecondViewController.swift */,
-				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
+				718D871A1CEA50C4001E7F17 /* NotesViewController.swift */,
 				71944F2A1D0DACE300206B4F /* PlacesViewController.swift */,
 				71944F2C1D0DCC6600206B4F /* MapViewController.swift */,
+				71944F361D13259C00206B4F /* AudioNotesViewController.swift */,
+				71944F321D13254200206B4F /* AudioRecorderViewController.swift */,
+				71944F341D13256100206B4F /* AudioPlayBackViewController.swift */,
+				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
 				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
@@ -159,12 +165,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */,
-				718D871D1CEA50C4001E7F17 /* SecondViewController.swift in Sources */,
+				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
+				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
-				718D871B1CEA50C4001E7F17 /* FirstViewController.swift in Sources */,
+				718D871B1CEA50C4001E7F17 /* NotesViewController.swift in Sources */,
 				71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */,
+				71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

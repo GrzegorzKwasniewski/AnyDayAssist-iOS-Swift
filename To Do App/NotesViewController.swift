@@ -14,7 +14,7 @@ var toDoNotes = [NSManagedObject]()
 let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
-class FirstViewController: UIViewController, UITableViewDelegate {
+class NotesViewController: UIViewController, UITableViewDelegate {
     
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Pamiętaj - żeby działało musisz dodać w Main.StoryBoard - z TabelView do ViewController - dataSource i delegate
