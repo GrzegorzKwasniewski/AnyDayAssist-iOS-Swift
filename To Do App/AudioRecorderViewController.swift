@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
@@ -19,15 +20,18 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(sender: AnyObject) {
         recordButton.enabled = false
         stopRecordingButton.enabled = true
-        
         createRecordingSession()
         getRecordingTime()
-
+    }
+    
+    @IBAction func stopRecordingAudio(sender: AnyObject) {
+        recordButton.enabled = true
+        stopRecordingButton.enabled = false
+        stopRecordnigSession()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -37,18 +41,25 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         stopRecordingButton.enabled = false
     }
     
     func createRecordingSession() {
+        let audioFileURL = createRecordFileURL("AudioNote_nr_\(audioURL.count)")
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-        try! audioRecorder = AVAudioRecorder(URL: createRecordFileURL("Some name"), settings: [:])
+        try! audioRecorder = AVAudioRecorder(URL: audioFileURL, settings: [:])
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
+        saveAudioURL(audioFileURL)
+    }
+    
+    func stopRecordnigSession() {
+        audioRecorder.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setActive(false)
     }
     
     func createRecordFileURL(fileName: String) -> NSURL {
@@ -64,8 +75,19 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = " MMM dd, yyyy, HH:mm:ss"
-        let convertedDate = dateFormatter.stringFromDate(currentDate)
-        return convertedDate
+        let recordingTime = dateFormatter.stringFromDate(currentDate)
+        return recordingTime
+    }
+    
+    func saveAudioURL(audioFileUrl: NSURL) {
+        let audioNoteURL: String = audioFileUrl.path!
+        let newAudioNote = NSEntityDescription.insertNewObjectForEntityForName("AudioNotes", inManagedObjectContext: contextOfOurApp)
+        newAudioNote.setValue(audioNoteURL, forKey: "audiourl")
+        do {
+            try contextOfOurApp.save()
+        } catch let error as NSError{
+            print ("There was an error \(error), \(error.userInfo)")
+        }
     }
     
 

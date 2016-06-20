@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 var toDoNotes = [NSManagedObject]()
-// create contex of our App for Core Data usage
 let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
@@ -34,8 +33,6 @@ class NotesViewController: UIViewController, UITableViewDelegate {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let note = toDoNotes[indexPath.row]
         cell.textLabel?.text = note.valueForKey("note") as! String
-        
-        // set image for cell
         let image: UIImage = UIImage(named: "AppIcon")!
         cell.imageView?.image = image
         return cell
@@ -92,12 +89,9 @@ class NotesViewController: UIViewController, UITableViewDelegate {
     }
     
     func saveNote(note: String) {
-
         // create Core Data entity
         let newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
-        
         newNote.setValue(note, forKey: "note")
-        
             do {
                 try contextOfOurApp.save()
         

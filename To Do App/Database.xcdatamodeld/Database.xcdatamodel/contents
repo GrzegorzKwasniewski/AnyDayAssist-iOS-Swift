@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="AudioNotes" syncable="YES">
+        <attribute name="audiourl" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Notes" syncable="YES">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -11,5 +14,6 @@
     <elements>
         <element name="Notes" positionX="-63" positionY="-18" width="128" height="60"/>
         <element name="Places" positionX="-54" positionY="0" width="128" height="90"/>
+        <element name="AudioNotes" positionX="-18" positionY="45" width="128" height="60"/>
     </elements>
 </model>

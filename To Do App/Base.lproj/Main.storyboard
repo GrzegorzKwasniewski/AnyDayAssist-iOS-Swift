@@ -194,15 +194,18 @@
                                     <navigationItem title="Title" id="t9h-fb-nvT"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-ea-plC">
-                                <rect key="frame" x="162" y="448" width="50" height="50"/>
-                                <state key="normal" image="stopRecordButton"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtZ-G4-fO0">
                                 <rect key="frame" x="137" y="284" width="100" height="100"/>
                                 <state key="normal" image="recordButton"/>
                                 <connections>
                                     <action selector="recordAudio:" destination="HXy-Ml-bRR" eventType="touchUpInside" id="FGh-Fi-RXP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-ea-plC">
+                                <rect key="frame" x="162" y="448" width="50" height="50"/>
+                                <state key="normal" image="stopRecordButton"/>
+                                <connections>
+                                    <action selector="stopRecordingAudio:" destination="HXy-Ml-bRR" eventType="touchUpInside" id="7pI-rd-afe"/>
                                 </connections>
                             </button>
                         </subviews>
