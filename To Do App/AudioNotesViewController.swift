@@ -10,12 +10,14 @@ import UIKit
 import CoreData
 
 var audioURL: [NSManagedObject] = [NSManagedObject]()
+var activeAudioNote: Int?
 
 class AudioNotesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,28 +29,83 @@ class AudioNotesViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        getDataFromEntity("AudioNotes")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return audioURL.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let audioTitle = audioURL[indexPath.row]
+        cell.textLabel?.text = (audioTitle.valueForKey("audiourl") as! String)
 
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let singleAudio = audioURL[indexPath.row]
+            let audioTitle = singleAudio.valueForKey("audiourl") as! String
+            removeFromAudioNotes(audioTitle)
+            audioURL.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        activeAudioNote = indexPath.row
+        return indexPath
+    }
+    
+    func getDataFromEntity(entity: String) {
+        let request = NSFetchRequest(entityName: entity)
+    
+        do {
+            let results = try contextOfOurApp.executeFetchRequest(request)
+            if results.count > 0 {
+                audioURL = results as! [NSManagedObject]
+            }
+        } catch let error as NSError{
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+    
+    func removeFromAudioNotes(noteText: String) {
+        let request = NSFetchRequest(entityName: "AudioNotes")
+        request.predicate = NSPredicate(format: "audiourl == %@", noteText)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try contextOfOurApp.executeFetchRequest(request)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    contextOfOurApp.deleteObject(result)
+                    do {
+                        try contextOfOurApp.save()
+                    } catch let error as NSError{
+                        print ("There was an error \(error), \(error.userInfo)")
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

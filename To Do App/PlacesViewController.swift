@@ -30,8 +30,6 @@ class PlacesViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        tableView.reloadData()
-        
         // on first start of the app remove empty value form placesToVisit
         if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
             placesToVisit.removeAtIndex(0)
@@ -39,6 +37,10 @@ class PlacesViewController: UITableViewController {
         
         getDataFromEntity("Places")
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -74,6 +76,9 @@ class PlacesViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let singlePlace = placesToVisit[indexPath.row]
+            let placeTitle = singlePlace.valueForKey("title") as! String
+            removeFromPlaces(placeTitle)
             placesToVisit.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
@@ -92,6 +97,28 @@ class PlacesViewController: UITableViewController {
                 placesToVisit = results as! [NSManagedObject]
             }
         } catch let error as NSError{
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+    
+    func removeFromPlaces(noteText: String) {
+        let request = NSFetchRequest(entityName: "Places")
+        request.predicate = NSPredicate(format: "title == %@", noteText)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try contextOfOurApp.executeFetchRequest(request)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    contextOfOurApp.deleteObject(result)
+                    do {
+                        try contextOfOurApp.save()
+                    } catch let error as NSError{
+                        print ("There was an error \(error), \(error.userInfo)")
+                    }
+                }
+            }
+        } catch let error as NSError {
             print ("There was an error \(error), \(error.userInfo)")
         }
     }
