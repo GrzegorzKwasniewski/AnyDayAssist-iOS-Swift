@@ -18,40 +18,13 @@ class AudioPlayBackViewController: UIViewController {
     var stopTimer: NSTimer? = NSTimer()
     var recordedAudioURL: NSURL!
     
-    enum ButtonType: Int { case Slow=0, Fast, Chipmunk, Vader, Echo, Reverb}
-    
-
-    
-    @IBAction func playSoundForButton(sender: UIButton){
-        print("Play Sound Button Pressed")
-        switch (ButtonType(rawValue: sender.tag)!) {
-        case .Slow:
-            playSound(rate: 0.5)
-        case .Fast:
-            playSound(rate: 1.5)
-        case .Chipmunk:
-            playSound(pitch: 1000)
-        case .Vader:
-            playSound(pitch: -1000)
-        case .Echo:
-            playSound(echo: true)
-        case .Reverb:
-            playSound(reverb: true)
-        }
-        
-        configureUI(.Playing)
-    }
-    
-    @IBAction func stopButtonPressed(sender: AnyObject){
-        print("Stop Audio Button Pressed")
-        stopAudio()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let url = audioURL[activeAudioNote!].valueForKey("audiourl") as! String
+        print(url)
         recordedAudioURL = NSURL(string: url)
         setupAudio()
+        //playSound()
         // Do any additional setup after loading the view.
     }
     
@@ -61,7 +34,6 @@ class AudioPlayBackViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        configureUI(.NotPlaying)
     }
 
     
@@ -75,5 +47,4 @@ class AudioPlayBackViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

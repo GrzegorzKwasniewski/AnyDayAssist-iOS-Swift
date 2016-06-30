@@ -41,7 +41,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         print("Audio has been setup")
     }
     
-    func playSound(rate rate: Float? = nil, pitch: Float? = nil, echo: Bool = false, reverb: Bool = false) {
+    func playSound(rate rate: Float? = nil) {
         
         // initialize audio engine components
         audioEngine = AVAudioEngine()
@@ -50,38 +50,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         audioPlayerNode = AVAudioPlayerNode()
         audioEngine!.attachNode(audioPlayerNode!)
         
-        // node for adjusting rate/pitch
-        let changeRatePitchNode = AVAudioUnitTimePitch()
-        if let pitch = pitch {
-            changeRatePitchNode.pitch = pitch
-        }
-        if let rate = rate {
-            changeRatePitchNode.rate = rate
-        }
-        audioEngine!.attachNode(changeRatePitchNode)
-        
-        // node for echo
-        let echoNode = AVAudioUnitDistortion()
-        echoNode.loadFactoryPreset(.MultiEcho1)
-        audioEngine!.attachNode(echoNode)
-        
-        // node for reverb
-        let reverbNode = AVAudioUnitReverb()
-        reverbNode.loadFactoryPreset(.Cathedral)
-        reverbNode.wetDryMix = 50
-        audioEngine!.attachNode(reverbNode)
-        
-        // connect nodes
-        if echo == true && reverb == true {
-            connectAudioNodes(audioPlayerNode!, changeRatePitchNode, echoNode, reverbNode, audioEngine!.outputNode)
-        } else if echo == true {
-            connectAudioNodes(audioPlayerNode!, changeRatePitchNode, echoNode, audioEngine!.outputNode)
-        } else if reverb == true {
-            connectAudioNodes(audioPlayerNode!, changeRatePitchNode, reverbNode, audioEngine!.outputNode)
-        } else {
-            connectAudioNodes(audioPlayerNode!, changeRatePitchNode, audioEngine!.outputNode)
-        }
-        
+               
         // schedule to play and start the engine!
         audioPlayerNode!.stop()
         audioPlayerNode!.scheduleFile(audioFile, atTime: nil) {
@@ -98,7 +67,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
             }
             
             // schedule a stop timer for when audio finishes playing
-            self.stopTimer = NSTimer(timeInterval: delayInSeconds, target: self, selector: #selector(PlaySoundsViewController.stopAudio), userInfo: nil, repeats: false)
+            self.stopTimer = NSTimer(timeInterval: delayInSeconds, target: self, selector: #selector(AudioPlayBackViewController.stopAudio), userInfo: nil, repeats: false)
             NSRunLoop.mainRunLoop().addTimer(self.stopTimer!, forMode: NSDefaultRunLoopMode)
         }
         
@@ -113,22 +82,11 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         audioPlayerNode!.play()
     }
     
-    
-    // MARK: Connect List of Audio Nodes
-    
-    func connectAudioNodes(nodes: AVAudioNode...) {
-        for x in 0..<nodes.count-1 {
-            audioEngine!.connect(nodes[x], to: nodes[x+1], format: audioFile.processingFormat)
-        }
-    }
-    
     func stopAudio() {
         
         if let stopTimer = stopTimer {
             stopTimer.invalidate()
         }
-        
-        configureUI(.NotPlaying)
         
         if let audioPlayerNode = audioPlayerNode {
             audioPlayerNode.stop()
@@ -143,25 +101,16 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
     
     // MARK: UI Functions
     
-    func configureUI(playState: PlayingState) {
-        switch(playState) {
-        case .Playing:
-            setPlayButtonsEnabled(false)
-            stopButton.enabled = true
-        case .NotPlaying:
-            setPlayButtonsEnabled(true)
-            stopButton.enabled = false
-        }
-    }
-    
-    func setPlayButtonsEnabled(enabled: Bool) {
-        snailButton.enabled = enabled
-        chipmunkButton.enabled = enabled
-        rabbitButton.enabled = enabled
-        vaderButton.enabled = enabled
-        echoButton.enabled = enabled
-        reverbButton.enabled = enabled
-    }
+//    func configureUI(playState: PlayingState) {
+//        switch(playState) {
+//        case .Playing:
+//            setPlayButtonsEnabled(false)
+//            stopButton.enabled = true
+//        case .NotPlaying:
+//            setPlayButtonsEnabled(true)
+//            stopButton.enabled = false
+//        }
+//    }
     
     
     func showAlert(title: String, message: String) {
