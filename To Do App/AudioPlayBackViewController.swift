@@ -13,20 +13,39 @@ import CoreData
 class AudioPlayBackViewController: UIViewController {
 
     var audioFile: AVAudioFile = AVAudioFile()
-    var audioEngine: AVAudioEngine? = AVAudioEngine()
-    var audioPlayerNode: AVAudioPlayerNode? = AVAudioPlayerNode()
     var stopTimer: NSTimer? = NSTimer()
     var recordedAudioURL: NSURL!
+    var player: AVAudioPlayer? = AVAudioPlayer()
+    
+    @IBOutlet var volumeSlider: UISlider!
+    @IBAction func adjustVolume(sender: AnyObject) {
+        player?.volume = volumeSlider.value
+    }
+    
+    @IBOutlet var timeSlider: UISlider!
+    @IBAction func searchInAudioNote(sender: AnyObject) {
+         player?.currentTime = NSTimeInterval(timeSlider.value)
+    }
+    
+    @IBOutlet var playButton: UIButton!
+    @IBAction func playAudioNote(sender: AnyObject) {
+        player?.play()
+    }
+    
+    @IBOutlet var stopButton: UIButton!
+    @IBAction func stopAudioNote(sender: AnyObject) {
+        player?.stop()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = audioURL[activeAudioNote!].valueForKey("audiourl") as! String
-        print(url)
-        recordedAudioURL = NSURL(string: url)
+        configureUI(PlayingState.Playing)
+        prepareAudioURL()
         setupAudio()
-        //playSound()
-        // Do any additional setup after loading the view.
-    }
+        playSound()
+        updateTimeSlider()
+        }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,9 +53,16 @@ class AudioPlayBackViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        timeSlider.maximumValue = Float((player?.duration)!)
     }
-
     
+    func updateTimeSlider() {
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AudioPlayBackViewController.updateScrubSlider), userInfo: nil, repeats: true)
+    }
+    
+    func updateScrubSlider() {
+        timeSlider.value = Float(player!.currentTime)
+    }
 
     /*
     // MARK: - Navigation

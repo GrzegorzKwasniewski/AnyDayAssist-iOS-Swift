@@ -31,7 +31,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
             self.mapView.showsUserLocation = true
-            self.mapView.showsCompass = true
+            if #available(iOS 9.0, *) {
+                self.mapView.showsCompass = true
+            } else {
+                // Fallback on earlier versions
+            }
         
         // else if have choosen place from table
         } else {

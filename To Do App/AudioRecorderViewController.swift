@@ -64,8 +64,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     func createRecordFileURL(fileName: String) -> NSURL {
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as String
-        let recordingName = fileName
-        let pathArray = [dirPath, recordingName]
+        let pathArray = [dirPath, fileName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         return filePath!
     }

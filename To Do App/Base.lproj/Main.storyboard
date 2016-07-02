@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -238,9 +239,56 @@
                     <view key="view" contentMode="scaleToFill" id="aLG-4R-ocy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-5R-zJ2">
+                                <rect key="frame" x="95" y="123" width="185" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jmB-5R-zJ2" secondAttribute="height" multiplier="173:30" id="ykd-Nj-8cu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="adjustVolume:" destination="2yT-xO-sfe" eventType="valueChanged" id="UpD-8K-wn5"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-JF-oHI">
+                                <rect key="frame" x="91" y="543" width="193" height="31"/>
+                                <connections>
+                                    <action selector="searchInAudioNote:" destination="2yT-xO-sfe" eventType="valueChanged" id="HTZ-kr-8Vn"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibz-Rs-UK4">
+                                <rect key="frame" x="135" y="349" width="104" height="50"/>
+                                <state key="normal" image="stopRecordButton"/>
+                                <connections>
+                                    <action selector="stopAudioNote:" destination="2yT-xO-sfe" eventType="touchUpInside" id="3gl-cA-I8Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tM-AZ-lem">
+                                <rect key="frame" x="162" y="238" width="50" height="50"/>
+                                <state key="normal" image="stopRecordButton"/>
+                                <connections>
+                                    <action selector="playAudioNote:" destination="2yT-xO-sfe" eventType="touchUpInside" id="bmy-9y-Veu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pDS-JF-oHI" secondAttribute="trailing" constant="77" id="2EC-cI-Ew4"/>
+                            <constraint firstItem="OYK-fR-RRw" firstAttribute="top" secondItem="pDS-JF-oHI" secondAttribute="bottom" constant="50" id="QaB-1B-ToL"/>
+                            <constraint firstItem="jmB-5R-zJ2" firstAttribute="centerX" secondItem="aLG-4R-ocy" secondAttribute="centerX" id="YZJ-Fv-t4s"/>
+                            <constraint firstItem="jmB-5R-zJ2" firstAttribute="leading" secondItem="aLG-4R-ocy" secondAttribute="leadingMargin" constant="81" id="ZAK-Ct-LNb"/>
+                            <constraint firstItem="pDS-JF-oHI" firstAttribute="centerX" secondItem="aLG-4R-ocy" secondAttribute="centerX" id="aV3-lA-7wm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jmB-5R-zJ2" secondAttribute="trailing" constant="81" id="eF9-Lo-O5I"/>
+                            <constraint firstItem="jmB-5R-zJ2" firstAttribute="top" secondItem="ZZU-TM-l4B" secondAttribute="bottom" constant="59" id="eXa-cg-mlp"/>
+                            <constraint firstItem="pDS-JF-oHI" firstAttribute="leading" secondItem="aLG-4R-ocy" secondAttribute="leadingMargin" constant="77" id="mtZ-Dt-JJU"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="playButton" destination="4tM-AZ-lem" id="fvl-9g-V3o"/>
+                        <outlet property="stopButton" destination="Ibz-Rs-UK4" id="5IX-jc-MJo"/>
+                        <outlet property="timeSlider" destination="pDS-JF-oHI" id="Gcf-kx-RZS"/>
+                        <outlet property="volumeSlider" destination="jmB-5R-zJ2" id="uVV-G5-zsO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1Y-IE-rAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
