@@ -52,6 +52,10 @@ class PlacesViewController: UITableViewController {
         tableView.backgroundColor = .lightGrayColor()
         
         // making anvigation bar transparent
+        // we don't set any image - we leave it blank
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
     }
     
     override func viewDidAppear(animated: Bool) {

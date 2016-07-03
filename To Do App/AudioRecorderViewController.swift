@@ -45,7 +45,8 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func createRecordingSession() {
-        let audioFileURL = createRecordFileURL("AudioNote_nr_\(audioURL.count)")
+        let audioFielTitle = "AudioNote_nr_\(audioURL.count + 1)"
+        let audioFileURL = createRecordFileURL(audioFielTitle)
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         try! audioRecorder = AVAudioRecorder(URL: audioFileURL, settings: [:])
@@ -53,7 +54,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        saveAudioURL(audioFileURL)
+        saveAudioTitleAndURL(audioFielTitle, audioFileUrl: audioFileURL)
     }
     
     func stopRecordnigSession() {
@@ -78,9 +79,10 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         return recordingTime
     }
     
-    func saveAudioURL(audioFileUrl: NSURL) {
+    func saveAudioTitleAndURL(audioFileTitle: String , audioFileUrl: NSURL) {
         let audioNoteURL: String = audioFileUrl.path!
         let newAudioNote = NSEntityDescription.insertNewObjectForEntityForName("AudioNotes", inManagedObjectContext: contextOfOurApp)
+        newAudioNote.setValue(audioFileTitle, forKey: "audiotitle")
         newAudioNote.setValue(audioNoteURL, forKey: "audiourl")
         do {
             try contextOfOurApp.save()

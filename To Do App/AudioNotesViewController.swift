@@ -17,12 +17,6 @@ class AudioNotesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +45,7 @@ class AudioNotesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let audioTitle = audioURL[indexPath.row]
-        cell.textLabel?.text = (audioTitle.valueForKey("audiourl") as! String)
+        cell.textLabel?.text = (audioTitle.valueForKey("audiotitle") as! String)
 
         return cell
     }
@@ -84,9 +78,9 @@ class AudioNotesViewController: UITableViewController {
         }
     }
     
-    func removeFromAudioNotes(noteText: String) {
+    func removeFromAudioNotes(audioTitle: String) {
         let request = NSFetchRequest(entityName: "AudioNotes")
-        request.predicate = NSPredicate(format: "audiourl == %@", noteText)
+        request.predicate = NSPredicate(format: "audiourl == %@", audioTitle)
         request.returnsObjectsAsFaults = false
         
         do {
