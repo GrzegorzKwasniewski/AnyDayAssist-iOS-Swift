@@ -22,6 +22,7 @@
 		71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F321D13254200206B4F /* AudioRecorderViewController.swift */; };
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
+		71FB980D1D298FBD00BDCBB2 /* background_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71FB980C1D298FBD00BDCBB2 /* background_2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		71944F321D13254200206B4F /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewController.swift; sourceTree = "<group>"; };
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
+		71FB980C1D298FBD00BDCBB2 /* background_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
 				71944F1F1CEBC55200206B4F /* AppIcon.png */,
+				71FB980C1D298FBD00BDCBB2 /* background_2.jpg */,
 			);
 			path = "To Do App";
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				71944F201CEBC55200206B4F /* AppIcon.png in Resources */,
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
+				71FB980D1D298FBD00BDCBB2 /* background_2.jpg in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

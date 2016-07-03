@@ -12,7 +12,6 @@ import CoreData
 
 class AudioPlayBackViewController: UIViewController {
 
-    var audioFile: AVAudioFile = AVAudioFile()
     var stopTimer: NSTimer? = NSTimer()
     var recordedAudioURL: NSURL!
     var player: AVAudioPlayer? = AVAudioPlayer()
@@ -30,11 +29,22 @@ class AudioPlayBackViewController: UIViewController {
     @IBOutlet var playButton: UIButton!
     @IBAction func playAudioNote(sender: AnyObject) {
         player?.play()
+        configureUI(PlayingState.Playing)
     }
     
     @IBOutlet var stopButton: UIButton!
     @IBAction func stopAudioNote(sender: AnyObject) {
         player?.stop()
+        setupAudio()
+        timeSlider.value = Float(player!.currentTime)
+        configureUI(PlayingState.NotPlaying)
+        
+    }
+    
+    @IBOutlet var pauseButton: UIButton!
+    @IBAction func pauseAudio(sender: AnyObject) {
+        player?.pause()
+        configureUI(PlayingState.NotPlaying)
     }
     
     
@@ -55,14 +65,7 @@ class AudioPlayBackViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         timeSlider.maximumValue = Float((player?.duration)!)
     }
-    
-    func updateTimeSlider() {
-        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AudioPlayBackViewController.updateScrubSlider), userInfo: nil, repeats: true)
-    }
-    
-    func updateScrubSlider() {
-        timeSlider.value = Float(player!.currentTime)
-    }
+
 
     /*
     // MARK: - Navigation

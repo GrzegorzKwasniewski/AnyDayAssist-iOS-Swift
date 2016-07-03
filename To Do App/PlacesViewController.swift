@@ -37,6 +37,21 @@ class PlacesViewController: UITableViewController {
         
         getDataFromEntity("Places")
         
+        let backgroundImage = UIImage(named: "background_2.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+        
+        // no lines where there aren't cells
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        // center and scale background image
+        imageView.contentMode = .ScaleAspectFit
+        
+        // Set the background color to match better
+        //I'm not using png file right now so it won't make any change
+        tableView.backgroundColor = .lightGrayColor()
+        
+        // making anvigation bar transparent
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,6 +76,13 @@ class PlacesViewController: UITableViewController {
         let placeMarked = placesToVisit[indexPath.row]
         cell.textLabel?.text = placeMarked.valueForKey("title") as! String
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = .clearColor()
+        
+        // if You want cells to be little transparent
+        //cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {

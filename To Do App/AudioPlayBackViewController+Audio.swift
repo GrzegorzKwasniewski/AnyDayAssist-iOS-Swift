@@ -23,34 +23,23 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         static let AudioFileError = "Audio File Error"
         static let AudioEngineError = "Audio Engine Error"
     }
-    
-    // raw values correspond to sender tags
+
     enum PlayingState { case Playing, NotPlaying }
-    
     
     // MARK: Audio Functions
     
     func setupAudio() {
-        
-        // initialize (recording) audio file
-        do {
-            audioFile = try AVAudioFile(forReading: recordedAudioURL)
-        } catch {
-            showAlert(Alerts.AudioFileError, message: String(error))
-        }
-    }
-    
-    func playSound() {
-        
         do {
             player = try AVAudioPlayer(contentsOfURL: recordedAudioURL)
             player?.delegate = self
         } catch {
             showAlert(Alerts.AudioFileError, message: String(error))
         }
-        
+    }
+    
+    func playSound() {
+        setupAudio()
         player?.play()
-
     }
 
     func prepareAudioURL() {
@@ -64,6 +53,13 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         }
     }
     
+    func updateTimeSlider() {
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AudioPlayBackViewController.updateSlider), userInfo: nil, repeats: true)
+    }
+    
+    func updateSlider() {
+        timeSlider.value = Float(player!.currentTime)
+    }
     
     // MARK: UI Functions
     
@@ -72,19 +68,21 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         case .Playing:
             playButton.enabled = false
             stopButton.enabled = true
+            pauseButton.enabled = true
         case .NotPlaying:
             playButton.enabled = true
             stopButton.enabled = false
+            pauseButton.enabled = false
         }
     }
+    
+    // MARK: Alert Functions
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    
 }
 
 
