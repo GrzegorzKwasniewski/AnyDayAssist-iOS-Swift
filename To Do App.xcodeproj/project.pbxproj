@@ -23,6 +23,7 @@
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		71FB980D1D298FBD00BDCBB2 /* background_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71FB980C1D298FBD00BDCBB2 /* background_2.jpg */; };
+		71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		71FB980C1D298FBD00BDCBB2 /* background_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_2.jpg; sourceTree = "<group>"; };
+		71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				71944F341D13256100206B4F /* AudioPlayBackViewController.swift */,
 				711843A01D24568800E3CBB2 /* AudioPlayBackViewController+Audio.swift */,
 				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
+				71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */,
 				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
@@ -175,6 +178,7 @@
 				71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */,
 				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
+				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,
 				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,
 				711843A11D24568800E3CBB2 /* AudioPlayBackViewController+Audio.swift in Sources */,

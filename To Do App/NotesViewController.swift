@@ -22,7 +22,13 @@ class NotesViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var toDoNotesList: UITableView!
  
     @IBAction func addNote(sender: AnyObject) {
-            promptForNote()
+        
+        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
+        self.addChildViewController(popUpView)
+        popUpView.view.frame = self.view.frame
+        self.view.addSubview(popUpView.view)
+        popUpView.didMoveToParentViewController(self)
+        //promptForNote()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
