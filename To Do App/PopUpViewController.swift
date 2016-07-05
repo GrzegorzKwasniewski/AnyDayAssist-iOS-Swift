@@ -12,6 +12,13 @@ class PopUpViewController: UIViewController {
 
     @IBOutlet var noteText: UITextField!
     
+    @IBAction func saveNote(sender: AnyObject) {
+        if !(noteText.text!.isEmpty) {
+            globalCoreDataFunctions.saveTextNote(noteText.text!)
+        }
+        removeAnimate()
+    }
+    
     @IBAction func closePopUpView(sender: AnyObject) {
         removeAnimate()
     }
@@ -24,7 +31,6 @@ class PopUpViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func showAnimate()

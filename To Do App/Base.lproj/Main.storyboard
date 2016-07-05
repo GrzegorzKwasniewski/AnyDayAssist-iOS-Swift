@@ -108,16 +108,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-SY-GOt">
                                 <rect key="frame" x="58" y="91" width="258" height="314"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVq-aR-7Ea">
-                                        <rect key="frame" x="106" y="236" width="46" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="0.23504849137931033" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Close">
-                                            <color key="titleColor" red="0.99958224380000005" green="1" blue="0.97546489270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closePopUpView:" destination="tEr-8n-TFT" eventType="touchUpInside" id="rvi-qi-HFI"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What You need TODO?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vu-qy-m1a">
                                         <rect key="frame" x="31" y="39" width="197" height="21"/>
                                         <color key="backgroundColor" red="0.99958224380000005" green="1" blue="0.97546489270000003" alpha="0.3037176724137931" colorSpace="calibratedRGB"/>
@@ -139,6 +129,23 @@
                                     <constraint firstAttribute="width" constant="258" id="pqd-JB-UUu"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVq-aR-7Ea">
+                                <rect key="frame" x="164" y="364" width="46" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="0.23504849137931033" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.99958224380000005" green="1" blue="0.97546489270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePopUpView:" destination="tEr-8n-TFT" eventType="touchUpInside" id="rvi-qi-HFI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HU-Eq-43O">
+                                <rect key="frame" x="152" y="305" width="70" height="30"/>
+                                <state key="normal" title="Save Note"/>
+                                <connections>
+                                    <action selector="saveNote:" destination="tEr-8n-TFT" eventType="touchUpInside" id="Zza-DQ-Oih"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

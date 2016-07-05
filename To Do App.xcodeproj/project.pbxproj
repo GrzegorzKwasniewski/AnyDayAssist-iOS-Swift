@@ -93,13 +93,13 @@
 				711843A01D24568800E3CBB2 /* AudioPlayBackViewController+Audio.swift */,
 				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
 				71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */,
+				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
 				71944F1F1CEBC55200206B4F /* AppIcon.png */,
 				71FB980C1D298FBD00BDCBB2 /* background_2.jpg */,
-				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 			);
 			path = "To Do App";
 			sourceTree = "<group>";
