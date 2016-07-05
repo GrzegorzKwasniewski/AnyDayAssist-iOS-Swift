@@ -10,6 +10,11 @@ import UIKit
 
 class PopUpViewController: UIViewController {
 
+    @IBOutlet var noteText: UITextField!
+    
+    @IBAction func closePopUpView(sender: AnyObject) {
+        removeAnimate()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +25,6 @@ class PopUpViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func closePopUpView(sender: AnyObject) {
-        removeAnimate()
     }
     
     func showAnimate()
