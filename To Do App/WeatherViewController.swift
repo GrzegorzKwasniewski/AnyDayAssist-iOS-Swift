@@ -9,6 +9,9 @@
 import UIKit
 import CoreLocation
 
+var userCityName = String()
+var userCityZipCode = String()
+
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager!
@@ -22,6 +25,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
 
     }
     
@@ -38,40 +42,29 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
             
-            
-            
+            if placemark?.count > 0 {
+                let user = placemark![0]
+                let data = user.addressDictionary as! NSDictionary
+                
+                guard let city = data["City"] as? String, let zipCode = data["ZIP"] as? String
+                else { return }
+                userCityName = city
+                userCityZipCode = zipCode
+                self.locationManager.stopUpdatingLocation()
+                self.performSegueWithIdentifier("showWeather", sender: nil)
+            }
         }
         
     }
 
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        // error handle
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=London&APPID=8ecab5fd503cc5a1f3801625138a85d5")!
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            if let urlContent = data {
-                do {
-                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    print(jsonResult)
-                    
-                    guard let weather = jsonResult["weather"] as? NSArray,
-                        let detalis = weather[0] as? [String: AnyObject],
-                        let decs = detalis["description"] as? String
-                        else {
-                            return
-                    }
-                    print(decs)
-                    
-                } catch {
-                    print(error)
-                }
-            }
-        }
-        
-        task.resume()
-            }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
