@@ -102,6 +102,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     var subThoroughfare:String = ""
                     var thoroughFare:String = ""
                     
+                    //touchLocation.addressDictionary
+                    
                     if touchLocation.subThoroughfare != nil {
                         subThoroughfare = touchLocation.subThoroughfare!
                     }

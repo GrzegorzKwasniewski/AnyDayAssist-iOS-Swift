@@ -21,6 +21,7 @@ final class CoreDataFunctions {
     func saveTextNote(note: String) {
         let newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
         newNote.setValue(note, forKey: "note")
+        
         do {
             try contextOfOurApp.save()
             

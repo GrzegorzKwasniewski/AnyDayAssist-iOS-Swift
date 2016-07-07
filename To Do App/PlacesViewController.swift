@@ -16,17 +16,10 @@ class PlacesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,27 +28,9 @@ class PlacesViewController: UITableViewController {
             placesToVisit.removeAtIndex(0)
         }
         
+        setUI()
         getDataFromEntity("Places")
         
-        let backgroundImage = UIImage(named: "background_2.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
-        
-        // no lines where there aren't cells
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        // center and scale background image
-        imageView.contentMode = .ScaleAspectFit
-        
-        // Set the background color to match better
-        //I'm not using png file right now so it won't make any change
-        tableView.backgroundColor = .lightGrayColor()
-        
-        // making anvigation bar transparent
-        // we don't set any image - we leave it blank
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -147,6 +122,28 @@ class PlacesViewController: UITableViewController {
         } catch let error as NSError {
             print ("There was an error \(error), \(error.userInfo)")
         }
+    }
+    
+    func setUI() {
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        tableView.backgroundView = imageView
+        
+        // no lines where there aren't cells
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        // center and scale background image
+        imageView.contentMode = .ScaleAspectFit
+        
+        // Set the background color to match better
+        //I'm not using png file right now so it won't make any change
+        tableView.backgroundColor = .lightGrayColor()
+        
+        // making anvigation bar transparent
+        // we don't set any image - we leave it blank
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
     }
     
     /*

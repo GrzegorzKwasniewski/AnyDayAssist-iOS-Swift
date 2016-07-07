@@ -47,7 +47,6 @@ class AudioPlayBackViewController: UIViewController {
         configureUI(PlayingState.NotPlaying)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI(PlayingState.Playing)
