@@ -73,12 +73,35 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        setUI()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func setUI() {
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
+        
+        // center and scale background image
+        imageView.contentMode = .ScaleAspectFit
+        
+        // Set the background color to match better
+        //I'm not using png file right now so it won't make any change
+        self.view.backgroundColor = .lightGrayColor()
+        
+        // making anvigation bar transparent
+        // we don't set any image - we leave it blank
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+    }
 
     /*
     // MARK: - Navigation

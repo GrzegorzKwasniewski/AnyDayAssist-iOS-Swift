@@ -97,12 +97,12 @@ class TestViewController: UIViewController {
                     print(self.jsonResults)
                     self.cityName.text = self.city
                     self.descriptionOfWeather.text = self.setWeatherDescription
-                    self.temperatureAverage.text = self.setTemperatureAverage
-                    self.temperatureMin.text = self.setTemperatureMin
-                    self.temperatureMax.text = self.setTemperatureMax
-                    self.pressure.text = self.setPressure
-                    self.windSpeed.text = self.setWindSpeed
-                    self.humidity.text = self.setHumidity
+                    self.temperatureAverage.text = "\(self.setTemperatureAverage)°C"
+                    self.temperatureMin.text = "\(self.setTemperatureMin)°C"
+                    self.temperatureMax.text = "\(self.setTemperatureMax)°C"
+                    self.pressure.text = "\(self.setPressure) mb"
+                    self.windSpeed.text = "\(self.setWindSpeed) km h"
+                    self.humidity.text = "\(self.setHumidity) %"
                 }
                 
             }
@@ -120,7 +120,29 @@ class TestViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-           }
+        setUI()
+    }
+    
+    func setUI() {
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
+
+        // center and scale background image
+        imageView.contentMode = .ScaleAspectFit
+        
+        // Set the background color to match better
+        //I'm not using png file right now so it won't make any change
+        self.view.backgroundColor = .lightGrayColor()
+        
+        // making anvigation bar transparent
+        // we don't set any image - we leave it blank
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+    }
+
 
     /*
     // MARK: - Navigation
