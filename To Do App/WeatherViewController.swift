@@ -15,18 +15,20 @@ var userCityZipCode = String()
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager!
+    var authorizationStatus:CLAuthorizationStatus!
     var placemarks: AnyObject!
     var error: NSError!
     
     @IBAction func checkWeather(sender: AnyObject) {
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+           locationManager.startUpdatingLocation()
+//        } else if authorizationStatus == CLAuthorizationStatus.Denied {
+//            // Inform user that he can change setting in setting menu
+//            print("no no")
+//            // User can change his mind usig this
+//            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+//        }
         
-
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -54,7 +56,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.performSegueWithIdentifier("showWeather", sender: nil)
             }
         }
-        
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -64,6 +65,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        authorizationStatus = CLLocationManager.authorizationStatus()
+        if authorizationStatus == CLAuthorizationStatus.NotDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
 
     override func didReceiveMemoryWarning() {
