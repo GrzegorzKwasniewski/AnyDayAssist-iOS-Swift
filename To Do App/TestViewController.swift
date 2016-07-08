@@ -20,6 +20,7 @@ class TestViewController: UIViewController {
     var setTemperatureAverage = String()
     var setTemperatureMin = String()
     var setTemperatureMax = String()
+    var setWindSpeed = String()
 
     
     @IBOutlet var cityName: UILabel!
@@ -36,7 +37,7 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
-            let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(userCityName)&APPID=8ecab5fd503cc5a1f3801625138a85d5")!
+            let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(userCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5")!
             
             let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
                 if let urlContent = data {
@@ -53,29 +54,41 @@ class TestViewController: UIViewController {
                             else {
                                 return
                             }
-                        
                             self.setWeatherDescription = getWeatherDescriptionDescription
                         
-                        if let info = self.jsonResults["main"] as? [String: AnyObject]{
-                            print(info["temp"])
+                        if let getWindData = self.jsonResults["wind"] as? [String: AnyObject]{
+                            if let getWindSpeed = getWindData["speed"] as? Double {
+                                self.setWindSpeed = String(getWindSpeed)
+                            }
                         }
-//                        
-//                        guard let getMainInfo = self.jsonResults["main"] as? NSArray,
-//                            let getMainInfoDetalis = getMainInfo[0] as? [String: AnyObject],
-//                            let getHumidity = getMainInfoDetalis["humidity"] as? String,
-//                            let getPressure = getMainInfoDetalis["pressure"] as? String,
-//                            let getTemperatureAverage = getMainInfoDetalis["temp"] as? String,
-//                            let getTemperatureMin = getMainInfoDetalis["temp_min"] as? String,
-//                            let getTemperatureMax = getMainInfoDetalis["temp_max"] as? String
-//                            else {
-//                                return
-//                        }
-//                        
-//                        self.setHumidity = getHumidity
-//                        self.setPressure = getPressure
-//                        self.setTemperatureAverage = getTemperatureAverage
-//                        self.setTemperatureMin = getTemperatureMin
-//                        self.setTemperatureMax = getTemperatureMax
+                        
+                        if let getMainInfo = self.jsonResults["main"] as? [String: AnyObject]{
+                            
+                            if let getTemperatureAverage = getMainInfo["temp"] as? Double {
+                                print(getTemperatureAverage)
+                                self.setTemperatureAverage = String(getTemperatureAverage)
+                            }
+                            
+                            if let getTemperatureMin = getMainInfo["temp_min"] as? Double {
+                                print(getTemperatureMin)
+                                self.setTemperatureMin = String(getTemperatureMin)
+                            }
+                            
+                            if let getTemperatureMin = getMainInfo["temp_max"] as? Double {
+                                print(getTemperatureMin)
+                                self.setTemperatureMax = String(getTemperatureMin)
+                            }
+                            
+                            if let getPressure = getMainInfo["pressure"] as? Int {
+                                print(getPressure)
+                                self.setPressure = String(getPressure)
+                            }
+                            
+                            if let getHumidity = getMainInfo["humidity"] as? Int {
+                                print(getHumidity)
+                                self.setHumidity = String(getHumidity)
+                            }
+                        }
                     } catch {
                         print(error)
                     }
@@ -86,6 +99,10 @@ class TestViewController: UIViewController {
                     self.descriptionOfWeather.text = self.setWeatherDescription
                     self.temperatureAverage.text = self.setTemperatureAverage
                     self.temperatureMin.text = self.setTemperatureMin
+                    self.temperatureMax.text = self.setTemperatureMax
+                    self.pressure.text = self.setPressure
+                    self.windSpeed.text = self.setWindSpeed
+                    self.humidity.text = self.setHumidity
                 }
                 
             }
