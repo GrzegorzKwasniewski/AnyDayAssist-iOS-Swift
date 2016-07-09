@@ -27,6 +27,12 @@
 		71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D781D2E77780057B22E /* TextNotesViewController.swift */; };
 		71FF6D7B1D2EB4990057B22E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7A1D2EB4990057B22E /* WeatherViewController.swift */; };
 		71FF6D7D1D2EF6BA0057B22E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7C1D2EF6BA0057B22E /* TestViewController.swift */; };
+		71FF6D861D31400D0057B22E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D801D31400D0057B22E /* camera.png */; };
+		71FF6D871D31400D0057B22E /* Logout Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D811D31400D0057B22E /* Logout Icon.png */; };
+		71FF6D881D31400D0057B22E /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D821D31400D0057B22E /* map.png */; };
+		71FF6D891D31400D0057B22E /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D831D31400D0057B22E /* microphone.png */; };
+		71FF6D8A1D31400D0057B22E /* settings Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D841D31400D0057B22E /* settings Icon.png */; };
+		71FF6D8B1D31400D0057B22E /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D851D31400D0057B22E /* sun.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +58,12 @@
 		71FF6D781D2E77780057B22E /* TextNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesViewController.swift; sourceTree = "<group>"; };
 		71FF6D7A1D2EB4990057B22E /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		71FF6D7C1D2EF6BA0057B22E /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		71FF6D801D31400D0057B22E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		71FF6D811D31400D0057B22E /* Logout Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout Icon.png"; sourceTree = "<group>"; };
+		71FF6D821D31400D0057B22E /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		71FF6D831D31400D0057B22E /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
+		71FF6D841D31400D0057B22E /* settings Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings Icon.png"; sourceTree = "<group>"; };
+		71FF6D851D31400D0057B22E /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,12 @@
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
 				71944F1F1CEBC55200206B4F /* AppIcon.png */,
 				71FF6D7A1D2EB4990057B22E /* WeatherViewController.swift */,
+				71FF6D801D31400D0057B22E /* camera.png */,
+				71FF6D811D31400D0057B22E /* Logout Icon.png */,
+				71FF6D821D31400D0057B22E /* map.png */,
+				71FF6D831D31400D0057B22E /* microphone.png */,
+				71FF6D841D31400D0057B22E /* settings Icon.png */,
+				71FF6D851D31400D0057B22E /* sun.png */,
 			);
 			path = "To Do App";
 			sourceTree = "<group>";
@@ -170,9 +188,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				71944F201CEBC55200206B4F /* AppIcon.png in Resources */,
+				71FF6D871D31400D0057B22E /* Logout Icon.png in Resources */,
+				71FF6D8B1D31400D0057B22E /* sun.png in Resources */,
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
+				71FF6D8A1D31400D0057B22E /* settings Icon.png in Resources */,
+				71FF6D881D31400D0057B22E /* map.png in Resources */,
+				71FF6D891D31400D0057B22E /* microphone.png in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
+				71FF6D861D31400D0057B22E /* camera.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -86,11 +86,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func setUI() {
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .Bottom
         view.addSubview(imageView)
-        self.view.sendSubviewToBack(imageView)
+        view.sendSubviewToBack(imageView)
         
         // center and scale background image
-        imageView.contentMode = .ScaleAspectFit
+        
         
         // Set the background color to match better
         //I'm not using png file right now so it won't make any change
