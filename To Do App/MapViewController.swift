@@ -64,6 +64,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setUI()
+    }
+    
     // this is calld automaticly - tell delegate that has changed
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
@@ -154,6 +158,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")
         }
+    }
+    
+    func returnToPlaces() {
+        self.performSegueWithIdentifier("returnToPlaces", sender: self)
+    }
+    
+    func setUI() {
+        
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .ScaleAspectFill
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToPlaces))
+        navigationItem.leftBarButtonItem = leftItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
     }
     
 

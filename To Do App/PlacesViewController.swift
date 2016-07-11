@@ -12,7 +12,10 @@ import CoreData
 var placesToVisit = [NSManagedObject]()
 var activPlace = -1
 
-class PlacesViewController: UITableViewController {
+class PlacesViewController: UIViewController, UITableViewDelegate {
+    
+    
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,43 +42,43 @@ class PlacesViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return placesToVisit.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let placeMarked = placesToVisit[indexPath.row]
         cell.textLabel?.text = placeMarked.valueForKey("title") as! String
         return cell
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
         
         // if You want cells to be little transparent
         //cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         activPlace = indexPath.row
         return indexPath
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addNewPlace" {
+        if segue.identifier == "addNewPlaceToSee" {
             activPlace = -1
         }
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
@@ -83,6 +86,11 @@ class PlacesViewController: UITableViewController {
             placesToVisit.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
     }
     
     func getDataFromEntity(entity: String) {
@@ -124,26 +132,39 @@ class PlacesViewController: UITableViewController {
         }
     }
     
+    func returnToMainScreen() {
+        self.performSegueWithIdentifier("returnToMainScreen", sender: self)
+    }
+    
+    func addNewPlaceToSee() {
+        self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
+    }
+    
     func setUI() {
+        
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .ScaleAspectFill
+        
+        tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
         tableView.backgroundView = imageView
-        
-        // no lines where there aren't cells
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        // center and scale background image
-        imageView.contentMode = .ScaleAspectFit
-        
-        // Set the background color to match better
-        //I'm not using png file right now so it won't make any change
         tableView.backgroundColor = .lightGrayColor()
         
-        // making anvigation bar transparent
-        // we don't set any image - we leave it blank
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        let rightItem = UIBarButtonItem(title: "Add Place", style: .Plain, target: nil, action: #selector(addNewPlaceToSee))
+        navigationItem.leftBarButtonItem = leftItem
+        navigationItem.rightBarButtonItem = rightItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
     }
     
     /*

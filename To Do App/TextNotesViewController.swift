@@ -54,6 +54,11 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         cell.backgroundColor = .clearColor()
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
