@@ -12,11 +12,15 @@ import CoreData
 var audioURL: [NSManagedObject] = [NSManagedObject]()
 var activeAudioNote: Int?
 
-class AudioNotesViewController: UITableViewController {
+class AudioNotesViewController: UIViewController, UITableViewDelegate {
+    
+    
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,23 +30,23 @@ class AudioNotesViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         getDataFromEntity("AudioNotes")
+        setUI()
     }
     
     override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return audioURL.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let audioTitle = audioURL[indexPath.row]
         cell.textLabel?.text = (audioTitle.valueForKey("audiotitle") as! String)
@@ -50,7 +54,7 @@ class AudioNotesViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let singleAudio = audioURL[indexPath.row]
             let audioTitle = singleAudio.valueForKey("audiourl") as! String
@@ -60,9 +64,13 @@ class AudioNotesViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         activeAudioNote = indexPath.row
         return indexPath
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = .clearColor()
     }
     
     func getDataFromEntity(entity: String) {
@@ -76,6 +84,9 @@ class AudioNotesViewController: UITableViewController {
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")
         }
+        
+        let audioTitle = audioURL[audioURL.count - 1]
+        print(audioTitle.valueForKey("audiotitle") as! String)
     }
     
     func removeFromAudioNotes(audioTitle: String) {
@@ -99,6 +110,42 @@ class AudioNotesViewController: UITableViewController {
             print ("There was an error \(error), \(error.userInfo)")
         }
     }
+    
+    func returnToMainScreen() {
+        self.performSegueWithIdentifier("returnToMainScreen", sender: self)
+    }
+    
+    func goToMapView() {
+        self.performSegueWithIdentifier("goAudioRecordView", sender: self)
+    }
+    
+    func setUI() {
+        
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .ScaleAspectFill
+        
+        tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        tableView.backgroundView = imageView
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.backgroundColor = .lightGrayColor()
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        let rightItem = UIBarButtonItem(title: "Add >", style: .Plain, target: nil, action: #selector(goToMapView))
+        navigationItem.leftBarButtonItem = leftItem
+        navigationItem.rightBarButtonItem = rightItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
+    }
+
 
 
     /*

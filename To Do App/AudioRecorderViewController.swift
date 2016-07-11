@@ -41,6 +41,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        setUI()
         stopRecordingButton.enabled = false
     }
     
@@ -89,7 +90,35 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")
         }
+        print(audioNoteURL)
     }
+    
+    func returnToAudioNotes() {
+        self.performSegueWithIdentifier("returnToAudioNotes", sender: self)
+    }
+    
+    func setUI() {
+        
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .ScaleAspectFill
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToAudioNotes))
+        navigationItem.leftBarButtonItem = leftItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
+    }
+
     
 
     /*
