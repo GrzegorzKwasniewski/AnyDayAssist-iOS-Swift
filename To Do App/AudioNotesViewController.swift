@@ -50,7 +50,6 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let audioTitle = audioURL[indexPath.row]
         cell.textLabel?.text = (audioTitle.valueForKey("audiotitle") as! String)
-
         return cell
     }
     
@@ -69,6 +68,11 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         return indexPath
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
+    }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
     }
@@ -84,9 +88,6 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")
         }
-        
-        let audioTitle = audioURL[audioURL.count - 1]
-        print(audioTitle.valueForKey("audiotitle") as! String)
     }
     
     func removeFromAudioNotes(audioTitle: String) {

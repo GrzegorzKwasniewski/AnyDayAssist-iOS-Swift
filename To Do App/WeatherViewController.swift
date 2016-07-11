@@ -1,5 +1,5 @@
 //
-//  WeatherViewController.swift
+//  TestViewController.swift
 //  To Do App
 //
 //  Created by Grzegorz Kwaśniewski on 07/07/16.
@@ -9,73 +9,109 @@
 import UIKit
 import CoreLocation
 
-var userCityName = String()
-var userCityZipCode = String()
+class WeatherViewController: UIViewController {
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate {
-    
-    var locationManager:CLLocationManager!
     var authorizationStatus:CLAuthorizationStatus!
-    var placemarks: AnyObject!
-    var error: NSError!
-    
-    @IBAction func checkWeather(sender: AnyObject) {
-        
-           locationManager.startUpdatingLocation()
-//        } else if authorizationStatus == CLAuthorizationStatus.Denied {
-//            // Inform user that he can change setting in setting menu
-//            print("no no")
-//            // User can change his mind usig this
-//            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-//        }
-        
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0]
-        let latitude = userLocation.coordinate.latitude
-        let longitude = userLocation.coordinate.longitude
-        
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        
-        CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
-            if error != nil {
-                print ("Error: \(error?.localizedDescription)") //TODO: check for more info
-                return
-            }
-            
-            if placemark?.count > 0 {
-                let user = placemark![0]
-                let data = user.addressDictionary as! NSDictionary
-                
-                guard let city = data["City"] as? String, let zipCode = data["ZIP"] as? String
-                else { return }
-                userCityName = city
-                userCityZipCode = zipCode
-                self.locationManager.stopUpdatingLocation()
-                self.performSegueWithIdentifier("showWeather", sender: nil)
-            }
-        }
-    }
+    var jsonResults: NSDictionary!
+    var city = String()
+    var setWeatherDescription = String()
+    var setHumidity = String()
+    var setPressure = String()
+    var setTemperatureAverage = String()
+    var setTemperatureMin = String()
+    var setTemperatureMax = String()
+    var setWindSpeed = String()
 
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        // error handle
-    }
+    
+    @IBOutlet var cityName: UILabel!
+    @IBOutlet var descriptionOfWeather: UILabel!
+    @IBOutlet var temperatureAverage: UILabel!
+    @IBOutlet var temperatureMin: UILabel!
+    @IBOutlet var temperatureMax: UILabel!
+    @IBOutlet var pressure: UILabel!
+    @IBOutlet var windSpeed: UILabel!
+    @IBOutlet var humidity: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         authorizationStatus = CLLocationManager.authorizationStatus()
-        if authorizationStatus == CLAuthorizationStatus.NotDetermined {
-            locationManager.requestWhenInUseAuthorization()
+        if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
+            let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(userCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5")!
+            
+            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+                if let urlContent = data {
+                    do {
+                        self.jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                        print(self.jsonResults)
+                        if let getCityName = self.jsonResults["name"] as? String {
+                            self.city = getCityName
+                        }
+                        
+                        guard let getWeather = self.jsonResults["weather"] as? NSArray,
+                            let getWeatherDetalis = getWeather[0] as? [String: AnyObject],
+                            let getWeatherDescriptionDescription = getWeatherDetalis["description"] as? String
+                            else {
+                                return
+                            }
+                            self.setWeatherDescription = getWeatherDescriptionDescription
+                        
+                        if let getWindData = self.jsonResults["wind"] as? [String: AnyObject]{
+                            if let getWindSpeed = getWindData["speed"] as? Double {
+                                self.setWindSpeed = String(getWindSpeed)
+                            }
+                        }
+                        
+                        if let getMainInfo = self.jsonResults["main"] as? [String: AnyObject]{
+                            
+                            if let getTemperatureAverage = getMainInfo["temp"] as? Double {
+                                print(getTemperatureAverage)
+                                self.setTemperatureAverage = String(getTemperatureAverage)
+                            }
+                            
+                            if let getTemperatureMin = getMainInfo["temp_min"] as? Double {
+                                print(getTemperatureMin)
+                                self.setTemperatureMin = String(getTemperatureMin)
+                            }
+                            
+                            if let getTemperatureMin = getMainInfo["temp_max"] as? Double {
+                                print(getTemperatureMin)
+                                self.setTemperatureMax = String(getTemperatureMin)
+                            }
+                            
+                            if let getPressure = getMainInfo["pressure"] as? Int {
+                                print(getPressure)
+                                self.setPressure = String(getPressure)
+                            }
+                            
+                            if let getHumidity = getMainInfo["humidity"] as? Int {
+                                print(getHumidity)
+                                self.setHumidity = String(getHumidity)
+                            }
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    print(self.jsonResults)
+                    self.cityName.text = self.city
+                    self.descriptionOfWeather.text = self.setWeatherDescription
+                    self.temperatureAverage.text = "\(self.setTemperatureAverage)°C"
+                    self.temperatureMin.text = "\(self.setTemperatureMin)°C"
+                    self.temperatureMax.text = "\(self.setTemperatureMax)°C"
+                    self.pressure.text = "\(self.setPressure) mb"
+                    self.windSpeed.text = "\(self.setWindSpeed) km h"
+                    self.humidity.text = "\(self.setHumidity) %"
+                }
+                
+            }
+            
+            task.resume()
+            
+        } else {
+            // Do something when user don't allow to get his locaction
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        setUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,26 +119,40 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setUI()
+    }
+    
+    func returnToMainScreen() {
+        self.performSegueWithIdentifier("returnToMainScreen", sender: self)
+    }
+    
     func setUI() {
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
-        imageView.contentMode = .Bottom
         view.addSubview(imageView)
-        view.sendSubviewToBack(imageView)
-        
+        self.view.sendSubviewToBack(imageView)
+
         // center and scale background image
-        
+        imageView.contentMode = .ScaleAspectFit
         
         // Set the background color to match better
         //I'm not using png file right now so it won't make any change
         self.view.backgroundColor = .lightGrayColor()
         
-        // making anvigation bar transparent
-        // we don't set any image - we leave it blank
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        navigationItem.leftBarButtonItem = leftItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
     }
+
 
     /*
     // MARK: - Navigation
