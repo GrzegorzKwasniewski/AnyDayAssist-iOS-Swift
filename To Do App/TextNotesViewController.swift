@@ -15,10 +15,27 @@ let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
 class TextNotesViewController: UIViewController, UITableViewDelegate {
     
-    //@IBOutlet var toDoNotesList: UITableView!
-    
-
     @IBOutlet var tableView: UITableView!
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setUI()
+        globalCoreDataFunctions.getDataFromEntity("Notes")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return toDoNotes.count
@@ -50,34 +67,18 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = .clearColor()
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
+        selectedCell.contentView.backgroundColor = UIColor.clearColor()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        
-        setUI()
-        globalCoreDataFunctions.getDataFromEntity("Notes")
-        
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.3)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = .clearColor()
     }
     
     func promptForNote() {
@@ -86,7 +87,6 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         popUpView.view.frame = self.view.frame
         self.view.addSubview(popUpView.view)
         popUpView.didMoveToParentViewController(self)
-        
     }
     
     func returnToMainScreen() {
@@ -94,29 +94,37 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     }
     
     func setUI() {
-        
+
+        setTableView()
+        setNavigationBar()
+    }
+    
+    func setTableView() {
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .ScaleAspectFill
-        
+
         tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
         tableView.backgroundView = imageView
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .lightGrayColor()
-
+    }
+    
+    func setNavigationBar() {
         let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationbar.shadowImage = UIImage()
         navigationbar.translucent = true
         navigationbar.backgroundColor = UIColor.clearColor()
+        
         let navigationItem = UINavigationItem()
         let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToMainScreen))
         let rightItem = UIBarButtonItem(title: "Add Note", style: .Plain, target: nil, action: #selector(promptForNote))
+        
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationbar.items = [navigationItem]
         
         view.addSubview(navigationbar)
-
     }
 }

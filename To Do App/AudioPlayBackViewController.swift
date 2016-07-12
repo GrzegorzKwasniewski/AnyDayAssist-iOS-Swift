@@ -18,22 +18,29 @@ class AudioPlayBackViewController: UIViewController {
     
     @IBOutlet var volumeSlider: UISlider!
     @IBAction func adjustVolume(sender: AnyObject) {
+        
         player?.volume = volumeSlider.value
+        
     }
     
     @IBOutlet var timeSlider: UISlider!
     @IBAction func searchInAudioNote(sender: AnyObject) {
+        
          player?.currentTime = NSTimeInterval(timeSlider.value)
+        
     }
     
     @IBOutlet var playButton: UIButton!
     @IBAction func playAudioNote(sender: AnyObject) {
+        
         player?.play()
         configureUI(PlayingState.Playing)
+        
     }
     
     @IBOutlet var stopButton: UIButton!
     @IBAction func stopAudioNote(sender: AnyObject) {
+        
         player?.stop()
         setupAudio()
         timeSlider.value = Float(player!.currentTime)
@@ -43,31 +50,34 @@ class AudioPlayBackViewController: UIViewController {
     
     @IBOutlet var pauseButton: UIButton!
     @IBAction func pauseAudio(sender: AnyObject) {
+        
         player?.pause()
         configureUI(PlayingState.NotPlaying)
+        
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         configureUI(PlayingState.Playing)
         prepareAudioURL()
         setupAudio()
         playSound()
         updateTimeSlider()
-        }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         setUI()
         timeSlider.maximumValue = Float((player?.duration)!)
+        
     }
     
     func returnToAudioNotes() {
+        
         self.performSegueWithIdentifier("returnToAudioNotes", sender: self)
+        
     }
 
     func setUI() {
@@ -91,15 +101,4 @@ class AudioPlayBackViewController: UIViewController {
         view.addSubview(navigationbar)
         
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

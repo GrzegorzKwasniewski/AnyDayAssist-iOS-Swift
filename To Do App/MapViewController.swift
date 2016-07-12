@@ -28,6 +28,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // if we try to add new place to visit
         if activPlace == -1 {
+            
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
             self.mapView.showsUserLocation = true
@@ -36,9 +37,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             } else {
                 // Fallback on earlier versions
             }
-        
-        // else if have choosen place from table
+
         } else {
+            
             let latitude = placesToVisit[activPlace].valueForKey("latitude") as! Double
             let longitude = placesToVisit[activPlace].valueForKey("longitude") as! Double
             let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
@@ -57,19 +58,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             self.mapView.addAnnotation(annotation)
         }
         
-        // add handler for 'longpress' on the screen
-        let longPress = UILongPressGestureRecognizer(target: self, action:#selector(MapViewController.longPressGesture(_:)))
-        longPress.minimumPressDuration = 1.0
-        mapView.addGestureRecognizer(longPress)
-
+        longPressHandler()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         setUI()
+        
     }
     
-    // this is calld automaticly - tell delegate that has changed
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let userLocation:CLLocation = locations[0]
         let latitude = userLocation.coordinate.latitude
         let longitude = userLocation.coordinate.longitude
@@ -79,11 +83,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
         self.mapView.setRegion(region, animated: true)
+        
     }
     
     func longPressGesture(gestureRecognizer:UIGestureRecognizer) {
-        
-        // only one 'longpress' is allowed
+
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             
             // convert touch on the screen to new coordinate on map
@@ -97,11 +101,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 var title:String = ""
                 
                 if error != nil {
-                    print ("Error: \(error?.localizedDescription)") //TODO: check for more info
+                    
+                    print ("Error: \(error?.localizedDescription)")
                     return
+                    
                 }
                 
                 if placemarks!.count > 0 {
+                    
                     let touchLocation = placemarks![0] as CLPlacemark
                     var subThoroughfare:String = ""
                     var thoroughFare:String = ""
@@ -109,25 +116,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     //touchLocation.addressDictionary
                     
                     if touchLocation.subThoroughfare != nil {
+                        
                         subThoroughfare = touchLocation.subThoroughfare!
+                        
                     }
                     
                     if touchLocation.thoroughfare != nil {
+                        
                         thoroughFare = touchLocation.thoroughfare!
+                        
                     }
-                    
-                    // this data isn't always available
+
                     title = "\(subThoroughfare) \(thoroughFare)"
+                    
                 }
                 
-                // if don't get data from touchLocation
                 if title == "" {
+                    
                     title = "Added \(NSDate())"
+                    
                 }
                 
                     self.saveMarkedPlace(title, latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
-                
-                    // add annotation to MapView
+
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = newCoordinate
                     annotation.title = title
@@ -136,15 +147,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 })
             }
         }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func saveMarkedPlace(title: String, latitude: Double, longitude: Double) {
 
-        // create Core Data entity
         let entityDescription = NSEntityDescription.entityForName("Places", inManagedObjectContext: contextOfOurApp)
         let newPlace = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: contextOfOurApp)
         
@@ -153,24 +158,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         newPlace.setValue(longitude, forKey: "longitude")
         
         do {
+            
             try contextOfOurApp.save()
             
         } catch let error as NSError{
+            
             print ("There was an error \(error), \(error.userInfo)")
+            
         }
     }
     
     func returnToPlaces() {
+        
         self.performSegueWithIdentifier("returnToPlaces", sender: self)
+        
     }
     
     func setUI() {
+        
+        setView()
+        setNavigationBar()
+   
+    }
+    
+    func setView() {
         
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .ScaleAspectFill
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
+        
+    }
+    
+    func setNavigationBar() {
         
         let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -186,15 +207,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func longPressHandler() {
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action:#selector(MapViewController.longPressGesture(_:)))
+        longPress.minimumPressDuration = 1.0
+        mapView.addGestureRecognizer(longPress)
+        
     }
-    */
-
 }

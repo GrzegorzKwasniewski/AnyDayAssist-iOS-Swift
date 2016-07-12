@@ -26,11 +26,8 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        // on first start of the app remove empty value form placesToVisit
-        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
-            placesToVisit.removeAtIndex(0)
-        }
         
+        removeEmptyValueAtStart()
         setUI()
         getDataFromEntity("Places")
         
@@ -43,16 +40,13 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     // MARK: - Table view data source
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return placesToVisit.count
     }
 
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let placeMarked = placesToVisit[indexPath.row]
@@ -62,20 +56,11 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
-        
-        // if You want cells to be little transparent
-        //cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         activPlace = indexPath.row
         return indexPath
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addNewPlaceToSee" {
-            activPlace = -1
-        }
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -98,10 +83,8 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         let request = NSFetchRequest(entityName: entity)
         
         do {
-            // try to get data from Corde Data entity
             let results = try contextOfOurApp.executeFetchRequest(request)
             
-            // check if there is any data
             if results.count > 0 {
                 placesToVisit = results as! [NSManagedObject]
             }
@@ -129,6 +112,12 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
             }
         } catch let error as NSError {
             print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addNewPlaceToSee" {
+            activPlace = -1
         }
     }
     
@@ -164,40 +153,11 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         navigationbar.items = [navigationItem]
         
         view.addSubview(navigationbar)
-        
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    func removeEmptyValueAtStart() {
+        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
+            placesToVisit.removeAtIndex(0)
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

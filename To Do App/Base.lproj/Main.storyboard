@@ -280,7 +280,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-5R-zJ2">
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-5R-zJ2">
                                 <rect key="frame" x="95" y="123" width="185" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jmB-5R-zJ2" secondAttribute="height" multiplier="173:30" id="ykd-Nj-8cu"/>
@@ -289,7 +289,7 @@
                                     <action selector="adjustVolume:" destination="2yT-xO-sfe" eventType="valueChanged" id="UpD-8K-wn5"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-JF-oHI">
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-JF-oHI">
                                 <rect key="frame" x="91" y="543" width="193" height="31"/>
                                 <connections>
                                     <action selector="searchInAudioNote:" destination="2yT-xO-sfe" eventType="valueChanged" id="HTZ-kr-8Vn"/>

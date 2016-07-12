@@ -31,6 +31,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        authorizationStatus = CLLocationManager.authorizationStatus()
+        
+        if authorizationStatus == CLAuthorizationStatus.NotDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setUI()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let latitude = userLocation.coordinate.latitude
@@ -62,56 +83,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         // error handle
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        authorizationStatus = CLLocationManager.authorizationStatus()
-        if authorizationStatus == CLAuthorizationStatus.NotDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        setUI()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func setUI() {
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .Bottom
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
-        
-        // center and scale background image
-        
-        
-        // Set the background color to match better
-        //I'm not using png file right now so it won't make any change
         self.view.backgroundColor = .lightGrayColor()
-        
-        // making anvigation bar transparent
-        // we don't set any image - we leave it blank
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

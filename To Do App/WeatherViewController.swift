@@ -116,7 +116,6 @@ class WeatherViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -128,17 +127,22 @@ class WeatherViewController: UIViewController {
     }
     
     func setUI() {
+        
+        setView()
+        setNavigationBar()
+    }
+    
+    func setView() {
+        
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
-        view.addSubview(imageView)
-        self.view.sendSubviewToBack(imageView)
-
-        // center and scale background image
         imageView.contentMode = .ScaleAspectFit
-        
-        // Set the background color to match better
-        //I'm not using png file right now so it won't make any change
-        self.view.backgroundColor = .lightGrayColor()
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+        view.backgroundColor = .lightGrayColor()
+    }
+    
+    func setNavigationBar() {
         
         let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -146,22 +150,10 @@ class WeatherViewController: UIViewController {
         navigationbar.translucent = true
         navigationbar.backgroundColor = UIColor.clearColor()
         let navigationItem = UINavigationItem()
-        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
         navigationItem.leftBarButtonItem = leftItem
         navigationbar.items = [navigationItem]
         
         view.addSubview(navigationbar)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
