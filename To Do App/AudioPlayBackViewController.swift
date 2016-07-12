@@ -93,8 +93,11 @@ class AudioPlayBackViewController: UIViewController {
         navigationbar.shadowImage = UIImage()
         navigationbar.translucent = true
         navigationbar.backgroundColor = UIColor.clearColor()
+        
         let navigationItem = UINavigationItem()
         let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToAudioNotes))
+        leftItem.tintColor = UIColor.whiteColor()
+        
         navigationItem.leftBarButtonItem = leftItem
         navigationbar.items = [navigationItem]
         

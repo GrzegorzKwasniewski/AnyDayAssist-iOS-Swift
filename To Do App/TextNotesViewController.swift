@@ -44,10 +44,10 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         let note = toDoNotes[indexPath.row]
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
         cell.textLabel?.text = note.valueForKey("note") as! String
         cell.separatorInset = UIEdgeInsetsZero
-        cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //let image: UIImage = UIImage(named: "AppIcon")!
         //cell.imageView?.image = image
         return cell
@@ -100,6 +100,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     }
     
     func setTableView() {
+        
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .ScaleAspectFill
@@ -108,9 +109,11 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         tableView.backgroundView = imageView
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .lightGrayColor()
+        
     }
     
     func setNavigationBar() {
+        
         let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationbar.shadowImage = UIImage()
@@ -118,8 +121,10 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         navigationbar.backgroundColor = UIColor.clearColor()
         
         let navigationItem = UINavigationItem()
-        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToMainScreen))
-        let rightItem = UIBarButtonItem(title: "Add Note", style: .Plain, target: nil, action: #selector(promptForNote))
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        let rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(promptForNote))
+        leftItem.tintColor = UIColor.whiteColor()
+        rightItem.tintColor = UIColor.whiteColor()
         
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem

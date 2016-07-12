@@ -149,8 +149,10 @@ class WeatherViewController: UIViewController {
         navigationbar.shadowImage = UIImage()
         navigationbar.translucent = true
         navigationbar.backgroundColor = UIColor.clearColor()
+        
         let navigationItem = UINavigationItem()
         let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        leftItem.tintColor = UIColor.whiteColor()
         navigationItem.leftBarButtonItem = leftItem
         navigationbar.items = [navigationItem]
         

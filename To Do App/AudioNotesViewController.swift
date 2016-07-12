@@ -51,6 +51,8 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let audioTitle = audioURL[indexPath.row]
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
         cell.textLabel?.text = (audioTitle.valueForKey("audiotitle") as! String)
         return cell
         
@@ -187,7 +189,9 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
         let navigationItem = UINavigationItem()
         let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
-        let rightItem = UIBarButtonItem(title: "Add >", style: .Plain, target: nil, action: #selector(goToMapView))
+        let rightItem = UIBarButtonItem(title: "Add Record >", style: .Plain, target: nil, action: #selector(goToMapView))
+        leftItem.tintColor = UIColor.whiteColor()
+        rightItem.tintColor = UIColor.whiteColor()
         
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem

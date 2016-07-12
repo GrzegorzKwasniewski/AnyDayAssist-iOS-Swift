@@ -50,6 +50,8 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let placeMarked = placesToVisit[indexPath.row]
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
         cell.textLabel?.text = placeMarked.valueForKey("title") as! String
         return cell
     }
@@ -146,8 +148,10 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         navigationbar.translucent = true
         navigationbar.backgroundColor = UIColor.clearColor()
         let navigationItem = UINavigationItem()
-        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToMainScreen))
-        let rightItem = UIBarButtonItem(title: "Add Place", style: .Plain, target: nil, action: #selector(addNewPlaceToSee))
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        let rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(addNewPlaceToSee))
+        leftItem.tintColor = UIColor.whiteColor()
+        rightItem.tintColor = UIColor.whiteColor()
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationbar.items = [navigationItem]
