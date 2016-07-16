@@ -45,12 +45,14 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let placeMarked = placesToVisit[indexPath.row]
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
-        cell.textLabel?.text = placeMarked.valueForKey("title") as! String
-        return cell
+        
+        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
+        let note = placesToVisit[indexPath.row]
+        myCell.noteTitle.textColor = UIColor.whiteColor()
+        myCell.noteTitle.font = UIFont(name: "Helvetica Neue", size: 17)
+        myCell.noteTitle.text = note.valueForKey("title") as! String
+        myCell.cellImage.image = UIImage(named: "place")
+        return myCell
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

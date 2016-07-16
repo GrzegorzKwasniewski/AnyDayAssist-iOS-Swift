@@ -46,13 +46,11 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell") as! Cell
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
         let note = toDoNotes[indexPath.row]
         myCell.noteTitle.textColor = UIColor.whiteColor()
         myCell.noteTitle.font = UIFont(name: "Helvetica Neue", size: 17)
         myCell.noteTitle.text = note.valueForKey("note") as! String
-        //myCell.separatorInset = UIEdgeInsetsZero
         myCell.cellImage.image = UIImage(named: "notes")
         return myCell
         
