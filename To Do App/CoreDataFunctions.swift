@@ -53,13 +53,13 @@ final class CoreDataFunctions {
         }
     }
     
-    func getDataFromEntity(entity: String) {
+    func getDataFromEntity(entity: String, inout managedObjects: [NSManagedObject]) {
         let request = NSFetchRequest(entityName: entity)
         
         do {
             let results = try contextOfOurApp.executeFetchRequest(request)
             if results.count > 0 {
-                toDoNotes = results as! [NSManagedObject]
+                managedObjects = results as! [NSManagedObject]
             }
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")

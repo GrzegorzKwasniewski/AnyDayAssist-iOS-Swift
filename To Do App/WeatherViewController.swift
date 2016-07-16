@@ -43,7 +43,7 @@ class WeatherViewController: UIViewController {
                 if let urlContent = data {
                     do {
                         self.jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                        print(self.jsonResults)
+
                         if let getCityName = self.jsonResults["name"] as? String {
                             self.city = getCityName
                         }
@@ -65,27 +65,27 @@ class WeatherViewController: UIViewController {
                         if let getMainInfo = self.jsonResults["main"] as? [String: AnyObject]{
                             
                             if let getTemperatureAverage = getMainInfo["temp"] as? Double {
-                                print(getTemperatureAverage)
+
                                 self.setTemperatureAverage = String(getTemperatureAverage)
                             }
                             
                             if let getTemperatureMin = getMainInfo["temp_min"] as? Double {
-                                print(getTemperatureMin)
+                                
                                 self.setTemperatureMin = String(getTemperatureMin)
                             }
                             
                             if let getTemperatureMin = getMainInfo["temp_max"] as? Double {
-                                print(getTemperatureMin)
+                                
                                 self.setTemperatureMax = String(getTemperatureMin)
                             }
                             
                             if let getPressure = getMainInfo["pressure"] as? Int {
-                                print(getPressure)
+                                
                                 self.setPressure = String(getPressure)
                             }
                             
                             if let getHumidity = getMainInfo["humidity"] as? Int {
-                                print(getHumidity)
+                                
                                 self.setHumidity = String(getHumidity)
                             }
                         }
@@ -93,8 +93,9 @@ class WeatherViewController: UIViewController {
                         print(error)
                     }
                 }
+                
                 dispatch_async(dispatch_get_main_queue()) {
-                    print(self.jsonResults)
+                    
                     self.cityName.text = self.city
                     self.descriptionOfWeather.text = self.setWeatherDescription
                     self.temperatureAverage.text = "\(self.setTemperatureAverage)°C"
@@ -103,6 +104,7 @@ class WeatherViewController: UIViewController {
                     self.pressure.text = "\(self.setPressure) mb"
                     self.windSpeed.text = "\(self.setWindSpeed) km h"
                     self.humidity.text = "\(self.setHumidity) %"
+                    
                 }
                 
             }

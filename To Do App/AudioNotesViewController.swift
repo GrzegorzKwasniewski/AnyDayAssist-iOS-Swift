@@ -18,20 +18,14 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        tableView.reloadData()
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(animated: Bool) {
         
-        getDataFromEntity("AudioNotes")
         setUI()
+        globalCoreDataFunctions.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
+        tableView.reloadData()
         
     }
 

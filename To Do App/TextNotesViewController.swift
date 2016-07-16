@@ -22,19 +22,22 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         super.viewWillAppear(true)
         
         setUI()
-        globalCoreDataFunctions.getDataFromEntity("Notes")
+        globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
+        tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(TextNotesViewController.dismissPopoverView(_:)),
+            name: "DismissPopoverView",
+            object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -42,15 +45,17 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        
+        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell") as! Cell
+        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
         let note = toDoNotes[indexPath.row]
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
-        cell.textLabel?.text = note.valueForKey("note") as! String
-        cell.separatorInset = UIEdgeInsetsZero
-        //let image: UIImage = UIImage(named: "AppIcon")!
-        //cell.imageView?.image = image
-        return cell
+        myCell.noteTitle.textColor = UIColor.whiteColor()
+        myCell.noteTitle.font = UIFont(name: "Helvetica Neue", size: 17)
+        myCell.noteTitle.text = note.valueForKey("note") as! String
+        //myCell.separatorInset = UIEdgeInsetsZero
+        myCell.cellImage.image = UIImage(named: "notes")
+        return myCell
+        
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -58,39 +63,50 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
             let singleNote = toDoNotes[indexPath.row]
             let noteText = singleNote.valueForKey("note") as! String
             toDoNotes.removeAtIndex(indexPath.row)
             tableView.reloadData()
             globalCoreDataFunctions.removeFromTextNotes(noteText)
+            
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.clearColor()
+        
     }
     
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        
         var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.3)
+        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
     }
-    
+        
     func promptForNote() {
+        
         let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
         self.addChildViewController(popUpView)
         popUpView.view.frame = self.view.frame
         self.view.addSubview(popUpView.view)
         popUpView.didMoveToParentViewController(self)
+        
     }
     
     func returnToMainScreen() {
+        
         self.performSegueWithIdentifier("showMainScreen", sender: self)
+        
     }
     
     func setUI() {
@@ -131,5 +147,11 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         navigationbar.items = [navigationItem]
         
         view.addSubview(navigationbar)
+    }
+    
+    func dismissPopoverView(notification: NSNotification) {
+        print("Halloo")
+        tableView.reloadData()
+        view.setNeedsDisplay()
     }
 }

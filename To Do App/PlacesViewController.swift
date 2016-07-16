@@ -27,14 +27,11 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         
-        removeEmptyValueAtStart()
         setUI()
-        getDataFromEntity("Places")
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        removeEmptyValueAtStart()
+        globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
         tableView.reloadData()
+        
     }
 
     // MARK: - Table view data source
@@ -78,21 +75,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-    }
-    
-    func getDataFromEntity(entity: String) {
-        
-        let request = NSFetchRequest(entityName: entity)
-        
-        do {
-            let results = try contextOfOurApp.executeFetchRequest(request)
-            
-            if results.count > 0 {
-                placesToVisit = results as! [NSManagedObject]
-            }
-        } catch let error as NSError{
-            print ("There was an error \(error), \(error.userInfo)")
-        }
     }
     
     func removeFromPlaces(noteText: String) {
