@@ -43,12 +43,13 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let audioTitle = audioURL[indexPath.row]
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
-        cell.textLabel?.text = (audioTitle.valueForKey("audiotitle") as! String)
-        return cell
+        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
+        let note = audioURL[indexPath.row]
+        myCell.noteTitle.textColor = UIColor.whiteColor()
+        myCell.noteTitle.font = UIFont(name: "Helvetica Neue", size: 17)
+        myCell.noteTitle.text = note.valueForKey("audiotitle") as! String
+        myCell.cellImage.image = UIImage(named: "microphone")
+        return myCell
         
     }
     
