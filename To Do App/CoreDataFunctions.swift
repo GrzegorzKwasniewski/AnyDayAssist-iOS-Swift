@@ -26,6 +26,7 @@ final class CoreDataFunctions {
             try contextOfOurApp.save()
             
         } catch let error as NSError{
+            
             print ("There was an error \(error), \(error.userInfo)")
         }
     }

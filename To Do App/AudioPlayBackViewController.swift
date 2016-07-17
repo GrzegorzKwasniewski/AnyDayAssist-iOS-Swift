@@ -82,11 +82,22 @@ class AudioPlayBackViewController: UIViewController {
 
     func setUI() {
         
+        setView()
+        setNavigationBar()
+        
+    }
+    
+    func setView() {
+        
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .ScaleAspectFill
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
+        
+    }
+    
+    func setNavigationBar() {
         
         let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)

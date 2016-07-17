@@ -86,27 +86,6 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
     }
     
-    func getDataFromEntity(entity: String) {
-        
-        let request = NSFetchRequest(entityName: entity)
-    
-        do {
-            
-            let results = try contextOfOurApp.executeFetchRequest(request)
-            
-            if results.count > 0 {
-                
-                audioURL = results as! [NSManagedObject]
-                
-            }
-            
-        } catch let error as NSError{
-            
-            print ("There was an error \(error), \(error.userInfo)")
-            
-        }
-    }
-    
     func returnToMainScreen() {
         
         self.performSegueWithIdentifier("returnToMainScreen", sender: self)

@@ -90,7 +90,7 @@ class WeatherViewController: UIViewController {
                             }
                         }
                     } catch {
-                        print(error)
+                        self.showAlert("Something went wrong", message: "No data found")
                     }
                 }
                 
@@ -159,5 +159,13 @@ class WeatherViewController: UIViewController {
         navigationbar.items = [navigationItem]
         
         view.addSubview(navigationbar)
+    }
+    
+    func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
 }

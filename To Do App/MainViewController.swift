@@ -61,7 +61,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
             if error != nil {
-                print ("Error: \(error?.localizedDescription)")
+                self.showAlert("Something went wrong", message: "\(error?.localizedDescription)")
                 return
             }
             
@@ -90,5 +90,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
         self.view.backgroundColor = .lightGrayColor()
+    }
+    
+    func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
 }
