@@ -90,12 +90,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             
-            // convert touch on the screen to new coordinate on map
             let touchPoint = gestureRecognizer.locationInView(self.mapView)
             let newCoordinate = self.mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView)
             let location = CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
-            
-            // get address from geo point location
+
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 
                 var title:String = ""
@@ -112,8 +110,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let touchLocation = placemarks![0] as CLPlacemark
                     var subThoroughfare:String = ""
                     var thoroughFare:String = ""
-                    
-                    //touchLocation.addressDictionary
                     
                     if touchLocation.subThoroughfare != nil {
                         
@@ -137,35 +133,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     
                 }
                 
-                    self.saveMarkedPlace(title, latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
+                    globalCoreDataFunctions.saveMarkedPlace(title, latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
+                
+                    self.addAnnotation(newCoordinate, title: title, subtitle: "New location added")
 
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = newCoordinate
-                    annotation.title = title
-                    annotation.subtitle = "New location added"
-                    self.mapView.addAnnotation(annotation)
                 })
             }
         }
     
-    func saveMarkedPlace(title: String, latitude: Double, longitude: Double) {
-
-        let entityDescription = NSEntityDescription.entityForName("Places", inManagedObjectContext: contextOfOurApp)
-        let newPlace = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: contextOfOurApp)
+    func addAnnotation(newCoordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         
-        newPlace.setValue(title, forKey: "title")
-        newPlace.setValue(latitude, forKey: "latitude")
-        newPlace.setValue(longitude, forKey: "longitude")
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = newCoordinate
+        annotation.title = title
+        annotation.subtitle = subtitle
+        self.mapView.addAnnotation(annotation)
         
-        do {
-            
-            try contextOfOurApp.save()
-            
-        } catch let error as NSError{
-            
-            print ("There was an error \(error), \(error.userInfo)")
-            
-        }
     }
     
     func returnToPlaces() {

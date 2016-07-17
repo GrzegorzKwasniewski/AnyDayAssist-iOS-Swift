@@ -68,7 +68,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
             let noteText = singleNote.valueForKey("note") as! String
             toDoNotes.removeAtIndex(indexPath.row)
             tableView.reloadData()
-            globalCoreDataFunctions.removeFromTextNotes(noteText)
+            globalCoreDataFunctions.removeFromEntity("Notes", title: noteText, predicateFormat: "note == %@")
             
         }
     }

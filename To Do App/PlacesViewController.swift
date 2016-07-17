@@ -34,8 +34,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         
     }
 
-    // MARK: - Table view data source
-
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -68,7 +66,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
-            removeFromPlaces(placeTitle)
+            globalCoreDataFunctions.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
             placesToVisit.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
@@ -77,28 +75,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-    }
-    
-    func removeFromPlaces(noteText: String) {
-        let request = NSFetchRequest(entityName: "Places")
-        request.predicate = NSPredicate(format: "title == %@", noteText)
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try contextOfOurApp.executeFetchRequest(request)
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    contextOfOurApp.deleteObject(result)
-                    do {
-                        try contextOfOurApp.save()
-                    } catch let error as NSError{
-                        print ("There was an error \(error), \(error.userInfo)")
-                    }
-                }
-            }
-        } catch let error as NSError {
-            print ("There was an error \(error), \(error.userInfo)")
-        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -117,6 +93,13 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
     func setUI() {
         
+        setTableView()
+        setNavigationBar()
+
+    }
+    
+    func setTableView() {
+        
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .ScaleAspectFill
@@ -125,6 +108,10 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         tableView.backgroundView = imageView
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .lightGrayColor()
+
+    }
+    
+    func setNavigationBar() {
         
         let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -141,6 +128,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         navigationbar.items = [navigationItem]
         
         view.addSubview(navigationbar)
+        
     }
     
     func removeEmptyValueAtStart() {

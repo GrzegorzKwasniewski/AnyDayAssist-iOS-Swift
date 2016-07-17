@@ -59,7 +59,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
             
             let singleAudio = audioURL[indexPath.row]
             let audioTitle = singleAudio.valueForKey("audiourl") as! String
-            removeFromAudioNotes(audioTitle)
+            globalCoreDataFunctions.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
             audioURL.removeAtIndex(indexPath.row)
             tableView.reloadData()
             
@@ -101,41 +101,6 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
             }
             
         } catch let error as NSError{
-            
-            print ("There was an error \(error), \(error.userInfo)")
-            
-        }
-    }
-    
-    func removeFromAudioNotes(audioTitle: String) {
-        
-        let request = NSFetchRequest(entityName: "AudioNotes")
-        request.predicate = NSPredicate(format: "audiourl == %@", audioTitle)
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            
-            let results = try contextOfOurApp.executeFetchRequest(request)
-            
-            if results.count > 0 {
-                
-                for result in results as! [NSManagedObject] {
-                    
-                    contextOfOurApp.deleteObject(result)
-                    
-                    do {
-                        
-                        try contextOfOurApp.save()
-                        
-                    } catch let error as NSError{
-                        
-                        print ("There was an error \(error), \(error.userInfo)")
-                        
-                    }
-                }
-            }
-            
-        } catch let error as NSError {
             
             print ("There was an error \(error), \(error.userInfo)")
             

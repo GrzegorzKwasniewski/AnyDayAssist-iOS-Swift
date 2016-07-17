@@ -55,7 +55,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        saveAudioTitleAndURL(audioFielTitle, audioFileUrl: audioFileURL)
+        globalCoreDataFunctions.saveAudioTitleAndURL(audioFielTitle, audioFileUrl: audioFileURL)
         
     }
     
@@ -86,25 +86,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         return recordingTime
         
     }
-    
-    func saveAudioTitleAndURL(audioFileTitle: String , audioFileUrl: NSURL) {
         
-        let audioNoteURL: String = audioFileUrl.path!
-        let newAudioNote = NSEntityDescription.insertNewObjectForEntityForName("AudioNotes", inManagedObjectContext: contextOfOurApp)
-        newAudioNote.setValue(audioFileTitle, forKey: "audiotitle")
-        newAudioNote.setValue(audioNoteURL, forKey: "audiourl")
-        
-        do {
-            
-            try contextOfOurApp.save()
-            
-        } catch let error as NSError{
-            
-            print ("There was an error \(error), \(error.userInfo)")
-            
-        }
-    }
-    
     func returnToAudioNotes() {
         
         self.performSegueWithIdentifier("returnToAudioNotes", sender: self)

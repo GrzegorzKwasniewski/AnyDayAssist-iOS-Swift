@@ -61,15 +61,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
             if error != nil {
-                print ("Error: \(error?.localizedDescription)") //TODO: check for more info
+                print ("Error: \(error?.localizedDescription)")
                 return
             }
             
             if placemark?.count > 0 {
                 let user = placemark![0]
-                let data = user.addressDictionary as! NSDictionary
+                let data = user.addressDictionary
                 
-                guard let city = data["City"] as? String, let zipCode = data["ZIP"] as? String
+                guard let city = data!["City"] as? String, let zipCode = data!["ZIP"] as? String
                 else { return }
                 userCityName = city
                 userCityZipCode = zipCode
