@@ -22,12 +22,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func checkWeather(sender: AnyObject) {
         
            locationManager.startUpdatingLocation()
-//        } else if authorizationStatus == CLAuthorizationStatus.Denied {
-//            // Inform user that he can change setting in setting menu
-//            print("no no")
-//            // User can change his mind usig this
-//            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-//        }
         
     }
     
@@ -84,9 +78,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func setUI() {
-        let backgroundImage = UIImage(named: "bg.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        imageView.contentMode = .Bottom
+
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        imageView.image = UIImage(named: "bg.jpg")
+        
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
         self.view.backgroundColor = .lightGrayColor()

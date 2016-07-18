@@ -62,9 +62,12 @@ class AudioPlayBackViewController: UIViewController {
         configureUI(PlayingState.Playing)
         prepareAudioURL()
         setupAudio()
-        playSound()
         updateTimeSlider()
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        playSound()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,9 +92,9 @@ class AudioPlayBackViewController: UIViewController {
     
     func setView() {
         
-        let backgroundImage = UIImage(named: "bg.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        imageView.contentMode = .ScaleAspectFill
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        imageView.image = UIImage(named: "bg.jpg")
+        
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
         
