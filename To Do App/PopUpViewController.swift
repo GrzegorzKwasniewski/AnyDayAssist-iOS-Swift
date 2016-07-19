@@ -51,7 +51,7 @@ class PopUpViewController: UIViewController {
             }, completion:{(finished : Bool)  in
                 if (finished)
                 {
-                    NSNotificationCenter.defaultCenter().postNotificationName("DismissPopoverView", object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName("popoverViewWasDismissed", object: nil)
                     self.view.removeFromSuperview()
                 }
         });

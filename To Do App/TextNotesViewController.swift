@@ -15,8 +15,18 @@ let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
 class TextNotesViewController: UIViewController, UITableViewDelegate {
     
+    var messageLabel: UILabel = UILabel()
+    
     @IBOutlet var tableView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
+            name: "popoverViewWasDismissed",
+            object: nil)
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -26,15 +36,6 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         tableView.reloadData()
         setMessageLabel()
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(TextNotesViewController.dismissPopoverView(_:)),
-            name: "DismissPopoverView",
-            object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -158,7 +159,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         
         if toDoNotes.count == 0 {
             
-            let messageLabel: UILabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
             messageLabel.font = UIFont(name: "Helvetica Neue", size: 17)
             messageLabel.textColor = UIColor.whiteColor()
             messageLabel.text = "There's nothing here..."
@@ -168,10 +169,14 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func dismissPopoverView(notification: NSNotification) {
+    func popoverViewWasDismissed(notification: NSNotification) {
 
         globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
+        
+        if toDoNotes.count > 0 {
+            messageLabel.text = ""
+        }
         
     }
 }

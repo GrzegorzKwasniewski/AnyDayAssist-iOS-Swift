@@ -55,7 +55,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
             if error != nil {
-                self.showAlert("Something went wrong", message: "\(error?.localizedDescription)")
+                self.showAlert("Something went wrong", message: "Can't get weather data")
                 return
             }
             
