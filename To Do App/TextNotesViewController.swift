@@ -24,6 +24,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         setUI()
         globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
+        setMessageLabel()
         
     }
     
@@ -38,6 +39,11 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -108,9 +114,10 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     }
     
     func setUI() {
-
+        
         setTableView()
         setNavigationBar()
+        
     }
     
     func setTableView() {
@@ -147,9 +154,24 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         view.addSubview(navigationbar)
     }
     
+    func setMessageLabel() {
+        
+        if toDoNotes.count == 0 {
+            
+            let messageLabel: UILabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            messageLabel.font = UIFont(name: "Helvetica Neue", size: 17)
+            messageLabel.textColor = UIColor.whiteColor()
+            messageLabel.text = "There's nothing here..."
+            messageLabel.textAlignment = .Center
+            
+            view.addSubview(messageLabel)
+        }
+    }
+    
     func dismissPopoverView(notification: NSNotification) {
-        print("Halloo")
+
+        globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
-        view.setNeedsDisplay()
+        
     }
 }
