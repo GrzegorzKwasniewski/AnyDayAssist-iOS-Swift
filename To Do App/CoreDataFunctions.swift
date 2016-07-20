@@ -26,40 +26,91 @@ final class CoreDataFunctions {
             try contextOfOurApp.save()
             
         } catch let error as NSError{
+            
             print ("There was an error \(error), \(error.userInfo)")
         }
     }
+        
+    func saveMarkedPlace(title: String, latitude: Double, longitude: Double) {
+        
+        let entityDescription = NSEntityDescription.entityForName("Places", inManagedObjectContext: contextOfOurApp)
+        let newPlace = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: contextOfOurApp)
+        
+        newPlace.setValue(title, forKey: "title")
+        newPlace.setValue(latitude, forKey: "latitude")
+        newPlace.setValue(longitude, forKey: "longitude")
+        
+        do {
+            
+            try contextOfOurApp.save()
+            
+        } catch let error as NSError{
+            
+            print ("There was an error \(error), \(error.userInfo)")
+            
+        }
+    }
     
-    func removeFromTextNotes(noteText: String) {
-        let request = NSFetchRequest(entityName: "Notes")
-        request.predicate = NSPredicate(format: "note == %@", noteText)
+    func saveAudioTitleAndURL(audioFileTitle: String , audioFileUrl: NSURL) {
+        
+        let audioNoteURL: String = audioFileUrl.path!
+        let newAudioNote = NSEntityDescription.insertNewObjectForEntityForName("AudioNotes", inManagedObjectContext: contextOfOurApp)
+        newAudioNote.setValue(audioFileTitle, forKey: "audiotitle")
+        newAudioNote.setValue(audioNoteURL, forKey: "audiourl")
+        
+        do {
+            
+            try contextOfOurApp.save()
+            
+        } catch let error as NSError{
+            
+            print ("There was an error \(error), \(error.userInfo)")
+            
+        }
+    }
+    
+    func removeFromEntity(entity: String, title: String, predicateFormat: String) {
+        
+        let request = NSFetchRequest(entityName: entity)
+        request.predicate = NSPredicate(format: predicateFormat, title)
         request.returnsObjectsAsFaults = false
         
         do {
+            
             let results = try contextOfOurApp.executeFetchRequest(request)
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    contextOfOurApp.deleteObject(result)
+            
+                if results.count > 0 {
+                
+                    for result in results as! [NSManagedObject] {
                     
-                    do {
-                        try contextOfOurApp.save()
-                    } catch let error as NSError{
-                        print ("There was an error \(error), \(error.userInfo)")
+                        contextOfOurApp.deleteObject(result)
+                    
+                        do {
+                        
+                            try contextOfOurApp.save()
+                        
+                        } catch let error as NSError{
+                        
+                            print ("There was an error \(error), \(error.userInfo)")
+                            
+                        }
                     }
                 }
-            }
-        } catch let error as NSError {
-            print ("There was an error \(error), \(error.userInfo)")
+            
+            } catch let error as NSError {
+            
+                print ("There was an error \(error), \(error.userInfo)")
+            
         }
     }
     
-    func getDataFromEntity(entity: String) {
+    func getDataFromEntity(entity: String, inout managedObjects: [NSManagedObject]) {
         let request = NSFetchRequest(entityName: entity)
         
         do {
             let results = try contextOfOurApp.executeFetchRequest(request)
             if results.count > 0 {
-                toDoNotes = results as! [NSManagedObject]
+                managedObjects = results as! [NSManagedObject]
             }
         } catch let error as NSError{
             print ("There was an error \(error), \(error.userInfo)")

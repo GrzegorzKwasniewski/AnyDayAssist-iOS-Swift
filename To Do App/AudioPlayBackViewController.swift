@@ -18,22 +18,29 @@ class AudioPlayBackViewController: UIViewController {
     
     @IBOutlet var volumeSlider: UISlider!
     @IBAction func adjustVolume(sender: AnyObject) {
+        
         player?.volume = volumeSlider.value
+        
     }
     
     @IBOutlet var timeSlider: UISlider!
     @IBAction func searchInAudioNote(sender: AnyObject) {
+        
          player?.currentTime = NSTimeInterval(timeSlider.value)
+        
     }
     
     @IBOutlet var playButton: UIButton!
     @IBAction func playAudioNote(sender: AnyObject) {
+        
         player?.play()
         configureUI(PlayingState.Playing)
+        
     }
     
     @IBOutlet var stopButton: UIButton!
     @IBAction func stopAudioNote(sender: AnyObject) {
+        
         player?.stop()
         setupAudio()
         timeSlider.value = Float(player!.currentTime)
@@ -43,36 +50,72 @@ class AudioPlayBackViewController: UIViewController {
     
     @IBOutlet var pauseButton: UIButton!
     @IBAction func pauseAudio(sender: AnyObject) {
+        
         player?.pause()
         configureUI(PlayingState.NotPlaying)
+        
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         configureUI(PlayingState.Playing)
         prepareAudioURL()
         setupAudio()
-        playSound()
         updateTimeSlider()
-        }
+        
+    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        playSound()
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        setUI()
         timeSlider.maximumValue = Float((player?.duration)!)
+        
+    }
+    
+    func returnToAudioNotes() {
+        
+        self.performSegueWithIdentifier("returnToAudioNotes", sender: self)
+        
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setUI() {
+        
+        setView()
+        setNavigationBar()
+        
     }
-    */
+    
+    func setView() {
+        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        imageView.image = UIImage(named: "bg.jpg")
+        
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
+        
+    }
+    
+    func setNavigationBar() {
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToAudioNotes))
+        leftItem.tintColor = UIColor.whiteColor()
+        
+        navigationItem.leftBarButtonItem = leftItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
+    }
 }

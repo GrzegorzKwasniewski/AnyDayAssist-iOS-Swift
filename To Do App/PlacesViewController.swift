@@ -12,7 +12,10 @@ import CoreData
 var placesToVisit = [NSManagedObject]()
 var activPlace = -1
 
-class PlacesViewController: UITableViewController {
+class PlacesViewController: UIViewController, UITableViewDelegate {
+    
+    
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,160 +26,114 @@ class PlacesViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        // on first start of the app remove empty value form placesToVisit
-        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
-            placesToVisit.removeAtIndex(0)
-        }
         
         setUI()
-        getDataFromEntity("Places")
+        removeEmptyValueAtStart()
+        globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
+        tableView.reloadData()
         
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
-    }
 
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return placesToVisit.count
     }
 
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let placeMarked = placesToVisit[indexPath.row]
-        cell.textLabel?.text = placeMarked.valueForKey("title") as! String
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = .clearColor()
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        // if You want cells to be little transparent
-        //cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
+        let note = placesToVisit[indexPath.row]
+        myCell.noteTitle.textColor = UIColor.whiteColor()
+        myCell.noteTitle.font = UIFont(name: "Helvetica Neue", size: 17)
+        myCell.noteTitle.text = note.valueForKey("title") as! String
+        myCell.cellImage.image = UIImage(named: "place")
+        return myCell
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = .clearColor()
+    }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         activPlace = indexPath.row
         return indexPath
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addNewPlace" {
-            activPlace = -1
-        }
-    }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
-            removeFromPlaces(placeTitle)
+            globalCoreDataFunctions.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
             placesToVisit.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
     }
     
-    func getDataFromEntity(entity: String) {
-        
-        let request = NSFetchRequest(entityName: entity)
-        
-        do {
-            // try to get data from Corde Data entity
-            let results = try contextOfOurApp.executeFetchRequest(request)
-            
-            // check if there is any data
-            if results.count > 0 {
-                placesToVisit = results as! [NSManagedObject]
-            }
-        } catch let error as NSError{
-            print ("There was an error \(error), \(error.userInfo)")
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addNewPlaceToSee" {
+            activPlace = -1
         }
     }
     
-    func removeFromPlaces(noteText: String) {
-        let request = NSFetchRequest(entityName: "Places")
-        request.predicate = NSPredicate(format: "title == %@", noteText)
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            let results = try contextOfOurApp.executeFetchRequest(request)
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    contextOfOurApp.deleteObject(result)
-                    do {
-                        try contextOfOurApp.save()
-                    } catch let error as NSError{
-                        print ("There was an error \(error), \(error.userInfo)")
-                    }
-                }
-            }
-        } catch let error as NSError {
-            print ("There was an error \(error), \(error.userInfo)")
-        }
+    func returnToMainScreen() {
+        self.performSegueWithIdentifier("returnToMainScreen", sender: self)
+    }
+    
+    func addNewPlaceToSee() {
+        self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
     }
     
     func setUI() {
-        let backgroundImage = UIImage(named: "bg.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        tableView.backgroundView = imageView
         
-        // no lines where there aren't cells
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        // center and scale background image
-        imageView.contentMode = .ScaleAspectFit
-        
-        // Set the background color to match better
-        //I'm not using png file right now so it won't make any change
-        tableView.backgroundColor = .lightGrayColor()
-        
-        // making anvigation bar transparent
-        // we don't set any image - we leave it blank
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
+        setTableView()
+        setNavigationBar()
+
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    func setTableView() {
+        
+        let backgroundImage = UIImage(named: "bg.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .ScaleAspectFill
+        
+        tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        tableView.backgroundView = imageView
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.backgroundColor = .lightGrayColor()
 
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func setNavigationBar() {
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        let rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(addNewPlaceToSee))
+        leftItem.tintColor = UIColor.whiteColor()
+        rightItem.tintColor = UIColor.whiteColor()
+        navigationItem.leftBarButtonItem = leftItem
+        navigationItem.rightBarButtonItem = rightItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func removeEmptyValueAtStart() {
+        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
+            placesToVisit.removeAtIndex(0)
+        }
     }
-    */
-
 }

@@ -18,33 +18,34 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet var stopRecordingButton: UIButton!
     
     @IBAction func recordAudio(sender: AnyObject) {
+        
         recordButton.enabled = false
         stopRecordingButton.enabled = true
         createRecordingSession()
         getRecordingTime()
+        
     }
     
     @IBAction func stopRecordingAudio(sender: AnyObject) {
+        
         recordButton.enabled = true
         stopRecordingButton.enabled = false
         stopRecordnigSession()
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
-        stopRecordingButton.enabled = false
+        
+        setUI()
+        
     }
     
     func createRecordingSession() {
+        
         let audioFielTitle = "AudioNote_nr_\(audioURL.count + 1)"
         let audioFileURL = createRecordFileURL(audioFielTitle)
         let session = AVAudioSession.sharedInstance()
@@ -54,52 +55,79 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        saveAudioTitleAndURL(audioFielTitle, audioFileUrl: audioFileURL)
+        globalCoreDataFunctions.saveAudioTitleAndURL(audioFielTitle, audioFileUrl: audioFileURL)
+        
     }
     
     func stopRecordnigSession() {
+        
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
+        
     }
     
     func createRecordFileURL(fileName: String) -> NSURL {
+        
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as String
         let pathArray = [dirPath, fileName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         return filePath!
+        
     }
     
     func getRecordingTime() -> String {
+        
         let currentDate = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = " MMM dd, yyyy, HH:mm:ss"
         let recordingTime = dateFormatter.stringFromDate(currentDate)
         return recordingTime
+        
+    }
+        
+    func returnToAudioNotes() {
+        
+        self.performSegueWithIdentifier("returnToAudioNotes", sender: self)
+        
     }
     
-    func saveAudioTitleAndURL(audioFileTitle: String , audioFileUrl: NSURL) {
-        let audioNoteURL: String = audioFileUrl.path!
-        let newAudioNote = NSEntityDescription.insertNewObjectForEntityForName("AudioNotes", inManagedObjectContext: contextOfOurApp)
-        newAudioNote.setValue(audioFileTitle, forKey: "audiotitle")
-        newAudioNote.setValue(audioNoteURL, forKey: "audiourl")
-        do {
-            try contextOfOurApp.save()
-        } catch let error as NSError{
-            print ("There was an error \(error), \(error.userInfo)")
-        }
+    func setUI() {
+        
+        stopRecordingButton.enabled = false
+        setView()
+        setNavigationBar()
+        
     }
     
+    func setView() {
+        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        imageView.image = UIImage(named: "bg.jpg")
+        
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    func setNavigationBar() {
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToAudioNotes))
+        leftItem.tintColor = UIColor.whiteColor()
+        
+        navigationItem.leftBarButtonItem = leftItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+        
 
+    }
 }
