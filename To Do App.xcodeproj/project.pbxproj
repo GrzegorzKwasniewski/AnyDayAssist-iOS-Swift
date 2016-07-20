@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		61AD2D66AE2F80EC4C337D4F /* Pods_To_Do_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */; };
-		711502BE1D341B5B0084165E /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 711502BD1D341B5B0084165E /* bg.jpg */; };
 		711843A11D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */; };
 		716B39051D3A6A12002D8ABE /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B39041D3A6A12002D8ABE /* Cell.swift */; };
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
@@ -16,7 +15,6 @@
 		718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 718D87211CEA50C4001E7F17 /* Assets.xcassets */; };
 		718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */; };
 		718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */; };
-		71944F201CEBC55200206B4F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71944F1F1CEBC55200206B4F /* AppIcon.png */; };
 		71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71944F251D08C1E500206B4F /* Database.xcdatamodeld */; };
 		71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F2A1D0DACE300206B4F /* PlacesViewController.swift */; };
 		71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F2C1D0DCC6600206B4F /* MapViewController.swift */; };
@@ -30,17 +28,10 @@
 		71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D781D2E77780057B22E /* TextNotesViewController.swift */; };
 		71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7A1D2EB4990057B22E /* MainViewController.swift */; };
 		71FF6D7D1D2EF6BA0057B22E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */; };
-		71FF6D861D31400D0057B22E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D801D31400D0057B22E /* camera.png */; };
-		71FF6D871D31400D0057B22E /* Logout Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D811D31400D0057B22E /* Logout Icon.png */; };
-		71FF6D881D31400D0057B22E /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D821D31400D0057B22E /* map.png */; };
-		71FF6D891D31400D0057B22E /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D831D31400D0057B22E /* microphone.png */; };
-		71FF6D8A1D31400D0057B22E /* settings Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D841D31400D0057B22E /* settings Icon.png */; };
-		71FF6D8B1D31400D0057B22E /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 71FF6D851D31400D0057B22E /* sun.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_Do_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		711502BD1D341B5B0084165E /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionAudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		716B39041D3A6A12002D8ABE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		718D87151CEA50C4001E7F17 /* To Do App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +41,6 @@
 		718D87241CEA50C4001E7F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		718D87261CEA50C4001E7F17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		718D872D1CEA5105001E7F17 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
-		71944F1F1CEBC55200206B4F /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		71944F261D08C1E600206B4F /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		71944F2A1D0DACE300206B4F /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		71944F2C1D0DCC6600206B4F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -64,12 +54,6 @@
 		71FF6D781D2E77780057B22E /* TextNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesViewController.swift; sourceTree = "<group>"; };
 		71FF6D7A1D2EB4990057B22E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		71FF6D801D31400D0057B22E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
-		71FF6D811D31400D0057B22E /* Logout Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout Icon.png"; sourceTree = "<group>"; };
-		71FF6D821D31400D0057B22E /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
-		71FF6D831D31400D0057B22E /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
-		71FF6D841D31400D0057B22E /* settings Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings Icon.png"; sourceTree = "<group>"; };
-		71FF6D851D31400D0057B22E /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
 		BEE2187FDEAD225C980D8CC5 /* Pods-To Do App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To Do App.release.xcconfig"; path = "Pods/Target Support Files/Pods-To Do App/Pods-To Do App.release.xcconfig"; sourceTree = "<group>"; };
 		CEF63106D563B8B9FFE600A2 /* Pods-To Do App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To Do App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-To Do App/Pods-To Do App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,14 +113,6 @@
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
-				71944F1F1CEBC55200206B4F /* AppIcon.png */,
-				71FF6D801D31400D0057B22E /* camera.png */,
-				71FF6D811D31400D0057B22E /* Logout Icon.png */,
-				71FF6D821D31400D0057B22E /* map.png */,
-				71FF6D831D31400D0057B22E /* microphone.png */,
-				71FF6D841D31400D0057B22E /* settings Icon.png */,
-				71FF6D851D31400D0057B22E /* sun.png */,
-				711502BD1D341B5B0084165E /* bg.jpg */,
 			);
 			path = "To Do App";
 			sourceTree = "<group>";
@@ -220,17 +196,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71944F201CEBC55200206B4F /* AppIcon.png in Resources */,
-				71FF6D871D31400D0057B22E /* Logout Icon.png in Resources */,
-				71FF6D8B1D31400D0057B22E /* sun.png in Resources */,
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
-				71FF6D8A1D31400D0057B22E /* settings Icon.png in Resources */,
-				71FF6D881D31400D0057B22E /* map.png in Resources */,
-				71FF6D891D31400D0057B22E /* microphone.png in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
-				711502BE1D341B5B0084165E /* bg.jpg in Resources */,
-				71FF6D861D31400D0057B22E /* camera.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

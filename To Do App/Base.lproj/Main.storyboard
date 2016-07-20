@@ -155,9 +155,8 @@
                                                 <exclude reference="hVl-zw-3kH"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <rect key="frame" x="180" y="412" width="95" height="58"/>
                                             <mask key="constraints">
                                                 <include reference="dJM-Cg-YSH"/>
                                                 <include reference="hVl-zw-3kH"/>
@@ -258,8 +257,6 @@
                                         <exclude reference="KyX-M0-y6R"/>
                                         <exclude reference="pqd-JB-UUu"/>
                                         <exclude reference="skv-XB-Gzz"/>
-                                        <exclude reference="Cec-mK-78v"/>
-                                        <exclude reference="inO-nQ-TVT"/>
                                         <exclude reference="DIG-8n-D2O"/>
                                         <exclude reference="F9o-fh-qqX"/>
                                         <exclude reference="Svi-7r-qeL"/>
@@ -274,6 +271,8 @@
                                         <exclude reference="N0a-YC-Ja2"/>
                                         <exclude reference="S53-YK-fe0"/>
                                         <exclude reference="ZfN-VG-Mvt"/>
+                                        <exclude reference="Cec-mK-78v"/>
+                                        <exclude reference="inO-nQ-TVT"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -296,14 +295,14 @@
                                     <mask key="constraints">
                                         <include reference="KyX-M0-y6R"/>
                                         <include reference="skv-XB-Gzz"/>
-                                        <include reference="Cec-mK-78v"/>
-                                        <include reference="inO-nQ-TVT"/>
                                         <include reference="Svi-7r-qeL"/>
                                         <include reference="wwu-ha-qvm"/>
                                         <include reference="VK8-c5-xS5"/>
                                         <include reference="b7F-6b-TaB"/>
                                         <include reference="KEu-Pd-znC"/>
                                         <include reference="ZfN-VG-Mvt"/>
+                                        <include reference="Cec-mK-78v"/>
+                                        <include reference="inO-nQ-TVT"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1305,33 +1304,241 @@
                         <viewControllerLayoutGuide type="bottom" id="qGn-7S-oDU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="L0o-TR-lpc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfv-Li-yFG">
-                                <rect key="frame" x="164" y="391" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="checkWeatherForUserLocation:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="YrC-4p-jze"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-yS-n8B">
-                                <rect key="frame" x="139" y="176" width="97" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Or get weather data from Your location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-U5-Kal">
+                                <rect key="frame" x="217" y="342" width="335" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="2YU-qG-FGf"/>
+                                    <constraint firstAttribute="height" constant="56" id="2kh-Is-aRH"/>
+                                    <constraint firstAttribute="width" constant="335" id="U1I-6T-ze6"/>
+                                    <constraint firstAttribute="width" constant="728" id="wml-9L-OCk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2YU-qG-FGf"/>
+                                        <exclude reference="wml-9L-OCk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <mask key="constraints">
+                                        <include reference="2kh-Is-aRH"/>
+                                        <include reference="U1I-6T-ze6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                    <mask key="constraints">
+                                        <include reference="2YU-qG-FGf"/>
+                                        <exclude reference="2kh-Is-aRH"/>
+                                        <exclude reference="U1I-6T-ze6"/>
+                                        <include reference="wml-9L-OCk"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-yS-n8B">
+                                <rect key="frame" x="68" y="185" width="239" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="JMJ-C6-fOc"/>
+                                    <constraint firstAttribute="height" constant="70" id="Mvd-wz-wPD"/>
+                                    <constraint firstAttribute="width" constant="439" id="T0p-G6-FY8"/>
+                                    <constraint firstAttribute="height" constant="45" id="icX-Qc-BKu"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Mvd-wz-wPD"/>
+                                        <exclude reference="T0p-G6-FY8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="JMJ-C6-fOc"/>
+                                        <include reference="icX-Qc-BKu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="JMJ-C6-fOc"/>
+                                        <include reference="Mvd-wz-wPD"/>
+                                        <include reference="T0p-G6-FY8"/>
+                                        <exclude reference="icX-Qc-BKu"/>
+                                    </mask>
+                                </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-ET-mHL">
-                                <rect key="frame" x="164" y="279" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-ET-mHL">
+                                <rect key="frame" x="331" y="264" width="106" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14929956896551724" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="9oA-4d-Vso"/>
+                                    <constraint firstAttribute="width" constant="210" id="PPp-US-5KV"/>
+                                    <constraint firstAttribute="width" constant="106" id="pCH-eu-RpY"/>
+                                    <constraint firstAttribute="height" constant="30" id="s4E-EV-g8v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Check">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9oA-4d-Vso"/>
+                                        <exclude reference="PPp-US-5KV"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                    <mask key="constraints">
+                                        <include reference="pCH-eu-RpY"/>
+                                        <include reference="s4E-EV-g8v"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <mask key="constraints">
+                                        <include reference="9oA-4d-Vso"/>
+                                        <include reference="PPp-US-5KV"/>
+                                        <exclude reference="pCH-eu-RpY"/>
+                                        <exclude reference="s4E-EV-g8v"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="checkWeatherForGivenCity:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="8eM-Gh-fSg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfv-Li-yFG">
+                                <rect key="frame" x="331" y="435" width="106" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="2RQ-Ls-ybE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="Vrh-25-FLR"/>
+                                    <constraint firstAttribute="height" constant="30" id="abR-Se-ZiD"/>
+                                    <constraint firstAttribute="width" constant="106" id="hxe-vD-itg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Get"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2RQ-Ls-ybE"/>
+                                        <exclude reference="Vrh-25-FLR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                    <mask key="constraints">
+                                        <include reference="abR-Se-ZiD"/>
+                                        <include reference="hxe-vD-itg"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <mask key="constraints">
+                                        <include reference="2RQ-Ls-ybE"/>
+                                        <include reference="Vrh-25-FLR"/>
+                                        <exclude reference="abR-Se-ZiD"/>
+                                        <exclude reference="hxe-vD-itg"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="checkWeatherForUserLocation:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="YrC-4p-jze"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Type name of the city You want" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-Sh-ejy">
+                                <rect key="frame" x="20" y="101" width="335" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="728" id="BXT-c9-uQw"/>
+                                    <constraint firstAttribute="height" constant="55" id="FUV-mv-dPZ"/>
+                                    <constraint firstAttribute="height" constant="65" id="UBB-0g-V78"/>
+                                    <constraint firstAttribute="width" constant="335" id="awL-7K-SLN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BXT-c9-uQw"/>
+                                        <exclude reference="UBB-0g-V78"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <mask key="constraints">
+                                        <include reference="FUV-mv-dPZ"/>
+                                        <include reference="awL-7K-SLN"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                    <mask key="constraints">
+                                        <include reference="BXT-c9-uQw"/>
+                                        <exclude reference="FUV-mv-dPZ"/>
+                                        <include reference="UBB-0g-V78"/>
+                                        <exclude reference="awL-7K-SLN"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WvQ-ET-mHL" firstAttribute="top" secondItem="zYr-yS-n8B" secondAttribute="bottom" constant="34" id="04c-cL-veF"/>
+                            <constraint firstItem="2Jk-Sh-ejy" firstAttribute="top" secondItem="YaM-x2-bcX" secondAttribute="bottom" constant="81" id="2X6-4a-IWI"/>
+                            <constraint firstItem="pY4-U5-Kal" firstAttribute="top" secondItem="WvQ-ET-mHL" secondAttribute="bottom" constant="71" id="3wh-7i-yMX"/>
+                            <constraint firstItem="nfv-Li-yFG" firstAttribute="top" secondItem="pY4-U5-Kal" secondAttribute="bottom" constant="52" id="6MW-7c-Vtd">
+                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                            </constraint>
+                            <constraint firstItem="2Jk-Sh-ejy" firstAttribute="centerX" secondItem="L0o-TR-lpc" secondAttribute="centerX" id="Aks-mN-GNl"/>
+                            <constraint firstItem="zYr-yS-n8B" firstAttribute="centerX" secondItem="L0o-TR-lpc" secondAttribute="centerX" id="C7c-hI-z5i"/>
+                            <constraint firstItem="zYr-yS-n8B" firstAttribute="top" secondItem="2Jk-Sh-ejy" secondAttribute="bottom" constant="70" id="DeY-8m-dtp"/>
+                            <constraint firstItem="nfv-Li-yFG" firstAttribute="top" secondItem="pY4-U5-Kal" secondAttribute="bottom" constant="37" id="Vnz-7G-EP7"/>
+                            <constraint firstItem="zYr-yS-n8B" firstAttribute="top" secondItem="2Jk-Sh-ejy" secondAttribute="bottom" constant="29" id="YHu-ok-Atx"/>
+                            <constraint firstItem="WvQ-ET-mHL" firstAttribute="top" secondItem="zYr-yS-n8B" secondAttribute="bottom" constant="80" id="aQk-I6-h7G"/>
+                            <constraint firstItem="2Jk-Sh-ejy" firstAttribute="top" secondItem="YaM-x2-bcX" secondAttribute="bottom" constant="182" id="eI6-TB-Ahu"/>
+                            <constraint firstItem="WvQ-ET-mHL" firstAttribute="centerX" secondItem="L0o-TR-lpc" secondAttribute="centerX" id="lJr-2a-CkQ"/>
+                            <constraint firstItem="pY4-U5-Kal" firstAttribute="centerX" secondItem="L0o-TR-lpc" secondAttribute="centerX" id="mbt-CF-mcZ"/>
+                            <constraint firstItem="nfv-Li-yFG" firstAttribute="centerX" secondItem="L0o-TR-lpc" secondAttribute="centerX" id="odg-4E-hMX"/>
+                            <constraint firstItem="pY4-U5-Kal" firstAttribute="top" secondItem="WvQ-ET-mHL" secondAttribute="bottom" constant="48" id="zEf-ce-lpF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eI6-TB-Ahu"/>
+                                <exclude reference="DeY-8m-dtp"/>
+                                <exclude reference="aQk-I6-h7G"/>
+                                <exclude reference="3wh-7i-yMX"/>
+                                <exclude reference="6MW-7c-Vtd"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="2X6-4a-IWI"/>
+                                <include reference="YHu-ok-Atx"/>
+                                <include reference="04c-cL-veF"/>
+                                <include reference="zEf-ce-lpF"/>
+                                <include reference="Vnz-7G-EP7"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="2X6-4a-IWI"/>
+                                <include reference="eI6-TB-Ahu"/>
+                                <include reference="DeY-8m-dtp"/>
+                                <exclude reference="YHu-ok-Atx"/>
+                                <exclude reference="04c-cL-veF"/>
+                                <include reference="aQk-I6-h7G"/>
+                                <include reference="3wh-7i-yMX"/>
+                                <exclude reference="zEf-ce-lpF"/>
+                                <include reference="6MW-7c-Vtd"/>
+                                <exclude reference="Vnz-7G-EP7"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="cityNameForWeather" destination="zYr-yS-n8B" id="ZgT-vl-s0L"/>
                         <segue destination="YPL-Xn-Ush" kind="show" identifier="showWeather" id="bb0-yG-1XK"/>
@@ -1339,7 +1546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tA3-xC-atv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3173.5" y="47.5"/>
+            <point key="canvasLocation" x="3173.25" y="47.25"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="FNS-bO-731">

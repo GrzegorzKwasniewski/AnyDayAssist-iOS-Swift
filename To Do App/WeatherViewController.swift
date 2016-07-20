@@ -222,7 +222,9 @@ class WeatherViewController: UIViewController {
         let acceptableChars : Set<Character> =
             Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ".characters)
         
-        let stringWithoutLocalizedSigns = text.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+        let stringWithRemovedSpaces = text.stringByReplacingOccurrencesOfString(" ", withString: "-")
+        
+        let stringWithoutLocalizedSigns = stringWithRemovedSpaces.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
         
         let stringWithoutSpecialSigns = String(stringWithoutLocalizedSigns.characters.filter {acceptableChars.contains($0)})
         
