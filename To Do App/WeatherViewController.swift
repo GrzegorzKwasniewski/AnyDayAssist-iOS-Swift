@@ -159,7 +159,8 @@ class WeatherViewController: UIViewController {
     }
     
     func returnToMainScreen() {
-        self.performSegueWithIdentifier("returnToMainScreen", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.performSegueWithIdentifier("returnToCheckWeatherScreen", sender: self)
     }
     
     func setUI() {

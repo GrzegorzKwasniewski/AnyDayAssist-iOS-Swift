@@ -100,7 +100,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 
                 if error != nil {
                     
-                    self.showAlert("Something went wrong", message: "\(error?.localizedDescription)")
+                    self.showAlert("Something went wrong", message: "Maybe Your internet connection is down?")
                     return
                     
                 }
