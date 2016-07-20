@@ -47,9 +47,9 @@ class WeatherViewController: UIViewController {
             
             self.showLoadingHUD()
             
-            let stringWithoutSpecialSigns = userCityName.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+            let convertedCityName = removeSpecialCharsFromString(userCityName)
             
-            if let properURL: NSURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(stringWithoutSpecialSigns)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5") {
+            if let properURL: NSURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(convertedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5") {
                 
                 let task = NSURLSession.sharedSession().dataTaskWithURL(properURL) { (data, response, error) in
                     if let urlContent = data {
@@ -102,7 +102,12 @@ class WeatherViewController: UIViewController {
                                 }
                             }
                         } catch {
-                            self.showAlert("Something went wrong", message: "No data found")
+                            
+                            dispatch_async(dispatch_get_main_queue()) {
+                                
+                                 self.showAlert("There's no data for such City", message: "Don't put any special signs when typing city name")
+                                
+                            }
                         }
                     }
                     
@@ -129,10 +134,8 @@ class WeatherViewController: UIViewController {
                 
                 self.hideLoadingHUD()
                 
-                let alert = UIAlertController(title: "Can't get weather data", message: "Try again later", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Back to main", style: .Default, handler: { (uialert) in
-                    self.performSegueWithIdentifier("returnToMainScreen", sender: self)
-                }))
+                let alert = UIAlertController(title: "There's no data for such City", message: "Don't put any special signs when typing city name", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
             
@@ -141,7 +144,7 @@ class WeatherViewController: UIViewController {
             
             self.hideLoadingHUD()
             
-            let alert = UIAlertController(title: "Can't get weather data", message: "Application don't have needed permissions", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Can't get weather data", message: "Application don't have proper permissions", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Change", style: .Default, handler: { (uialert) in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
             }))
@@ -159,8 +162,9 @@ class WeatherViewController: UIViewController {
     }
     
     func returnToMainScreen() {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
-        //self.performSegueWithIdentifier("returnToCheckWeatherScreen", sender: self)
+        
     }
     
     func setUI() {
@@ -211,5 +215,23 @@ class WeatherViewController: UIViewController {
     
     private func hideLoadingHUD() {
         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+    }
+    
+    func removeSpecialCharsFromString (text: String) -> String {
+        
+        let acceptableChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ".characters)
+        
+        let stringWithoutLocalizedSigns = text.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+        
+        let stringWithoutSpecialSigns = String(stringWithoutLocalizedSigns.characters.filter {acceptableChars.contains($0)})
+        
+        if !(stringWithoutSpecialSigns.isEmpty) {
+            return stringWithoutSpecialSigns
+        }
+        
+        // when returned sign is #, app will tell return "There's no data for such City" alert
+        return "#"
+        
     }
 }

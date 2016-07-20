@@ -105,34 +105,6 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-SY-GOt">
                                 <rect key="frame" x="255" y="142" width="258" height="314"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w69-Yy-nHD" userLabel="noteText">
-                                        <rect key="frame" x="35" y="122" width="189" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="0.64568965517241383" colorSpace="calibratedWhite"/>
-                                        <accessibility key="accessibilityConfiguration" hint="Make it short!"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="357" id="4W9-Iq-6wd"/>
-                                            <constraint firstAttribute="height" constant="30" id="Mfb-AV-iOf"/>
-                                            <constraint firstAttribute="width" constant="189" id="bNy-X9-Yyt"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="g7s-Qi-J77"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="4W9-Iq-6wd"/>
-                                                <exclude reference="Mfb-AV-iOf"/>
-                                                <exclude reference="bNy-X9-Yyt"/>
-                                                <exclude reference="g7s-Qi-J77"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                            <rect key="frame" x="49" y="246" width="357" height="30"/>
-                                            <mask key="constraints">
-                                                <include reference="4W9-Iq-6wd"/>
-                                                <include reference="g7s-Qi-J77"/>
-                                            </mask>
-                                        </variation>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HU-Eq-43O">
                                         <rect key="frame" x="94" y="203" width="70" height="30"/>
                                         <constraints>
@@ -223,6 +195,35 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w69-Yy-nHD" userLabel="noteText">
+                                        <rect key="frame" x="35" y="122" width="189" height="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Make it short!"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="357" id="4W9-Iq-6wd"/>
+                                            <constraint firstAttribute="height" constant="30" id="Mfb-AV-iOf"/>
+                                            <constraint firstAttribute="width" constant="189" id="bNy-X9-Yyt"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="g7s-Qi-J77"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4W9-Iq-6wd"/>
+                                                <exclude reference="Mfb-AV-iOf"/>
+                                                <exclude reference="bNy-X9-Yyt"/>
+                                                <exclude reference="g7s-Qi-J77"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="49" y="246" width="357" height="30"/>
+                                            <mask key="constraints">
+                                                <include reference="4W9-Iq-6wd"/>
+                                                <include reference="g7s-Qi-J77"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1314,9 +1315,10 @@
                                     <action selector="checkWeatherForUserLocation:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="YrC-4p-jze"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-yS-n8B">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-yS-n8B">
                                 <rect key="frame" x="139" y="176" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-ET-mHL">
@@ -1324,7 +1326,6 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="checkWeatherForGivenCity:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="8eM-Gh-fSg"/>
-                                    <segue destination="YPL-Xn-Ush" kind="show" identifier="showWeather" id="zDG-6Q-jvn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1333,6 +1334,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityNameForWeather" destination="zYr-yS-n8B" id="ZgT-vl-s0L"/>
+                        <segue destination="YPL-Xn-Ush" kind="show" identifier="showWeather" id="bb0-yG-1XK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tA3-xC-atv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2050,7 +2052,7 @@
         <segue reference="Jfl-F6-zcP"/>
         <segue reference="bV5-vO-4dN"/>
         <segue reference="a2L-yk-lbu"/>
-        <segue reference="2Ux-nF-bvY"/>
         <segue reference="ka6-kg-7QA"/>
+        <segue reference="IRk-Hm-gYq"/>
     </inferredMetricsTieBreakers>
 </document>

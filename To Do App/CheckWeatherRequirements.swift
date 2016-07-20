@@ -19,10 +19,22 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
         
         if let city = cityNameForWeather.text {
-            userCityName = city
-            self.performSegueWithIdentifier("showWeather", sender: nil)
+            
+            if !city.isEmpty {
+                
+                if city.characters.count <= 15 {
+                    
+                    userCityName = city
+                    self.performSegueWithIdentifier("showWeather", sender: nil)
+                    
+                } else {
+                    showAlert("City name is to long", message: "Allowed lenght is 15 characters with spaces")
+                }
+                
+            } else {
+                showAlert("Hmmm...", message: "Without city name it will be hard to check weather")
+            }
         }
-        
     }
     
     
