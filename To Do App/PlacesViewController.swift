@@ -17,10 +17,16 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
     
+    var uiWasSet = false
+    
+    var messageLabel: UILabel = UILabel()
+    
     @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,8 +34,14 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+  
+        if !uiWasSet {
+            
+            setUI()
+            uiWasSet = true
+            
+        }
         
-        setUI()
         removeEmptyValueAtStart()
         globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
         tableView.reloadData()
@@ -41,7 +53,9 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return placesToVisit.count
+        
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -56,21 +70,28 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         cell.backgroundColor = .clearColor()
+        
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        
         activPlace = indexPath.row
         return indexPath
+        
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
             globalCoreDataFunctions.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
             placesToVisit.removeAtIndex(indexPath.row)
             tableView.reloadData()
+            
         }
     }
     
@@ -167,6 +188,28 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         navigationBar.items = [navigationItem]
         
         view.addSubview(navigationBar)
+        
+    }
+    
+    func setMessageLabel() {
+            
+        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
+        messageLabel.textColor = UIColor.whiteColor()
+            
+        if placesToVisit.count > 0 {
+                
+            messageLabel.text = ""
+                
+        } else {
+                
+            messageLabel.text = "There's nothing here..."
+                
+        }
+            
+        messageLabel.textAlignment = .Center
+            
+        view.addSubview(messageLabel)
         
     }
     

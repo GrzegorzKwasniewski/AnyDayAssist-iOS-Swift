@@ -17,6 +17,8 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
     
+    var uiWasSet = false
+    
     @IBOutlet var cityNameForWeather: UITextField!
     
     @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
@@ -71,7 +73,13 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        setUI()
+        
+        if !uiWasSet {
+            
+            setUI()
+            uiWasSet = true
+            
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

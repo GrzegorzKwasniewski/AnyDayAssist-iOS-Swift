@@ -67,8 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         
-        setUI()
-        
+            setUI()
     }
     
     override func didReceiveMemoryWarning() {

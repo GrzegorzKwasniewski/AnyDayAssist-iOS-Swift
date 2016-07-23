@@ -18,6 +18,8 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
     
+    var uiWasSet = false
+    
     var messageLabel: UILabel = UILabel()
     
     @IBOutlet var tableView: UITableView!
@@ -35,7 +37,13 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        setUI()
+        if !uiWasSet {
+            
+            setUI()
+            uiWasSet = true
+            
+        }
+        
         globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
         setMessageLabel()
@@ -199,7 +207,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         if toDoNotes.count == 0 {
             
             messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.font = UIFont(name: "Helvetica Neue", size: 17)
+            messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
             messageLabel.textColor = UIColor.whiteColor()
             messageLabel.text = "There's nothing here..."
             messageLabel.textAlignment = .Center

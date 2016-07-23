@@ -17,6 +17,8 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
     
+    var uiWasSet = false
+    
     @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -25,7 +27,13 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         
-        setUI()
+        if !uiWasSet {
+            
+            setUI()
+            uiWasSet = true
+            
+        }
+        
         globalCoreDataFunctions.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
         tableView.reloadData()
         
