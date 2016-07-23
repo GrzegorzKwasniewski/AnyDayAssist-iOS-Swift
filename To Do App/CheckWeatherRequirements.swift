@@ -14,6 +14,9 @@ var userCityZipCode = String()
 
 class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     
+    var horizontalClass: UIUserInterfaceSizeClass!
+    var verticalCass: UIUserInterfaceSizeClass!
+    
     @IBOutlet var cityNameForWeather: UITextField!
     
     @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
@@ -28,11 +31,15 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
                     self.performSegueWithIdentifier("showWeather", sender: nil)
                     
                 } else {
+                    
                     showAlert("City name is to long", message: "Allowed lenght is 15 characters with spaces")
+                    
                 }
                 
             } else {
+                
                 showAlert("Hmmm...", message: "Without city name it will be hard to check weather")
+                
             }
         }
     }
@@ -68,6 +75,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let userLocation:CLLocation = locations[0]
         let latitude = userLocation.coordinate.latitude
         let longitude = userLocation.coordinate.longitude
@@ -75,21 +83,27 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
+            
             if error != nil {
+                
                 self.showAlert("Something went wrong", message: "Can't get weather data")
                 return
+                
             }
             
             if placemark?.count > 0 {
+                
                 let user = placemark![0]
                 let data = user.addressDictionary
                 
                 guard let city = data!["City"] as? String, let zipCode = data!["ZIP"] as? String
                     else { return }
+                
                 userCityName = city
                 userCityZipCode = zipCode
                 self.locationManager.stopUpdatingLocation()
                 self.performSegueWithIdentifier("showWeather", sender: nil)
+                
             }
         }
     }
@@ -105,6 +119,9 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     }
     
     func setUI() {
+        
+        horizontalClass = self.traitCollection.horizontalSizeClass;
+        verticalCass = self.traitCollection.verticalSizeClass;
         
         setView()
         setNavigationBar()
@@ -124,30 +141,39 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     
     func setNavigationBar() {
         
-        let horizontalClass = self.traitCollection.horizontalSizeClass;
-        let verticalCass = self.traitCollection.verticalSizeClass;
+        var fontSize: CGFloat!
+        var yPosition: CGFloat!
         
-        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
-        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationbar.shadowImage = UIImage()
-        navigationbar.translucent = true
-        navigationbar.backgroundColor = UIColor.clearColor()
-        
+        var navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem()
+        
         let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
         
         if horizontalClass == .Regular && verticalCass == .Regular {
-            leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 25)!], forState: UIControlState.Normal)
+            
+            fontSize = 30
+            yPosition = 40
+            
         } else {
-            leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 17)!], forState: UIControlState.Normal)
+            
+            fontSize = 17
+            yPosition = 20
+            
         }
         
+        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.translucent = true
+        navigationBar.backgroundColor = UIColor.clearColor()
+        
+        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
         leftItem.tintColor = UIColor.whiteColor()
         
         navigationItem.leftBarButtonItem = leftItem
-        navigationbar.items = [navigationItem]
+        navigationBar.items = [navigationItem]
         
-        view.addSubview(navigationbar)
+        view.addSubview(navigationBar)
     }
 
     

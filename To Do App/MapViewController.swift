@@ -13,6 +13,9 @@ import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
+    var horizontalClass: UIUserInterfaceSizeClass!
+    var verticalCass: UIUserInterfaceSizeClass!
+    
     var locationManager:CLLocationManager!
     var placemarks: AnyObject!
     var error: NSError!
@@ -151,13 +154,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func returnToPlaces() {
+    func returnToPlacesView() {
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
     func setUI() {
+        
+        horizontalClass = self.traitCollection.horizontalSizeClass;
+        verticalCass = self.traitCollection.verticalSizeClass;
         
         setView()
         setNavigationBar()
@@ -176,18 +182,39 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func setNavigationBar() {
         
-        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
-        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationbar.shadowImage = UIImage()
-        navigationbar.translucent = true
-        navigationbar.backgroundColor = UIColor.clearColor()
-        let navigationItem = UINavigationItem()
-        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToPlaces))
-        leftItem.tintColor = UIColor.blueColor()
-        navigationItem.leftBarButtonItem = leftItem
-        navigationbar.items = [navigationItem]
+        var fontSize: CGFloat!
+        var yPosition: CGFloat!
         
-        view.addSubview(navigationbar)
+        var navigationBar = UINavigationBar()
+        let navigationItem = UINavigationItem()
+        
+        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToPlacesView))
+        
+        if horizontalClass == .Regular && verticalCass == .Regular {
+            
+            fontSize = 30
+            yPosition = 40
+            
+        } else {
+            
+            fontSize = 17
+            yPosition = 20
+            
+        }
+        
+        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.translucent = true
+        navigationBar.backgroundColor = UIColor.clearColor()
+        
+        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
+        leftItem.tintColor = UIColor.blueColor()
+        
+        navigationItem.leftBarButtonItem = leftItem
+        navigationBar.items = [navigationItem]
+        
+        view.addSubview(navigationBar)
         
     }
     

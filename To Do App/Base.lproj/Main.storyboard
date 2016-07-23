@@ -456,7 +456,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="Cbu-qK-R9V" id="Fgw-6K-bxA"/>
-                        <segue destination="HXy-Ml-bRR" kind="show" identifier="goAudioRecordView" id="BaZ-81-GuF"/>
+                        <segue destination="HXy-Ml-bRR" kind="show" identifier="goToAudioRecordView" id="BaZ-81-GuF"/>
                         <segue destination="s7V-nt-yTp" kind="show" identifier="returnToMainScreen" action="showDetailViewController:sender:" id="Fkl-Fn-qSb"/>
                     </connections>
                 </viewController>
@@ -2257,10 +2257,10 @@
         <image name="weather" width="100" height="102"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jfl-F6-zcP"/>
-        <segue reference="bV5-vO-4dN"/>
-        <segue reference="a2L-yk-lbu"/>
-        <segue reference="ka6-kg-7QA"/>
         <segue reference="IRk-Hm-gYq"/>
+        <segue reference="OAF-9L-LoO"/>
+        <segue reference="bV5-vO-4dN"/>
+        <segue reference="Jfl-F6-zcP"/>
+        <segue reference="a2L-yk-lbu"/>
     </inferredMetricsTieBreakers>
 </document>

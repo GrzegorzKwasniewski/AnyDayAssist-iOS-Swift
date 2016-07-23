@@ -12,6 +12,9 @@ import CoreData
 
 class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
+    var horizontalClass: UIUserInterfaceSizeClass!
+    var verticalCass: UIUserInterfaceSizeClass!
+    
     var audioRecorder: AVAudioRecorder!
     
     @IBOutlet var recordButton: UIButton!
@@ -96,6 +99,10 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     func setUI() {
         
         stopRecordingButton.enabled = false
+        
+        horizontalClass = self.traitCollection.horizontalSizeClass;
+        verticalCass = self.traitCollection.verticalSizeClass;
+        
         setView()
         setNavigationBar()
         
@@ -113,21 +120,39 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     func setNavigationBar() {
         
-        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
-        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationbar.shadowImage = UIImage()
-        navigationbar.translucent = true
-        navigationbar.backgroundColor = UIColor.clearColor()
+        var fontSize: CGFloat!
+        var yPosition: CGFloat!
         
+        var navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem()
+        
         let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToAudioNotes))
+        
+        if horizontalClass == .Regular && verticalCass == .Regular {
+            
+            fontSize = 30
+            yPosition = 40
+            
+        } else {
+            
+            fontSize = 17
+            yPosition = 20
+            
+        }
+        
+        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.translucent = true
+        navigationBar.backgroundColor = UIColor.clearColor()
+        
+        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
         leftItem.tintColor = UIColor.whiteColor()
         
         navigationItem.leftBarButtonItem = leftItem
-        navigationbar.items = [navigationItem]
+        navigationBar.items = [navigationItem]
         
-        view.addSubview(navigationbar)
-        
+        view.addSubview(navigationBar)
 
     }
 }

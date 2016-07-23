@@ -14,6 +14,8 @@ var activPlace = -1
 
 class PlacesViewController: UIViewController, UITableViewDelegate {
     
+    var horizontalClass: UIUserInterfaceSizeClass!
+    var verticalCass: UIUserInterfaceSizeClass!
     
     @IBOutlet var tableView: UITableView!
 
@@ -93,6 +95,9 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
     func setUI() {
         
+        horizontalClass = self.traitCollection.horizontalSizeClass;
+        verticalCass = self.traitCollection.verticalSizeClass;
+        
         setTableView()
         setNavigationBar()
 
@@ -100,11 +105,23 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
     func setTableView() {
         
+        var topMargin: CGFloat!
+        
         let backgroundImage = UIImage(named: "bg.jpg")
         let imageView = UIImageView(image: backgroundImage)
         imageView.contentMode = .ScaleAspectFill
         
-        tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        if horizontalClass == .Regular && verticalCass == .Regular {
+            
+            topMargin = 100
+            
+        } else {
+            
+            topMargin = 64
+            
+        }
+        
+        tableView.contentInset = UIEdgeInsetsMake(topMargin, 0, 0, 0);
         tableView.backgroundView = imageView
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .lightGrayColor()
@@ -113,21 +130,43 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
     func setNavigationBar() {
         
-        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
-        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationbar.shadowImage = UIImage()
-        navigationbar.translucent = true
-        navigationbar.backgroundColor = UIColor.clearColor()
+        var fontSize: CGFloat!
+        var yPosition: CGFloat!
+        
+        var navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem()
+        
         let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
         let rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(addNewPlaceToSee))
+        
+        if horizontalClass == .Regular && verticalCass == .Regular {
+            
+            fontSize = 30
+            yPosition = 40
+            
+        } else {
+            
+            fontSize = 17
+            yPosition = 20
+            
+        }
+        
+        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.translucent = true
+        navigationBar.backgroundColor = UIColor.clearColor()
+        
+        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
+        rightItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
         leftItem.tintColor = UIColor.whiteColor()
         rightItem.tintColor = UIColor.whiteColor()
+        
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
-        navigationbar.items = [navigationItem]
+        navigationBar.items = [navigationItem]
         
-        view.addSubview(navigationbar)
+        view.addSubview(navigationBar)
         
     }
     
