@@ -153,7 +153,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func returnToPlaces() {
         
-        self.performSegueWithIdentifier("returnToPlaces", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
@@ -183,7 +183,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         navigationbar.backgroundColor = UIColor.clearColor()
         let navigationItem = UINavigationItem()
         let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToPlaces))
-        leftItem.tintColor = UIColor.whiteColor()
+        leftItem.tintColor = UIColor.blueColor()
         navigationItem.leftBarButtonItem = leftItem
         navigationbar.items = [navigationItem]
         

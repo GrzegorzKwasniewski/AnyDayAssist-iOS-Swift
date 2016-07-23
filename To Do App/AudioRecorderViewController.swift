@@ -89,7 +89,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         
     func returnToAudioNotes() {
         
-        self.performSegueWithIdentifier("returnToAudioNotes", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     

@@ -98,7 +98,20 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
         // error handle
     }
     
+    func returnToMainScreen() {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     func setUI() {
+        
+        setView()
+        setNavigationBar()
+        
+    }
+    
+    func setView() {
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
         imageView.image = UIImage(named: "bg.jpg")
@@ -106,7 +119,37 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
         self.view.backgroundColor = .lightGrayColor()
+        
     }
+    
+    func setNavigationBar() {
+        
+        let horizontalClass = self.traitCollection.horizontalSizeClass;
+        let verticalCass = self.traitCollection.verticalSizeClass;
+        
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationbar.shadowImage = UIImage()
+        navigationbar.translucent = true
+        navigationbar.backgroundColor = UIColor.clearColor()
+        
+        let navigationItem = UINavigationItem()
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
+        
+        if horizontalClass == .Regular && verticalCass == .Regular {
+            leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 25)!], forState: UIControlState.Normal)
+        } else {
+            leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 17)!], forState: UIControlState.Normal)
+        }
+        
+        leftItem.tintColor = UIColor.whiteColor()
+        
+        navigationItem.leftBarButtonItem = leftItem
+        navigationbar.items = [navigationItem]
+        
+        view.addSubview(navigationbar)
+    }
+
     
     func showAlert(title: String, message: String) {
         

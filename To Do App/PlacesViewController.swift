@@ -84,7 +84,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     func returnToMainScreen() {
-        self.performSegueWithIdentifier("returnToMainScreen", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func addNewPlaceToSee() {

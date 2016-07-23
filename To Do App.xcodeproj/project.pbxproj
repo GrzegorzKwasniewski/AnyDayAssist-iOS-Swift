@@ -23,6 +23,7 @@
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */; };
+		71E810AF1D3FE06300B305B8 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810AE1D3FE06300B305B8 /* bg.jpg */; };
 		71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */; };
 		71FF6D6D1D2C56D80057B22E /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */; };
 		71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D781D2E77780057B22E /* TextNotesViewController.swift */; };
@@ -49,6 +50,7 @@
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckWeatherRequirements.swift; sourceTree = "<group>"; };
+		71E810AE1D3FE06300B305B8 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
 		71FF6D781D2E77780057B22E /* TextNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
+				71E810AE1D3FE06300B305B8 /* bg.jpg */,
 			);
 			path = "To Do App";
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			files = (
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
+				71E810AF1D3FE06300B305B8 /* bg.jpg in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

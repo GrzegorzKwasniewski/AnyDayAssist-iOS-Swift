@@ -343,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rog-QD-E4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3450.75" y="-773.25"/>
+            <point key="canvasLocation" x="3255.5" y="-772.5"/>
         </scene>
         <!--TOSEE-->
         <scene sceneID="0e7-5C-mrJ">
@@ -1304,11 +1304,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qGn-7S-oDU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="L0o-TR-lpc">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Or get weather data from Your location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-U5-Kal">
-                                <rect key="frame" x="217" y="342" width="335" height="56"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Or get weather data from Your location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-U5-Kal">
+                                <rect key="frame" x="21" y="342" width="335" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="2YU-qG-FGf"/>
                                     <constraint firstAttribute="height" constant="56" id="2kh-Is-aRH"/>
@@ -1341,40 +1341,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-yS-n8B">
-                                <rect key="frame" x="68" y="185" width="239" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="239" id="JMJ-C6-fOc"/>
-                                    <constraint firstAttribute="height" constant="70" id="Mvd-wz-wPD"/>
-                                    <constraint firstAttribute="width" constant="439" id="T0p-G6-FY8"/>
-                                    <constraint firstAttribute="height" constant="45" id="icX-Qc-BKu"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Mvd-wz-wPD"/>
-                                        <exclude reference="T0p-G6-FY8"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="JMJ-C6-fOc"/>
-                                        <include reference="icX-Qc-BKu"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <exclude reference="JMJ-C6-fOc"/>
-                                        <include reference="Mvd-wz-wPD"/>
-                                        <include reference="T0p-G6-FY8"/>
-                                        <exclude reference="icX-Qc-BKu"/>
-                                    </mask>
-                                </variation>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-ET-mHL">
-                                <rect key="frame" x="331" y="264" width="106" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-ET-mHL">
+                                <rect key="frame" x="135" y="264" width="106" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14929956896551724" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="9oA-4d-Vso"/>
@@ -1412,8 +1380,8 @@
                                     <action selector="checkWeatherForGivenCity:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="8eM-Gh-fSg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfv-Li-yFG">
-                                <rect key="frame" x="331" y="435" width="106" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfv-Li-yFG">
+                                <rect key="frame" x="135" y="435" width="106" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="2RQ-Ls-ybE"/>
@@ -1449,7 +1417,7 @@
                                     <action selector="checkWeatherForUserLocation:" destination="pOQ-2S-EZE" eventType="touchUpInside" id="YrC-4p-jze"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Type name of the city You want" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-Sh-ejy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type name of the city You want" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-Sh-ejy">
                                 <rect key="frame" x="20" y="101" width="335" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="728" id="BXT-c9-uQw"/>
@@ -1483,6 +1451,39 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYr-yS-n8B">
+                                <rect key="frame" x="68" y="185" width="239" height="45"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="JMJ-C6-fOc"/>
+                                    <constraint firstAttribute="height" constant="70" id="Mvd-wz-wPD"/>
+                                    <constraint firstAttribute="width" constant="439" id="T0p-G6-FY8"/>
+                                    <constraint firstAttribute="height" constant="45" id="icX-Qc-BKu"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Mvd-wz-wPD"/>
+                                        <exclude reference="T0p-G6-FY8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="JMJ-C6-fOc"/>
+                                        <include reference="icX-Qc-BKu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="JMJ-C6-fOc"/>
+                                        <include reference="Mvd-wz-wPD"/>
+                                        <include reference="T0p-G6-FY8"/>
+                                        <exclude reference="icX-Qc-BKu"/>
+                                    </mask>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1538,7 +1539,7 @@
                         </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityNameForWeather" destination="zYr-yS-n8B" id="ZgT-vl-s0L"/>
                         <segue destination="YPL-Xn-Ush" kind="show" identifier="showWeather" id="bb0-yG-1XK"/>

@@ -110,7 +110,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     
     func returnToMainScreen() {
         
-        self.performSegueWithIdentifier("showMainScreen", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
@@ -136,7 +136,10 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     
     func setNavigationBar() {
         
-        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 20, self.view.frame.size.width, 40))
+        let horizontalClass = self.traitCollection.horizontalSizeClass;
+        let verticalCass = self.traitCollection.verticalSizeClass;
+
+        let navigationbar = UINavigationBar(frame: CGRectMake( 0, 30, self.view.frame.size.width, 40))
         navigationbar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationbar.shadowImage = UIImage()
         navigationbar.translucent = true
@@ -145,6 +148,15 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         let navigationItem = UINavigationItem()
         let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
         let rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(promptForNote))
+        
+        if horizontalClass == .Regular && verticalCass == .Regular {
+            leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 25)!], forState: UIControlState.Normal)
+            rightItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 25)!], forState: UIControlState.Normal)
+        } else {
+            leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 17)!], forState: UIControlState.Normal)
+            rightItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 17)!], forState: UIControlState.Normal)
+        }
+        
         leftItem.tintColor = UIColor.whiteColor()
         rightItem.tintColor = UIColor.whiteColor()
         

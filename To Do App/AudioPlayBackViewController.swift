@@ -79,7 +79,7 @@ class AudioPlayBackViewController: UIViewController {
     
     func returnToAudioNotes() {
         
-        self.performSegueWithIdentifier("returnToAudioNotes", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
 
