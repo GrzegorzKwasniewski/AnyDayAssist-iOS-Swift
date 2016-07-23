@@ -63,7 +63,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
         let note = placesToVisit[indexPath.row]
         myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.font = UIFont(name: "Helvetica Neue", size: 17)
         myCell.noteTitle.text = note.valueForKey("title") as! String
         myCell.cellImage.image = UIImage(named: "place")
         return myCell
