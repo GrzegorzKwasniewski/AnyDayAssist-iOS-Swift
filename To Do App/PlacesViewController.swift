@@ -26,6 +26,8 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 70
         
     }
 
@@ -63,7 +65,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
         let note = placesToVisit[indexPath.row]
         myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.text = note.valueForKey("title") as! String
+        myCell.noteTitle.text = note.valueForKey("title") as? String
         myCell.cellImage.image = UIImage(named: "place")
         return myCell
     }
@@ -95,7 +97,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
     }
 

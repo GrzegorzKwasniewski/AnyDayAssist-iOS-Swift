@@ -56,7 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             // add annotation with data about our place to visit
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = placesToVisit[activPlace].valueForKey("title") as! String
+            annotation.title = placesToVisit[activPlace].valueForKey("title") as? String
             annotation.subtitle = "Need to visit this place"
             self.mapView.addAnnotation(annotation)
         }

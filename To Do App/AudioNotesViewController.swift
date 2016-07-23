@@ -23,6 +23,10 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 70
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,7 +60,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
         let note = audioURL[indexPath.row]
         myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.text = note.valueForKey("audiotitle") as! String
+        myCell.noteTitle.text = note.valueForKey("audiotitle") as? String
         myCell.cellImage.image = UIImage(named: "microphone")
         return myCell
         
@@ -84,7 +88,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.3)
         
     }

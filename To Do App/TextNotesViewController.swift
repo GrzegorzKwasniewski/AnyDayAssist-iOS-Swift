@@ -27,6 +27,9 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 70
+        
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
@@ -68,7 +71,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
         let note = toDoNotes[indexPath.row]
         myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.text = note.valueForKey("note") as! String
+        myCell.noteTitle.text = note.valueForKey("note") as? String
         myCell.cellImage.image = UIImage(named: "notes")
         return myCell
         
@@ -93,14 +96,14 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.clearColor()
         
     }
     
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
         
-        var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.3)
         
     }
