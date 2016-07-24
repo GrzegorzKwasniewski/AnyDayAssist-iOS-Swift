@@ -50,7 +50,11 @@ class MainViewController: UIViewController {
         
         let newBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor")
         
-        imageView!.image = UIImage(named: newBackgroundColor as! String)
+        if newBackgroundColor != nil {
+            
+            imageView!.image = UIImage(named: newBackgroundColor as! String)
+
+        }
         
     }
 }

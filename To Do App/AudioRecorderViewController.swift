@@ -49,8 +49,9 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     func createRecordingSession() {
         
-        let audioFielTitle = "AudioNote_nr_\(audioURL.count + 1)"
-        let audioFileURL = createRecordFileURL(audioFielTitle)
+        let recordingTime = getRecordingTime()
+        let audioFileTitle = "AudioNote_time_\(recordingTime)"
+        let audioFileURL = createRecordFileURL(audioFileTitle)
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         try! audioRecorder = AVAudioRecorder(URL: audioFileURL, settings: [:])
@@ -58,7 +59,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        globalCoreDataFunctions.saveAudioTitleAndURL(audioFielTitle, audioFileUrl: audioFileURL)
+        globalCoreDataFunctions.saveAudioTitleAndURL(audioFileTitle, audioFileUrl: audioFileURL)
         
     }
     
@@ -84,7 +85,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         let currentDate = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
-        dateFormatter.dateFormat = " MMM dd, yyyy, HH:mm:ss"
+        dateFormatter.dateFormat = "MMM-dd_HH:mm:ss"
         let recordingTime = dateFormatter.stringFromDate(currentDate)
         return recordingTime
         

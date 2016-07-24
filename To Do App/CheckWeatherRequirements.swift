@@ -51,6 +51,8 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
         
         locationManager.startUpdatingLocation()
         
+        self.performSegueWithIdentifier("showWeather", sender: nil)
+        
     }
     
     var locationManager:CLLocationManager!
@@ -110,7 +112,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
                 userCityName = city
                 userCityZipCode = zipCode
                 self.locationManager.stopUpdatingLocation()
-                self.performSegueWithIdentifier("showWeather", sender: nil)
                 
             }
         }
@@ -152,7 +153,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
         
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
-        self.view.backgroundColor = .lightGrayColor()
         
     }
     
@@ -197,7 +197,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     func showAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
     }

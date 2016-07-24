@@ -148,10 +148,10 @@ class WeatherViewController: UIViewController {
             self.hideLoadingHUD()
             
             let alert = UIAlertController(title: "Can't get weather data", message: "Application don't have proper permissions", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Change", style: .Default, handler: { (uialert) in
+            alert.addAction(UIAlertAction(title: "Change settings", style: .Default, handler: { (uialert) in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
             }))
-            alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }

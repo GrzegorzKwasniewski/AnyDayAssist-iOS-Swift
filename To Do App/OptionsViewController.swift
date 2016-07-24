@@ -121,7 +121,7 @@ class OptionsViewController: UIViewController {
     func showAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
