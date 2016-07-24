@@ -139,7 +139,16 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
     func setView() {
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        imageView.image = UIImage(named: "bg.jpg")
+        
+        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
+            
+            imageView.image = UIImage(named: backgroundColor as! String)
+            
+        } else {
+            
+            imageView.image = UIImage(named: "bg_blue.jpg")
+            
+        }
         
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)

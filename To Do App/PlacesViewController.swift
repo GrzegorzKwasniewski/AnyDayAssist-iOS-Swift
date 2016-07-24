@@ -142,8 +142,18 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         
         var topMargin: CGFloat!
         
-        let backgroundImage = UIImage(named: "bg.jpg")
-        let imageView = UIImageView(image: backgroundImage)
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        
+        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
+            
+            imageView.image = UIImage(named: backgroundColor as! String)
+            
+        } else {
+            
+            imageView.image = UIImage(named: "bg_blue.jpg")
+            
+        }
+        
         imageView.contentMode = .ScaleAspectFill
         
         if horizontalClass == .Regular && verticalCass == .Regular {

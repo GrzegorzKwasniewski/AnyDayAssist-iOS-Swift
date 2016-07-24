@@ -23,7 +23,10 @@
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */; };
-		71E810AF1D3FE06300B305B8 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810AE1D3FE06300B305B8 /* bg.jpg */; };
+		71E810AF1D3FE06300B305B8 /* bg_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810AE1D3FE06300B305B8 /* bg_blue.jpg */; };
+		71E810B21D44DDE400B305B8 /* bg_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810B01D44DDE400B305B8 /* bg_red.jpg */; };
+		71E810B31D44DDE400B305B8 /* bg_green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810B11D44DDE400B305B8 /* bg_green.jpg */; };
+		71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810B41D44E0C700B305B8 /* OptionsViewController.swift */; };
 		71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */; };
 		71FF6D6D1D2C56D80057B22E /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */; };
 		71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D781D2E77780057B22E /* TextNotesViewController.swift */; };
@@ -50,7 +53,10 @@
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckWeatherRequirements.swift; sourceTree = "<group>"; };
-		71E810AE1D3FE06300B305B8 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		71E810AE1D3FE06300B305B8 /* bg_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_blue.jpg; sourceTree = "<group>"; };
+		71E810B01D44DDE400B305B8 /* bg_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_red.jpg; sourceTree = "<group>"; };
+		71E810B11D44DDE400B305B8 /* bg_green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_green.jpg; sourceTree = "<group>"; };
+		71E810B41D44E0C700B305B8 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
 		71FF6D781D2E77780057B22E /* TextNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesViewController.swift; sourceTree = "<group>"; };
@@ -108,14 +114,17 @@
 				711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */,
 				71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */,
 				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
-				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
 				71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */,
 				716B39041D3A6A12002D8ABE /* Cell.swift */,
+				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
+				71E810B41D44E0C700B305B8 /* OptionsViewController.swift */,
 				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
-				71E810AE1D3FE06300B305B8 /* bg.jpg */,
+				71E810AE1D3FE06300B305B8 /* bg_blue.jpg */,
+				71E810B01D44DDE400B305B8 /* bg_red.jpg */,
+				71E810B11D44DDE400B305B8 /* bg_green.jpg */,
 			);
 			path = "To Do App";
 			sourceTree = "<group>";
@@ -199,9 +208,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E810B31D44DDE400B305B8 /* bg_green.jpg in Resources */,
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
-				71E810AF1D3FE06300B305B8 /* bg.jpg in Resources */,
+				71E810AF1D3FE06300B305B8 /* bg_blue.jpg in Resources */,
+				71E810B21D44DDE400B305B8 /* bg_red.jpg in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +278,7 @@
 				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,
+				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
 				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,
 				71FF6D6D1D2C56D80057B22E /* CoreDataFunctions.swift in Sources */,

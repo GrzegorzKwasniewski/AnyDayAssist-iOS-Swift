@@ -1,91 +1,56 @@
 //
-//  AudioPlayBackViewController.swift
+//  OptionsViewController.swift
 //  To Do App
 //
-//  Created by Grzegorz Kwaśniewski on 16/06/16.
+//  Created by Grzegorz Kwaśniewski on 24/07/16.
 //  Copyright © 2016 Grzegorz Kwaśniewski. All rights reserved.
 //
 
 import UIKit
-import AVFoundation
-import CoreData
 
-class AudioPlayBackViewController: UIViewController {
+class OptionsViewController: UIViewController {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
+    
+    @IBAction func setBackgroundColorBlue(sender: AnyObject) {
+        
+        NSUserDefaults.standardUserDefaults().setObject("bg_blue.jpg", forKey: "BackgroundColor")
+        
+        showAlert("Blue background", message: "You will see change on next screen")
 
-    var stopTimer: NSTimer? = NSTimer()
-    var recordedAudioURL: NSURL!
-    var player: AVAudioPlayer? = AVAudioPlayer()
-    
-    @IBOutlet var volumeSlider: UISlider!
-    @IBAction func adjustVolume(sender: AnyObject) {
-        
-        player?.volume = volumeSlider.value
-        
     }
     
-    @IBOutlet var timeSlider: UISlider!
-    @IBAction func searchInAudioNote(sender: AnyObject) {
+    @IBAction func setBackgroundColorRed(sender: AnyObject) {
         
-         player?.currentTime = NSTimeInterval(timeSlider.value)
+        NSUserDefaults.standardUserDefaults().setObject("bg_red.jpg", forKey: "BackgroundColor")
         
+        showAlert("Red background", message: "You will see change on next screen")
+
     }
     
-    @IBOutlet var playButton: UIButton!
-    @IBAction func playAudioNote(sender: AnyObject) {
+    @IBAction func setBackgroundColorGreen(sender: AnyObject) {
         
-        player?.play()
-        configureUI(PlayingState.Playing)
+        NSUserDefaults.standardUserDefaults().setObject("bg_green.jpg", forKey: "BackgroundColor")
         
+        showAlert("Green background", message: "You will see change on next screen")
+
     }
     
-    @IBOutlet var stopButton: UIButton!
-    @IBAction func stopAudioNote(sender: AnyObject) {
-        
-        player?.stop()
-        setupAudio()
-        timeSlider.value = Float(player!.currentTime)
-        configureUI(PlayingState.NotPlaying)
-        
-    }
-    
-    @IBOutlet var pauseButton: UIButton!
-    @IBAction func pauseAudio(sender: AnyObject) {
-        
-        player?.pause()
-        configureUI(PlayingState.NotPlaying)
-        
-    }
-    
+
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        configureUI(PlayingState.Playing)
-        prepareAudioURL()
-        setupAudio()
-        updateTimeSlider()
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        playSound()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
+
         setUI()
-        timeSlider.maximumValue = Float((player?.duration)!)
         
     }
     
-    func returnToAudioNotes() {
+    func returnToMainScreen() {
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
-
+    
     func setUI() {
         
         horizontalClass = self.traitCollection.horizontalSizeClass;
@@ -97,7 +62,7 @@ class AudioPlayBackViewController: UIViewController {
     }
     
     func setView() {
-        
+    
         let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
         
         if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
@@ -112,6 +77,7 @@ class AudioPlayBackViewController: UIViewController {
         
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
+        self.view.backgroundColor = .lightGrayColor()
         
     }
     
@@ -123,7 +89,7 @@ class AudioPlayBackViewController: UIViewController {
         var navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem()
         
-        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToAudioNotes))
+        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
         
         if horizontalClass == .Regular && verticalCass == .Regular {
             
@@ -150,6 +116,14 @@ class AudioPlayBackViewController: UIViewController {
         navigationBar.items = [navigationItem]
         
         view.addSubview(navigationBar)
-
     }
+
+    func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+
 }
