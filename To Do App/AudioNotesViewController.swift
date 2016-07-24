@@ -18,6 +18,9 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
     var verticalCass: UIUserInterfaceSizeClass!
     
     var uiWasSet = false
+    var messageLabelWasSet = false
+    
+    var messageLabel: UILabel = UILabel()
     
     @IBOutlet var tableView: UITableView!
 
@@ -25,7 +28,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 70
+        tableView.estimatedRowHeight = 100
         
     }
     
@@ -40,6 +43,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
         globalCoreDataFunctions.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
         tableView.reloadData()
+        setMessageLabel()
         
     }
 
@@ -186,5 +190,33 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
         view.addSubview(navigationBar)
 
+    }
+    
+    func setMessageLabel() {
+        
+        if !messageLabelWasSet {
+            
+            messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
+            messageLabel.textColor = UIColor.whiteColor()
+            
+            messageLabelWasSet = true
+            
+        }
+        
+        if audioURL.count > 0 {
+            
+            messageLabel.text = ""
+            
+        } else {
+            
+            messageLabel.text = "There's nothing here..."
+            
+        }
+        
+        messageLabel.textAlignment = .Center
+        
+        view.addSubview(messageLabel)
+        
     }
 }

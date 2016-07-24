@@ -18,6 +18,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     var verticalCass: UIUserInterfaceSizeClass!
     
     var uiWasSet = false
+    var messageLabelWasSet = false
     
     var messageLabel: UILabel = UILabel()
     
@@ -28,7 +29,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 70
-        
+                
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,14 +45,17 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
             
         }
         
-        removeEmptyValueAtStart()
+        //removeEmptyValueAtStart()
         globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
         tableView.reloadData()
+        setMessageLabel()
         
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 1
+        
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,22 +101,31 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
+        
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "addNewPlaceToSee" {
+            
             activPlace = -1
+            
         }
     }
     
     func returnToMainScreen() {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     func addNewPlaceToSee() {
+        
         self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
+        
     }
     
     func setUI() {
@@ -193,11 +206,17 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     }
     
     func setMessageLabel() {
+        
+        if !messageLabelWasSet {
             
-        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
-        messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
-        messageLabel.textColor = UIColor.whiteColor()
+            messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
+            messageLabel.textColor = UIColor.whiteColor()
             
+            messageLabelWasSet = true
+            
+        }
+        
         if placesToVisit.count > 0 {
                 
             messageLabel.text = ""
