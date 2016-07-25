@@ -25,7 +25,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
         do {
             
             player = try AVAudioPlayer(contentsOfURL: recordedAudioURL)
-            player?.delegate = self
+            player!.delegate = self
             
         } catch {
             
@@ -37,7 +37,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
     func playSound() {
         
         setupAudio()
-        player?.play()
+        player!.play()
         
     }
 

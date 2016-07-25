@@ -6,6 +6,7 @@
 //  Copyright © 2016 Grzegorz Kwaśniewski. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import CoreData
 
@@ -19,10 +20,12 @@ final class CoreDataFunctions {
     }
     
     func saveTextNote(note: String) {
+        
         let newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
         newNote.setValue(note, forKey: "note")
         
         do {
+            
             try contextOfOurApp.save()
             
         } catch let error as NSError{
@@ -108,12 +111,19 @@ final class CoreDataFunctions {
         let request = NSFetchRequest(entityName: entity)
         
         do {
+            
             let results = try contextOfOurApp.executeFetchRequest(request)
+            
             if results.count > 0 {
+                
                 managedObjects = results as! [NSManagedObject]
+                
             }
-        } catch let error as NSError{
+            
+        } catch let error as NSError {
+            
             print ("There was an error \(error), \(error.userInfo)")
+            
         }
     }
 }

@@ -32,6 +32,7 @@
 		71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D781D2E77780057B22E /* TextNotesViewController.swift */; };
 		71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7A1D2EB4990057B22E /* MainViewController.swift */; };
 		71FF6D7D1D2EF6BA0057B22E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */; };
+		71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFDC3B1D4685F7009A4EEE /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		71FF6D781D2E77780057B22E /* TextNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesViewController.swift; sourceTree = "<group>"; };
 		71FF6D7A1D2EB4990057B22E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		71FFDC3B1D4685F7009A4EEE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BEE2187FDEAD225C980D8CC5 /* Pods-To Do App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To Do App.release.xcconfig"; path = "Pods/Target Support Files/Pods-To Do App/Pods-To Do App.release.xcconfig"; sourceTree = "<group>"; };
 		CEF63106D563B8B9FFE600A2 /* Pods-To Do App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To Do App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-To Do App/Pods-To Do App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,27 +103,28 @@
 		718D87171CEA50C4001E7F17 /* To Do App */ = {
 			isa = PBXGroup;
 			children = (
+				718D87261CEA50C4001E7F17 /* Info.plist */,
 				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
+				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
 				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 				71FF6D7A1D2EB4990057B22E /* MainViewController.swift */,
 				71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */,
+				71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */,
 				71FF6D781D2E77780057B22E /* TextNotesViewController.swift */,
 				71944F2A1D0DACE300206B4F /* PlacesViewController.swift */,
 				71944F2C1D0DCC6600206B4F /* MapViewController.swift */,
 				71944F361D13259C00206B4F /* AudioNotesViewController.swift */,
 				71944F321D13254200206B4F /* AudioRecorderViewController.swift */,
 				71944F341D13256100206B4F /* AudioPlayBackViewController.swift */,
+				71E810B41D44E0C700B305B8 /* OptionsViewController.swift */,
 				711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */,
 				71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */,
 				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
-				71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */,
 				716B39041D3A6A12002D8ABE /* Cell.swift */,
+				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
 				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
-				71E810B41D44E0C700B305B8 /* OptionsViewController.swift */,
-				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
-				718D87261CEA50C4001E7F17 /* Info.plist */,
-				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
+				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 				71E810AE1D3FE06300B305B8 /* bg_blue.jpg */,
 				71E810B01D44DDE400B305B8 /* bg_red.jpg */,
 				71E810B11D44DDE400B305B8 /* bg_green.jpg */,
@@ -286,6 +289,7 @@
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
 				71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */,
 				71FF6D7D1D2EF6BA0057B22E /* WeatherViewController.swift in Sources */,
+				71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */,
 				71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */,
 				71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */,
 				71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */,
@@ -407,7 +411,7 @@
 				INFOPLIST_FILE = "To Do App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bitbittrip.To-Do-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,7 +428,7 @@
 				INFOPLIST_FILE = "To Do App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bitbittrip.To-Do-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

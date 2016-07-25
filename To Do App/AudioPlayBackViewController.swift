@@ -22,21 +22,21 @@ class AudioPlayBackViewController: UIViewController {
     @IBOutlet var volumeSlider: UISlider!
     @IBAction func adjustVolume(sender: AnyObject) {
         
-        player?.volume = volumeSlider.value
+        player!.volume = volumeSlider.value
         
     }
     
     @IBOutlet var timeSlider: UISlider!
     @IBAction func searchInAudioNote(sender: AnyObject) {
         
-         player?.currentTime = NSTimeInterval(timeSlider.value)
+         player!.currentTime = NSTimeInterval(timeSlider.value)
         
     }
     
     @IBOutlet var playButton: UIButton!
     @IBAction func playAudioNote(sender: AnyObject) {
         
-        player?.play()
+        player!.play()
         configureUI(PlayingState.Playing)
         
     }
@@ -44,7 +44,7 @@ class AudioPlayBackViewController: UIViewController {
     @IBOutlet var stopButton: UIButton!
     @IBAction func stopAudioNote(sender: AnyObject) {
         
-        player?.stop()
+        player!.stop()
         setupAudio()
         timeSlider.value = Float(player!.currentTime)
         configureUI(PlayingState.NotPlaying)
@@ -54,7 +54,7 @@ class AudioPlayBackViewController: UIViewController {
     @IBOutlet var pauseButton: UIButton!
     @IBAction func pauseAudio(sender: AnyObject) {
         
-        player?.pause()
+        player!.pause()
         configureUI(PlayingState.NotPlaying)
         
     }
@@ -76,7 +76,7 @@ class AudioPlayBackViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         setUI()
-        timeSlider.maximumValue = Float((player?.duration)!)
+        timeSlider.maximumValue = Float((player!.duration))
         
     }
     

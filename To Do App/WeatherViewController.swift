@@ -45,6 +45,8 @@ class WeatherViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        if Reachability.isConnectedToNetwork() == true {
+        
         authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
             
@@ -55,7 +57,9 @@ class WeatherViewController: UIViewController {
             if let properURL: NSURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(convertedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5") {
                 
                 let task = NSURLSession.sharedSession().dataTaskWithURL(properURL) { (data, response, error) in
+                    
                     if let urlContent = data {
+                        
                         do {
                             self.jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                             
@@ -69,6 +73,7 @@ class WeatherViewController: UIViewController {
                                 else {
                                     return
                             }
+                            
                             self.setWeatherDescription = getWeatherDescriptionDescription
                             
                             if let getWindData = self.jsonResults["wind"] as? [String: AnyObject]{
@@ -104,11 +109,12 @@ class WeatherViewController: UIViewController {
                                     self.setHumidity = String(getHumidity)
                                 }
                             }
+                            
                         } catch {
                             
                             dispatch_async(dispatch_get_main_queue()) {
                                 
-                                 self.showAlert("There's no data for such City", message: "Don't put any special signs when typing city name")
+                                 self.showAlert("There were some problems with accessing data", message: "Try again in few seconds")
                                 
                             }
                         }
@@ -153,6 +159,12 @@ class WeatherViewController: UIViewController {
             }))
             alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+        } else {
+        
+            showAlert("You don't have internet connection", message: "Check Your settings")
+            
         }
     }
 

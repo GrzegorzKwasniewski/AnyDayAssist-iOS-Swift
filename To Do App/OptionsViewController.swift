@@ -17,7 +17,7 @@ class OptionsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setObject("bg_blue.jpg", forKey: "BackgroundColor")
         
-        showAlert("Blue background", message: "You will see change on next screen")
+        showAlert("Blue background", message: "You will see change on the next screen")
 
     }
     
@@ -25,7 +25,7 @@ class OptionsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setObject("bg_red.jpg", forKey: "BackgroundColor")
         
-        showAlert("Red background", message: "You will see change on next screen")
+        showAlert("Red background", message: "You will see change on the next screen")
 
     }
     
@@ -33,14 +33,12 @@ class OptionsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setObject("bg_green.jpg", forKey: "BackgroundColor")
         
-        showAlert("Green background", message: "You will see change on next screen")
+        showAlert("Green background", message: "You will see change on the next screen")
 
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(animated: Bool) {
+        
         setUI()
         
     }
