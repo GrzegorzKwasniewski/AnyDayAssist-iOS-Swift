@@ -2738,7 +2738,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityName" destination="LC2-AP-T5x" id="kFL-Om-D1N"/>
                         <outlet property="descriptionOfWeather" destination="9Dz-Pb-zpA" id="x9f-tG-Rao"/>

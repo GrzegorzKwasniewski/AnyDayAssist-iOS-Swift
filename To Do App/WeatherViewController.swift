@@ -45,14 +45,15 @@ class WeatherViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        authorizationStatus = CLLocationManager.authorizationStatus()
+        
         if Reachability.isConnectedToNetwork() == true {
         
-        authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
             
             self.showLoadingHUD()
             
-            let convertedCityName = removeSpecialCharsFromString(userCityName)
+            let convertedCityName = StringFormatting.removeSpecialCharsFromString(userCityName)
             
             if let properURL: NSURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(convertedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5") {
                 
@@ -167,13 +168,11 @@ class WeatherViewController: UIViewController {
             
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewWillAppear(animated: Bool) {
+        
         setUI()
+        
     }
     
     func returnToMainScreen() {
@@ -262,25 +261,5 @@ class WeatherViewController: UIViewController {
     
     private func hideLoadingHUD() {
         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-    }
-    
-    func removeSpecialCharsFromString (text: String) -> String {
-        
-        let acceptableChars : Set<Character> =
-            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ".characters)
-        
-        let stringWithRemovedSpaces = text.stringByReplacingOccurrencesOfString(" ", withString: "-")
-        
-        let stringWithoutLocalizedSigns = stringWithRemovedSpaces.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
-        
-        let stringWithoutSpecialSigns = String(stringWithoutLocalizedSigns.characters.filter {acceptableChars.contains($0)})
-        
-        if !(stringWithoutSpecialSigns.isEmpty) {
-            return stringWithoutSpecialSigns
-        }
-        
-        // when returned sign is #, app will tell return "There's no data for such City" alert
-        return "#"
-        
     }
 }
