@@ -45,7 +45,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
             
         }
         
-        //removeEmptyValueAtStart()
         globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
         tableView.reloadData()
         setMessageLabel()
@@ -243,9 +242,9 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         
     }
     
-    func removeEmptyValueAtStart() {
-        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
-            placesToVisit.removeAtIndex(0)
-        }
-    }
+//    func removeEmptyValueAtStart() {
+//        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
+//            placesToVisit.removeAtIndex(0)
+//        }
+//    }
 }

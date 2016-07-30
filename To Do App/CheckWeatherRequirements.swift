@@ -12,7 +12,7 @@ import CoreLocation
 var userCityName = String()
 var userCityZipCode = String()
 
-class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
+class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIAlertMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -34,13 +34,14 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
                     
                 } else {
                     
-                    showAlert("City name is to long", message: "Allowed lenght is 15 characters with spaces")
+                    
+                    showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
                     
                 }
                 
             } else {
                 
-                showAlert("Hmmm...", message: "Without city name it will be hard to check weather")
+                showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
                 
             }
         }
@@ -96,7 +97,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
             
             if error != nil {
                 
-                self.showAlert("Something went wrong", message: "Can't get weather data")
+                self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
                 return
                 
             }
@@ -192,14 +193,4 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate {
         
         view.addSubview(navigationBar)
     }
-
-    
-    func showAlert(title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-    }
-
 }

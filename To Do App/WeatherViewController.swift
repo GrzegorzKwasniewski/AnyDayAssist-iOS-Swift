@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MBProgressHUD
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, UIAlertMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -51,17 +51,18 @@ class WeatherViewController: UIViewController {
         
         if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
             
-            self.showLoadingHUD()
+            showLoadingHUD()
             
             let convertedCityName = StringFormatting.removeSpecialCharsFromString(userCityName)
             
-            if let properURL: NSURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(convertedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5") {
+            let properURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(convertedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5")
                 
-                let task = NSURLSession.sharedSession().dataTaskWithURL(properURL) { (data, response, error) in
+                let task = NSURLSession.sharedSession().dataTaskWithURL(properURL!) { (data, response, error) in
                     
                     if let urlContent = data {
                         
                         do {
+                            
                             self.jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                             
                             if let getCityName = self.jsonResults["name"] as? String {
@@ -69,13 +70,14 @@ class WeatherViewController: UIViewController {
                             }
                             
                             guard let getWeather = self.jsonResults["weather"] as? NSArray,
+                                // this is [KeyType: ValueType] annotation
                                 let getWeatherDetalis = getWeather[0] as? [String: AnyObject],
-                                let getWeatherDescriptionDescription = getWeatherDetalis["description"] as? String
+                                let getWeatherDescription = getWeatherDetalis["description"] as? String
                                 else {
                                     return
                             }
                             
-                            self.setWeatherDescription = getWeatherDescriptionDescription
+                            self.setWeatherDescription = getWeatherDescription
                             
                             if let getWindData = self.jsonResults["wind"] as? [String: AnyObject]{
                                 if let getWindSpeed = getWindData["speed"] as? Double {
@@ -115,8 +117,7 @@ class WeatherViewController: UIViewController {
                             
                             dispatch_async(dispatch_get_main_queue()) {
                                 
-                                 self.showAlert("There were some problems with accessing data", message: "Try again in few seconds")
-                                
+                                 self.showAlert(withTitle: "There were some problems with accessing data", withMessage: "Try again in few seconds")
                             }
                         }
                     }
@@ -140,31 +141,27 @@ class WeatherViewController: UIViewController {
                 
                 task.resume()
                 
-            } else {
-                
-                self.hideLoadingHUD()
-                
-                let alert = UIAlertController(title: "There's no data for such City", message: "Don't put any special signs when typing city name", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
+//            } else {
+//                
+//                self.hideLoadingHUD()
+//                
+//                let alert = UIAlertController(title: "There's no data for such City", message: "Don't put any special signs when typing city name", preferredStyle: .Alert)
+//                alert.addAction(UIAlertAction(title: "Close", style: .Default, handler: nil))
+//                self.presentViewController(alert, animated: true, completion: nil)
+//            }
             
             
         } else {
             
-            self.hideLoadingHUD()
+            hideLoadingHUD()
             
-            let alert = UIAlertController(title: "Can't get weather data", message: "Application don't have proper permissions", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Change settings", style: .Default, handler: { (uialert) in
-                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-            }))
-            alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
+
             }
             
         } else {
-        
-            showAlert("You don't have internet connection", message: "Check Your settings")
+            
+            showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")
             
         }
     }
@@ -244,22 +241,6 @@ class WeatherViewController: UIViewController {
         navigationBar.items = [navigationItem]
         
         view.addSubview(navigationBar)
-    }
-    
-    func showAlert(title: String, message: String) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-    }
-    
-    private func showLoadingHUD() {
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "Loading..."
-    }
-    
-    private func hideLoadingHUD() {
-        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
 }

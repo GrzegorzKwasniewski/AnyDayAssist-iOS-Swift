@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -102,7 +102,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 
                 if error != nil {
                     
-                    self.showAlert("Something went wrong", message: "Maybe Your internet connection is down?")
+                    self.showAlert(withTitle: "Something went wrong", withMessage: "Maybe Your internet connection is down?")
+                    
                     return
                     
                 }
@@ -222,14 +223,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let longPress = UILongPressGestureRecognizer(target: self, action:#selector(MapViewController.longPressGesture(_:)))
         longPress.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPress)
-        
-    }
-    
-    func showAlert(title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "CLOSE", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
         
     }
 }

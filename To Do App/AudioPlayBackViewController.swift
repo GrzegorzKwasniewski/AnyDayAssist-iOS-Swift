@@ -70,7 +70,9 @@ class AudioPlayBackViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         playSound()
+        
     }
     
     override func viewWillAppear(animated: Bool) {

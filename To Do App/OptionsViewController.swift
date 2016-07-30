@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsViewController: UIViewController {
+class OptionsViewController: UIViewController, UIAlertMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -17,7 +17,7 @@ class OptionsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setObject("bg_blue.jpg", forKey: "BackgroundColor")
         
-        showAlert("Blue background", message: "You will see change on the next screen")
+        showAlert(withTitle: "Blue background", withMessage: "You will see change on the next screen")
 
     }
     
@@ -25,7 +25,7 @@ class OptionsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setObject("bg_red.jpg", forKey: "BackgroundColor")
         
-        showAlert("Red background", message: "You will see change on the next screen")
+        showAlert(withTitle: "Red background", withMessage: "You will see change on the next screen")
 
     }
     
@@ -33,7 +33,7 @@ class OptionsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setObject("bg_green.jpg", forKey: "BackgroundColor")
         
-        showAlert("Green background", message: "You will see change on the next screen")
+        showAlert(withTitle: "Green background", withMessage: "You will see change on the next screen")
 
     }
     
@@ -75,7 +75,7 @@ class OptionsViewController: UIViewController {
         
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
-        self.view.backgroundColor = .lightGrayColor()
+        view.backgroundColor = .lightGrayColor()
         
     }
     
@@ -115,13 +115,4 @@ class OptionsViewController: UIViewController {
         
         view.addSubview(navigationBar)
     }
-
-    func showAlert(title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-    }
-
 }

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-extension AudioPlayBackViewController: AVAudioPlayerDelegate {
+extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     
     struct Alerts {
         
@@ -29,7 +29,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
             
         } catch {
             
-            showAlert(Alerts.AudioFileError, message: String(error))
+            showAlert(withTitle: Alerts.AudioFileError, withMessage: String(error))
             
         }
     }
@@ -86,14 +86,6 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate {
             pauseButton.enabled = false
             
         }
-    }
-    
-    func showAlert(title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
     }
 }
 

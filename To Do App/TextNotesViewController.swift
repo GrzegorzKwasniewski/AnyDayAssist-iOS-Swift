@@ -13,7 +13,7 @@ var toDoNotes = [NSManagedObject]()
 let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
-class TextNotesViewController: UIViewController, UITableViewDelegate {
+class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -133,85 +133,9 @@ class TextNotesViewController: UIViewController, UITableViewDelegate {
         horizontalClass = self.traitCollection.horizontalSizeClass;
         verticalCass = self.traitCollection.verticalSizeClass;
         
-        setTableView()
-        setNavigationBar()
+        self.setTableView(forTableView: tableView)
+        self.setNavigationBar()
         
-    }
-    
-    func setTableView() {
-        
-        var topMargin: CGFloat!
-        
-        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        
-        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
-            imageView.image = UIImage(named: backgroundColor as! String)
-            
-        } else {
-            
-            imageView.image = UIImage(named: "bg_blue.jpg")
-            
-        }
-
-        imageView.contentMode = .ScaleAspectFill
-        
-        if horizontalClass == .Regular && verticalCass == .Regular {
-            
-            topMargin = 100
-            
-        } else {
-            
-            topMargin = 64
-            
-        }
-        
-        tableView.contentInset = UIEdgeInsetsMake(topMargin, 0, 0, 0);
-        tableView.backgroundView = imageView
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.backgroundColor = .lightGrayColor()
-        
-    }
-    
-    func setNavigationBar() {
-        
-        var fontSize: CGFloat!
-        var yPosition: CGFloat!
-        
-        var navigationBar = UINavigationBar()
-        let navigationItem = UINavigationItem()
-        
-        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
-        let rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(promptForNote))
-        
-        if horizontalClass == .Regular && verticalCass == .Regular {
-            
-            fontSize = 30
-            yPosition = 40
-            
-        } else {
-            
-            fontSize = 17
-            yPosition = 20
-            
-        }
-        
-        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
-        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.translucent = true
-        navigationBar.backgroundColor = UIColor.clearColor()
-        
-        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        rightItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        leftItem.tintColor = UIColor.whiteColor()
-        rightItem.tintColor = UIColor.whiteColor()
-        
-        navigationItem.leftBarButtonItem = leftItem
-        navigationItem.rightBarButtonItem = rightItem
-        navigationBar.items = [navigationItem]
-        
-        view.addSubview(navigationBar)
     }
     
     func setMessageLabel() {

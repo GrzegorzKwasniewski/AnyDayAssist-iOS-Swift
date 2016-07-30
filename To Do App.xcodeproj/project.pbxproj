@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		61AD2D66AE2F80EC4C337D4F /* Pods_To_Do_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */; };
 		711843A11D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */; };
+		7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */; };
+		7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */; };
 		716B39051D3A6A12002D8ABE /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B39041D3A6A12002D8ABE /* Cell.swift */; };
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
 		718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D871E1CEA50C4001E7F17 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_Do_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionAudioPlayBackViewController.swift; sourceTree = "<group>"; };
+		7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertMaker.swift; sourceTree = "<group>"; };
+		7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMaker.swift; sourceTree = "<group>"; };
 		716B39041D3A6A12002D8ABE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		718D87151CEA50C4001E7F17 /* To Do App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7163D02D1D4CD735005FEFB6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */,
+				7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		718D870C1CEA50C4001E7F17 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +118,7 @@
 		718D87171CEA50C4001E7F17 /* To Do App */ = {
 			isa = PBXGroup;
 			children = (
+				7163D02D1D4CD735005FEFB6 /* Protocols */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
@@ -282,6 +296,7 @@
 				71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */,
 				71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */,
 				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
+				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
@@ -292,6 +307,7 @@
 				711843A11D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift in Sources */,
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
 				71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */,
+				7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */,
 				71FF6D7D1D2EF6BA0057B22E /* WeatherViewController.swift in Sources */,
 				71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */,
 				71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */,
