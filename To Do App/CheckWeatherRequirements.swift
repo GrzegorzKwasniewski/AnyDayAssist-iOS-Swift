@@ -31,7 +31,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
                     
                 } else {
                     
-                    
                     showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
                     
                 }

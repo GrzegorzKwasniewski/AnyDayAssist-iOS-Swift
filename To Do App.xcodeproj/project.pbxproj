@@ -25,9 +25,6 @@
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */; };
-		71E810AF1D3FE06300B305B8 /* bg_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810AE1D3FE06300B305B8 /* bg_blue.jpg */; };
-		71E810B21D44DDE400B305B8 /* bg_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810B01D44DDE400B305B8 /* bg_red.jpg */; };
-		71E810B31D44DDE400B305B8 /* bg_green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71E810B11D44DDE400B305B8 /* bg_green.jpg */; };
 		71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810B41D44E0C700B305B8 /* OptionsViewController.swift */; };
 		71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */; };
 		71FC57FB1D47D43D00AFB948 /* StringFormatitng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FC57FA1D47D43D00AFB948 /* StringFormatitng.swift */; };
@@ -59,9 +56,6 @@
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckWeatherRequirements.swift; sourceTree = "<group>"; };
-		71E810AE1D3FE06300B305B8 /* bg_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_blue.jpg; sourceTree = "<group>"; };
-		71E810B01D44DDE400B305B8 /* bg_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_red.jpg; sourceTree = "<group>"; };
-		71E810B11D44DDE400B305B8 /* bg_green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_green.jpg; sourceTree = "<group>"; };
 		71E810B41D44E0C700B305B8 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		71FC57FA1D47D43D00AFB948 /* StringFormatitng.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFormatitng.swift; sourceTree = "<group>"; };
@@ -119,10 +113,18 @@
 			isa = PBXGroup;
 			children = (
 				7163D02D1D4CD735005FEFB6 /* Protocols */,
-				718D87261CEA50C4001E7F17 /* Info.plist */,
-				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
-				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
-				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
+				71DE25D21D4D1A400051EB47 /* Controller */,
+				71DE25D31D4D1A9D0051EB47 /* View */,
+				71DE25D41D4D1AC70051EB47 /* Model */,
+				71DE25D61D4D1B1B0051EB47 /* Helper */,
+				71DE25D51D4D1AF30051EB47 /* Resources */,
+			);
+			path = "To Do App";
+			sourceTree = "<group>";
+		};
+		71DE25D21D4D1A400051EB47 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				71FF6D7A1D2EB4990057B22E /* MainViewController.swift */,
 				71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */,
 				71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */,
@@ -134,19 +136,48 @@
 				71944F341D13256100206B4F /* AudioPlayBackViewController.swift */,
 				71E810B41D44E0C700B305B8 /* OptionsViewController.swift */,
 				711843A01D24568800E3CBB2 /* ExtensionAudioPlayBackViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		71DE25D31D4D1A9D0051EB47 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 				71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */,
-				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 				716B39041D3A6A12002D8ABE /* Cell.swift */,
-				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
-				71FC57FA1D47D43D00AFB948 /* StringFormatitng.swift */,
 				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
-				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
-				71E810AE1D3FE06300B305B8 /* bg_blue.jpg */,
-				71E810B01D44DDE400B305B8 /* bg_red.jpg */,
-				71E810B11D44DDE400B305B8 /* bg_green.jpg */,
 			);
-			path = "To Do App";
+			name = View;
+			sourceTree = "<group>";
+		};
+		71DE25D41D4D1AC70051EB47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				718D87261CEA50C4001E7F17 /* Info.plist */,
+				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
+				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
+				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		71DE25D51D4D1AF30051EB47 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		71DE25D61D4D1B1B0051EB47 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				71FC57FA1D47D43D00AFB948 /* StringFormatitng.swift */,
+				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		A7538B6CC1635646DB061FA0 /* Frameworks */ = {
@@ -228,11 +259,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E810B31D44DDE400B305B8 /* bg_green.jpg in Resources */,
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
-				71E810AF1D3FE06300B305B8 /* bg_blue.jpg in Resources */,
-				71E810B21D44DDE400B305B8 /* bg_red.jpg in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
