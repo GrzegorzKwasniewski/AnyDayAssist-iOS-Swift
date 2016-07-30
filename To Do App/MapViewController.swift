@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMaker {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -154,68 +154,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
         
     }
     
-    func returnToPlacesView() {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
     func setUI() {
         
-        horizontalClass = self.traitCollection.horizontalSizeClass;
-        verticalCass = self.traitCollection.verticalSizeClass;
-        
         setView()
-        setNavigationBar()
+        setNavigationBar(forClassWithName: String(MapViewController.self))
    
-    }
-    
-    func setView() {
-        
-        let backgroundImage = UIImage(named: "bg.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        imageView.contentMode = .ScaleAspectFill
-        view.addSubview(imageView)
-        view.sendSubviewToBack(imageView)
-        
-    }
-    
-    func setNavigationBar() {
-        
-        var fontSize: CGFloat!
-        var yPosition: CGFloat!
-        
-        var navigationBar = UINavigationBar()
-        let navigationItem = UINavigationItem()
-        
-        let leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(returnToPlacesView))
-        
-        if horizontalClass == .Regular && verticalCass == .Regular {
-            
-            fontSize = 30
-            yPosition = 40
-            
-        } else {
-            
-            fontSize = 17
-            yPosition = 20
-            
-        }
-        
-        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
-        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.translucent = true
-        navigationBar.backgroundColor = UIColor.clearColor()
-        
-        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        leftItem.tintColor = UIColor.blueColor()
-        
-        navigationItem.leftBarButtonItem = leftItem
-        navigationBar.items = [navigationItem]
-        
-        view.addSubview(navigationBar)
-        
     }
     
     func longPressHandler() {

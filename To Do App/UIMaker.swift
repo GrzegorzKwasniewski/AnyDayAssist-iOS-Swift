@@ -57,7 +57,7 @@ extension UIMaker where Self: UIViewController {
         let navigationItem = UINavigationItem()
         
         var leftItem: UIBarButtonItem!
-        var rightItem: UIBarButtonItem!
+        var rightItem: UIBarButtonItem?
         
         switch name {
             
@@ -69,12 +69,17 @@ extension UIMaker where Self: UIViewController {
         case "PlacesViewController":
             
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
-            rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(UIViewController.addNewPlaceToSee))
+            rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(UIViewController.addNewPlaceToSee))
             
-        default:
+        case "AudioNotesViewController":
             
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
             rightItem = UIBarButtonItem(title: "Add Record >", style: .Plain, target: nil, action: #selector(UIViewController.goToAudioRecordView))
+            
+        default:
+            
+            leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+
         }
         
         
@@ -97,15 +102,33 @@ extension UIMaker where Self: UIViewController {
         navigationBar.backgroundColor = UIColor.clearColor()
         
         leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        rightItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
+        rightItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
         leftItem.tintColor = UIColor.whiteColor()
-        rightItem.tintColor = UIColor.whiteColor()
+        rightItem?.tintColor = UIColor.whiteColor()
         
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationBar.items = [navigationItem]
         
         view.addSubview(navigationBar)
+    }
+    
+    func setView() {
+        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        
+        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
+            
+            imageView.image = UIImage(named: backgroundColor as! String)
+            
+        } else {
+            
+            imageView.image = UIImage(named: "bg_blue.jpg")
+            
+        }
+        
+        view.addSubview(imageView)
+        view.sendSubviewToBack(imageView)
     }
     
     func setTableView(forTableView tableView: UITableView) {

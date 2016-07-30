@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsViewController: UIViewController, UIAlertMaker {
+class OptionsViewController: UIViewController, UIAlertMaker, UIMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -51,68 +51,8 @@ class OptionsViewController: UIViewController, UIAlertMaker {
     
     func setUI() {
         
-        horizontalClass = self.traitCollection.horizontalSizeClass;
-        verticalCass = self.traitCollection.verticalSizeClass;
-        
         setView()
-        setNavigationBar()
+        setNavigationBar(forClassWithName: String(OptionsViewController.self))
         
-    }
-    
-    func setView() {
-    
-        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        
-        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
-            imageView.image = UIImage(named: backgroundColor as! String)
-            
-        } else {
-            
-            imageView.image = UIImage(named: "bg_blue.jpg")
-            
-        }
-        
-        view.addSubview(imageView)
-        view.sendSubviewToBack(imageView)
-        view.backgroundColor = .lightGrayColor()
-        
-    }
-    
-    func setNavigationBar() {
-        
-        var fontSize: CGFloat!
-        var yPosition: CGFloat!
-        
-        var navigationBar = UINavigationBar()
-        let navigationItem = UINavigationItem()
-        
-        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
-        
-        if horizontalClass == .Regular && verticalCass == .Regular {
-            
-            fontSize = 30
-            yPosition = 40
-            
-        } else {
-            
-            fontSize = 17
-            yPosition = 20
-            
-        }
-        
-        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
-        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.translucent = true
-        navigationBar.backgroundColor = UIColor.clearColor()
-        
-        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        leftItem.tintColor = UIColor.whiteColor()
-        
-        navigationItem.leftBarButtonItem = leftItem
-        navigationBar.items = [navigationItem]
-        
-        view.addSubview(navigationBar)
     }
 }
