@@ -12,7 +12,7 @@ import CoreData
 var audioURL: [NSManagedObject] = [NSManagedObject]()
 var activeAudioNote: Int?
 
-class AudioNotesViewController: UIViewController, UITableViewDelegate {
+class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -29,6 +29,8 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
+        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+
         
     }
     
@@ -43,7 +45,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate {
         
         globalCoreDataFunctions.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
         tableView.reloadData()
-        setMessageLabel()
+        setMessageLabel(arrayToCount: audioURL, messageLabel: messageLabel)
         
     }
 

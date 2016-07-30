@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol UIMaker {}
 
@@ -92,6 +93,25 @@ extension UIMaker where Self: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .lightGrayColor()
         
+    }
+    
+    func setMessageLabel(arrayToCount array: [NSManagedObject], messageLabel label: UILabel) {
+        
+        label.font = UIFont(name: "Helvetica Neue", size: 20)
+        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
+        
+        if array.count == 0 {
+            
+            label.text = "There's nothing here..."
+            
+        } else {
+        
+            label.text = ""
+
+        }
+        
+        view.addSubview(label)
     }
 
 }

@@ -12,7 +12,7 @@ import CoreData
 var placesToVisit = [NSManagedObject]()
 var activPlace = -1
 
-class PlacesViewController: UIViewController, UITableViewDelegate {
+class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     var horizontalClass: UIUserInterfaceSizeClass!
     var verticalCass: UIUserInterfaceSizeClass!
@@ -29,7 +29,8 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
     
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 70
-                
+        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +48,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate {
         
         globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
         tableView.reloadData()
-        setMessageLabel()
+        setMessageLabel(arrayToCount: placesToVisit, messageLabel: messageLabel)
         
     }
 

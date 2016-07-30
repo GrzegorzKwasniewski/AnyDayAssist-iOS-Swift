@@ -15,9 +15,6 @@ let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
 class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
-    var horizontalClass: UIUserInterfaceSizeClass!
-    var verticalCass: UIUserInterfaceSizeClass!
-    
     var uiWasSet = false
     
     var messageLabel: UILabel = UILabel()
@@ -27,14 +24,12 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 70
         
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
-            name: "popoverViewWasDismissed",
-            object: nil)
+        setObserverForChange()
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,7 +44,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
         
         globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
-        setMessageLabel()
+        setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
         
     }
     
@@ -129,36 +124,28 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     }
     
     func setUI() {
-        
-        horizontalClass = self.traitCollection.horizontalSizeClass;
-        verticalCass = self.traitCollection.verticalSizeClass;
-        
+
         self.setTableView(forTableView: tableView)
         self.setNavigationBar()
         
     }
     
-    func setMessageLabel() {
+    func setObserverForChange() {
+    
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
+            name: "popoverViewWasDismissed",
+            object: nil)
         
-        if toDoNotes.count == 0 {
-            
-            messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
-            messageLabel.textColor = UIColor.whiteColor()
-            messageLabel.text = "There's nothing here..."
-            messageLabel.textAlignment = .Center
-            
-            view.addSubview(messageLabel)
-        }
     }
+
     
     func popoverViewWasDismissed(notification: NSNotification) {
 
         globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
-        
-        if toDoNotes.count > 0 {
-            messageLabel.text = ""
-        }
+        setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
+
     }
 }
