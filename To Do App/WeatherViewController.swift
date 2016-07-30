@@ -172,7 +172,7 @@ class WeatherViewController: UIViewController, UIAlertMaker {
         
     }
     
-    func returnToMainScreen() {
+    override func returnToMainScreen() {
         
         self.dismissViewControllerAnimated(true, completion: nil)
         

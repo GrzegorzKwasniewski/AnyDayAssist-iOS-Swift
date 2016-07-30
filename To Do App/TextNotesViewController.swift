@@ -106,27 +106,11 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
     }
-        
-    func promptForNote() {
-        
-        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
-        self.addChildViewController(popUpView)
-        popUpView.view.frame = self.view.frame
-        self.view.addSubview(popUpView.view)
-        popUpView.didMoveToParentViewController(self)
-        
-    }
-    
-    func returnToMainScreen() {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
     
     func setUI() {
 
-        self.setTableView(forTableView: tableView)
-        self.setNavigationBar()
+        setTableView(forTableView: tableView)
+        setNavigationBar(forClassWithName: String(TextNotesViewController.self))
         
     }
     

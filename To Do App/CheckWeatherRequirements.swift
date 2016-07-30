@@ -122,7 +122,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         // error handle
     }
     
-    func returnToMainScreen() {
+    override func returnToMainScreen() {
         
         self.dismissViewControllerAnimated(true, completion: nil)
         

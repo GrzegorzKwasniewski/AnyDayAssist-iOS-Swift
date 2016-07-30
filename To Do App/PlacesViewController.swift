@@ -14,9 +14,6 @@ var activPlace = -1
 
 class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
-    var horizontalClass: UIUserInterfaceSizeClass!
-    var verticalCass: UIUserInterfaceSizeClass!
-    
     var uiWasSet = false
     var messageLabelWasSet = false
     
@@ -116,136 +113,10 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
         }
     }
     
-    func returnToMainScreen() {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
-    func addNewPlaceToSee() {
-        
-        self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
-        
-    }
-    
     func setUI() {
-        
-        horizontalClass = self.traitCollection.horizontalSizeClass;
-        verticalCass = self.traitCollection.verticalSizeClass;
-        
-        setTableView()
-        setNavigationBar()
+
+        setTableView(forTableView: tableView)
+        setNavigationBar(forClassWithName: String(PlacesViewController.self))
 
     }
-    
-    func setTableView() {
-        
-        var topMargin: CGFloat!
-        
-        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        
-        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
-            imageView.image = UIImage(named: backgroundColor as! String)
-            
-        } else {
-            
-            imageView.image = UIImage(named: "bg_blue.jpg")
-            
-        }
-        
-        imageView.contentMode = .ScaleAspectFill
-        
-        if horizontalClass == .Regular && verticalCass == .Regular {
-            
-            topMargin = 100
-            
-        } else {
-            
-            topMargin = 64
-            
-        }
-        
-        tableView.contentInset = UIEdgeInsetsMake(topMargin, 0, 0, 0);
-        tableView.backgroundView = imageView
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.backgroundColor = .lightGrayColor()
-
-    }
-    
-    func setNavigationBar() {
-        
-        var fontSize: CGFloat!
-        var yPosition: CGFloat!
-        
-        var navigationBar = UINavigationBar()
-        let navigationItem = UINavigationItem()
-        
-        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(returnToMainScreen))
-        let rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(addNewPlaceToSee))
-        
-        if horizontalClass == .Regular && verticalCass == .Regular {
-            
-            fontSize = 30
-            yPosition = 40
-            
-        } else {
-            
-            fontSize = 17
-            yPosition = 20
-            
-        }
-        
-        navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
-        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.translucent = true
-        navigationBar.backgroundColor = UIColor.clearColor()
-        
-        leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        rightItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
-        leftItem.tintColor = UIColor.whiteColor()
-        rightItem.tintColor = UIColor.whiteColor()
-        
-        navigationItem.leftBarButtonItem = leftItem
-        navigationItem.rightBarButtonItem = rightItem
-        navigationBar.items = [navigationItem]
-        
-        view.addSubview(navigationBar)
-        
-    }
-    
-    func setMessageLabel() {
-        
-        if !messageLabelWasSet {
-            
-            messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.font = UIFont(name: "Helvetica Neue", size: 20)
-            messageLabel.textColor = UIColor.whiteColor()
-            
-            messageLabelWasSet = true
-            
-        }
-        
-        if placesToVisit.count > 0 {
-                
-            messageLabel.text = ""
-                
-        } else {
-                
-            messageLabel.text = "There's nothing here..."
-                
-        }
-            
-        messageLabel.textAlignment = .Center
-            
-        view.addSubview(messageLabel)
-        
-    }
-    
-//    func removeEmptyValueAtStart() {
-//        if placesToVisit.count == 1 && placesToVisit[0].valueForKey("latitude") == nil {
-//            placesToVisit.removeAtIndex(0)
-//        }
-//    }
 }

@@ -9,11 +9,43 @@
 import UIKit
 import CoreData
 
+extension UIViewController {
+
+    func returnToMainScreen() {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func promptForNote() {
+        
+        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
+        self.addChildViewController(popUpView)
+        popUpView.view.frame = self.view.frame
+        self.view.addSubview(popUpView.view)
+        popUpView.didMoveToParentViewController(self)
+        
+    }
+    
+    func addNewPlaceToSee() {
+        
+        self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
+        
+    }
+    
+    func goToAudioRecordView() {
+        
+        self.performSegueWithIdentifier("goToAudioRecordView", sender: self)
+        
+    }
+
+}
+
 protocol UIMaker {}
 
 extension UIMaker where Self: UIViewController {
 
-    func setNavigationBar() {
+    func setNavigationBar(forClassWithName name: String) {
         
         let horizontalClass = self.traitCollection.horizontalSizeClass;
         let verticalCass = self.traitCollection.verticalSizeClass;
@@ -24,8 +56,27 @@ extension UIMaker where Self: UIViewController {
         var navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem()
         
-        let leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(TextNotesViewController.returnToMainScreen))
-        let rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(TextNotesViewController.promptForNote))
+        var leftItem: UIBarButtonItem!
+        var rightItem: UIBarButtonItem!
+        
+        switch name {
+            
+        case "TextNotesViewController":
+            
+            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(UIViewController.promptForNote))
+            
+        case "PlacesViewController":
+            
+            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(UIViewController.addNewPlaceToSee))
+            
+        default:
+            
+            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            rightItem = UIBarButtonItem(title: "Add Record >", style: .Plain, target: nil, action: #selector(UIViewController.goToAudioRecordView))
+        }
+        
         
         if horizontalClass == .Regular && verticalCass == .Regular {
             
