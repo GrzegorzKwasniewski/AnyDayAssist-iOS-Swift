@@ -9,41 +9,38 @@
 import UIKit
 import CoreData
 
-extension UIViewController {
-
-    func returnToMainScreen() {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
-    func promptForNote() {
-        
-        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
-        self.addChildViewController(popUpView)
-        popUpView.view.frame = self.view.frame
-        self.view.addSubview(popUpView.view)
-        popUpView.didMoveToParentViewController(self)
-        
-    }
-    
-    func addNewPlaceToSee() {
-        
-        self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
-        
-    }
-    
-    func goToAudioRecordView() {
-        
-        self.performSegueWithIdentifier("goToAudioRecordView", sender: self)
-        
-    }
-
-}
-
 protocol UIMaker {}
 
 extension UIMaker where Self: UIViewController {
+    
+    func setBackgroundColor(useUIImageView uiImageView: UIImageView) {
+        
+        if let checkForBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
+            
+            uiImageView.image = UIImage(named: checkForBackgroundColor as! String)
+            
+        } else {
+            
+            uiImageView.image = UIImage(named: "bg_blue.jpg")
+            
+        }
+        
+        view.addSubview(uiImageView)
+        view.sendSubviewToBack(uiImageView)
+        
+    }
+    
+    func setNewBackgroundColor(useUIImageView uiImageView: UIImageView) {
+        
+        let newBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor")
+        
+        if newBackgroundColor != nil {
+            
+            uiImageView.image = UIImage(named: newBackgroundColor as! String)
+            
+        }
+        
+    }
 
     func setNavigationBar(forClassWithName name: String) {
         

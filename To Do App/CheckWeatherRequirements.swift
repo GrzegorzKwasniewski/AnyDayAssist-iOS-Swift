@@ -14,33 +14,12 @@ var userCityZipCode = String()
 
 class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
     
-    var uiWasSet = false
-    
     @IBOutlet var cityNameForWeather: UITextField!
     
     @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
         
-        if let city = cityNameForWeather.text {
-            
-            if !city.isEmpty {
-                
-                if city.characters.count <= 15 {
-                    
-                    userCityName = city
-                    self.performSegueWithIdentifier("showWeather", sender: nil)
-                    
-                } else {
-                    
-                    showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
-                    
-                }
-                
-            } else {
-                
-                showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
-                
-            }
-        }
+        validateCityNameFromUser()
+
     }
     
     
@@ -52,6 +31,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         
     }
     
+    var uiWasSet = false
     var locationManager:CLLocationManager!
     var authorizationStatus:CLAuthorizationStatus!
     var placemarks: AnyObject!
@@ -115,13 +95,41 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        // error handle
+
+        showAlert(withTitle: "Something went wrong", withMessage: "\(error)")
+        
     }
     
     func setUI() {
         
         setView()
         setNavigationBar(forClassWithName: String(CheckWeatherRequirements.self))
+        
+    }
+    
+    func validateCityNameFromUser() {
+    
+        if let city = cityNameForWeather.text {
+            
+            if !city.isEmpty {
+                
+                if city.characters.count <= 15 {
+                    
+                    userCityName = city
+                    self.performSegueWithIdentifier("showWeather", sender: nil)
+                    
+                } else {
+                    
+                    showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
+    
+                }
+                
+            } else {
+                
+                showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
+                
+            }
+        }
         
     }
 }

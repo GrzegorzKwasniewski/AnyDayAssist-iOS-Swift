@@ -43,12 +43,6 @@ class OptionsViewController: UIViewController, UIAlertMaker, UIMaker {
         
     }
     
-    override func returnToMainScreen() {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
     func setUI() {
         
         setView()

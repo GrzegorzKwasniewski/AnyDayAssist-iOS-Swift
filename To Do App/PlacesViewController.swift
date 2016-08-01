@@ -29,10 +29,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
         messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewWillAppear(animated: Bool) {
   

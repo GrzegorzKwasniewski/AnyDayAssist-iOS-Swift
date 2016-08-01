@@ -53,7 +53,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
             
             self.mapView.setRegion(region, animated: true)
             
-            // add annotation with data about our place to visit
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = placesToVisit[activPlace].valueForKey("title") as? String
@@ -68,6 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
     override func viewWillAppear(animated: Bool) {
         
             setUI()
+        
     }
     
     override func didReceiveMemoryWarning() {

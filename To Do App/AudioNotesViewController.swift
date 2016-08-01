@@ -28,7 +28,6 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
         tableView.estimatedRowHeight = 100
         messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
 
-        
     }
     
     override func viewWillAppear(animated: Bool) {

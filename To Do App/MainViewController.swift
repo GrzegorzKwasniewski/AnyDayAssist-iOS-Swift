@@ -8,53 +8,22 @@
 
 import UIKit
 
-var trueor = false
-
-
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIMaker {
     
     var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
+        imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+
+        setBackgroundColor(useUIImageView: imageView)
 
     }
     
     override func viewWillAppear(animated: Bool) {
         
-        setNewBackgroundColor()
+        setNewBackgroundColor(useUIImageView: imageView)
 
-    }
-    
-    func setUI() {
-        
-        imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        
-        if let checkForBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
-            imageView!.image = UIImage(named: checkForBackgroundColor as! String)
-
-        } else {
-            
-            imageView!.image = UIImage(named: "bg_blue.jpg")
-            
-        }
-        
-        view.addSubview(imageView!)
-        view.sendSubviewToBack(imageView!)
-    }
-    
-    func setNewBackgroundColor() {
-        
-        let newBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor")
-        
-        if newBackgroundColor != nil {
-            
-            imageView!.image = UIImage(named: newBackgroundColor as! String)
-
-        }
-        
     }
 }
