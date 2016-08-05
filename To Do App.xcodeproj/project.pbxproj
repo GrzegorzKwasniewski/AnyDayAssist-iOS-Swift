@@ -24,6 +24,8 @@
 		71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F321D13254200206B4F /* AudioRecorderViewController.swift */; };
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
+		71CD64CD1D5517F80019F501 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CC1D5517F80019F501 /* Constants.swift */; };
+		71CD64CF1D5518140019F501 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CE1D5518140019F501 /* WeatherData.swift */; };
 		71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */; };
 		71DE25DB1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */; };
 		71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */; };
@@ -57,6 +59,8 @@
 		71944F321D13254200206B4F /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewController.swift; sourceTree = "<group>"; };
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
+		71CD64CC1D5517F80019F501 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		71CD64CE1D5518140019F501 /* WeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewControllerExtension.swift; sourceTree = "<group>"; };
 		71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckWeatherRequirements.swift; sourceTree = "<group>"; };
@@ -116,8 +120,8 @@
 		718D87171CEA50C4001E7F17 /* To Do App */ = {
 			isa = PBXGroup;
 			children = (
-				71DE25D71D4FC5D00051EB47 /* Extensions */,
 				7163D02D1D4CD735005FEFB6 /* Protocols */,
+				71DE25D71D4FC5D00051EB47 /* Extensions */,
 				71DE25D21D4D1A400051EB47 /* Controller */,
 				71DE25D31D4D1A9D0051EB47 /* View */,
 				71DE25D41D4D1AC70051EB47 /* Model */,
@@ -159,10 +163,11 @@
 		71DE25D41D4D1AC70051EB47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				718D87261CEA50C4001E7F17 /* Info.plist */,
-				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
+				71CD64CE1D5518140019F501 /* WeatherData.swift */,
 				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
+				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
+				718D87261CEA50C4001E7F17 /* Info.plist */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 		71DE25D61D4D1B1B0051EB47 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				71CD64CC1D5517F80019F501 /* Constants.swift */,
 				71FC57FA1D47D43D00AFB948 /* StringFormatitng.swift */,
 				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
 			);
@@ -340,6 +346,7 @@
 				71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */,
 				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
 				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,
+				71CD64CF1D5518140019F501 /* WeatherData.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
@@ -357,6 +364,7 @@
 				71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */,
 				71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */,
 				71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */,
+				71CD64CD1D5517F80019F501 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
