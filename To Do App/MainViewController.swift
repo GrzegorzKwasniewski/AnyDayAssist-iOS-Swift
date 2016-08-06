@@ -12,8 +12,12 @@ class MainViewController: UIViewController, UIMaker {
     
     var imageView: UIImageView!
     
+    var weatherData = CurrentWeatherData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        weatherData.downloadWeatherData()
         
         imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
 

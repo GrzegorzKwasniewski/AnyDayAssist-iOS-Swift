@@ -25,7 +25,7 @@
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		71CD64CD1D5517F80019F501 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CC1D5517F80019F501 /* Constants.swift */; };
-		71CD64CF1D5518140019F501 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CE1D5518140019F501 /* WeatherData.swift */; };
+		71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */; };
 		71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */; };
 		71DE25DB1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */; };
 		71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */; };
@@ -60,7 +60,7 @@
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		71CD64CC1D5517F80019F501 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		71CD64CE1D5518140019F501 /* WeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewControllerExtension.swift; sourceTree = "<group>"; };
 		71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckWeatherRequirements.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		71DE25D41D4D1AC70051EB47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				71CD64CE1D5518140019F501 /* WeatherData.swift */,
+				71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */,
 				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
@@ -346,7 +346,7 @@
 				71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */,
 				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
 				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,
-				71CD64CF1D5518140019F501 /* WeatherData.swift in Sources */,
+				71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
