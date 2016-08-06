@@ -11,7 +11,7 @@ import Alamofire
 
 class CurrentWeatherData {
     
-    weak var delegete = CurrentWeatherDataDelegte?()
+    weak var delegete = CurrentWeatherDataDelegate?()
 
     var _cityName: String!
     var _weatherDescription: String!
@@ -114,8 +114,8 @@ class CurrentWeatherData {
                 print(main)
                 
                 guard let getWindData = JSONDictionary["wind"] as? Dictionary<String, AnyObject> ,
-                    let getWindSpeed = getWindData["speed"] as? Double
-                    else { return }
+                      let getWindSpeed = getWindData["speed"] as? Double
+                      else { return }
                 
                 self._windSpeed = String(getWindSpeed)
                 

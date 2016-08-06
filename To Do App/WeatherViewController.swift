@@ -10,22 +10,11 @@ import UIKit
 import CoreLocation
 import MBProgressHUD
 
-class WeatherViewController: UIViewController, CurrentWeatherDataDelegte , UIAlertMaker, UIMaker {
+class WeatherViewController: UIViewController, CurrentWeatherDataDelegate , UIAlertMaker, UIMaker {
     
     var currentWeatherData: CurrentWeatherData!
 
     var authorizationStatus:CLAuthorizationStatus!
-    var url: NSURL = NSURL()
-    var jsonResults = NSDictionary()
-    var city = String()
-    var setWeatherDescription = String()
-    var setHumidity = String()
-    var setPressure = String()
-    var setTemperatureAverage = String()
-    var setTemperatureMin = String()
-    var setTemperatureMax = String()
-    var setWindSpeed = String()
-
     
     @IBOutlet var weatherIcon: UIImageView!
     @IBOutlet var cityName: UILabel!
@@ -41,84 +30,26 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegte , UIAle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(cityName2)
+        
         currentWeatherData = CurrentWeatherData()
         currentWeatherData.delegete = self
-        
-        //currentWeatherData.downloadWeatherData()
         
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if Reachability.isConnectedToNetwork() == true {
         
-        if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
+            if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
             
-            showLoadingHUD()
+                showLoadingHUD()
             
-            currentWeatherData.downloadWeatherData()
+                currentWeatherData.downloadWeatherData()
 //            print(currentWeatherData.temperatureMax)
-//            
-//            self.hideLoadingHUD()
             
 //            let convertedCityName = StringFormatting.removeSpecialCharsFromString(userCityName)
 //            
 //            let properURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(convertedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5")
-//                
-//                let task = NSURLSession.sharedSession().dataTaskWithURL(properURL!) { (data, response, error) in
-//                    
-//                    if let urlContent = data {
-//                        
-//                        do {
-//                            
-//                            self.jsonResults = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-//                            
-//                            if let getCityName = self.jsonResults["name"] as? String {
-//                                self.city = getCityName
-//                            }
-//                            
-//                            guard let getWeather = self.jsonResults["weather"] as? NSArray,
-//                                let getWeatherDetalis = getWeather[0] as? [String: AnyObject],
-//                                let getWeatherDescription = getWeatherDetalis["main"] as? String
-//                                else {
-//                                    return
-//                            }
-//                            
-//                            self.setWeatherDescription = getWeatherDescription
-//                            
-//                            if let getWindData = self.jsonResults["wind"] as? [String: AnyObject]{
-//                                if let getWindSpeed = getWindData["speed"] as? Double {
-//                                    self.setWindSpeed = String(getWindSpeed)
-//                                }
-//                            }
-//                            
-//                            if let getMainInfo = self.jsonResults["main"] as? [String: AnyObject]{
-//                                
-//                                if let getTemperatureAverage = getMainInfo["temp"] as? Double {
-//                                    
-//                                    self.setTemperatureAverage = String(getTemperatureAverage)
-//                                }
-//                                
-//                                if let getTemperatureMin = getMainInfo["temp_min"] as? Double {
-//                                    
-//                                    self.setTemperatureMin = String(getTemperatureMin)
-//                                }
-//                                
-//                                if let getTemperatureMin = getMainInfo["temp_max"] as? Double {
-//                                    
-//                                    self.setTemperatureMax = String(getTemperatureMin)
-//                                }
-//                                
-//                                if let getPressure = getMainInfo["pressure"] as? Int {
-//                                    
-//                                    self.setPressure = String(getPressure)
-//                                }
-//                                
-//                                if let getHumidity = getMainInfo["humidity"] as? Int {
-//                                    
-//                                    self.setHumidity = String(getHumidity)
-//                                }
-//                            }
-//                            
-//                        } catch {
+
 //                            
 //                            dispatch_async(dispatch_get_main_queue()) {
 //                                

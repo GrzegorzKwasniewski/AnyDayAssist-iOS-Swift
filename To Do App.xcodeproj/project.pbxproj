@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		61AD2D66AE2F80EC4C337D4F /* Pods_To_Do_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */; };
+		7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */; };
 		711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */; };
 		7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */; };
 		7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_Do_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewControllerExtension.swift; sourceTree = "<group>"; };
 		7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataDelegate.swift; sourceTree = "<group>"; };
 		7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertMaker.swift; sourceTree = "<group>"; };
@@ -167,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */,
+				7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */,
+				71CD64CC1D5517F80019F501 /* Constants.swift */,
 				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 				71944F251D08C1E500206B4F /* Database.xcdatamodeld */,
 				718D872C1CEA5105001E7F17 /* UserData.xcdatamodeld */,
@@ -186,7 +190,6 @@
 		71DE25D61D4D1B1B0051EB47 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				71CD64CC1D5517F80019F501 /* Constants.swift */,
 				71FC57FA1D47D43D00AFB948 /* StringFormatitng.swift */,
 				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
 			);
@@ -352,6 +355,7 @@
 				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,
 				71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
+				7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */,
 				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
 				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Grzegorz Kwaśniewski. All rights reserved.
 //
 
-protocol CurrentWeatherDataDelegte: class {
+protocol CurrentWeatherDataDelegate: class {
 
     func updateUI()
 
