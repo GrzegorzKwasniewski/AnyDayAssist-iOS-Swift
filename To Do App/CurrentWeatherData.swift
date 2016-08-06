@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 
 class CurrentWeatherData {
+    
+    weak var delegete = CurrentWeatherDataDelegte?()
 
     var _cityName: String!
     var _weatherDescription: String!
@@ -151,6 +153,9 @@ class CurrentWeatherData {
                     }
                 }
             }
+            
+            self.delegete?.updateUI()
+            
         }
     }
 }

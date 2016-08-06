@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MBProgressHUD
 
-class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
+class WeatherViewController: UIViewController, CurrentWeatherDataDelegte , UIAlertMaker, UIMaker {
     
     var currentWeatherData: CurrentWeatherData!
 
@@ -42,10 +42,9 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
         super.viewDidLoad()
         
         currentWeatherData = CurrentWeatherData()
-
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        currentWeatherData.delegete = self
+        
+        //currentWeatherData.downloadWeatherData()
         
         authorizationStatus = CLLocationManager.authorizationStatus()
         
@@ -56,19 +55,9 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
             showLoadingHUD()
             
             currentWeatherData.downloadWeatherData()
-            print(currentWeatherData.temperatureMax)
-            
-            self.weatherIcon.image = UIImage(named: currentWeatherData.weatherDescription)
-            self.cityName.text = currentWeatherData.cityName
-            self.descriptionOfWeather.text = currentWeatherData.weatherDescription
-            self.temperatureAverage.text = "\(currentWeatherData.currentTemp)°C"
-            self.temperatureMin.text = "\(currentWeatherData.temperatureMin)°C"
-            self.temperatureMax.text = "\(currentWeatherData.temperatureMax)°C"
-            self.pressure.text = "\(currentWeatherData.pressure) mb"
-            self.windSpeed.text = "\(currentWeatherData.windSpeed) km h"
-            self.humidity.text = "\(currentWeatherData.humidity) %"
-            
-            self.hideLoadingHUD()
+//            print(currentWeatherData.temperatureMax)
+//            
+//            self.hideLoadingHUD()
             
 //            let convertedCityName = StringFormatting.removeSpecialCharsFromString(userCityName)
 //            
@@ -187,6 +176,21 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
         
         setUI()
         
+    }
+    
+    func updateUI() {
+        
+        self.hideLoadingHUD()
+        
+        self.weatherIcon.image = UIImage(named: currentWeatherData.weatherDescription)
+        self.cityName.text = currentWeatherData.cityName
+        self.descriptionOfWeather.text = currentWeatherData.weatherDescription
+        self.temperatureAverage.text = "\(currentWeatherData.currentTemp)°C"
+        self.temperatureMin.text = "\(currentWeatherData.temperatureMin)°C"
+        self.temperatureMax.text = "\(currentWeatherData.temperatureMax)°C"
+        self.pressure.text = "\(currentWeatherData.pressure) mb"
+        self.windSpeed.text = "\(currentWeatherData.windSpeed) km h"
+        self.humidity.text = "\(currentWeatherData.humidity) %"
     }
     
     func setUI() {

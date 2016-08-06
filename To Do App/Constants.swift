@@ -16,5 +16,4 @@ let API_KEY = "54986956329429"
 
 typealias DownloadCompleted = () -> ()
 
-// how this is publicy aviable? - maybe it's because this is not even a class
 let CURRENT_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Gdansk&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5"
