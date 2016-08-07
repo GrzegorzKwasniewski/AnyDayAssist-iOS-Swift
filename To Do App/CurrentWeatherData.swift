@@ -11,7 +11,7 @@ import Alamofire
 
 class CurrentWeatherData {
     
-    weak var delegete = CurrentWeatherDataDelegate?()
+    weak var delegate = CurrentWeatherDataDelegate?()
 
     var _cityName: String!
     var _weatherDescription: String!
@@ -154,7 +154,7 @@ class CurrentWeatherData {
                 }
             }
             
-            self.delegete?.updateUI()
+            self.delegate?.updateUI()
             
         }
     }

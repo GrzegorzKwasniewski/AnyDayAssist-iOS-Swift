@@ -18,4 +18,4 @@ var cityName2: String?
 
 var CURRENT_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=\(cityName2)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5"
 
-var FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?q=Gdansk&units=metric&cnt=5&APPID=8ecab5fd503cc5a1f3801625138a85d5"
+var FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?q=Gdansk&units=metric&cnt=4&APPID=8ecab5fd503cc5a1f3801625138a85d5"

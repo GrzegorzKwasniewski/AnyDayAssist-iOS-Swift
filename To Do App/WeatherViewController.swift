@@ -10,9 +10,10 @@ import UIKit
 import CoreLocation
 import MBProgressHUD
 
-class WeatherViewController: UIViewController, CurrentWeatherDataDelegate , UIAlertMaker, UIMaker {
+class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, ForecastWeatherDataDelegate, UIAlertMaker, UIMaker, UITableViewDelegate, UITableViewDataSource {
     
     var currentWeatherData: CurrentWeatherData!
+    var forecastWeatherData: ForecastWeatherData!
 
     var authorizationStatus:CLAuthorizationStatus!
     
@@ -31,10 +32,17 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate , UIAl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        print(forecasts.count)
+        setTableView(forTableView: tableView)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         currentWeatherData = CurrentWeatherData()
-        currentWeatherData.delegete = self
+        currentWeatherData.delegate = self
+        
+        forecastWeatherData = ForecastWeatherData()
+        forecastWeatherData.delegate = self
         
         authorizationStatus = CLLocationManager.authorizationStatus()
         
@@ -45,6 +53,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate , UIAl
                 showLoadingHUD()
             
                 currentWeatherData.downloadWeatherData()
+                forecastWeatherData.downloadWeatherData()
 
             
             
@@ -69,6 +78,30 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate , UIAl
         
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return forecasts.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellWeather {
+            
+            myCell.configureCell(forecasts[indexPath.row])
+            return myCell
+            
+        } else {
+        
+            return CellWeather()
+        
+        }
+        
+    }
+    
+    
     func updateUI() {
         
         self.hideLoadingHUD()
@@ -82,6 +115,14 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate , UIAl
         self.pressure.text = "\(currentWeatherData.pressure) mb"
         self.windSpeed.text = "\(currentWeatherData.windSpeed) km h"
         self.humidity.text = "\(currentWeatherData.humidity) %"
+    }
+    
+    func updateTableCell() {
+    
+        print(forecasts.count)
+
+        tableView.reloadData()
+    
     }
     
     func setUI() {

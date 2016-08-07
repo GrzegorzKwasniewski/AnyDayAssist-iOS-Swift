@@ -9,13 +9,15 @@
 import UIKit
 import Alamofire
 
+var forecasts = [SingleDayForecast]()
+
 class ForecastWeatherData {
     
-    var forecasts = [SingleDayForecast]()
+    weak var delegate = ForecastWeatherDataDelegate?()
 
     func downloadWeatherData() {
         
-        let weatherUrl = NSURL(string: CURRENT_WEATHER_URL)!
+        let weatherUrl = NSURL(string: FORECAST_WEATHER_URL)!
         Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
             
             if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
@@ -25,7 +27,8 @@ class ForecastWeatherData {
                     for dayForecast in forecastList {
                     
                         let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
-                        self.forecasts.append(singleDayForecast)
+                        forecasts.append(singleDayForecast)
+                        self.delegate?.updateTableCell()
                     }
                 }
             }
