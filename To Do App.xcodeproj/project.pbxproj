@@ -11,6 +11,7 @@
 		7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */; };
 		711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */; };
 		7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */; };
+		714A80761D57426F00042456 /* CellWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A80751D57426F00042456 /* CellWeather.swift */; };
 		7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */; };
 		7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */; };
 		716B39051D3A6A12002D8ABE /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B39041D3A6A12002D8ABE /* Cell.swift */; };
@@ -46,6 +47,7 @@
 		7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewControllerExtension.swift; sourceTree = "<group>"; };
 		7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataDelegate.swift; sourceTree = "<group>"; };
+		714A80751D57426F00042456 /* CellWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellWeather.swift; sourceTree = "<group>"; };
 		7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertMaker.swift; sourceTree = "<group>"; };
 		7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMaker.swift; sourceTree = "<group>"; };
 		716B39041D3A6A12002D8ABE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 				71FB981F1D2AE87B00BDCBB2 /* PopUpViewController.swift */,
 				716B39041D3A6A12002D8ABE /* Cell.swift */,
+				714A80751D57426F00042456 /* CellWeather.swift */,
 				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
 			);
@@ -350,6 +353,7 @@
 				71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */,
 				71DE25DB1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift in Sources */,
 				71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */,
+				714A80761D57426F00042456 /* CellWeather.swift in Sources */,
 				7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */,
 				71944F331D13254200206B4F /* AudioRecorderViewController.swift in Sources */,
 				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,

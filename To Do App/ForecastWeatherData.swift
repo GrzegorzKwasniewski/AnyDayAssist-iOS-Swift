@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 
 class ForecastWeatherData {
+    
+    var forecasts = [SingleDayForecast]()
 
     func downloadWeatherData() {
         
@@ -23,7 +25,7 @@ class ForecastWeatherData {
                     for dayForecast in forecastList {
                     
                         let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
-                        forecasts.append(singleDayForecast)
+                        self.forecasts.append(singleDayForecast)
                     }
                 }
             }
