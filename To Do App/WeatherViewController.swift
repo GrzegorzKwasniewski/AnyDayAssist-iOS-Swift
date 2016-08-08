@@ -33,7 +33,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         super.viewDidLoad()
         
         print(forecasts.count)
-        setTableView(forTableView: tableView)
+        setSmallTableView(forTableView: tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -99,6 +99,10 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         
         }
         
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
     
     

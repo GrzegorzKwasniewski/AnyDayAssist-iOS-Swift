@@ -17,6 +17,8 @@ class ForecastWeatherData {
 
     func downloadWeatherData() {
         
+        forecasts = []
+        
         let weatherUrl = NSURL(string: FORECAST_WEATHER_URL)!
         Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
             
@@ -107,9 +109,8 @@ class SingleDayForecast {
             
             let unixConvertedDay = NSDate(timeIntervalSince1970: date)
             let dateFormater = NSDateFormatter()
-            dateFormater.dateStyle = .FullStyle
-            dateFormater.dateFormat = "EEEE"
-            dateFormater.timeStyle = .NoStyle
+            dateFormater.dateStyle = .NoStyle
+            dateFormater.timeStyle = .MediumStyle
             self._date = dateFormater.stringFromDate(unixConvertedDay)
         
         }
