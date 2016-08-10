@@ -32,9 +32,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(forecasts.count)
-        setSmallTableView(forTableView: tableView)
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -122,8 +119,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
     }
     
     func updateTableCell() {
-    
-        print(forecasts.count)
 
         tableView.reloadData()
     
@@ -132,6 +127,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
     func setUI() {
         
         setView()
+        setSmallTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(WeatherViewController.self))
         
     }

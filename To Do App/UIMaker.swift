@@ -168,35 +168,6 @@ extension UIMaker where Self: UIViewController {
     
     func setSmallTableView(forTableView tableView: UITableView) {
         
-        let horizontalClass = self.traitCollection.horizontalSizeClass;
-        let verticalCass = self.traitCollection.verticalSizeClass;
-        
-        var topMargin: CGFloat!
-//        
-//        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-//        
-//        if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-//            
-//            imageView.image = UIImage(named: backgroundColor as! String)
-//            
-//        } else {
-//            
-//            imageView.image = UIImage(named: "bg_blue.jpg")
-//            
-//        }
-//        
-//        imageView.contentMode = .ScaleAspectFill
-        
-//        if horizontalClass == .Regular && verticalCass == .Regular {
-//            
-//            topMargin = 0
-//            
-//        } else {
-//            
-//            topMargin = 64
-//            
-//        }
-        
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .clearColor()
