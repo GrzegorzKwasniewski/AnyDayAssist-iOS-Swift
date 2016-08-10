@@ -18,11 +18,6 @@ class CellWeather: UITableViewCell {
     @IBOutlet var temperatureMin: UILabel!
     @IBOutlet var temperatureMax: UILabel!
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     func configureCell(singleDayForecast: SingleDayForecast) {
     

@@ -115,7 +115,8 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
                 
                 if city.characters.count <= 15 {
                     
-                    cityName2 = city
+                    let formatedCityName = StringFormatting.removeSpecialCharsFromString(city)
+                    userCityName = formatedCityName
                     self.performSegueWithIdentifier("showWeather", sender: nil)
                     
                 } else {

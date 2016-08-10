@@ -16,9 +16,7 @@ class MainViewController: UIViewController, UIMaker {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        weatherData.downloadWeatherData()
-        
+                
         imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
 
         setBackgroundColor(useUIImageView: imageView)

@@ -32,6 +32,8 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -43,23 +45,34 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         
         authorizationStatus = CLLocationManager.authorizationStatus()
         
-        if Reachability.isConnectedToNetwork() == true {
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
+        setUI()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        if Reachability.isConnectedToNetwork() == true {
+            
             if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
-            
+                
                 showLoadingHUD()
-            
-                currentWeatherData.downloadWeatherData()
-                forecastWeatherData.downloadWeatherData()
-
-            
-            
-        } else {
-            
-            hideLoadingHUD()
-            
-            showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
-
+                
+                currentWeatherData.downloadWeatherData(forCity: userCityName)
+                forecastWeatherData.downloadWeatherData(forCity: userCityName)
+                
+                
+                
+            } else {
+                
+                hideLoadingHUD()
+                
+                showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
+                
             }
             
         } else {
@@ -67,12 +80,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
             showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")
             
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-        setUI()
-        
+
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -88,6 +96,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellWeather {
             
             myCell.configureCell(forecasts[indexPath.row])
+            myCell.backgroundColor = myCell.contentView.backgroundColor;
             return myCell
             
         } else {
@@ -97,12 +106,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         }
         
     }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-    
-    
+
     func updateUI() {
         
         self.hideLoadingHUD()

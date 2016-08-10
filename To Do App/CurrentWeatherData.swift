@@ -93,10 +93,10 @@ class CurrentWeatherData {
         return _date
     }
     
-    func downloadWeatherData() {
+    func downloadWeatherData(forCity city: String) {
     
-        // Alamofire download
-        let weatherUrl = NSURL(string: CURRENT_WEATHER_URL)!
+        let string = "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5"
+        let weatherUrl = NSURL(string: string)!
         
         Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
 //            print("REQUEST \(response.request)")  // original URL request
@@ -111,7 +111,6 @@ class CurrentWeatherData {
                       else { return }
                 
                 self._weatherDescription = main.capitalizedString
-                print(main)
                 
                 guard let getWindData = JSONDictionary["wind"] as? Dictionary<String, AnyObject> ,
                       let getWindSpeed = getWindData["speed"] as? Double
