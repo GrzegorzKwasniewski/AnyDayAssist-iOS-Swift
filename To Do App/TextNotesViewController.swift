@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-var toDoNotes = [NSManagedObject]()
-let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
-
 class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     var uiWasSet = false
@@ -84,7 +80,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
             
             let singleNote = toDoNotes[indexPath.row]
             let noteText = singleNote.valueForKey("note") as! String

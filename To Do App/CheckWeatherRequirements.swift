@@ -9,9 +9,6 @@
 import UIKit
 import CoreLocation
 
-var userCityName = String()
-var userCityZipCode = String()
-
 class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
     
     @IBOutlet var cityNameForWeather: UITextField!
@@ -21,7 +18,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         validateCityNameFromUser()
 
     }
-    
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
         

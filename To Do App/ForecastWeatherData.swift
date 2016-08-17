@@ -9,8 +9,6 @@
 import UIKit
 import Alamofire
 
-var forecasts = [SingleDayForecast]()
-
 class ForecastWeatherData {
     
     weak var delegate = ForecastWeatherDataDelegate?()

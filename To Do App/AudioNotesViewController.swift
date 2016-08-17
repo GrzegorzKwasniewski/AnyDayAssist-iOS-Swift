@@ -9,9 +9,6 @@
 import UIKit
 import CoreData
 
-var audioURL: [NSManagedObject] = [NSManagedObject]()
-var activeAudioNote: Int?
-
 class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     var uiWasSet = false
@@ -76,7 +73,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
             
             let singleAudio = audioURL[indexPath.row]
             let audioTitle = singleAudio.valueForKey("audiourl") as! String

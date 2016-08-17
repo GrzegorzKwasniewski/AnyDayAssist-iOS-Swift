@@ -31,9 +31,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+    
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -45,7 +43,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         
         authorizationStatus = CLLocationManager.authorizationStatus()
         
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,9 +61,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
                 
                 currentWeatherData.downloadWeatherData(forCity: userCityName)
                 forecastWeatherData.downloadWeatherData(forCity: userCityName)
-                
-                
-                
+         
             } else {
                 
                 hideLoadingHUD()
@@ -80,7 +75,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
             showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")
             
         }
-
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -104,7 +98,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
             return CellWeather()
         
         }
-        
     }
 
     func updateUI() {
@@ -120,6 +113,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         self.pressure.text = "\(currentWeatherData.pressure) mb"
         self.windSpeed.text = "\(currentWeatherData.windSpeed) km h"
         self.humidity.text = "\(currentWeatherData.humidity) %"
+        
     }
     
     func updateTableCell() {

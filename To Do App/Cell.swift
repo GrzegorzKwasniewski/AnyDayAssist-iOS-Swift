@@ -11,7 +11,6 @@ import UIKit
 class Cell: UITableViewCell {
     
     @IBOutlet var cellImage: UIImageView!
-    
     @IBOutlet var noteTitle: UILabel!
 
 }

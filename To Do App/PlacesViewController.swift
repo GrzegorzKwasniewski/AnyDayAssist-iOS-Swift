@@ -9,9 +9,6 @@
 import UIKit
 import CoreData
 
-var placesToVisit = [NSManagedObject]()
-var activPlace = -1
-
 class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     var uiWasSet = false
@@ -89,7 +86,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
             
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
