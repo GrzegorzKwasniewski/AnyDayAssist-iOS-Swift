@@ -63,13 +63,19 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
-        let note = toDoNotes[indexPath.row]
-        myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.text = note.valueForKey("note") as? String
-        myCell.cellImage.image = UIImage(named: "notes")
-        return myCell
+        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
         
+            let note = toDoNotes[indexPath.row]
+            myCell.noteTitle.textColor = UIColor.whiteColor()
+            myCell.noteTitle.text = note.valueForKey("note") as? String
+            myCell.cellImage.image = UIImage(named: "notes")
+            return myCell
+        
+        } else {
+        
+            return Cell()
+        
+        }
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

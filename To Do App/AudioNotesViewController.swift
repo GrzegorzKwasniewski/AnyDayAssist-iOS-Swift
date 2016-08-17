@@ -59,13 +59,19 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
-        let note = audioURL[indexPath.row]
-        myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.text = note.valueForKey("audiotitle") as? String
-        myCell.cellImage.image = UIImage(named: "microphone")
-        return myCell
+        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
         
+            let note = audioURL[indexPath.row]
+            myCell.noteTitle.textColor = UIColor.whiteColor()
+            myCell.noteTitle.text = note.valueForKey("audiotitle") as? String
+            myCell.cellImage.image = UIImage(named: "microphone")
+            return myCell
+            
+        } else {
+        
+            return Cell()
+        
+        }
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

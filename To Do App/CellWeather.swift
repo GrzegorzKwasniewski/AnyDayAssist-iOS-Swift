@@ -10,14 +10,11 @@ import UIKit
 
 class CellWeather: UITableViewCell {
     
-
-    
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var date: UILabel!
     @IBOutlet var weatherDescription: UILabel!
     @IBOutlet var temperatureMin: UILabel!
     @IBOutlet var temperatureMax: UILabel!
-    
     
     func configureCell(singleDayForecast: SingleDayForecast) {
     

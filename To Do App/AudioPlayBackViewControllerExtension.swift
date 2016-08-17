@@ -25,7 +25,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
         do {
             
             player = try AVAudioPlayer(contentsOfURL: recordedAudioURL)
-            player!.delegate = self
+            player.delegate = self
             
         } catch {
             
@@ -37,7 +37,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     func playSound() {
         
         setupAudio()
-        player!.play()
+        player.play()
         
     }
 
@@ -65,7 +65,7 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     
     func updateSlider() {
         
-        timeSlider.value = Float(player!.currentTime)
+        timeSlider.value = Float(player.currentTime)
         
     }
     

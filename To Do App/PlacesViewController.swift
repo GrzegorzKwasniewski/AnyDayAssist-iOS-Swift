@@ -59,12 +59,19 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! Cell
-        let note = placesToVisit[indexPath.row]
-        myCell.noteTitle.textColor = UIColor.whiteColor()
-        myCell.noteTitle.text = note.valueForKey("title") as? String
-        myCell.cellImage.image = UIImage(named: "place")
-        return myCell
+        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
+        
+            let note = placesToVisit[indexPath.row]
+            myCell.noteTitle.textColor = UIColor.whiteColor()
+            myCell.noteTitle.text = note.valueForKey("title") as? String
+            myCell.cellImage.image = UIImage(named: "place")
+            return myCell
+        
+        } else {
+        
+            return Cell()
+        
+        }
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
