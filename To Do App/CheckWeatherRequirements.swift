@@ -92,7 +92,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 
-        showAlert(withTitle: "Something went wrong", withMessage: "\(error)")
+        showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
         
     }
     
@@ -127,6 +127,5 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
                 
             }
         }
-        
     }
 }
