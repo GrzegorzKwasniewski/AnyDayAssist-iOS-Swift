@@ -11,6 +11,10 @@ import CoreLocation
 
 class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
     
+    var uiWasSet = false
+    var authorizationStatus:CLAuthorizationStatus!
+    var locationManager:CLLocationManager = CLLocationManager()
+    
     @IBOutlet var cityNameForWeather: UITextField!
     
     @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
@@ -26,17 +30,10 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         self.performSegueWithIdentifier("showWeather", sender: nil)
         
     }
-    
-    var uiWasSet = false
-    var locationManager:CLLocationManager!
-    var authorizationStatus:CLAuthorizationStatus!
-    var placemarks: AnyObject!
-    var error: NSError!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         authorizationStatus = CLLocationManager.authorizationStatus()
@@ -104,7 +101,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     }
     
     func validateCityNameFromUser() {
-    
+        
         if let city = cityNameForWeather.text {
             
             if !city.isEmpty {

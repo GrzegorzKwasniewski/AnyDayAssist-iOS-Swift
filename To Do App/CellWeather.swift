@@ -18,6 +18,7 @@ class CellWeather: UITableViewCell {
     
     func configureCell(singleDayForecast: SingleDayForecast) {
     
+        self.backgroundColor = contentView.backgroundColor
         cellImage.image = UIImage(named: singleDayForecast.weatherDescription)
         date.text = singleDayForecast.date
         weatherDescription.text = singleDayForecast.weatherDescription

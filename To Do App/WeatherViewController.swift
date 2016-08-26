@@ -90,7 +90,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellWeather {
             
             myCell.configureCell(forecasts[indexPath.row])
-            myCell.backgroundColor = myCell.contentView.backgroundColor;
             return myCell
             
         } else {
