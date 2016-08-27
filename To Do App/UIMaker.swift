@@ -19,6 +19,7 @@ extension UIMaker where Self: UIViewController {
         } else {
             uiImageView.image = UIImage(named: "bg_blue.jpg")
         }
+        
         view.addSubview(uiImageView)
         view.sendSubviewToBack(uiImageView)
     }
@@ -68,6 +69,7 @@ extension UIMaker where Self: UIViewController {
             fontSize = 17
             yPosition = 20
         }
+        
         navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationBar.shadowImage = UIImage()
@@ -88,6 +90,7 @@ extension UIMaker where Self: UIViewController {
     
     func setView() {
         let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        
         if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
             imageView.image = UIImage(named: backgroundColor as! String)
         } else {
@@ -102,7 +105,6 @@ extension UIMaker where Self: UIViewController {
         let horizontalClass = self.traitCollection.horizontalSizeClass;
         let verticalCass = self.traitCollection.verticalSizeClass;
         let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-
         var topMargin: CGFloat!
         
         if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
@@ -110,7 +112,9 @@ extension UIMaker where Self: UIViewController {
         } else {
             imageView.image = UIImage(named: "bg_blue.jpg")
         }
+        
         imageView.contentMode = .ScaleAspectFill
+        
         if horizontalClass == .Regular && verticalCass == .Regular {
             topMargin = 100
         } else {
@@ -134,6 +138,7 @@ extension UIMaker where Self: UIViewController {
         label.font = UIFont(name: "Helvetica Neue", size: 20)
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center
+        
         if array.count == 0 {
             label.text = "There's nothing here..."
         } else {
