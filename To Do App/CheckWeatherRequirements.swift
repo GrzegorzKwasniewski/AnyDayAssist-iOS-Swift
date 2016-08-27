@@ -13,7 +13,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     
     var uiWasSet = false
     var authorizationStatus:CLAuthorizationStatus!
-    var locationManager:CLLocationManager = CLLocationManager()
+    //var locationManager:CLLocationManager = CLLocationManager()
     
     @IBOutlet var cityNameForWeather: UITextField!
     
@@ -25,7 +25,8 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
         
-        locationManager.startUpdatingLocation()
+        //locationManager.startUpdatingLocation()
+        locationManagerSingleton.startUpdatingLocation()
         
         self.performSegueWithIdentifier("showWeather", sender: nil)
         
@@ -34,14 +35,13 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //locationManager.delegate = self
+        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if authorizationStatus == CLAuthorizationStatus.NotDetermined {
-            locationManager.requestWhenInUseAuthorization()
+            //locationManager.requestWhenInUseAuthorization()
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,38 +54,38 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let userLocation:CLLocation = locations[0]
-        let latitude = userLocation.coordinate.latitude
-        let longitude = userLocation.coordinate.longitude
-        
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        
-        CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
-            
-            if error != nil {
-                
-                self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
-                return
-                
-            }
-            
-            if placemark?.count > 0 {
-                
-                let user = placemark![0]
-                let data = user.addressDictionary
-                
-                guard let city = data!["City"] as? String, let zipCode = data!["ZIP"] as? String
-                    else { return }
-                
-                userCityName = city
-                userCityZipCode = zipCode
-                self.locationManager.stopUpdatingLocation()
-                
-            }
-        }
-    }
+//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        
+//        let userLocation:CLLocation = locations[0]
+//        let latitude = userLocation.coordinate.latitude
+//        let longitude = userLocation.coordinate.longitude
+//        
+//        let location = CLLocation(latitude: latitude, longitude: longitude)
+//        
+//        CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
+//            
+//            if error != nil {
+//                
+//                self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
+//                return
+//                
+//            }
+//            
+//            if placemark?.count > 0 {
+//                
+//                let user = placemark![0]
+//                let data = user.addressDictionary
+//                
+//                guard let city = data!["City"] as? String, let zipCode = data!["ZIP"] as? String
+//                    else { return }
+//                
+//                userCityName = city
+//                userCityZipCode = zipCode
+//                self.locationManager.stopUpdatingLocation()
+//                
+//            }
+//        }
+//    }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 

@@ -1,5 +1,5 @@
 //
-//  TestViewController.swift
+//  WeatherViewController.swift
 //  To Do App
 //
 //  Created by Grzegorz Kwaśniewski on 07/07/16.
@@ -12,8 +12,8 @@ import MBProgressHUD
 
 class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, ForecastWeatherDataDelegate, UIAlertMaker, UIMaker, UITableViewDelegate, UITableViewDataSource {
     
-    var currentWeatherData: CurrentWeatherData!
-    var forecastWeatherData: ForecastWeatherData!
+    var currentWeatherData: CurrentWeatherData = CurrentWeatherData()
+    var forecastWeatherData: ForecastWeatherData = ForecastWeatherData()
 
     var authorizationStatus:CLAuthorizationStatus!
     
@@ -35,10 +35,8 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         tableView.delegate = self
         tableView.dataSource = self
         
-        currentWeatherData = CurrentWeatherData()
         currentWeatherData.delegate = self
         
-        forecastWeatherData = ForecastWeatherData()
         forecastWeatherData.delegate = self
         
         authorizationStatus = CLLocationManager.authorizationStatus()
