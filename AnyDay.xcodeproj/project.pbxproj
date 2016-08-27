@@ -54,7 +54,7 @@
 		7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertMaker.swift; sourceTree = "<group>"; };
 		7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMaker.swift; sourceTree = "<group>"; };
 		716B39041D3A6A12002D8ABE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		718D87151CEA50C4001E7F17 /* To Do App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		718D87151CEA50C4001E7F17 /* AnyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718D871F1CEA50C4001E7F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		718D87211CEA50C4001E7F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				71944F2E1D0DCCCD00206B4F /* CoreLocation.framework */,
-				718D87171CEA50C4001E7F17 /* To Do App */,
+				718D87171CEA50C4001E7F17 /* AnyDay */,
 				718D87161CEA50C4001E7F17 /* Products */,
 				CA8FF50A82EA3A20CA0B1B51 /* Pods */,
 				A7538B6CC1635646DB061FA0 /* Frameworks */,
@@ -124,12 +124,12 @@
 		718D87161CEA50C4001E7F17 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				718D87151CEA50C4001E7F17 /* To Do App.app */,
+				718D87151CEA50C4001E7F17 /* AnyDay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		718D87171CEA50C4001E7F17 /* To Do App */ = {
+		718D87171CEA50C4001E7F17 /* AnyDay */ = {
 			isa = PBXGroup;
 			children = (
 				7163D02D1D4CD735005FEFB6 /* Protocols */,
@@ -140,6 +140,7 @@
 				71DE25D61D4D1B1B0051EB47 /* Helper */,
 				71DE25D51D4D1AF30051EB47 /* Resources */,
 			);
+			name = AnyDay;
 			path = "To Do App";
 			sourceTree = "<group>";
 		};
@@ -235,9 +236,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		718D87141CEA50C4001E7F17 /* To Do App */ = {
+		718D87141CEA50C4001E7F17 /* AnyDay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 718D87291CEA50C4001E7F17 /* Build configuration list for PBXNativeTarget "To Do App" */;
+			buildConfigurationList = 718D87291CEA50C4001E7F17 /* Build configuration list for PBXNativeTarget "AnyDay" */;
 			buildPhases = (
 				A2E5ABA795E629C2874B69D8 /* [CP] Check Pods Manifest.lock */,
 				718D87111CEA50C4001E7F17 /* Sources */,
@@ -250,9 +251,9 @@
 			);
 			dependencies = (
 			);
-			name = "To Do App";
+			name = AnyDay;
 			productName = "To Do App";
-			productReference = 718D87151CEA50C4001E7F17 /* To Do App.app */;
+			productReference = 718D87151CEA50C4001E7F17 /* AnyDay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +272,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 718D87101CEA50C4001E7F17 /* Build configuration list for PBXProject "To Do App" */;
+			buildConfigurationList = 718D87101CEA50C4001E7F17 /* Build configuration list for PBXProject "AnyDay" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -284,7 +285,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				718D87141CEA50C4001E7F17 /* To Do App */,
+				718D87141CEA50C4001E7F17 /* AnyDay */,
 			);
 		};
 /* End PBXProject section */
@@ -503,8 +504,8 @@
 				INFOPLIST_FILE = "To Do App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.ToDoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDay;
+				PRODUCT_NAME = AnyDay;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,8 +521,8 @@
 				INFOPLIST_FILE = "To Do App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.ToDoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDay;
+				PRODUCT_NAME = AnyDay;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,7 +531,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		718D87101CEA50C4001E7F17 /* Build configuration list for PBXProject "To Do App" */ = {
+		718D87101CEA50C4001E7F17 /* Build configuration list for PBXProject "AnyDay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				718D87271CEA50C4001E7F17 /* Debug */,
@@ -539,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		718D87291CEA50C4001E7F17 /* Build configuration list for PBXNativeTarget "To Do App" */ = {
+		718D87291CEA50C4001E7F17 /* Build configuration list for PBXNativeTarget "AnyDay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				718D872A1CEA50C4001E7F17 /* Debug */,

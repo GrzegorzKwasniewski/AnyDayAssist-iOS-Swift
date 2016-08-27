@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "718D87141CEA50C4001E7F17"
-               BuildableName = "To Do App.app"
-               BlueprintName = "To Do App"
-               ReferencedContainer = "container:To Do App.xcodeproj">
+               BuildableName = "AnyDay.app"
+               BlueprintName = "AnyDay"
+               ReferencedContainer = "container:AnyDay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "718D87141CEA50C4001E7F17"
-            BuildableName = "To Do App.app"
-            BlueprintName = "To Do App"
-            ReferencedContainer = "container:To Do App.xcodeproj">
+            BuildableName = "AnyDay.app"
+            BlueprintName = "AnyDay"
+            ReferencedContainer = "container:AnyDay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "718D87141CEA50C4001E7F17"
-            BuildableName = "To Do App.app"
-            BlueprintName = "To Do App"
-            ReferencedContainer = "container:To Do App.xcodeproj">
+            BuildableName = "AnyDay.app"
+            BlueprintName = "AnyDay"
+            ReferencedContainer = "container:AnyDay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "718D87141CEA50C4001E7F17"
-            BuildableName = "To Do App.app"
-            BlueprintName = "To Do App"
-            ReferencedContainer = "container:To Do App.xcodeproj">
+            BuildableName = "AnyDay.app"
+            BlueprintName = "AnyDay"
+            ReferencedContainer = "container:AnyDay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
