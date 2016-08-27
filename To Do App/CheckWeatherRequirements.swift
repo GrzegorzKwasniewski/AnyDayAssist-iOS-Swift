@@ -13,7 +13,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     
     var uiWasSet = false
     var authorizationStatus:CLAuthorizationStatus!
-    //var locationManager:CLLocationManager = CLLocationManager()
     
     @IBOutlet var cityNameForWeather: UITextField!
     
@@ -25,7 +24,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
         
-        //locationManager.startUpdatingLocation()
         locationManagerSingleton.startUpdatingLocation()
         
         self.performSegueWithIdentifier("showWeather", sender: nil)
@@ -35,12 +33,12 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //locationManager.delegate = self
-        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        setObserverForChange()
+
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if authorizationStatus == CLAuthorizationStatus.NotDetermined {
-            //locationManager.requestWhenInUseAuthorization()
+            locationManagerSingleton.locationManagerDelegate.requestWhenInUseAuthorization()
         }
     }
     
@@ -54,45 +52,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         }
     }
     
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        let userLocation:CLLocation = locations[0]
-//        let latitude = userLocation.coordinate.latitude
-//        let longitude = userLocation.coordinate.longitude
-//        
-//        let location = CLLocation(latitude: latitude, longitude: longitude)
-//        
-//        CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
-//            
-//            if error != nil {
-//                
-//                self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
-//                return
-//                
-//            }
-//            
-//            if placemark?.count > 0 {
-//                
-//                let user = placemark![0]
-//                let data = user.addressDictionary
-//                
-//                guard let city = data!["City"] as? String, let zipCode = data!["ZIP"] as? String
-//                    else { return }
-//                
-//                userCityName = city
-//                userCityZipCode = zipCode
-//                self.locationManager.stopUpdatingLocation()
-//                
-//            }
-//        }
-//    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-
-        showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
-        
-    }
-    
     func setUI() {
         
         setView()
@@ -100,28 +59,33 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         
     }
     
+    func setObserverForChange() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(CheckWeatherRequirements.failedToGetUserLocation(_:)),
+            name: "failedToGetUserLocation",
+            object: nil)
+        
+    }
+    
+    func failedToGetUserLocation(notification: NSNotification) {
+        self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
+    }
+    
     func validateCityNameFromUser() {
         
         if let city = cityNameForWeather.text {
-            
             if !city.isEmpty {
-                
                 if city.characters.count <= 15 {
-                    
                     let formatedCityName = StringFormatting.removeSpecialCharsFromString(city)
                     userCityName = formatedCityName
                     self.performSegueWithIdentifier("showWeather", sender: nil)
-                    
                 } else {
-                    
                     showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
-    
                 }
-                
             } else {
-                
                 showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
-                
             }
         }
     }

@@ -12,10 +12,7 @@ import CoreLocation
 import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
-    
-    var horizontalClass: UIUserInterfaceSizeClass!
-    var verticalCass: UIUserInterfaceSizeClass!
-    
+
     var locationManager:CLLocationManager!
     var placemarks: AnyObject!
     var error: NSError!
@@ -24,25 +21,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         // if we try to add new place to visit
         if activPlace == -1 {
-            
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
-            self.mapView.showsUserLocation = true
+            mapView.showsUserLocation = true
             if #available(iOS 9.0, *) {
-                self.mapView.showsCompass = true
+                mapView.showsCompass = true
             } else {
                 // Fallback on earlier versions
             }
 
         } else {
-            
             let latitude = placesToVisit[activPlace].valueForKey("latitude") as! Double
             let longitude = placesToVisit[activPlace].valueForKey("longitude") as! Double
             let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
@@ -61,17 +55,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
         }
         
         longPressHandler()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        
             setUI()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -89,41 +76,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
     }
     
     func longPressGesture(gestureRecognizer:UIGestureRecognizer) {
-
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
-            
             let touchPoint = gestureRecognizer.locationInView(self.mapView)
             let newCoordinate = self.mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView)
             let location = CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
 
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
-                
                 var title:String = ""
-                
                 if error != nil {
-                    
                     self.showAlert(withTitle: "Something went wrong", withMessage: "Maybe Your internet connection is down?")
-                    
                     return
-                    
                 }
                 
                 if placemarks!.count > 0 {
-                    
                     let touchLocation = placemarks![0] as CLPlacemark
                     var subThoroughfare:String = ""
                     var thoroughFare:String = ""
                     
                     if touchLocation.subThoroughfare != nil {
-                        
                         subThoroughfare = touchLocation.subThoroughfare!
-                        
                     }
                     
                     if touchLocation.thoroughfare != nil {
-                        
                         thoroughFare = touchLocation.thoroughfare!
-                        
                     }
 
                     title = "\(subThoroughfare) \(thoroughFare)"
@@ -131,41 +106,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
                 }
                 
                 if title == "" {
-                    
                     title = "Added \(NSDate())"
-                    
                 }
                 
-                    globalCoreDataFunctions.saveMarkedPlace(title, latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
-                
-                    self.addAnnotation(newCoordinate, title: title, subtitle: "New location added")
-
-                })
-            }
+                globalCoreDataFunctions.saveMarkedPlace(title, latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
+                self.addAnnotation(newCoordinate, title: title, subtitle: "New location added")
+            })
         }
+    }
     
     func addAnnotation(newCoordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        
         let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinate
         annotation.title = title
         annotation.subtitle = subtitle
         self.mapView.addAnnotation(annotation)
-        
     }
     
     func setUI() {
-        
         setView()
         setNavigationBar(forClassWithName: String(MapViewController.self))
-   
     }
     
     func longPressHandler() {
-        
         let longPress = UILongPressGestureRecognizer(target: self, action:#selector(MapViewController.longPressGesture(_:)))
         longPress.minimumPressDuration = 1.0
-        mapView.addGestureRecognizer(longPress)
-        
+        mapView.addGestureRecognizer(longPress)        
     }
 }

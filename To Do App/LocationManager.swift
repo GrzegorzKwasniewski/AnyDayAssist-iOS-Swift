@@ -22,47 +22,35 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func startUpdatingLocation() {
-    
         locationManagerDelegate.startUpdatingLocation()
-
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let userLocation:CLLocation = locations[0]
         let latitude = userLocation.coordinate.latitude
         let longitude = userLocation.coordinate.longitude
-        
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
-            
             if error != nil {
-                
-                //self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
-                return
-                
+                NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)
+                return                
             }
-            
             if placemark?.count > 0 {
-                
                 let user = placemark![0]
                 let data = user.addressDictionary
-                
                 guard let city = data!["City"] as? String, let zipCode = data!["ZIP"] as? String
-                    else { return }
-                
+                    else {
+                        NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)
+                        return }
                 userCityName = city
                 userCityZipCode = zipCode
                 self.locationManagerDelegate.stopUpdatingLocation()
-                
             }
         }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        
-        //showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)        
     }
 }

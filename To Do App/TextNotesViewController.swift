@@ -44,12 +44,7 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     

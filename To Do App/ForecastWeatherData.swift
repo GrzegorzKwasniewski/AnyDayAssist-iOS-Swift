@@ -14,20 +14,13 @@ class ForecastWeatherData {
     weak var delegate = ForecastWeatherDataDelegate?()
 
     func downloadWeatherData(forCity city: String) {
-        
         forecasts = []
-        
         let string = "http://api.openweathermap.org/data/2.5/forecast?q=\(city)&units=metric&cnt=4&APPID=8ecab5fd503cc5a1f3801625138a85d5"
-        
         let weatherUrl = NSURL(string: string)!
         Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
-            
             if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
-            
                 if let forecastList = JSONDictionary["list"] as? [Dictionary<String, AnyObject>] {
-                
                     for dayForecast in forecastList {
-                    
                         let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
                         forecasts.append(singleDayForecast)
                         self.delegate?.updateTableCell()
@@ -83,19 +76,13 @@ class SingleDayForecast {
     
     
     init(forecastDictiobary dictionary: Dictionary<String, AnyObject>) {
-    
         if let main = dictionary["main"] as? Dictionary<String, AnyObject> {
-        
             if let tempMin = main["temp_min"] as? Double {
-            
                 self._temperatureMin = String(tempMin)
-                
             }
             
             if let tempMax = main["temp_max"] as? Double {
-            
                 self._temperatureMax = String(tempMax)
-            
             }
         }
         
@@ -106,13 +93,11 @@ class SingleDayForecast {
             self._weatherDescription = main.capitalizedString
         
         if let date = dictionary["dt"] as? Double {
-            
             let unixConvertedDay = NSDate(timeIntervalSince1970: date)
             let dateFormater = NSDateFormatter()
             dateFormater.dateStyle = .NoStyle
             dateFormater.timeStyle = .MediumStyle
-            self._date = dateFormater.stringFromDate(unixConvertedDay)
-        
+            self._date = dateFormater.stringFromDate(unixConvertedDay)        
         }
     }
 }

@@ -14,36 +14,23 @@ protocol UIMaker {}
 extension UIMaker where Self: UIViewController {
     
     func setBackgroundColor(useUIImageView uiImageView: UIImageView) {
-        
         if let checkForBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
             uiImageView.image = UIImage(named: checkForBackgroundColor as! String)
-            
         } else {
-            
             uiImageView.image = UIImage(named: "bg_blue.jpg")
-            
         }
-        
         view.addSubview(uiImageView)
         view.sendSubviewToBack(uiImageView)
-        
     }
     
     func setNewBackgroundColor(useUIImageView uiImageView: UIImageView) {
-        
         let newBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor")
-        
         if newBackgroundColor != nil {
-            
             uiImageView.image = UIImage(named: newBackgroundColor as! String)
-            
         }
-        
     }
 
     func setNavigationBar(forClassWithName name: String) {
-        
         let horizontalClass = self.traitCollection.horizontalSizeClass;
         let verticalCass = self.traitCollection.verticalSizeClass;
         
@@ -57,41 +44,30 @@ extension UIMaker where Self: UIViewController {
         var rightItem: UIBarButtonItem?
         
         switch name {
-            
+        
         case "TextNotesViewController":
-            
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
             rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(UIViewController.promptForNote))
             
         case "PlacesViewController":
-            
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
             rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(UIViewController.addNewPlaceToSee))
             
         case "AudioNotesViewController":
-            
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
             rightItem = UIBarButtonItem(title: "Add Record >", style: .Plain, target: nil, action: #selector(UIViewController.goToAudioRecordView))
             
         default:
-            
             leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
-
         }
-        
         
         if horizontalClass == .Regular && verticalCass == .Regular {
-            
             fontSize = 30
             yPosition = 40
-            
         } else {
-            
             fontSize = 17
             yPosition = 20
-            
         }
-        
         navigationBar = UINavigationBar(frame: CGRectMake( 0, yPosition, self.view.frame.size.width, 40))
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationBar.shadowImage = UIImage()
@@ -111,17 +87,11 @@ extension UIMaker where Self: UIViewController {
     }
     
     func setView() {
-        
         let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        
         if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
             imageView.image = UIImage(named: backgroundColor as! String)
-            
         } else {
-            
             imageView.image = UIImage(named: "bg_blue.jpg")
-            
         }
         
         view.addSubview(imageView)
@@ -129,34 +99,22 @@ extension UIMaker where Self: UIViewController {
     }
     
     func setTableView(forTableView tableView: UITableView) {
-        
         let horizontalClass = self.traitCollection.horizontalSizeClass;
         let verticalCass = self.traitCollection.verticalSizeClass;
-        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+
         var topMargin: CGFloat!
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        
         if let backgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
-            
             imageView.image = UIImage(named: backgroundColor as! String)
-            
         } else {
-            
             imageView.image = UIImage(named: "bg_blue.jpg")
-            
         }
-        
         imageView.contentMode = .ScaleAspectFill
-        
         if horizontalClass == .Regular && verticalCass == .Regular {
-            
             topMargin = 100
-            
         } else {
-            
             topMargin = 64
-            
         }
         
         tableView.contentInset = UIEdgeInsetsMake(topMargin, 0, 0, 0);
@@ -167,30 +125,21 @@ extension UIMaker where Self: UIViewController {
     }
     
     func setSmallTableView(forTableView tableView: UITableView) {
-        
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .clearColor()
-        
     }
     
     func setMessageLabel(arrayToCount array: [NSManagedObject], messageLabel label: UILabel) {
-        
         label.font = UIFont(name: "Helvetica Neue", size: 20)
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center
-        
         if array.count == 0 {
-            
             label.text = "There's nothing here..."
-            
         } else {
-        
             label.text = ""
-
         }
         
         view.addSubview(label)
     }
-
 }

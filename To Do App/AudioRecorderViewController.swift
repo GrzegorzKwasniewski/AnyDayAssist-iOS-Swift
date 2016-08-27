@@ -10,10 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UIMaker {
-    
-    var horizontalClass: UIUserInterfaceSizeClass!
-    var verticalCass: UIUserInterfaceSizeClass!
+class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UIMaker, UIAlertMaker {
     
     var audioRecorder: AVAudioRecorder!
     
@@ -21,20 +18,16 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
     @IBOutlet var stopRecordingButton: UIButton!
     
     @IBAction func recordAudio(sender: AnyObject) {
-        
         recordButton.enabled = false
         stopRecordingButton.enabled = true
         createRecordingSession()
-        getRecordingTime()
-        
+        getRecordingTime()        
     }
     
     @IBAction func stopRecordingAudio(sender: AnyObject) {
-        
         recordButton.enabled = true
         stopRecordingButton.enabled = false
         stopRecordnigSession()
-        
     }
 
     override func viewDidLoad() {
@@ -42,17 +35,12 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         setUI()
-        
     }
     
     func setUI() {
-        
         stopRecordingButton.enabled = false
-        
         setView()
         setNavigationBar(forClassWithName: String(AudioRecorderViewController.self))
-
     }
  }

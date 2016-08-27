@@ -17,13 +17,11 @@ class CellWeather: UITableViewCell {
     @IBOutlet var temperatureMax: UILabel!
     
     func configureCell(singleDayForecast: SingleDayForecast) {
-    
         self.backgroundColor = contentView.backgroundColor
         cellImage.image = UIImage(named: singleDayForecast.weatherDescription)
         date.text = singleDayForecast.date
         weatherDescription.text = singleDayForecast.weatherDescription
         temperatureMin.text = singleDayForecast.temperatureMin
-        temperatureMax.text = singleDayForecast.temperatureMax
-        
+        temperatureMax.text = singleDayForecast.temperatureMax        
     }
 }

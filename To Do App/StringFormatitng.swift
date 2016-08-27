@@ -11,7 +11,6 @@ import Foundation
 public class StringFormatting {
 
     class func removeSpecialCharsFromString (text: String) -> String {
-        
         let acceptableChars : Set<Character> =
             Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ".characters)
         
@@ -24,9 +23,7 @@ public class StringFormatting {
         if !(stringWithoutSpecialSigns.isEmpty) {
             return stringWithoutSpecialSigns
         }
-        
         // when returned sign is #, app will tell return "There's no data for such City" alert
-        return "#"
-        
+        return "#"        
     }
 }
