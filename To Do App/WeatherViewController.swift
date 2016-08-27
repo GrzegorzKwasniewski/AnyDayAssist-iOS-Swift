@@ -14,7 +14,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
     
     var currentWeatherData: CurrentWeatherData = CurrentWeatherData()
     var forecastWeatherData: ForecastWeatherData = ForecastWeatherData()
-
     var authorizationStatus:CLAuthorizationStatus!
     
     @IBOutlet var tableView: UITableView!
@@ -31,47 +30,32 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         tableView.delegate = self
         tableView.dataSource = self
-        
         currentWeatherData.delegate = self
-        
         forecastWeatherData.delegate = self
-        
         authorizationStatus = CLLocationManager.authorizationStatus()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         setUI()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        
         if Reachability.isConnectedToNetwork() == true {
-            
             if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
-                
                 showLoadingHUD()
                 
                 currentWeatherData.downloadWeatherData(forCity: userCityName)
                 forecastWeatherData.downloadWeatherData(forCity: userCityName)
-         
+                
             } else {
-                
                 hideLoadingHUD()
-                
                 showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
-                
             }
             
         } else {
-            
-            showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")
-            
+            showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")            
         }
     }
     
@@ -91,9 +75,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
             return myCell
             
         } else {
-        
-            return CellWeather()
-        
+            return CellWeather()        
         }
     }
 

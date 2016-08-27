@@ -101,6 +101,14 @@ class CurrentWeatherData {
 //            print("RESULT \(response.result)")   // result of response serialization
             
             if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
+                
+                // if there is no data for city with given name
+                if let codeError = JSONDictionary["cod"] as? String {
+                    // update UI without any data
+                    self._cityName = "Such city don't exists"
+                    self.delegate?.updateUI()
+                }
+                
                 guard let weather = JSONDictionary["weather"] as? [Dictionary<String, AnyObject>],
                       let main = weather[0]["main"] as? String
                       else { return }

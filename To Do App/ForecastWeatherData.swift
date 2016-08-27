@@ -19,6 +19,13 @@ class ForecastWeatherData {
         let weatherUrl = NSURL(string: string)!
         Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
             if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
+                
+                // if there is no data for city with given name
+                if let codeError = JSONDictionary["cod"] as? String {
+                    // update UI without any data
+                    self.delegate?.updateTableCell()
+                }
+                
                 if let forecastList = JSONDictionary["list"] as? [Dictionary<String, AnyObject>] {
                     for dayForecast in forecastList {
                         let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
