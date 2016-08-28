@@ -268,7 +268,7 @@
 				TargetAttributes = {
 					718D87141CEA50C4001E7F17 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = R35N4L2G2B;
+						DevelopmentTeam = 7K692Z62S3;
 					};
 				};
 			};
@@ -507,7 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDay;
 				PRODUCT_NAME = AnyDay;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -524,7 +524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDay;
 				PRODUCT_NAME = AnyDay;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
