@@ -33,7 +33,7 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setObserverForChange()
+        
 
         authorizationStatus = CLLocationManager.authorizationStatus()
         
@@ -57,20 +57,6 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         setView()
         setNavigationBar(forClassWithName: String(CheckWeatherRequirements.self))
         
-    }
-    
-    func setObserverForChange() {
-        
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(CheckWeatherRequirements.failedToGetUserLocation(_:)),
-            name: "failedToGetUserLocation",
-            object: nil)
-        
-    }
-    
-    func failedToGetUserLocation(notification: NSNotification) {
-        self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
     }
     
     func validateCityNameFromUser() {

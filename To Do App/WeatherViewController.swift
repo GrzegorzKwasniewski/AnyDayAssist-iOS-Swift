@@ -30,6 +30,7 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setObserverForChange()
         tableView.delegate = self
         tableView.dataSource = self
         currentWeatherData.delegate = self
@@ -106,5 +107,19 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         setSmallTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(WeatherViewController.self))
         
+    }
+    
+    func setObserverForChange() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(WeatherViewController.failedToGetUserLocation(_:)),
+            name: "failedToGetUserLocation",
+            object: nil)
+        
+    }
+    
+    func failedToGetUserLocation(notification: NSNotification) {
+            self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
     }
 }

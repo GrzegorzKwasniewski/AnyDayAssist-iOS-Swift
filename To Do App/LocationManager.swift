@@ -51,6 +51,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)        
+        NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)
+        print(error)
     }
 }
