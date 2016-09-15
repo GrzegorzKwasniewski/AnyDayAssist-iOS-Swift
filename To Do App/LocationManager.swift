@@ -45,6 +45,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
                         return }
                 userCityName = city
                 userCityZipCode = zipCode
+                print("README: \(userCityName)")
                 self.locationManagerDelegate.stopUpdatingLocation()
             }
         }

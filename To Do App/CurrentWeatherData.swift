@@ -92,62 +92,64 @@ class CurrentWeatherData {
     }
     
     func downloadWeatherData(forCity city: String) {
-        let string = "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5"
-        let weatherUrl = NSURL(string: string)!
-        Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
-//            print("REQUEST \(response.request)")  // original URL request
-//            print("RESPONSE \(response.response)") // URL response
-//            print("DATA \(response.data)")     // server data
-//            print("RESULT \(response.result)")   // result of response serialization
-            
-            if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
+        let formatedCityName = StringFormatting.removeSpecialCharsFromString(city)
+        let weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=\(formatedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5"
+        if let weatherUrl = NSURL(string: weatherUrl) {
+            Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
+                //            print("REQUEST \(response.request)")  // original URL request
+                //            print("RESPONSE \(response.response)") // URL response
+                //            print("DATA \(response.data)")     // server data
+                //            print("RESULT \(response.result)")   // result of response serialization
                 
-                // if there is no data for city with given name
-                if let codeError = JSONDictionary["cod"] as? String {
-                    // update UI without any data
-                    self._cityName = "Such city don't exists"
-                    self.delegate?.updateUI()
+                if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
+                    
+                    // if there is no data for city with given name
+                    if let codeError = JSONDictionary["cod"] as? String {
+                        // update UI without any data
+                        self._cityName = "Such city don't exists"
+                        self.delegate?.updateUI()
+                    }
+                    
+                    guard let weather = JSONDictionary["weather"] as? [Dictionary<String, AnyObject>],
+                        let main = weather[0]["main"] as? String
+                        else { return }
+                    self._weatherDescription = main.capitalizedString
+                    
+                    guard let getWindData = JSONDictionary["wind"] as? Dictionary<String, AnyObject> ,
+                        let getWindSpeed = getWindData["speed"] as? Double
+                        else { return }
+                    self._windSpeed = String(getWindSpeed)
+                    
+                    if let cityName = JSONDictionary["name"] as? String {
+                        self._cityName = cityName.capitalizedString
+                    }
+                    
+                    if let mainData = JSONDictionary["main"] as? Dictionary<String, AnyObject> {
+                        if let getTemperatureAverage = mainData["temp"] as? Double {
+                            self._currentTemp = String(getTemperatureAverage)
+                        }
+                        
+                        if let getTemperatureMin = mainData["temp_min"] as? Double {
+                            self._temperatureMin = String(getTemperatureMin)
+                        }
+                        
+                        if let getTemperatureMin = mainData["temp_max"] as? Double {
+                            self._temperatureMax = String(getTemperatureMin)
+                        }
+                        
+                        if let getPressure = mainData["pressure"] as? Int {
+                            self._pressure = String(getPressure)
+                        }
+                        
+                        if let getHumidity = mainData["humidity"] as? Int {
+                            self._humidity = String(getHumidity)
+                        }
+                    }
                 }
                 
-                guard let weather = JSONDictionary["weather"] as? [Dictionary<String, AnyObject>],
-                      let main = weather[0]["main"] as? String
-                      else { return }
-                self._weatherDescription = main.capitalizedString
+                self.delegate?.updateUI()
                 
-                guard let getWindData = JSONDictionary["wind"] as? Dictionary<String, AnyObject> ,
-                      let getWindSpeed = getWindData["speed"] as? Double
-                      else { return }
-                self._windSpeed = String(getWindSpeed)
-                
-                if let cityName = JSONDictionary["name"] as? String {
-                    self._cityName = cityName.capitalizedString
-                }
-                
-                if let mainData = JSONDictionary["main"] as? Dictionary<String, AnyObject> {
-                    if let getTemperatureAverage = mainData["temp"] as? Double {
-                        self._currentTemp = String(getTemperatureAverage)
-                    }
-                    
-                    if let getTemperatureMin = mainData["temp_min"] as? Double {
-                        self._temperatureMin = String(getTemperatureMin)
-                    }
-                    
-                    if let getTemperatureMin = mainData["temp_max"] as? Double {
-                        self._temperatureMax = String(getTemperatureMin)
-                    }
-                    
-                    if let getPressure = mainData["pressure"] as? Int {
-                        self._pressure = String(getPressure)
-                    }
-                    
-                    if let getHumidity = mainData["humidity"] as? Int {
-                        self._humidity = String(getHumidity)
-                    }
-                }
             }
-            
-            self.delegate?.updateUI()
-            
         }
     }
 }

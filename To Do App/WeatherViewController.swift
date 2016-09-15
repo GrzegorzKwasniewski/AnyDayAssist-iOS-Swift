@@ -45,7 +45,6 @@ class WeatherViewController: UIViewController, CurrentWeatherDataDelegate, Forec
         if Reachability.isConnectedToNetwork() == true {
             if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
                 showLoadingHUD()
-                
                 currentWeatherData.downloadWeatherData(forCity: userCityName)
                 forecastWeatherData.downloadWeatherData(forCity: userCityName)
                 

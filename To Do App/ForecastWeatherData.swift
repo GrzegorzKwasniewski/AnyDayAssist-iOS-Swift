@@ -15,22 +15,23 @@ class ForecastWeatherData {
 
     func downloadWeatherData(forCity city: String) {
         forecasts = []
-        let string = "http://api.openweathermap.org/data/2.5/forecast?q=\(city)&units=metric&cnt=4&APPID=8ecab5fd503cc5a1f3801625138a85d5"
-        let weatherUrl = NSURL(string: string)!
-        Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
-            if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
-                
-                // if there is no data for city with given name
-                if let codeError = JSONDictionary["cod"] as? String {
-                    // update UI without any data
-                    self.delegate?.updateTableCell()
-                }
-                
-                if let forecastList = JSONDictionary["list"] as? [Dictionary<String, AnyObject>] {
-                    for dayForecast in forecastList {
-                        let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
-                        forecasts.append(singleDayForecast)
+        let formatedCityName = StringFormatting.removeSpecialCharsFromString(city)
+        let weatherUrl = "http://api.openweathermap.org/data/2.5/forecast?q=\(formatedCityName)&units=metric&cnt=4&APPID=8ecab5fd503cc5a1f3801625138a85d5"
+        if let weatherUrl = NSURL(string: weatherUrl) {
+            Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
+                if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
+                    // if there is no data for city with given name
+                    if let codeError = JSONDictionary["cod"] as? String {
+                        // update UI without any data
                         self.delegate?.updateTableCell()
+                    }
+                    
+                    if let forecastList = JSONDictionary["list"] as? [Dictionary<String, AnyObject>] {
+                        for dayForecast in forecastList {
+                            let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
+                            forecasts.append(singleDayForecast)
+                            self.delegate?.updateTableCell()
+                        }
                     }
                 }
             }

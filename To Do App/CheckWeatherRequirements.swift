@@ -26,6 +26,8 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         
         locationManagerSingleton.startUpdatingLocation()
         
+        print("README2: \(userCityName)")
+        
         self.performSegueWithIdentifier("showWeather", sender: nil)
         
     }

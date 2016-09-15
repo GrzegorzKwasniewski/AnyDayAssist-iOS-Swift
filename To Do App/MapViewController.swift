@@ -58,7 +58,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
     }
     
     override func viewWillAppear(animated: Bool) {
-            setUI()
+        setUI()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -73,6 +73,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
         let region:MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
         self.mapView.setRegion(region, animated: true)
         
+        locationManager.stopUpdatingLocation()
+        
     }
     
     func longPressGesture(gestureRecognizer:UIGestureRecognizer) {
@@ -84,7 +86,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 var title:String = ""
                 if error != nil {
-                    self.showAlert(withTitle: "Something went wrong", withMessage: "Maybe Your internet connection is down?")
+                    self.showAlert(withTitle: "Something went wrong", withMessage: "Maybe You don't have internet connection?")
                     return
                 }
                 
