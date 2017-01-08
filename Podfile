@@ -1,9 +1,11 @@
+# Uncomment this line to define a global platform for your project
 platform :ios, '9.0'
-use_frameworks!
 
-target 'To Do App' do
+target 'AnyDay' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
 
-pod 'Alamofire', '~> 3.4'
+  # Pods for AnyDay
+pod 'Alamofire', '~> 3.0'
 pod 'MBProgressHUD', '~> 1.0.0'
-
 end

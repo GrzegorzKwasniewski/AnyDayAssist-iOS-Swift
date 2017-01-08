@@ -14,7 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-To Do App.xcscheme</key>
+		<key>Pods-AnyDay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +22,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5F50FE99AE6CA8775DABE99FE37C82E2</key>
+		<key>35B1260523245D6F25F96B0D8688EF82</key>
 		<dict>
 			<key>primary</key>
 			<true/>

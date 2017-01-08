@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		61AD2D66AE2F80EC4C337D4F /* Pods_To_Do_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */; };
 		7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */; };
 		711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */; };
 		7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */; };
@@ -45,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_Do_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BD1F8CCF4874DA380EDA617 /* Pods-AnyDay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyDay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyDay/Pods-AnyDay.debug.xcconfig"; sourceTree = "<group>"; };
 		7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewControllerExtension.swift; sourceTree = "<group>"; };
 		7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataDelegate.swift; sourceTree = "<group>"; };
@@ -82,8 +81,7 @@
 		71FF6D7A1D2EB4990057B22E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		71FFDC3B1D4685F7009A4EEE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		BEE2187FDEAD225C980D8CC5 /* Pods-To Do App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To Do App.release.xcconfig"; path = "Pods/Target Support Files/Pods-To Do App/Pods-To Do App.release.xcconfig"; sourceTree = "<group>"; };
-		CEF63106D563B8B9FFE600A2 /* Pods-To Do App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To Do App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-To Do App/Pods-To Do App.debug.xcconfig"; sourceTree = "<group>"; };
+		D3997C8DE235D6447F6185BC /* Pods-AnyDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyDay.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyDay/Pods-AnyDay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +90,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				71944F2F1D0DCCCD00206B4F /* CoreLocation.framework in Frameworks */,
-				61AD2D66AE2F80EC4C337D4F /* Pods_To_Do_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +216,6 @@
 		A7538B6CC1635646DB061FA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0B18F07D7682A810E2AF1EC5 /* Pods_To_Do_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -227,8 +223,8 @@
 		CA8FF50A82EA3A20CA0B1B51 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CEF63106D563B8B9FFE600A2 /* Pods-To Do App.debug.xcconfig */,
-				BEE2187FDEAD225C980D8CC5 /* Pods-To Do App.release.xcconfig */,
+				0BD1F8CCF4874DA380EDA617 /* Pods-AnyDay.debug.xcconfig */,
+				D3997C8DE235D6447F6185BC /* Pods-AnyDay.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -316,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-To Do App/Pods-To Do App-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyDay/Pods-AnyDay-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A2E5ABA795E629C2874B69D8 /* [CP] Check Pods Manifest.lock */ = {
@@ -346,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-To Do App/Pods-To Do App-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyDay/Pods-AnyDay-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -496,7 +492,7 @@
 		};
 		718D872A1CEA50C4001E7F17 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEF63106D563B8B9FFE600A2 /* Pods-To Do App.debug.xcconfig */;
+			baseConfigurationReference = 0BD1F8CCF4874DA380EDA617 /* Pods-AnyDay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -513,7 +509,7 @@
 		};
 		718D872B1CEA50C4001E7F17 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEE2187FDEAD225C980D8CC5 /* Pods-To Do App.release.xcconfig */;
+			baseConfigurationReference = D3997C8DE235D6447F6185BC /* Pods-AnyDay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
