@@ -175,8 +175,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-SY-GOt">
-                                <rect key="frame" x="59" y="142" width="258" height="314"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-SY-GOt" customClass="PopUpView" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="58" y="142" width="258" height="314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HU-Eq-43O">
                                         <rect key="frame" x="94" y="203" width="70" height="30"/>
