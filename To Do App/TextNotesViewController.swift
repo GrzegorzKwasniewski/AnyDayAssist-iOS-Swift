@@ -9,21 +9,20 @@
 import UIKit
 import CoreData
 
-class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
+class TextNotesViewController: UIViewController {
     
     var uiWasSet = false
-    
-    var messageLabel: UILabel = UILabel()
+    lazy var messageLabel: UILabel = {
+        let ml = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        return ml
+    }()
     
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 70
-        
+        view.addSubview(messageLabel)
         setObserverForChange()
 
     }
@@ -44,6 +43,27 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
         
     }
     
+    func setObserverForChange() {
+    
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
+            name: "popoverViewWasDismissed",
+            object: nil)
+        
+    }
+
+    func popoverViewWasDismissed(notification: NSNotification) {
+
+        globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
+        tableView.reloadData()
+        setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
+
+    }
+}
+
+extension TextNotesViewController: UITableViewDelegate {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -55,17 +75,17 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
-        
+            
             let note = toDoNotes[indexPath.row]
             myCell.noteTitle.textColor = UIColor.whiteColor()
             myCell.noteTitle.text = note.valueForKey("note") as? String
             myCell.cellImage.image = UIImage(named: "notes")
             return myCell
-        
+            
         } else {
-        
+            
             return Cell()
-        
+            
         }
     }
     
@@ -85,30 +105,14 @@ class TextNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
             
         }
     }
+}
+
+extension TextNotesViewController: UIMaker {
     
     func setUI() {
-
+        
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(TextNotesViewController.self))
         
-    }
-    
-    func setObserverForChange() {
-    
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
-            name: "popoverViewWasDismissed",
-            object: nil)
-        
-    }
-
-    
-    func popoverViewWasDismissed(notification: NSNotification) {
-
-        globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
-        tableView.reloadData()
-        setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
-
     }
 }
