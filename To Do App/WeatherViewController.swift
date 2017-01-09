@@ -37,10 +37,11 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
         forecastWeatherData.delegate = self
         authorizationStatus = CLLocationManager.authorizationStatus()
         
-        if weatherFromUserLocation {
+        if weatherFromUserLocation && authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
             weatherFromUserLocation = false
             locationManager.startUpdatingLocation()
         }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,17 +49,13 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        checkForAuthorisationStatus()
+
         if Reachability.isConnectedToNetwork() == true {
-            if authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse {
-                showLoadingHUD()
-                currentWeatherData.downloadWeatherData(forCity: userCityName)
-                forecastWeatherData.downloadWeatherData(forCity: userCityName)
-                
-            } else {
-                hideLoadingHUD()
-                showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
-            }
-            
+            //showLoadingHUD()
+            currentWeatherData.downloadWeatherData(forCity: userCityName)
+            forecastWeatherData.downloadWeatherData(forCity: userCityName)
         } else {
             showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")            
         }
@@ -84,6 +81,13 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     
     func failedToGetUserLocation(notification: NSNotification) {
             self.showAlert(withTitle: "Something went wrong", withMessage: "Can't get weather data")
+    }
+
+    func checkForAuthorisationStatus() {
+        if weatherFromUserLocation && authorizationStatus == CLAuthorizationStatus.Denied {
+            hideLoadingHUD()
+            showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
+        }
     }
 }
 

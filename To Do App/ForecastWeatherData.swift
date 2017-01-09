@@ -16,7 +16,7 @@ class ForecastWeatherData {
     func downloadWeatherData(forCity city: String) {
         forecasts = []
         let formatedCityName = StringHelperClass.removeSpecialCharsFromString(city)
-        let weatherUrl = "http://api.openweathermap.org/data/2.5/forecast?q=\(formatedCityName)&units=metric&cnt=4&APPID=8ecab5fd503cc5a1f3801625138a85d5"
+        let weatherUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=\(formatedCityName)&units=metric&cnt=7&APPID=8ecab5fd503cc5a1f3801625138a85d5"
         if let weatherUrl = NSURL(string: weatherUrl) {
             Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
                 if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
@@ -28,7 +28,7 @@ class ForecastWeatherData {
                     
                     if let forecastList = JSONDictionary["list"] as? [Dictionary<String, AnyObject>] {
                         for dayForecast in forecastList {
-                            let singleDayForecast = SingleDayForecast(forecastDictiobary: dayForecast)
+                            let singleDayForecast = SingleDayForecast(forecastDictionary: dayForecast)
                             forecasts.append(singleDayForecast)
                             self.delegate?.updateTableCell()
                         }
@@ -83,13 +83,13 @@ class SingleDayForecast {
     }
     
     
-    init(forecastDictiobary dictionary: Dictionary<String, AnyObject>) {
-        if let main = dictionary["main"] as? Dictionary<String, AnyObject> {
-            if let tempMin = main["temp_min"] as? Double {
+    init(forecastDictionary dictionary: Dictionary<String, AnyObject>) {
+        if let main = dictionary["temp"] as? Dictionary<String, AnyObject> {
+            if let tempMin = main["min"] as? Double {
                 self._temperatureMin = String(tempMin)
             }
             
-            if let tempMax = main["temp_max"] as? Double {
+            if let tempMax = main["max"] as? Double {
                 self._temperatureMax = String(tempMax)
             }
         }
