@@ -19,14 +19,14 @@ class CustomTextView: UITextView {
     
     
     // MARK: - Properties
-    var textFont = UIFont(name: "Helvetica Neue", size: 14.0)
+    var textFont = UIFont(name: "Avenir Book", size: 14.0)
     
     override func drawRect(rect: CGRect) {
         
         self.text = "additinal notes"
         self.textContainerInset = UIEdgeInsets(top: insetByY, left: insetByX, bottom: insetByY, right: insetByX)
         self.layer.masksToBounds = false
-        self.backgroundColor = UIColor.redColor()
+        self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 3.0
         self.tintColor = tintCol
         self.textColor = fontCol

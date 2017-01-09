@@ -176,9 +176,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hy7-Hf-62J" customClass="CustomTextField" customModule="AnyDay" customModuleProvider="target">
-                                <rect key="frame" x="54" y="123" width="266" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hy7-Hf-62J" customClass="CustomTextField" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="50" y="123" width="274" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="customString" value="note title"/>
@@ -196,8 +196,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-S6-nvI">
-                                <rect key="frame" x="54" y="364" width="266" height="180"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-S6-nvI" customClass="CustomPickerView" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="30" y="377" width="314" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="IjV-N8-PNf"/>
+                                </constraints>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gr4-oB-Jl5" customClass="CustomTextView" customModule="AnyDay" customModuleProvider="target">
                                 <rect key="frame" x="50" y="183" width="274" height="128"/>
@@ -223,16 +226,50 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be">
+                                <rect key="frame" x="8" y="334" width="359" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="nmm-6C-6s2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-pi-HRr">
+                                <rect key="frame" x="16" y="459" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wpI-Zn-Wp9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-1F-YDd">
+                                <rect key="frame" x="32" y="488" width="310" height="95"/>
+                                <date key="date" timeIntervalSinceReferenceDate="505692021.319897">
+                                    <!--2017-01-09 22:00:21 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fNy-S6-nvI" secondAttribute="trailing" constant="15" id="3Vs-Ck-6nP"/>
+                            <constraint firstItem="nDM-dH-3be" firstAttribute="top" secondItem="Gr4-oB-Jl5" secondAttribute="bottom" constant="23" id="Cpc-AL-bMo"/>
                             <constraint firstItem="Gr4-oB-Jl5" firstAttribute="top" secondItem="hy7-Hf-62J" secondAttribute="bottom" constant="30" id="Fo7-Xu-xHX"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="34" id="I47-r0-YDa"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="8" id="L5g-Fk-maN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H5c-pi-HRr" secondAttribute="trailing" id="WHB-iT-0JH"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="centerX" secondItem="7R5-uw-gcF" secondAttribute="centerX" id="WYx-Hl-91T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gr4-oB-Jl5" secondAttribute="trailing" constant="35" id="Ytb-CP-gm2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nDM-dH-3be" secondAttribute="trailing" constant="-8" id="apx-LX-dE0"/>
+                            <constraint firstItem="H5c-pi-HRr" firstAttribute="top" secondItem="fNy-S6-nvI" secondAttribute="bottom" constant="24" id="bee-hu-0fH"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="14" id="fAk-am-V2U"/>
+                            <constraint firstItem="H5c-pi-HRr" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" id="iIj-1F-an4"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="8" id="jjt-4I-Xad"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="top" secondItem="hw6-nm-OEx" secondAttribute="bottom" constant="103" id="oAH-K8-5wa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hy7-Hf-62J" secondAttribute="trailing" constant="35" id="oOj-LZ-ri3"/>
                             <constraint firstItem="Gr4-oB-Jl5" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="34" id="thg-dT-2Pg"/>
+                            <constraint firstItem="nDM-dH-3be" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="-8" id="wBS-9P-Vwh"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

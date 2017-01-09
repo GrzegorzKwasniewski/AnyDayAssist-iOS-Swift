@@ -21,7 +21,7 @@ class CustomTextField: UITextField {
     
     
     // MARK: - Properties
-    var textFont = UIFont(name: "Helvetica Neue", size: 14.0)
+    var textFont = UIFont(name: "Avenir Book", size: 14.0)
     
     override func drawRect(rect: CGRect) {
         
