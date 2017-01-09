@@ -15,6 +15,7 @@ let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! Ap
 let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 
 // CheckWeatherRequirements.swift
+var weatherFromUserLocation = false
 var userCityName = String()
 var userCityZipCode = String()
 

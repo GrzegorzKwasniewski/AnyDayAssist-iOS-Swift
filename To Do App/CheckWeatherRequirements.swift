@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
+class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     
     var uiWasSet = false
     var authorizationStatus:CLAuthorizationStatus!
@@ -34,9 +34,8 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     }
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
-        
-        locationManager.startUpdatingLocation()
-        
+        weatherFromUserLocation = true
+        self.performSegueWithIdentifier("showWeather", sender: nil)        
     }
 
     override func viewDidLoad() {
