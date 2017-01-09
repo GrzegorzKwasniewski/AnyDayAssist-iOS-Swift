@@ -74,17 +74,15 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
+        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellNote {
             
-            let note = toDoNotes[indexPath.row]
-            myCell.noteTitle.textColor = UIColor.whiteColor()
-            myCell.noteTitle.text = note.valueForKey("note") as? String
-            myCell.cellImage.image = UIImage(named: "notes")
+            let singleNote = toDoNotes[indexPath.row]
+            myCell.configureCell(singleNote, cellImage: UIImage(named: "notes")!)
             return myCell
             
         } else {
             
-            return Cell()
+            return CellNote()
             
         }
     }
@@ -92,40 +90,6 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            
-        }
-    }
-    
-//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//        
-//        let singleNote = toDoNotes[indexPath.row]
-//        
-//        let edit = UITableViewRowAction(style: .Default, title: "Edit") { (action, indexPath) in
-//            
-//            // chyba lepiej będzie zrobić inny popUp do tego
-//            let popUpView:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
-//            self.addChildViewController(popUpView)
-//            popUpView.view.frame = self.view.frame
-//            self.view.addSubview(popUpView.view)
-//            popUpView.didMoveToParentViewController(self)
-//            
-//        }
-//        
-//        edit.backgroundColor = .greenColor()
-//        
-//        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (action, indexPath) in
-//            let noteText = singleNote.valueForKey("note") as! String
-//            toDoNotes.removeAtIndex(indexPath.row)
-//            tableView.reloadData()
-//            globalCoreDataFunctions.removeFromEntity("Notes", title: noteText, predicateFormat: "note == %@")
-//        }
-//        
-//        return [edit, delete]
-//    }
 }
 
 extension TextNotesViewController: UIMaker {

@@ -42,17 +42,17 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
         return placesToVisit.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
-            let note = placesToVisit[indexPath.row]
-            myCell.noteTitle.textColor = UIColor.whiteColor()
-            myCell.noteTitle.text = note.valueForKey("title") as? String
-            myCell.cellImage.image = UIImage(named: "place")
-            return myCell
-        } else {
-            return Cell()
-        }
-    }
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? Cell {
+//            let note = placesToVisit[indexPath.row]
+//            myCell.noteTitle.textColor = UIColor.whiteColor()
+//            myCell.noteTitle.text = note.valueForKey("title") as? String
+//            myCell.cellImage.image = UIImage(named: "place")
+//            return myCell
+//        } else {
+//            return Cell()
+//        }
+//    }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
