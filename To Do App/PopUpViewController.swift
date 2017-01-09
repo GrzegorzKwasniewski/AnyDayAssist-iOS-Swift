@@ -14,7 +14,7 @@ class PopUpViewController: UIViewController {
     
     @IBAction func saveNote(sender: AnyObject) {
         if !(noteText.text!.isEmpty) {
-            globalCoreDataFunctions.saveTextNote(noteText.text!)
+            //globalCoreDataFunctions.saveTextNote(noteText.text!)
         }
         removeAnimate()
     }

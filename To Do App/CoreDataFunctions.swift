@@ -19,9 +19,12 @@ final class CoreDataFunctions {
         // created by code in other files
     }
     
-    func saveTextNote(note: String) {
+    func saveTextNote(note: String, extraNotes: String, priority: String, dueDate: String) {
         let newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)
         newNote.setValue(note, forKey: "note")
+        newNote.setValue(extraNotes, forKey: "extraNotes")
+        newNote.setValue(priority, forKey: "priority")
+        newNote.setValue(dueDate, forKey: "dueDate")
         do {
             try contextOfOurApp.save()
         } catch let error as NSError{
