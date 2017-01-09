@@ -15,6 +15,7 @@
 		7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */; };
 		7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */; };
 		716B39051D3A6A12002D8ABE /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B39041D3A6A12002D8ABE /* Cell.swift */; };
+		71749F5B1E242E0E009E720E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5A1E242E0E009E720E /* CustomTextView.swift */; };
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
 		718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D871E1CEA50C4001E7F17 /* Main.storyboard */; };
 		718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 718D87211CEA50C4001E7F17 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertMaker.swift; sourceTree = "<group>"; };
 		7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMaker.swift; sourceTree = "<group>"; };
 		716B39041D3A6A12002D8ABE /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		71749F5A1E242E0E009E720E /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		718D87151CEA50C4001E7F17 /* AnyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718D871F1CEA50C4001E7F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				71B6CDA01E22940E00A10ED8 /* PopUpView.swift */,
 				71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */,
 				71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */,
+				71749F5A1E242E0E009E720E /* CustomTextView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				71B6CDA71E22BDB500A10ED8 /* TextNoteDetailViewController.swift in Sources */,
 				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,
 				71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */,
+				71749F5B1E242E0E009E720E /* CustomTextView.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */,
 				71FB98201D2AE87B00BDCBB2 /* PopUpViewController.swift in Sources */,

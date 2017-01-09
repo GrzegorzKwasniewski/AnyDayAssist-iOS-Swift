@@ -51,14 +51,8 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     override func viewDidAppear(animated: Bool) {
         
         checkForAuthorisationStatus()
-
-        if Reachability.isConnectedToNetwork() == true {
-            //showLoadingHUD()
-            currentWeatherData.downloadWeatherData(forCity: userCityName)
-            forecastWeatherData.downloadWeatherData(forCity: userCityName)
-        } else {
-            showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")            
-        }
+        downloadWeatherData()
+        
     }
     
     func setUI() {
@@ -87,6 +81,16 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
         if weatherFromUserLocation && authorizationStatus == CLAuthorizationStatus.Denied {
             hideLoadingHUD()
             showAlertForChangingSettings(withTitle: "Can't get weather data", withMessage: "Application don't have proper permissions")
+        }
+    }
+    
+    func downloadWeatherData() {
+        if Reachability.isConnectedToNetwork() == true {
+            //showLoadingHUD()
+            currentWeatherData.downloadWeatherData(forCity: userCityName)
+            forecastWeatherData.downloadWeatherData(forCity: userCityName)
+        } else {
+            showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")
         }
     }
 }
