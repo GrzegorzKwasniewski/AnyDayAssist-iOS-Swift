@@ -31,3 +31,11 @@ var activeAudioNote: Int?
 
 //ForecastWeatherData.swift
 var forecasts = [SingleDayForecast]()
+
+//enums
+
+enum StringValidation {
+    case isValid
+    case isToLong
+    case isEmpty
+}

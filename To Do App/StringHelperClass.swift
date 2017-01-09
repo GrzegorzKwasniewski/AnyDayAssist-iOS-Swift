@@ -6,9 +6,9 @@
 //  Copyright © 2016 Grzegorz Kwaśniewski. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public class StringFormatting {
+public class StringHelperClass {
 
     class func removeSpecialCharsFromString (text: String) -> String {
         let acceptableChars : Set<Character> =
@@ -25,5 +25,24 @@ public class StringFormatting {
         }
         // when returned sign is #, app will tell return "There's no data for such City" alert
         return "#"        
+    }
+    
+    class func validateCityNameFromUser(withTextField textField: UITextField) -> StringValidation {
+        
+        if let city = textField.text {
+            if !city.isEmpty {
+                if city.characters.count <= 15 {
+                    let formatedCityName = removeSpecialCharsFromString(city)
+                    userCityName = formatedCityName
+                    return .isValid
+                } else {
+                    return .isToLong
+                }
+            } else {
+                return .isEmpty
+            }
+        } else {
+            return .isEmpty
+        }
     }
 }

@@ -62,7 +62,7 @@ class TextNotesViewController: UIViewController {
     }
 }
 
-extension TextNotesViewController: UITableViewDelegate {
+extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -97,14 +97,35 @@ extension TextNotesViewController: UITableViewDelegate {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
-            let singleNote = toDoNotes[indexPath.row]
-            let noteText = singleNote.valueForKey("note") as! String
-            toDoNotes.removeAtIndex(indexPath.row)
-            tableView.reloadData()
-            globalCoreDataFunctions.removeFromEntity("Notes", title: noteText, predicateFormat: "note == %@")
-            
         }
     }
+    
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        
+//        let singleNote = toDoNotes[indexPath.row]
+//        
+//        let edit = UITableViewRowAction(style: .Default, title: "Edit") { (action, indexPath) in
+//            
+//            // chyba lepiej będzie zrobić inny popUp do tego
+//            let popUpView:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
+//            self.addChildViewController(popUpView)
+//            popUpView.view.frame = self.view.frame
+//            self.view.addSubview(popUpView.view)
+//            popUpView.didMoveToParentViewController(self)
+//            
+//        }
+//        
+//        edit.backgroundColor = .greenColor()
+//        
+//        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (action, indexPath) in
+//            let noteText = singleNote.valueForKey("note") as! String
+//            toDoNotes.removeAtIndex(indexPath.row)
+//            tableView.reloadData()
+//            globalCoreDataFunctions.removeFromEntity("Notes", title: noteText, predicateFormat: "note == %@")
+//        }
+//        
+//        return [edit, delete]
+//    }
 }
 
 extension TextNotesViewController: UIMaker {

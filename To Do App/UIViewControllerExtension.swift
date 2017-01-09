@@ -15,11 +15,12 @@ extension UIViewController {
     }
     
     func promptForNote() {
-        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
-        self.addChildViewController(popUpView)
-        popUpView.view.frame = self.view.frame
-        self.view.addSubview(popUpView.view)
-        popUpView.didMoveToParentViewController(self)
+        performSegueWithIdentifier("textNoteDetail", sender: nil)
+//        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("popUpView") as! PopUpViewController
+//        self.addChildViewController(popUpView)
+//        popUpView.view.frame = self.view.frame
+//        self.view.addSubview(popUpView.view)
+//        popUpView.didMoveToParentViewController(self)
     }
     
     func addNewPlaceToSee() {

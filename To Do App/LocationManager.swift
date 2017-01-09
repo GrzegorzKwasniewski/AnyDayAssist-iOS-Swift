@@ -9,13 +9,12 @@
 import UIKit
 import CoreLocation
 
-let locationManagerSingleton = LocationManager()
-
-final class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate {
     
+    weak var delegate: LocationManagerUpdateDelegate?
     let locationManagerDelegate = CLLocationManager()
 
-    private override init(){
+    override init(){
         super.init()
         locationManagerDelegate.delegate = self
         locationManagerDelegate.desiredAccuracy = kCLLocationAccuracyBest
@@ -46,6 +45,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
                 userCityName = city
                 userCityZipCode = zipCode
                 self.locationManagerDelegate.stopUpdatingLocation()
+                self.delegate?.performActionAfterLocationUpdate()
             }
         }
     }

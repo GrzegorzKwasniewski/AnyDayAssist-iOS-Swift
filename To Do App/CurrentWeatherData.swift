@@ -11,7 +11,7 @@ import Alamofire
 
 class CurrentWeatherData {
     
-    weak var delegate = CurrentWeatherDataDelegate?()
+    weak var delegate: CurrentWeatherDataDelegate?
 
     var _cityName: String!
     var _weatherDescription: String!
@@ -92,7 +92,7 @@ class CurrentWeatherData {
     }
     
     func downloadWeatherData(forCity city: String) {
-        let formatedCityName = StringFormatting.removeSpecialCharsFromString(city)
+        let formatedCityName = StringHelperClass.removeSpecialCharsFromString(city)
         let weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=\(formatedCityName)&units=metric&APPID=8ecab5fd503cc5a1f3801625138a85d5"
         if let weatherUrl = NSURL(string: weatherUrl) {
             Alamofire.request(.GET, weatherUrl).responseJSON { (response) in

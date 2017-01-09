@@ -13,32 +13,40 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
     
     var uiWasSet = false
     var authorizationStatus:CLAuthorizationStatus!
+    var locationManager = LocationManager()
+    var stringValidation = StringValidation.isEmpty
     
     @IBOutlet var cityNameForWeather: UITextField!
     
     @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
         
-        validateCityNameFromUser()
+        stringValidation = StringHelperClass.validateCityNameFromUser(withTextField: cityNameForWeather)
+        
+        switch stringValidation {
+        case .isValid:
+            self.performSegueWithIdentifier("showWeather", sender: nil)
+        case .isToLong:
+            showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
+        case .isEmpty:
+            showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
+        }
 
     }
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
         
-        locationManagerSingleton.startUpdatingLocation()
-                
-        self.performSegueWithIdentifier("showWeather", sender: nil)
+        locationManager.startUpdatingLocation()
         
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
+        locationManager.delegate = self
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if authorizationStatus == CLAuthorizationStatus.NotDetermined {
-            locationManagerSingleton.locationManagerDelegate.requestWhenInUseAuthorization()
+            locationManager.locationManagerDelegate.requestWhenInUseAuthorization()
         }
     }
     
@@ -58,21 +66,11 @@ class CheckWeatherRequirements: UIViewController, CLLocationManagerDelegate, UIA
         setNavigationBar(forClassWithName: String(CheckWeatherRequirements.self))
         
     }
+}
+
+extension CheckWeatherRequirements: LocationManagerUpdateDelegate {
     
-    func validateCityNameFromUser() {
-        
-        if let city = cityNameForWeather.text {
-            if !city.isEmpty {
-                if city.characters.count <= 15 {
-                    let formatedCityName = StringFormatting.removeSpecialCharsFromString(city)
-                    userCityName = formatedCityName
-                    self.performSegueWithIdentifier("showWeather", sender: nil)
-                } else {
-                    showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
-                }
-            } else {
-                showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
-            }
-        }
+    func performActionAfterLocationUpdate() {
+        self.performSegueWithIdentifier("showWeather", sender: nil)
     }
 }
