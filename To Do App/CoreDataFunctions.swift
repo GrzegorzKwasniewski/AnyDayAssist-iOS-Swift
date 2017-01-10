@@ -65,6 +65,17 @@ final class CoreDataFunctions {
         }
     }
     
+    func deleteObject(object: NSManagedObject) {
+        
+        contextOfOurApp.deleteObject(object)
+        
+        do {
+            try contextOfOurApp.save()
+        }catch let error as NSError{
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+    
     func removeFromEntity(entity: String, title: String, predicateFormat: String) {
         let request = NSFetchRequest(entityName: entity)
         request.predicate = NSPredicate(format: predicateFormat, title)

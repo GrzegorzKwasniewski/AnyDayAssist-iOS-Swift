@@ -13,6 +13,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
     @IBOutlet weak var noteTitle: CustomTextField!
     @IBOutlet weak var additionalNotes: CustomTextView!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var priorityOfTask: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -31,6 +32,10 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         
         priorityOfTask.delegate = self
         priorityOfTask.dataSource = self
+        
+        // TODO: Move to custom class
+        deleteButton.userInteractionEnabled = false
+        deleteButton.alpha = 0.2
         
         priorityOfTask.selectRow(0, inComponent: 0, animated: false)
         
@@ -69,6 +74,16 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         }
     }
     
+    @IBAction func deleteNote(sender: AnyObject) {
+        if let singleNote = singleNote {
+            globalCoreDataFunctions.deleteObject(singleNote)
+        }
+    }
+    
+    @IBAction func backButtonForTest(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func setDate() {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .MediumStyle
@@ -78,6 +93,9 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     }
     
     func setUI(with singleNote: NSManagedObject) {
+        
+        deleteButton.userInteractionEnabled = true
+        deleteButton.alpha = 1
         
         noteTitle.text = singleNote.valueForKey("note") as? String
         additionalNotes.text = singleNote.valueForKey("extraNotes") as? String

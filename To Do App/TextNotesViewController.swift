@@ -30,6 +30,8 @@ class TextNotesViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        toDoNotes = []
+        
         if !uiWasSet {
             
             setUI()
@@ -77,6 +79,7 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellNote {
             
             let singleNote = toDoNotes[indexPath.row]
+            print(singleNote.valueForKey("note"))
             myCell.configureCell(singleNote, cellImage: UIImage(named: "notes")!)
             return myCell
             
@@ -87,14 +90,9 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        
-        return indexPath
-    }
+//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return true
+//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)

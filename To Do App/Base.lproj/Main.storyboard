@@ -218,6 +218,23 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-8c-aaX">
+                                <rect key="frame" x="165" y="594" width="45" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteNote:" destination="AFR-rD-VhO" eventType="touchDown" id="uG1-Xh-zBe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-iV-unD">
+                                <rect key="frame" x="26" y="28" width="34" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonForTest:" destination="AFR-rD-VhO" eventType="touchDown" id="MIJ-be-Aby"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -247,6 +264,7 @@
                     <connections>
                         <outlet property="additionalNotes" destination="Gr4-oB-Jl5" id="TZo-Kk-QAZ"/>
                         <outlet property="datePicker" destination="xxD-1F-YDd" id="ZzU-Wm-ktt"/>
+                        <outlet property="deleteButton" destination="A4H-8c-aaX" id="g11-Fn-GZS"/>
                         <outlet property="noteTitle" destination="hy7-Hf-62J" id="NRj-H8-Xpv"/>
                         <outlet property="priorityOfTask" destination="fNy-S6-nvI" id="l0k-OY-Lpk"/>
                     </connections>
