@@ -90,9 +90,30 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        
+        return indexPath
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let singleNote = toDoNotes[indexPath.row]
+        performSegueWithIdentifier("noteDetail", sender: singleNote)
+    }
 }
 
 extension TextNotesViewController: UIMaker {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "noteDetail" {
+            if let noteDetail = segue.destinationViewController as? TextNoteDetailViewController {
+                if let singleNote = sender as? NSManagedObject {
+                    noteDetail.singleNote = singleNote
+                }
+            }
+        }
+    }
     
     func setUI() {
         

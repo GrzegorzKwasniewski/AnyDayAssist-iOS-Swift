@@ -11,16 +11,30 @@ import UIKit
 class CustomLabel: UILabel {
 
     // MARK: - Properties
-    var textFont = UIFont(name: "Avenir Book", size: 9.0)
+    var textFont = UIFont(name: "Avenir Book", size: 15.0)
     
-    override func drawRect(rect: CGRect) {
-//        self.text = "Priority of task"
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        self.commonInit()
+        
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+    
+    func commonInit() {
+        self.textColor = UIColor.whiteColor()
+        self.font = textFont
         self.textAlignment = .Center
-        self.textColor = UIColor.redColor()
-        //self.minimumScaleFactor = 0.0
-        //                self.layer.cornerRadius = 3.0
-        //                self.layer.borderWidth = 1
-        //                self.layer.borderColor = UIColor.grayColor().CGColor
-
+        //self.layer.cornerRadius = self.bounds.width/2
+        //self.clipsToBounds = true
+        //self.setProperties(1.0, borderColor:UIColor.blackColor())
+    }
+    
+    func setProperties(borderWidth: Float, borderColor: UIColor) {
+        self.layer.borderWidth = CGFloat(borderWidth)
+        self.layer.borderColor = borderColor.CGColor
     }
 }

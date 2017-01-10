@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
@@ -15,6 +16,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     @IBOutlet weak var priorityOfTask: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    var singleNote: NSManagedObject?
     var note: String = ""
     var extraNotes: String = ""
     var priority: String = ""
@@ -24,11 +26,15 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setView()
         
         priorityOfTask.delegate = self
         priorityOfTask.dataSource = self
+        
+        if let singleNote = singleNote {
+            setUI(with: singleNote)
+        }
     }
     
     @IBAction func saveNote(sender: AnyObject) {
@@ -53,9 +59,38 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
     func setDate() {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        dateFormatter.dateStyle = .MediumStyle
+        dateFormatter.timeStyle = .ShortStyle
         let dateString = dateFormatter.stringFromDate(datePicker.date)
         dueDate = dateString
+    }
+    
+    func setUI(with singleNote: NSManagedObject) {
+        
+        noteTitle.text = singleNote.valueForKey("note") as? String
+        additionalNotes.text = singleNote.valueForKey("extraNotes") as? String
+        
+        if let setPriority = singleNote.valueForKey("priority") as? String {
+            switch setPriority {
+            case "heigh":
+                priorityOfTask.selectRow(0, inComponent: 0, animated: false)
+            case "medium":
+                priorityOfTask.selectRow(1, inComponent: 0, animated: false)
+            case "low":
+                priorityOfTask.selectRow(2, inComponent: 0, animated: false)
+            default:
+                priorityOfTask.selectRow(0, inComponent: 0, animated: false)
+            }
+        }
+        
+        if let dueDate = singleNote.valueForKey("dueDate") as? String {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .MediumStyle
+            dateFormatter.timeStyle = .ShortStyle
+            if let dateFromString = dateFormatter.dateFromString(dueDate) {
+                datePicker.setDate(dateFromString, animated: true)
+            }
+        }
     }
 }
 
