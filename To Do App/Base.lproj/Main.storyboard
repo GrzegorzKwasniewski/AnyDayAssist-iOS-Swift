@@ -178,15 +178,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
-                                <rect key="frame" x="8" y="229" width="359" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="nmm-6C-6s2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.76000000000000001" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-pi-HRr" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
                                 <rect key="frame" x="16" y="353" width="343" height="21"/>
                                 <constraints>
@@ -196,13 +187,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-n5-L9F">
-                                <rect key="frame" x="152" y="556" width="70" height="30"/>
-                                <state key="normal" title="Save Note"/>
-                                <connections>
-                                    <action selector="saveNote:" destination="AFR-rD-VhO" eventType="touchDown" id="OPX-vm-34d"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-1F-YDd">
                                 <rect key="frame" x="26" y="382" width="323" height="95"/>
                                 <constraints>
@@ -218,6 +202,22 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="highlightsToday" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-n5-L9F">
+                                <rect key="frame" x="152" y="556" width="70" height="30"/>
+                                <state key="normal" title="Save Note"/>
+                                <connections>
+                                    <action selector="saveNote:" destination="AFR-rD-VhO" eventType="touchDown" id="OPX-vm-34d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="8" y="229" width="359" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="nmm-6C-6s2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfD-xW-9Uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3302.5" y="-765.5"/>
+            <point key="canvasLocation" x="3210.5" y="-765.5"/>
         </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="RnQ-gb-Q8D">
@@ -541,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rog-QD-E4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3671.5" y="-782.5"/>
+            <point key="canvasLocation" x="3752.5" y="-765.5"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="0e7-5C-mrJ">

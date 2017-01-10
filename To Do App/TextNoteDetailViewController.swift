@@ -54,8 +54,22 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
             if let extraNotes = additionalNotes.text {
                 self.extraNotes = extraNotes
             }
-
-            globalCoreDataFunctions.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)
+            
+            if let singleNote = singleNote {
+                singleNote.setValue(note, forKey: "note")
+                singleNote.setValue(extraNotes, forKey: "extraNotes")
+                singleNote.setValue(priority, forKey: "priority")
+                singleNote.setValue(dueDate, forKey: "dueDate")
+                
+                do {
+                    try singleNote.managedObjectContext?.save()
+                } catch {
+                    let saveError = error as NSError
+                    print(saveError)
+                }
+            } else {
+                globalCoreDataFunctions.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)
+            }
         }
     }
     
