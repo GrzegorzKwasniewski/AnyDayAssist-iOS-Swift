@@ -32,6 +32,8 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         priorityOfTask.delegate = self
         priorityOfTask.dataSource = self
         
+        priorityOfTask.selectRow(0, inComponent: 0, animated: false)
+        
         if let singleNote = singleNote {
             setUI(with: singleNote)
         }
