@@ -16,9 +16,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        self.createLocalNotification()
+        
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         return true
+    }
+    
+    func createLocalNotification() {
+        let localNotification = UILocalNotification()
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+        localNotification.applicationIconBadgeNumber = 0
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        
+        localNotification.userInfo = [
+            "message": "Heloo",
+        ]
+        
+        localNotification.alertBody = "Body"
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        if application.applicationState == .Active {
+            // inside app
+        }
+        
+        self.takeAction(notification)
+    }
+    
+    func takeAction(localNotification: UILocalNotification) {
+        
+        let message = localNotification.userInfo!["message"] as! String
+        let userName = "Marian"
+        
+        let alert = UIAlertController(title: "Hello \(userName)", message: "How are You!", preferredStyle: .ActionSheet)
+        let remindMeLater = UIAlertAction(title: "Later", style: .Destructive, handler: nil)
+        let sureAction = UIAlertAction(title: "Sure", style: .Default) { (alertAction) in
+            print("REDAME: Take some action")
+        }
+        
+        alert.addAction(remindMeLater)
+        alert.addAction(sureAction)
+        
+        self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
     }
 
     func applicationWillResignActive(application: UIApplication) {
