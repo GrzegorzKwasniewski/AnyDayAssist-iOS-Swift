@@ -27,11 +27,19 @@ final class CoreDataFunctions {
         newNote.setValue(dueDate, forKey: "dueDate")
         do {
             try contextOfOurApp.save()
-        } catch let error as NSError{
+        } catch let error as NSError {
             print ("There was an error \(error), \(error.userInfo)")
         }
     }
-        
+    
+    func updateTextNote(singleNote: NSManagedObject) {
+        do {
+            try singleNote.managedObjectContext?.save()
+        } catch let error as NSError {
+            print ("There was an error \(error), \(error.userInfo)")
+        }
+    }
+    
     func saveMarkedPlace(title: String, latitude: Double, longitude: Double) {
         let entityDescription = NSEntityDescription.entityForName("Places", inManagedObjectContext: contextOfOurApp)
         let newPlace = NSManagedObject(entity: entityDescription!, insertIntoManagedObjectContext: contextOfOurApp)
