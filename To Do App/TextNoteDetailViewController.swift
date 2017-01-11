@@ -81,10 +81,13 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
                 localNotification.alertBody = "Body"
                 
                 UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
 
 
             } else {
                 globalCoreDataFunctions.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
@@ -92,6 +95,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     @IBAction func deleteNote(sender: AnyObject) {
         if let singleNote = singleNote {
             globalCoreDataFunctions.deleteObject(singleNote)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
