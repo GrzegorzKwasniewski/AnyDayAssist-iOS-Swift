@@ -67,6 +67,21 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
                 singleNote.setValue(dueDate, forKey: "dueDate")
                 
                 globalCoreDataFunctions.updateTextNote(singleNote)
+                
+                let localNotification = UILocalNotification()
+                localNotification.fireDate = datePicker.date
+                localNotification.applicationIconBadgeNumber = 0
+                localNotification.soundName = UILocalNotificationDefaultSoundName
+                
+//                localNotification.userInfo = [
+//                    "message": "Heloo",
+//                ]
+                
+                localNotification.alertTitle = self.note
+                localNotification.alertBody = "Body"
+                
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+
 
             } else {
                 globalCoreDataFunctions.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)

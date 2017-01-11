@@ -10,8 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController, UIMaker {
     
+    @IBOutlet weak var weatherButton: UIButton!
+    
     var imageView: UIImageView!    
-    var weatherData = CurrentWeatherData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +22,6 @@ class MainViewController: UIViewController, UIMaker {
     
     override func viewWillAppear(animated: Bool) {
         setNewBackgroundColor(useUIImageView: imageView)
+
     }
 }

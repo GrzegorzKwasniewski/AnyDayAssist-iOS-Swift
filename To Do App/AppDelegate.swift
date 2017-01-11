@@ -20,25 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
-        self.createLocalNotification()
-        
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         return true
-    }
-    
-    func createLocalNotification() {
-        let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
-        localNotification.applicationIconBadgeNumber = 0
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        
-        localNotification.userInfo = [
-            "message": "Heloo",
-        ]
-        
-        localNotification.alertBody = "Body"
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
@@ -52,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func takeAction(localNotification: UILocalNotification) {
         
-        let message = localNotification.userInfo!["message"] as! String
+        let message = localNotification.alertTitle
         let userName = "Marian"
         
         let alert = UIAlertController(title: "Hello \(userName)", message: "How are You!", preferredStyle: .ActionSheet)
@@ -151,8 +134,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
-
 }
 

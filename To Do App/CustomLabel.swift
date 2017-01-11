@@ -11,7 +11,7 @@ import UIKit
 class CustomLabel: UILabel {
 
     // MARK: - Properties
-    var textFont = UIFont(name: "Avenir Book", size: 15.0)
+    var textFont = UIFont(name: "Avenir Book", size: 18.0)
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

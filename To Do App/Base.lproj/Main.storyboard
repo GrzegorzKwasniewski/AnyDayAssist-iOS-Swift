@@ -148,8 +148,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-S6-nvI">
-                                <rect key="frame" x="30" y="272" width="314" height="58"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-S6-nvI">
+                                <rect key="frame" x="26" y="305" width="322" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="IjV-N8-PNf"/>
                                 </constraints>
@@ -178,8 +178,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-pi-HRr" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
-                                <rect key="frame" x="16" y="353" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-pi-HRr" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="12" y="386" width="351" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="wpI-Zn-Wp9"/>
                                 </constraints>
@@ -187,8 +187,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-1F-YDd">
-                                <rect key="frame" x="26" y="382" width="323" height="95"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-1F-YDd">
+                                <rect key="frame" x="22" y="415" width="331" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="zoY-ff-srL"/>
                                 </constraints>
@@ -209,18 +209,9 @@
                                     <action selector="saveNote:" destination="AFR-rD-VhO" eventType="touchDown" id="OPX-vm-34d"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
-                                <rect key="frame" x="8" y="229" width="359" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="nmm-6C-6s2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-8c-aaX">
                                 <rect key="frame" x="165" y="594" width="45" height="30"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.32156862749999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="deleteNote:" destination="AFR-rD-VhO" eventType="touchDown" id="uG1-Xh-zBe"/>
@@ -235,16 +226,25 @@
                                     <action selector="backButtonForTest:" destination="AFR-rD-VhO" eventType="touchDown" id="MIJ-be-Aby"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="4" y="269" width="367" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="nmm-6C-6s2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="fNy-S6-nvI" secondAttribute="trailing" constant="11" id="3Vs-Ck-6nP"/>
                             <constraint firstItem="xxD-1F-YDd" firstAttribute="top" secondItem="H5c-pi-HRr" secondAttribute="bottom" constant="8" id="9Ta-9R-qwg"/>
-                            <constraint firstItem="nDM-dH-3be" firstAttribute="top" secondItem="Gr4-oB-Jl5" secondAttribute="bottom" constant="1" id="Cpc-AL-bMo"/>
+                            <constraint firstItem="nDM-dH-3be" firstAttribute="top" secondItem="Gr4-oB-Jl5" secondAttribute="bottom" constant="41" id="Cpc-AL-bMo"/>
                             <constraint firstItem="Gr4-oB-Jl5" firstAttribute="top" secondItem="hy7-Hf-62J" secondAttribute="bottom" constant="25" id="Fo7-Xu-xHX"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="30" id="I47-r0-YDa"/>
-                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="8" id="L5g-Fk-maN"/>
-                            <constraint firstItem="xxD-1F-YDd" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="10" id="PeR-5o-9lk"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="1" id="L5g-Fk-maN"/>
+                            <constraint firstItem="xxD-1F-YDd" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="6" id="PeR-5o-9lk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H5c-pi-HRr" secondAttribute="trailing" constant="-4" id="WHB-iT-0JH"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="centerX" secondItem="7R5-uw-gcF" secondAttribute="centerX" id="WYx-Hl-91T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gr4-oB-Jl5" secondAttribute="trailing" constant="31" id="Ytb-CP-gm2"/>
@@ -252,8 +252,8 @@
                             <constraint firstItem="H5c-pi-HRr" firstAttribute="top" secondItem="fNy-S6-nvI" secondAttribute="bottom" constant="23" id="bee-hu-0fH"/>
                             <constraint firstItem="fNy-S6-nvI" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="10" id="fAk-am-V2U"/>
                             <constraint firstItem="H5c-pi-HRr" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="-4" id="iIj-1F-an4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xxD-1F-YDd" secondAttribute="trailing" constant="10" id="irz-ba-PI3"/>
-                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="8" id="jjt-4I-Xad"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xxD-1F-YDd" secondAttribute="trailing" constant="6" id="irz-ba-PI3"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="1" id="jjt-4I-Xad"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="top" secondItem="hw6-nm-OEx" secondAttribute="bottom" constant="67" id="oAH-K8-5wa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hy7-Hf-62J" secondAttribute="trailing" constant="31" id="oOj-LZ-ri3"/>
                             <constraint firstItem="Gr4-oB-Jl5" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="30" id="thg-dT-2Pg"/>
@@ -1726,40 +1726,6 @@
                                     <segue destination="CNb-o2-5ID" kind="show" id="ka6-kg-7QA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khh-Tk-PR2" userLabel="Weather">
-                                <rect key="frame" x="160" y="306" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="BdO-p0-jML"/>
-                                    <constraint firstAttribute="width" constant="150" id="Coi-gM-pRC"/>
-                                    <constraint firstAttribute="height" constant="55" id="Vmu-4H-yJf"/>
-                                    <constraint firstAttribute="height" constant="150" id="ryt-SY-1j6"/>
-                                </constraints>
-                                <state key="normal" image="weather"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Coi-gM-pRC"/>
-                                        <exclude reference="ryt-SY-1j6"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="162" y="309" width="55" height="55"/>
-                                    <mask key="constraints">
-                                        <include reference="BdO-p0-jML"/>
-                                        <include reference="Vmu-4H-yJf"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <exclude reference="BdO-p0-jML"/>
-                                        <include reference="Coi-gM-pRC"/>
-                                        <exclude reference="Vmu-4H-yJf"/>
-                                        <include reference="ryt-SY-1j6"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="pOQ-2S-EZE" kind="show" id="2Ux-nF-bvY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xww-oh-HTR" userLabel="Notes">
                                 <rect key="frame" x="160" y="201" width="55" height="55"/>
                                 <constraints>
@@ -1825,6 +1791,40 @@
                                 </variation>
                                 <connections>
                                     <segue destination="Thp-d8-BZa" kind="show" id="gQY-AQ-zJD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khh-Tk-PR2" userLabel="Weather">
+                                <rect key="frame" x="160" y="306" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="BdO-p0-jML"/>
+                                    <constraint firstAttribute="width" constant="150" id="Coi-gM-pRC"/>
+                                    <constraint firstAttribute="height" constant="55" id="Vmu-4H-yJf"/>
+                                    <constraint firstAttribute="height" constant="150" id="ryt-SY-1j6"/>
+                                </constraints>
+                                <state key="normal" image="weather"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Coi-gM-pRC"/>
+                                        <exclude reference="ryt-SY-1j6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="162" y="309" width="55" height="55"/>
+                                    <mask key="constraints">
+                                        <include reference="BdO-p0-jML"/>
+                                        <include reference="Vmu-4H-yJf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="BdO-p0-jML"/>
+                                        <include reference="Coi-gM-pRC"/>
+                                        <exclude reference="Vmu-4H-yJf"/>
+                                        <include reference="ryt-SY-1j6"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="pOQ-2S-EZE" kind="show" id="2Ux-nF-bvY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1906,6 +1906,9 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="weatherButton" destination="khh-Tk-PR2" id="SPA-v6-o6N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21d-tr-ma5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
