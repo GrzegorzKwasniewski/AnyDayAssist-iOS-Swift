@@ -28,6 +28,10 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     @IBOutlet var windSpeed: UILabel!
     @IBOutlet var humidity: UILabel!
     
+    @IBOutlet weak var cloudImage1: UIImageView!
+    @IBOutlet weak var cloudImage2: UIImageView!
+    @IBOutlet weak var cloudImage3: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setObserverForChange()
@@ -46,6 +50,9 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     
     override func viewWillAppear(animated: Bool) {
         setUI()
+        animateCloud(cloudImage1.layer)
+        animateCloud(cloudImage2.layer)
+        animateCloud(cloudImage3.layer)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -93,6 +100,26 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
             showAlert(withTitle: "You don't have internet connection", withMessage: "Check Your settings")
         }
     }
+    
+    func animateCloud(layer: CALayer) {
+        
+        layer.opacity = 0.8
+        
+        let cloudSpeed = 60.0 / Double(view.layer.frame.size.width)
+        let duration: NSTimeInterval = Double(view.layer.frame.size.width - layer.frame.origin.x) * cloudSpeed
+        
+        let cloudMove = CABasicAnimation(keyPath: "position.x")
+        cloudMove.duration = duration
+        cloudMove.toValue = self.view.bounds.size.width + layer.bounds.width/2
+        cloudMove.delegate = self
+        cloudMove.autoreverses = true
+        cloudMove.repeatCount = Float.infinity
+        cloudMove.setValue("cloud", forKey: "name")
+        cloudMove.setValue(layer, forKey: "layer")
+        
+        layer.addAnimation(cloudMove, forKey: nil)
+    }
+
 }
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
