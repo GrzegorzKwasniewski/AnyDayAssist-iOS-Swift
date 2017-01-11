@@ -38,6 +38,7 @@
 		71B6CDA91E22C67100A10ED8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */; };
 		71CD64CD1D5517F80019F501 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CC1D5517F80019F501 /* GlobalVars.swift */; };
 		71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */; };
+		71DC8C551E26AC8500322B50 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC8C541E26AC8500322B50 /* CustomButton.swift */; };
 		71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */; };
 		71DE25DB1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */; };
 		71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */; };
@@ -86,6 +87,7 @@
 		71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		71CD64CC1D5517F80019F501 /* GlobalVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
+		71DC8C541E26AC8500322B50 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewControllerExtension.swift; sourceTree = "<group>"; };
 		71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckWeatherRequirements.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				71749F5A1E242E0E009E720E /* CustomTextView.swift */,
 				71749F5C1E243426009E720E /* CustomPickerView.swift */,
 				71749F5E1E24379C009E720E /* CustomLabel.swift */,
+				71DC8C541E26AC8500322B50 /* CustomButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */,
 				71FC57FB1D47D43D00AFB948 /* StringHelperClass.swift in Sources */,
 				711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */,
+				71DC8C551E26AC8500322B50 /* CustomButton.swift in Sources */,
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
 				71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */,
 				71AF60FC1E23FEFD00847AD6 /* LocationManagerDelegate.swift in Sources */,

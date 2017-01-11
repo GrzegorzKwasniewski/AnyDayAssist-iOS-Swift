@@ -1,18 +1,17 @@
 //
-//  CustomTextLabel.swift
+//  CustomButton.swift
 //  AnyDay
 //
-//  Created by Grzegorz Kwaśniewski on 09/01/17.
+//  Created by Grzegorz Kwaśniewski on 11/01/17.
 //  Copyright © 2017 Grzegorz Kwaśniewski. All rights reserved.
 //
 
 import UIKit
 
-class CustomLabel: UILabel {
-
-    // MARK: - Properties
-    var textFont = UIFont(name: "Avenir Book", size: 18.0)
+class CustomButton: UIButton {
     
+    @IBInspectable var bgColor: UIColor = UIColor.clearColor()
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         self.commonInit()
@@ -25,18 +24,20 @@ class CustomLabel: UILabel {
     }
     
     func commonInit() {
-        self.textColor = UIColor.redColor()
-        self.font = textFont
-        self.textAlignment = .Center
-        self.backgroundColor = UIColor.whiteColor()
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 5
         self.clipsToBounds = true
         self.layer.opacity = 0.9
+        self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         //self.setProperties(1.0, borderColor:UIColor.blackColor())
+    }
+    
+    override func setNeedsLayout() {
+        self.backgroundColor = bgColor
     }
     
     func setProperties(borderWidth: Float, borderColor: UIColor) {
         self.layer.borderWidth = CGFloat(borderWidth)
         self.layer.borderColor = borderColor.CGColor
     }
+
 }

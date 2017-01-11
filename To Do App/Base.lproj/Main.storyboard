@@ -179,7 +179,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-pi-HRr" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
-                                <rect key="frame" x="12" y="386" width="351" height="21"/>
+                                <rect key="frame" x="16" y="383" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="wpI-Zn-Wp9"/>
                                 </constraints>
@@ -202,21 +202,15 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="highlightsToday" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-n5-L9F">
-                                <rect key="frame" x="152" y="556" width="70" height="30"/>
-                                <state key="normal" title="Save Note"/>
-                                <connections>
-                                    <action selector="saveNote:" destination="AFR-rD-VhO" eventType="touchDown" id="OPX-vm-34d"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-8c-aaX">
-                                <rect key="frame" x="165" y="594" width="45" height="30"/>
-                                <color key="backgroundColor" red="0.94509803920000002" green="0.32156862749999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Delete"/>
-                                <connections>
-                                    <action selector="deleteNote:" destination="AFR-rD-VhO" eventType="touchDown" id="uG1-Xh-zBe"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="16" y="269" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="nmm-6C-6s2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-iV-unD">
                                 <rect key="frame" x="26" y="28" width="34" height="30"/>
                                 <state key="normal" title="Back">
@@ -226,38 +220,67 @@
                                     <action selector="backButtonForTest:" destination="AFR-rD-VhO" eventType="touchDown" id="MIJ-be-Aby"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-dH-3be" customClass="CustomLabel" customModule="AnyDay" customModuleProvider="target">
-                                <rect key="frame" x="4" y="269" width="367" height="35"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jj0-gY-OLO">
+                                <rect key="frame" x="16" y="567" width="343" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-n5-L9F" customClass="CustomButton" customModule="AnyDay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="164" height="30"/>
+                                        <state key="normal" title="Save Note"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveNote:" destination="AFR-rD-VhO" eventType="touchDown" id="OPX-vm-34d"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-8c-aaX" customClass="CustomButton" customModule="AnyDay" customModuleProvider="target">
+                                        <rect key="frame" x="179" y="0.0" width="164" height="30"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.32156862749999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                                <color key="value" red="1" green="0.29886420845383266" blue="0.30054645456716256" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deleteNote:" destination="AFR-rD-VhO" eventType="touchDown" id="uG1-Xh-zBe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="nmm-6C-6s2"/>
+                                    <constraint firstAttribute="height" constant="30" id="5Pz-EL-eIX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="fNy-S6-nvI" secondAttribute="trailing" constant="11" id="3Vs-Ck-6nP"/>
-                            <constraint firstItem="xxD-1F-YDd" firstAttribute="top" secondItem="H5c-pi-HRr" secondAttribute="bottom" constant="8" id="9Ta-9R-qwg"/>
+                            <constraint firstItem="xxD-1F-YDd" firstAttribute="top" secondItem="H5c-pi-HRr" secondAttribute="bottom" constant="11" id="9Ta-9R-qwg"/>
                             <constraint firstItem="nDM-dH-3be" firstAttribute="top" secondItem="Gr4-oB-Jl5" secondAttribute="bottom" constant="41" id="Cpc-AL-bMo"/>
                             <constraint firstItem="Gr4-oB-Jl5" firstAttribute="top" secondItem="hy7-Hf-62J" secondAttribute="bottom" constant="25" id="Fo7-Xu-xHX"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="30" id="I47-r0-YDa"/>
-                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="1" id="L5g-Fk-maN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jj0-gY-OLO" secondAttribute="trailing" id="IwM-0M-4W0"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="15" id="L5g-Fk-maN"/>
                             <constraint firstItem="xxD-1F-YDd" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="6" id="PeR-5o-9lk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="H5c-pi-HRr" secondAttribute="trailing" constant="-4" id="WHB-iT-0JH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H5c-pi-HRr" secondAttribute="trailing" id="WHB-iT-0JH"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="centerX" secondItem="7R5-uw-gcF" secondAttribute="centerX" id="WYx-Hl-91T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gr4-oB-Jl5" secondAttribute="trailing" constant="31" id="Ytb-CP-gm2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nDM-dH-3be" secondAttribute="trailing" constant="-12" id="apx-LX-dE0"/>
-                            <constraint firstItem="H5c-pi-HRr" firstAttribute="top" secondItem="fNy-S6-nvI" secondAttribute="bottom" constant="23" id="bee-hu-0fH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nDM-dH-3be" secondAttribute="trailing" id="apx-LX-dE0"/>
+                            <constraint firstItem="H5c-pi-HRr" firstAttribute="top" secondItem="fNy-S6-nvI" secondAttribute="bottom" constant="20" id="bee-hu-0fH"/>
                             <constraint firstItem="fNy-S6-nvI" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="10" id="fAk-am-V2U"/>
-                            <constraint firstItem="H5c-pi-HRr" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="-4" id="iIj-1F-an4"/>
+                            <constraint firstItem="jj0-gY-OLO" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" id="fRm-dL-Cce"/>
+                            <constraint firstItem="jj0-gY-OLO" firstAttribute="top" secondItem="xxD-1F-YDd" secondAttribute="bottom" constant="57" id="fsv-bp-JYV"/>
+                            <constraint firstItem="H5c-pi-HRr" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" id="iIj-1F-an4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xxD-1F-YDd" secondAttribute="trailing" constant="6" id="irz-ba-PI3"/>
-                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="1" id="jjt-4I-Xad"/>
+                            <constraint firstItem="fNy-S6-nvI" firstAttribute="top" secondItem="nDM-dH-3be" secondAttribute="bottom" constant="15" id="jjt-4I-Xad"/>
                             <constraint firstItem="hy7-Hf-62J" firstAttribute="top" secondItem="hw6-nm-OEx" secondAttribute="bottom" constant="67" id="oAH-K8-5wa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hy7-Hf-62J" secondAttribute="trailing" constant="31" id="oOj-LZ-ri3"/>
                             <constraint firstItem="Gr4-oB-Jl5" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="30" id="thg-dT-2Pg"/>
-                            <constraint firstItem="nDM-dH-3be" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" constant="-12" id="wBS-9P-Vwh"/>
+                            <constraint firstItem="nDM-dH-3be" firstAttribute="leading" secondItem="7R5-uw-gcF" secondAttribute="leadingMargin" id="wBS-9P-Vwh"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
