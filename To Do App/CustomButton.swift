@@ -10,8 +10,6 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    @IBInspectable var bgColor: UIColor = UIColor.clearColor()
-
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         self.commonInit()
@@ -29,10 +27,6 @@ class CustomButton: UIButton {
         self.layer.opacity = 0.9
         self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         //self.setProperties(1.0, borderColor:UIColor.blackColor())
-    }
-    
-    override func setNeedsLayout() {
-        self.backgroundColor = bgColor
     }
     
     func setProperties(borderWidth: Float, borderColor: UIColor) {
