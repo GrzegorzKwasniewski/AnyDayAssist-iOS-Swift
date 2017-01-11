@@ -22,14 +22,6 @@ class MainViewController: UIViewController, UIMaker {
     
     override func viewWillAppear(animated: Bool) {
         setNewBackgroundColor(useUIImageView: imageView)
-        
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotationAnimation.fromValue = 0.0
-        rotationAnimation.toValue = M_PI * 2
-        rotationAnimation.duration = 4
-        rotationAnimation.repeatCount = Float.infinity
-        
-        self.weatherButton.layer.addAnimation(rotationAnimation, forKey: nil)
-
+        rotationAnimation(weatherButton.layer)
     }
 }

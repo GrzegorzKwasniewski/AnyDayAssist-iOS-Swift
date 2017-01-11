@@ -48,7 +48,6 @@ extension UIMaker where Self: UIViewController {
         
         case "TextNotesViewController":
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
-            rightItem = UIBarButtonItem(title: "Add Note >", style: .Plain, target: nil, action: #selector(UIViewController.promptForNote))
             
         case "PlacesViewController":
             leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
