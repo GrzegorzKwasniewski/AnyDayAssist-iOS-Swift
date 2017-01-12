@@ -10,8 +10,15 @@ import UIKit
 
 class CustomTextField: UITextField {
     
+    lazy var validateCityName: UIButton = {
+        let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+        button.setImage(UIImage(named: "play"), forState: .Normal)
+        button.addTarget(self, action: #selector(postNotification), forControlEvents: UIControlEvents.TouchUpInside)
+        return button
+    }()
     
     // MARK: - IBInspectable
+    @IBInspectable var fieldForCityName: Bool = false
     @IBInspectable var customString: String = ""
     @IBInspectable var insetByY: CGFloat = 0
     @IBInspectable var insetByX: CGFloat = 0
@@ -31,9 +38,14 @@ class CustomTextField: UITextField {
         self.tintColor = tintCol
         self.textColor = fontCol
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.grayColor().CGColor
+        self.layer.borderColor = UIColor.whiteColor().CGColor
         
-        self.attributedPlaceholder = NSAttributedString(string: customString, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.attributedPlaceholder = NSAttributedString(string: customString, attributes: [NSForegroundColorAttributeName: fontCol])
+        
+        if fieldForCityName {
+            self.rightView = validateCityName;
+            self.rightViewMode = .Always;
+        }
         
 
         if let fnt = textFont {
@@ -51,5 +63,9 @@ class CustomTextField: UITextField {
     // Editable text
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: insetByX, dy: insetByY)
+    }
+    
+    func postNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName("validateCityName", object: nil)
     }
 }
