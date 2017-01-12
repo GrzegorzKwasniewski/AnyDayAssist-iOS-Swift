@@ -11,37 +11,39 @@ import CoreLocation
 
 class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     
-    var uiWasSet = false
-    var authorizationStatus:CLAuthorizationStatus!
-    var locationManager = LocationManager()
-    var stringValidation = StringValidation.isEmpty
+    // MARK - outlets
     
-    @IBOutlet var cityNameForWeather: UITextField!
+    @IBOutlet weak var center: NSLayoutConstraint!
+    @IBOutlet weak var cityName: UITextField!
+    @IBOutlet weak var cityImage: UIImageView!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var top: NSLayoutConstraint!
+    @IBOutlet weak var imagesStackView: UIStackView!
     
-    @IBAction func checkWeatherForGivenCity(sender: AnyObject) {
-        
-        stringValidation = StringHelperClass.validateCityNameFromUser(withTextField: cityNameForWeather)
-        
-        switch stringValidation {
-        case .isValid:
-            self.performSegueWithIdentifier("showWeather", sender: nil)
-        case .isToLong:
-            showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
-        case .isEmpty:
-            showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
-        }
-
-    }
+    // MARK - ivars
     
-    @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
-        weatherFromUserLocation = true
-        self.performSegueWithIdentifier("showWeather", sender: nil)        
-    }
-
+    private var uiWasSet = false
+    private var authorizationStatus:CLAuthorizationStatus!
+    private var locationManager = LocationManager()
+    private var stringValidation = StringValidation.isEmpty
+    
+    // MARK - view state
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setObserverForChange()
+        
+//        let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+//        button.setImage(UIImage(named: "play"), forState: .Normal)
+//        button.addTarget(self, action: #selector(validateCityName), forControlEvents: UIControlEvents.TouchUpInside)
+//        
+//        // Assign the overlay button to a stored text field
+//        self.cityName.rightView = button;
+//        self.cityName.rightViewMode = .Always;
+        
+        center.constant -= view.bounds.width
 
-        locationManager.delegate = self
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if authorizationStatus == CLAuthorizationStatus.NotDetermined {
@@ -50,6 +52,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         if !uiWasSet {
             
@@ -59,17 +62,52 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         }
     }
     
+    // MARK - actions
+    
+    @IBAction func checkWeatherForCity(sender: UITapGestureRecognizer) {
+        imagesStackView.userInteractionEnabled = false
+        UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
+            self.cityImage.alpha = 0.1
+            self.center.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        
+    }
+    
+    @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
+        weatherFromUserLocation = true
+        self.performSegueWithIdentifier("showWeather", sender: nil)
+    }
+    
+    // MARK - custom functions
+    
     func setUI() {
         
         setView()
         setNavigationBar(forClassWithName: String(CheckWeatherRequirements.self))
         
     }
-}
-
-extension CheckWeatherRequirements: LocationManagerUpdateDelegate {
     
-    func performActionAfterLocationUpdate() {
-        self.performSegueWithIdentifier("showWeather", sender: nil)
+    func validateCityName() {
+        stringValidation = StringHelperClass.validateCityNameFromUser(withTextField: cityName)
+        
+        switch stringValidation {
+        case .isValid:
+            self.performSegueWithIdentifier("showWeather", sender: nil)
+        case .isToLong:
+            showAlert(withTitle: "City name is to long", withMessage: "Allowed lenght is 15 characters with spaces")
+        case .isEmpty:
+            showAlert(withTitle: "Hmmm...", withMessage: "Without city name it will be hard to check weather")
+        }
+    }
+    
+    func setObserverForChange() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(validateCityName),
+            name: "validateCityName",
+            object: nil)
+        
     }
 }

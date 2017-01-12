@@ -14,6 +14,10 @@ extension UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func addNewTextNote() {
+        self.performSegueWithIdentifier("addNewTextNote", sender: self)
+    }
+    
     func addNewPlaceToSee() {
         self.performSegueWithIdentifier("addNewPlaceToSee", sender: self)
     }
