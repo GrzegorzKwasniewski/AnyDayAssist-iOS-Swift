@@ -1992,18 +1992,18 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 </variation>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OIk-H8-bBV">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OIk-H8-bBV">
                                 <rect key="frame" x="56" y="40" width="263" height="587"/>
                                 <subviews>
-                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city_location" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-uf-9DG">
-                                        <rect key="frame" x="0.0" y="0.0" width="263" height="294"/>
+                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="city_location" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-uf-9DG">
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="281"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="6ER-gW-JHw" appends="YES" id="xvX-RD-ACL"/>
                                         </connections>
                                     </imageView>
-                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_location" translatesAutoresizingMaskIntoConstraints="NO" id="8yV-83-ZOJ">
-                                        <rect key="frame" x="0.0" y="294" width="263" height="293"/>
+                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user_location" translatesAutoresizingMaskIntoConstraints="NO" id="8yV-83-ZOJ">
+                                        <rect key="frame" x="0.0" y="306" width="263" height="281"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="lmf-aA-z8s" appends="YES" id="UFi-Qx-Cix"/>
@@ -2025,9 +2025,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="center" destination="ycq-X5-Gcn" id="SK2-Xp-YZM"/>
                         <outlet property="cityImage" destination="FoC-uf-9DG" id="Jgg-SO-4AC"/>
                         <outlet property="cityName" destination="zYr-yS-n8B" id="OJp-c3-p8T"/>
+                        <outlet property="cityNameCenter" destination="ycq-X5-Gcn" id="VE6-ZN-2JI"/>
                         <outlet property="imagesStackView" destination="OIk-H8-bBV" id="r1U-9x-Uxa"/>
                         <outlet property="top" destination="bgt-RK-clw" id="ajE-6L-v4f"/>
                         <outlet property="userImage" destination="8yV-83-ZOJ" id="Krq-4s-AzN"/>

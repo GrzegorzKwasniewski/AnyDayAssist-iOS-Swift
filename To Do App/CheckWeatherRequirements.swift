@@ -13,7 +13,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     
     // MARK - outlets
     
-    @IBOutlet weak var center: NSLayoutConstraint!
+    @IBOutlet weak var cityNameCenter: NSLayoutConstraint!
     @IBOutlet weak var cityName: UITextField!
     @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
@@ -33,17 +33,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         super.viewDidLoad()
         
         setObserverForChange()
-        
-//        let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
-//        button.setImage(UIImage(named: "play"), forState: .Normal)
-//        button.addTarget(self, action: #selector(validateCityName), forControlEvents: UIControlEvents.TouchUpInside)
-//        
-//        // Assign the overlay button to a stored text field
-//        self.cityName.rightView = button;
-//        self.cityName.rightViewMode = .Always;
-        
-        center.constant -= view.bounds.width
-
+    
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if authorizationStatus == CLAuthorizationStatus.NotDetermined {
@@ -53,6 +43,11 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        cityNameCenter.constant -= view.bounds.width
+        cityImage.alpha = 0.8
+        userImage.alpha = 0.8
+        imagesStackView.userInteractionEnabled = true
         
         if !uiWasSet {
             
@@ -68,7 +63,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         imagesStackView.userInteractionEnabled = false
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
             self.cityImage.alpha = 0.1
-            self.center.constant = 0
+            self.cityNameCenter.constant = 0
             self.view.layoutIfNeeded()
             }, completion: nil)
         
@@ -76,7 +71,13 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
         weatherFromUserLocation = true
-        self.performSegueWithIdentifier("showWeather", sender: nil)
+        UIView.animateWithDuration(0.5, animations: {
+            self.userImage.alpha = 0.1
+            }) { (success) in
+                if success {
+                    self.performSegueWithIdentifier("showWeather", sender: nil)
+                }
+        }
     }
     
     // MARK - custom functions
@@ -85,6 +86,8 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         
         setView()
         setNavigationBar(forClassWithName: String(CheckWeatherRequirements.self))
+        
+        self.view.layoutIfNeeded()
         
     }
     
