@@ -31,6 +31,7 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     @IBOutlet weak var cloudImage1: UIImageView!
     @IBOutlet weak var cloudImage2: UIImageView!
     @IBOutlet weak var cloudImage3: UIImageView!
+    @IBOutlet weak var cloudImage4: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
         animateCloud(cloudImage1.layer)
         animateCloud(cloudImage2.layer)
         animateCloud(cloudImage3.layer)
+        animateCloud(cloudImage4.layer)
     }
     
     override func viewDidAppear(animated: Bool) {
