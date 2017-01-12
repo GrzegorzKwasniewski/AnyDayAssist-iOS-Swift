@@ -62,9 +62,9 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     @IBAction func checkWeatherForCity(sender: UITapGestureRecognizer) {
         imagesStackView.userInteractionEnabled = false
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
-            self.cityImage.alpha = 0.1
-            self.cityNameCenter.constant = 0
-            self.view.layoutIfNeeded()
+                self.cityImage.alpha = 0.1
+                self.cityNameCenter.constant = 0
+                self.view.layoutIfNeeded()
             }, completion: nil)
         
     }
@@ -86,9 +86,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         
         setView()
         setNavigationBar(forClassWithName: String(CheckWeatherRequirements.self))
-        
-        self.view.layoutIfNeeded()
-        
+                
     }
     
     func validateCityName() {

@@ -20,7 +20,6 @@
 		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656842EC45830EC2D19DDE2798528ABA /* Upload.swift */; };
 		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6AB8F0CC41CB868DB5056264A05206 /* Download.swift */; };
 		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E88D8D4522D9E96C2955987448C03 /* Response.swift */; };
-		7177AF961E27E7CC008F2864 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7177AF951E27E7CC008F2864 /* Alamofire.swift */; };
 		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21027B2FE21522CF90B4710B0E1898C8 /* ServerTrustPolicy.swift */; };
 		81AADA5ADE8535AD6F7678C6F3A06E89 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 03194A58788A3F4184589E1FAB8D7A4B /* MBProgressHUD.m */; };
 		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09841A24A406CDBA2586CE4D6519CE90 /* Alamofire.swift */; };
@@ -86,7 +85,6 @@
 		656842EC45830EC2D19DDE2798528ABA /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
 		661D629921C1DCEEF525C9B42736B9C0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A2DD89A9BD146FE745424C1A9851CCE /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
-		7177AF951E27E7CC008F2864 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		730A897DDA449F29C20C03A8AB9A3A0B /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
 		848DE2446FEB76D49CBD7C044570373C /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
 		85A1C29FCF57CE8BFA54335D676865ED /* Pods-AnyDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyDay.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				09841A24A406CDBA2586CE4D6519CE90 /* Alamofire.swift */,
-				7177AF951E27E7CC008F2864 /* Alamofire.swift */,
 				9C6AB8F0CC41CB868DB5056264A05206 /* Download.swift */,
 				B2847B3B56FF77389057A9302714ECFB /* Error.swift */,
 				2C821E2E9A7011A300FA618AEA4E1A46 /* Manager.swift */,
@@ -419,7 +416,6 @@
 				C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */,
 				34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */,
 				BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */,
-				7177AF961E27E7CC008F2864 /* Alamofire.swift in Sources */,
 				C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */,
 				EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */,
 				62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */,

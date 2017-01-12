@@ -50,6 +50,7 @@
 		71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7A1D2EB4990057B22E /* MainViewController.swift */; };
 		71FF6D7D1D2EF6BA0057B22E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */; };
 		71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFDC3B1D4685F7009A4EEE /* Reachability.swift */; };
+		751824833641F74F0F78972B /* Pods_AnyDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E80FA579C3465B3655680CC /* Pods_AnyDay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		71FF6D7A1D2EB4990057B22E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		71FFDC3B1D4685F7009A4EEE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		7E80FA579C3465B3655680CC /* Pods_AnyDay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyDay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3997C8DE235D6447F6185BC /* Pods-AnyDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyDay.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyDay/Pods-AnyDay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71944F2F1D0DCCCD00206B4F /* CoreLocation.framework in Frameworks */,
+				751824833641F74F0F78972B /* Pods_AnyDay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +270,7 @@
 		A7538B6CC1635646DB061FA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E80FA579C3465B3655680CC /* Pods_AnyDay.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

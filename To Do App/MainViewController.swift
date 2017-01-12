@@ -12,11 +12,14 @@ class MainViewController: UIViewController, UIMaker {
     
     @IBOutlet weak var weatherButton: UIButton!
     
-    var imageView: UIImageView!    
+    lazy var imageView: UIImageView = {
+        let iv = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        return iv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        self.view.addSubview(imageView)
         setBackgroundColor(useUIImageView: imageView)
     }
     

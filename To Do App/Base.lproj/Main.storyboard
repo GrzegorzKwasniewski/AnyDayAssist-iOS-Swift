@@ -1995,14 +1995,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OIk-H8-bBV">
                                 <rect key="frame" x="56" y="40" width="263" height="587"/>
                                 <subviews>
-                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="city_location" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-uf-9DG">
+                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city_location" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-uf-9DG">
                                         <rect key="frame" x="0.0" y="0.0" width="263" height="281"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="6ER-gW-JHw" appends="YES" id="xvX-RD-ACL"/>
                                         </connections>
                                     </imageView>
-                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user_location" translatesAutoresizingMaskIntoConstraints="NO" id="8yV-83-ZOJ">
+                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_location" translatesAutoresizingMaskIntoConstraints="NO" id="8yV-83-ZOJ">
                                         <rect key="frame" x="0.0" y="306" width="263" height="281"/>
                                         <gestureRecognizers/>
                                         <connections>
@@ -2060,6 +2060,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="n8P-MQ-sBb">
+                                <rect key="frame" x="20" y="20" width="374" height="330"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="f5T-wR-eII">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="62"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="h21-Hi-m0W">
+                                                <rect key="frame" x="0.0" y="0.0" width="159" height="62"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wM4-Tj-EOE">
+                                        <rect key="frame" x="0.0" y="90" width="374" height="61"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny-cloud-2" translatesAutoresizingMaskIntoConstraints="NO" id="F67-Lp-RaM">
+                                                <rect key="frame" x="118" y="0.0" width="138" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jlT-pX-bF5">
+                                        <rect key="frame" x="0.0" y="179" width="374" height="62"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny-cloud-3" translatesAutoresizingMaskIntoConstraints="NO" id="Ic7-h1-jLJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="62"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="5Gz-zl-6c3">
+                                        <rect key="frame" x="0.0" y="269" width="374" height="61"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sunny-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="dKb-lZ-gVV" userLabel="Cloud Image 4">
+                                                <rect key="frame" x="259" y="0.0" width="115" height="61"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Fk-UV-6Fu">
                                 <rect key="frame" x="14" y="201" width="143" height="20"/>
                                 <constraints>
@@ -2627,15 +2664,6 @@
                                     <rect key="frame" x="1" y="366" width="373" height="301"/>
                                 </variation>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunny-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="h21-Hi-m0W">
-                                <rect key="frame" x="31" y="28" width="126" height="66"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunny-cloud-2" translatesAutoresizingMaskIntoConstraints="NO" id="F67-Lp-RaM">
-                                <rect key="frame" x="120" y="146" width="126" height="66"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunny-cloud-3" translatesAutoresizingMaskIntoConstraints="NO" id="Ic7-h1-jLJ">
-                                <rect key="frame" x="268" y="255" width="126" height="66"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2652,6 +2680,7 @@
                             <constraint firstItem="LC2-AP-T5x" firstAttribute="leading" secondItem="muB-Ue-1xf" secondAttribute="leadingMargin" constant="1" id="7qM-sa-SgO"/>
                             <constraint firstItem="LC2-AP-T5x" firstAttribute="centerX" secondItem="muB-Ue-1xf" secondAttribute="centerX" constant="2" id="AjQ-N0-8cZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1d1-RS-FQv" secondAttribute="trailing" constant="7" id="B7N-Zu-wVD"/>
+                            <constraint firstItem="cwt-VJ-lQ9" firstAttribute="top" secondItem="n8P-MQ-sBb" secondAttribute="bottom" id="Bo2-0h-CfC"/>
                             <constraint firstItem="MpQ-7w-FEf" firstAttribute="leading" secondItem="muB-Ue-1xf" secondAttribute="leadingMargin" constant="55" id="CEt-ck-E5d"/>
                             <constraint firstItem="9Dz-Pb-zpA" firstAttribute="top" secondItem="LC2-AP-T5x" secondAttribute="bottom" constant="38" id="CPS-ps-I5i"/>
                             <constraint firstItem="9YW-lO-Xbn" firstAttribute="leading" secondItem="muB-Ue-1xf" secondAttribute="leadingMargin" constant="36" id="DG1-ZG-xWe"/>
@@ -2671,6 +2700,7 @@
                             <constraint firstItem="mz9-iF-dm1" firstAttribute="top" secondItem="i80-CE-usz" secondAttribute="bottom" constant="16" id="PGV-TL-yDh"/>
                             <constraint firstItem="d6S-T3-C6O" firstAttribute="top" secondItem="fDx-ec-4Fh" secondAttribute="bottom" constant="8" id="Q7O-Mp-IR7"/>
                             <constraint firstItem="Wqa-wT-rYO" firstAttribute="trailing" secondItem="muB-Ue-1xf" secondAttribute="trailingMargin" constant="6" id="QAF-oA-wd0"/>
+                            <constraint firstItem="n8P-MQ-sBb" firstAttribute="top" secondItem="4Qe-iy-Hes" secondAttribute="bottom" id="QFD-wc-Kqr"/>
                             <constraint firstItem="9Dz-Pb-zpA" firstAttribute="centerX" secondItem="muB-Ue-1xf" secondAttribute="centerX" id="QJp-Tl-fuz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="COR-MB-jRo" secondAttribute="trailing" constant="78" id="QkH-6e-uWN">
                                 <variation key="heightClass=regular-widthClass=regular" constant="76"/>
@@ -2697,6 +2727,7 @@
                             <constraint firstItem="fDx-ec-4Fh" firstAttribute="centerX" secondItem="muB-Ue-1xf" secondAttribute="centerX" id="jJJ-U1-cZB"/>
                             <constraint firstItem="LC2-AP-T5x" firstAttribute="top" secondItem="4Qe-iy-Hes" secondAttribute="bottom" constant="19" id="kOE-Gr-Pbc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1d1-RS-FQv" secondAttribute="trailing" constant="66" id="kyI-s6-quv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="n8P-MQ-sBb" secondAttribute="leading" id="kzo-Wi-rrM"/>
                             <constraint firstItem="MpQ-7w-FEf" firstAttribute="top" secondItem="1bE-bA-Yqk" secondAttribute="bottom" constant="3" id="l5v-pX-l70"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LC2-AP-T5x" secondAttribute="trailing" constant="-3" id="mj9-r5-xVO"/>
                             <constraint firstItem="COR-MB-jRo" firstAttribute="top" secondItem="1d1-RS-FQv" secondAttribute="bottom" constant="3" id="nDM-qD-Tr1"/>
@@ -2707,6 +2738,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Wqa-wT-rYO" secondAttribute="trailing" constant="67" id="pvc-fc-M1L"/>
                             <constraint firstItem="mz9-iF-dm1" firstAttribute="top" secondItem="fDx-ec-4Fh" secondAttribute="bottom" constant="134" id="r2b-m1-2sm"/>
                             <constraint firstItem="1bE-bA-Yqk" firstAttribute="leading" secondItem="muB-Ue-1xf" secondAttribute="leadingMargin" constant="11" id="rDP-g3-Lha"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n8P-MQ-sBb" secondAttribute="trailing" id="saC-8C-fCs"/>
                             <constraint firstItem="9Dz-Pb-zpA" firstAttribute="leading" secondItem="muB-Ue-1xf" secondAttribute="leadingMargin" constant="1" id="tc6-NK-gGs"/>
                             <constraint firstItem="6Fk-UV-6Fu" firstAttribute="top" secondItem="fDx-ec-4Fh" secondAttribute="bottom" constant="8" id="u4j-f3-gRf"/>
                             <constraint firstItem="Wqa-wT-rYO" firstAttribute="top" secondItem="d6S-T3-C6O" secondAttribute="bottom" constant="-1" id="u4y-O9-R6T"/>
@@ -2876,6 +2908,7 @@
                         <outlet property="cloudImage1" destination="h21-Hi-m0W" id="Mcx-tM-f5r"/>
                         <outlet property="cloudImage2" destination="F67-Lp-RaM" id="j7U-P4-DOg"/>
                         <outlet property="cloudImage3" destination="Ic7-h1-jLJ" id="560-b4-cNd"/>
+                        <outlet property="cloudImage4" destination="dKb-lZ-gVV" id="eiF-m4-FPi"/>
                         <outlet property="descriptionOfWeather" destination="9Dz-Pb-zpA" id="x9f-tG-Rao"/>
                         <outlet property="humidity" destination="1d1-RS-FQv" id="Eww-Sx-bui"/>
                         <outlet property="pressure" destination="1bE-bA-Yqk" id="UlL-Zd-AOn"/>
@@ -2904,6 +2937,7 @@
         <image name="sunny-cloud-1" width="159" height="50"/>
         <image name="sunny-cloud-2" width="138" height="49"/>
         <image name="sunny-cloud-3" width="74" height="35"/>
+        <image name="sunny-cloud-4" width="115" height="50"/>
         <image name="user_location" width="512" height="440"/>
         <image name="weather" width="100" height="102"/>
     </resources>
