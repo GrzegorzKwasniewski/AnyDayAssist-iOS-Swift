@@ -36,7 +36,6 @@
 		71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F341D13256100206B4F /* AudioPlayBackViewController.swift */; };
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		71AF60FC1E23FEFD00847AD6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF60FB1E23FEFD00847AD6 /* LocationManagerDelegate.swift */; };
-		71B6CDA11E22940E00A10ED8 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA01E22940E00A10ED8 /* PopUpView.swift */; };
 		71B6CDA31E22975E00A10ED8 /* TextNotesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */; };
 		71B6CDA71E22BDB500A10ED8 /* TextNoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */; };
 		71B6CDA91E22C67100A10ED8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */; };
@@ -90,7 +89,6 @@
 		71944F341D13256100206B4F /* AudioPlayBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewController.swift; sourceTree = "<group>"; };
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		71AF60FB1E23FEFD00847AD6 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
-		71B6CDA01E22940E00A10ED8 /* PopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesTableView.swift; sourceTree = "<group>"; };
 		71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteDetailViewController.swift; sourceTree = "<group>"; };
 		71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -148,6 +146,17 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		7182D6D71E2AE67F006B121D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				71922A551D70D2020046F019 /* LocationManager.swift */,
+				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
+				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
+				71FC57FA1D47D43D00AFB948 /* StringHelperClass.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		718D870C1CEA50C4001E7F17 = {
 			isa = PBXGroup;
 			children = (
@@ -172,11 +181,11 @@
 			children = (
 				71B6CD9D1E22938600A10ED8 /* Stroyboards */,
 				71DE25D21D4D1A400051EB47 /* Controller */,
-				71DE25D41D4D1AC70051EB47 /* Model */,
 				71DE25D31D4D1A9D0051EB47 /* View */,
+				71DE25D41D4D1AC70051EB47 /* Model */,
+				7182D6D71E2AE67F006B121D /* Services */,
 				7163D02D1D4CD735005FEFB6 /* Protocols */,
 				71DE25D71D4FC5D00051EB47 /* Extensions */,
-				71DE25D61D4D1B1B0051EB47 /* Helper */,
 				71DE25D51D4D1AF30051EB47 /* Resources */,
 				71B6CD9E1E22939900A10ED8 /* CoreData */,
 			);
@@ -205,7 +214,6 @@
 		71B6CD9F1E2293F900A10ED8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				71B6CDA01E22940E00A10ED8 /* PopUpView.swift */,
 				71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */,
 				71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */,
 				71749F5A1E242E0E009E720E /* CustomTextView.swift */,
@@ -241,7 +249,6 @@
 			children = (
 				7182D6D61E2ADA7E006B121D /* Cells */,
 				71B6CD9F1E2293F900A10ED8 /* UI */,
-				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -249,10 +256,8 @@
 		71DE25D41D4D1AC70051EB47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				71922A551D70D2020046F019 /* LocationManager.swift */,
 				71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */,
 				7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */,
-				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 				71CD64CC1D5517F80019F501 /* GlobalVars.swift */,
 			);
 			name = Model;
@@ -261,19 +266,11 @@
 		71DE25D51D4D1AF30051EB47 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 				718D87261CEA50C4001E7F17 /* Info.plist */,
 				718D87211CEA50C4001E7F17 /* Assets.xcassets */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		71DE25D61D4D1B1B0051EB47 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				71FC57FA1D47D43D00AFB948 /* StringHelperClass.swift */,
-				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
-			);
-			name = Helper;
 			sourceTree = "<group>";
 		};
 		71DE25D71D4FC5D00051EB47 /* Extensions */ = {
@@ -447,7 +444,6 @@
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */,
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
-				71B6CDA11E22940E00A10ED8 /* PopUpView.swift in Sources */,
 				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,
 				7182D6D31E2AD75F006B121D /* CellAudio.swift in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,

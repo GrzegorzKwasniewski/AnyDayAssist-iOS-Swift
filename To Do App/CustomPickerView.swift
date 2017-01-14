@@ -9,9 +9,10 @@
 import UIKit
 
 class CustomPickerView: UIPickerView {
+    
+    // MARK: - Initializers
 
     override func drawRect(rect: CGRect) {
-        
         self.showsSelectionIndicator = true
     }
 }

@@ -12,26 +12,32 @@ import MBProgressHUD
 
 class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     
-    var currentWeatherData: CurrentWeatherData = CurrentWeatherData()
-    var forecastWeatherData: ForecastWeatherData = ForecastWeatherData()
-    var authorizationStatus:CLAuthorizationStatus!
-    var locationManager = LocationManager()
+    // MARK: UI
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var weatherIcon: UIImageView!
-    @IBOutlet var cityName: UILabel!
-    @IBOutlet var descriptionOfWeather: UILabel!
-    @IBOutlet var temperatureAverage: UILabel!
-    @IBOutlet var temperatureMin: UILabel!
-    @IBOutlet var temperatureMax: UILabel!
-    @IBOutlet var pressure: UILabel!
-    @IBOutlet var windSpeed: UILabel!
-    @IBOutlet var humidity: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var cityName: UILabel!
+    @IBOutlet weak var descriptionOfWeather: UILabel!
+    @IBOutlet weak var temperatureAverage: UILabel!
+    @IBOutlet weak var temperatureMin: UILabel!
+    @IBOutlet weak var temperatureMax: UILabel!
+    @IBOutlet weak var pressure: UILabel!
+    @IBOutlet weak var windSpeed: UILabel!
+    @IBOutlet weak var humidity: UILabel!
     
     @IBOutlet weak var cloudImage1: UIImageView!
     @IBOutlet weak var cloudImage2: UIImageView!
     @IBOutlet weak var cloudImage3: UIImageView!
     @IBOutlet weak var cloudImage4: UIImageView!
+    
+    // MARK: - Properties
+    
+    var currentWeatherData: CurrentWeatherData = CurrentWeatherData()
+    var forecastWeatherData: ForecastWeatherData = ForecastWeatherData()
+    var authorizationStatus:CLAuthorizationStatus!
+    var locationManager = LocationManager()
+    
+    // MARK: - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +69,8 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
         downloadWeatherData()
         
     }
+    
+    // MARK: - Custom Functions
     
     func setUI() {
         
@@ -104,6 +112,8 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     }
 }
 
+    // MARK: - TableView Functions
+
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -127,6 +137,8 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+ // MARK: - Current Weather
+
 extension WeatherViewController: CurrentWeatherDataDelegate {
     
     func updateUI() {
@@ -145,6 +157,8 @@ extension WeatherViewController: CurrentWeatherDataDelegate {
         
     }
 }
+
+//MARK: - Forecast Weather
 
 extension WeatherViewController: ForecastWeatherDataDelegate {
 

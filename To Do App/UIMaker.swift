@@ -13,6 +13,8 @@ protocol UIMaker {}
 
 extension UIMaker where Self: UIViewController {
     
+    // MARK: - Custom Functions
+    
     func setBackgroundColor(useUIImageView uiImageView: UIImageView) {
         if let checkForBackgroundColor = NSUserDefaults.standardUserDefaults().objectForKey("BackgroundColor") {
             uiImageView.image = UIImage(named: checkForBackgroundColor as! String)

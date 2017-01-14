@@ -10,6 +10,8 @@ import UIKit
 
 extension UIViewController {
     
+    // MARK: - Navigation
+    
     func returnToMainScreen() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

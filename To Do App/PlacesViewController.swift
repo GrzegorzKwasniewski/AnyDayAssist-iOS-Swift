@@ -9,13 +9,19 @@
 import UIKit
 import CoreData
 
-class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
+class PlacesViewController: UIViewController, UIMaker {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties
     
     var uiWasSet = false
     var messageLabelWasSet = false
     var messageLabel: UILabel = UILabel()
     
-    @IBOutlet var tableView: UITableView!
+    // MARK: - View State
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +39,33 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
         tableView.reloadData()
         setMessageLabel(arrayToCount: placesToVisit, messageLabel: messageLabel)
     }
+    
+    // MARK: - Custom Functions
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addNewPlaceToSee" {
+            activPlace = -1
+        }
+    }
+    
+    func setUI() {
+        setTableView(forTableView: tableView)
+        setNavigationBar(forClassWithName: String(PlacesViewController.self))
+    }
+}
+
+    // MARK: - TableView Functions
+
+extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return placesToVisit.count
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellPlace {
@@ -63,30 +87,19 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UIMaker {
         activPlace = indexPath.row
         return indexPath
     }
-
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
             globalCoreDataFunctions.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
             placesToVisit.removeAtIndex(indexPath.row)
-            tableView.reloadData()            
+            tableView.reloadData()
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addNewPlaceToSee" {
-            activPlace = -1
-        }
-    }
-    
-    func setUI() {
-        setTableView(forTableView: tableView)
-        setNavigationBar(forClassWithName: String(PlacesViewController.self))
     }
 }

@@ -10,11 +10,15 @@ import UIKit
 
 class CellWeather: UITableViewCell {
     
+    // MARK: - UI
+    
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var date: UILabel!
     @IBOutlet var weatherDescription: UILabel!
     @IBOutlet var temperatureMin: UILabel!
     @IBOutlet var temperatureMax: UILabel!
+    
+    // MARK: - Custom Functions
     
     func configureCell(singleDayForecast: SingleDayForecast) {
         self.backgroundColor = contentView.backgroundColor

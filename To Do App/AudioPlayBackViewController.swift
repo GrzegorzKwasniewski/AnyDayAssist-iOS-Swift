@@ -11,40 +11,22 @@ import AVFoundation
 import CoreData
 
 class AudioPlayBackViewController: UIViewController, UIMaker {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    
+    // MARK: - Properties
 
     var stopTimer: NSTimer = NSTimer()
     var recordedAudioURL: NSURL!
     var player: AVAudioPlayer = AVAudioPlayer()
-    
-    @IBOutlet var volumeSlider: UISlider!
-    @IBAction func adjustVolume(sender: AnyObject) {
-        player.volume = volumeSlider.value
-    }
-    
-    @IBOutlet var timeSlider: UISlider!
-    @IBAction func searchInAudioNote(sender: AnyObject) {
-         player.currentTime = NSTimeInterval(timeSlider.value)
-    }
-    
-    @IBOutlet var playButton: UIButton!
-    @IBAction func playAudioNote(sender: AnyObject) {
-        player.play()
-        configureUI(PlayingState.Playing)
-    }
-    
-    @IBOutlet var stopButton: UIButton!
-    @IBAction func stopAudioNote(sender: AnyObject) {
-        player.stop()
-        setupAudio()
-        timeSlider.value = Float(player.currentTime)
-        configureUI(PlayingState.NotPlaying)
-    }
-    
-    @IBOutlet var pauseButton: UIButton!
-    @IBAction func pauseAudio(sender: AnyObject) {
-        player.pause()
-        configureUI(PlayingState.NotPlaying)
-    }
+
+    // MARK: - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +43,33 @@ class AudioPlayBackViewController: UIViewController, UIMaker {
     override func viewWillAppear(animated: Bool) {
         setUI()
         timeSlider.maximumValue = Float((player.duration))
+    }
+    
+    // MARK: - Custom Functions
+    
+    @IBAction func adjustVolume(sender: AnyObject) {
+        player.volume = volumeSlider.value
+    }
+    
+    @IBAction func searchInAudioNote(sender: AnyObject) {
+        player.currentTime = NSTimeInterval(timeSlider.value)
+    }
+    
+    @IBAction func playAudioNote(sender: AnyObject) {
+        player.play()
+        configureUI(PlayingState.Playing)
+    }
+    
+    @IBAction func stopAudioNote(sender: AnyObject) {
+        player.stop()
+        setupAudio()
+        timeSlider.value = Float(player.currentTime)
+        configureUI(PlayingState.NotPlaying)
+    }
+    
+    @IBAction func pauseAudio(sender: AnyObject) {
+        player.pause()
+        configureUI(PlayingState.NotPlaying)
     }
     
     func returnToAudioNotes() {

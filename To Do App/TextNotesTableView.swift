@@ -9,6 +9,8 @@
 import UIKit
 
 class TextNotesTableView: UITableView {
+    
+    // MARK: - Initializers
 
     override func awakeFromNib() {
         super.awakeFromNib()

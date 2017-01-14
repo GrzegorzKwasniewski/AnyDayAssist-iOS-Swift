@@ -12,6 +12,8 @@ import MBProgressHUD
 protocol UIAlertMaker {}
 
 extension UIAlertMaker where Self: UIViewController {
+    
+    // MARK: - Custom Functions
 
     func showAlert(withTitle title: String, withMessage message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)

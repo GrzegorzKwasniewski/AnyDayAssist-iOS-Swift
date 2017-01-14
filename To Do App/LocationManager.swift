@@ -11,14 +11,20 @@ import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
+    // MARK: - Properties
+    
     weak var delegate: LocationManagerUpdateDelegate?
     let locationManagerDelegate = CLLocationManager()
+    
+    // MARK: - Initializers
 
     override init(){
         super.init()
         locationManagerDelegate.delegate = self
         locationManagerDelegate.desiredAccuracy = kCLLocationAccuracyBest
     }
+    
+    // MARK: - Custom Functions
     
     func startUpdatingLocation() {
         locationManagerDelegate.startUpdatingLocation()

@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 
 extension AudioRecorderViewController {
+    
+    // MARK: - Custom Functions
 
     func createRecordingSession() {
         let recordingTime = getRecordingTime()

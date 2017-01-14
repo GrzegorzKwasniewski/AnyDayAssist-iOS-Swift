@@ -10,12 +10,16 @@ import UIKit
 
 class MainViewController: UIViewController, UIMaker {
     
+    // MARK: - UI
+    
     @IBOutlet weak var weatherButton: UIButton!
     
     lazy var imageView: UIImageView = {
         let iv = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
         return iv
     }()
+    
+    // MARK: - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()

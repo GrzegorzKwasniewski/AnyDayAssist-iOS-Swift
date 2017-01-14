@@ -9,14 +9,20 @@
 import UIKit
 import CoreData
 
-class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
+class AudioNotesViewController: UIViewController, UIMaker {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties
     
     var uiWasSet = false
     var messageLabelWasSet = false
     var messageLabel: UILabel = UILabel()
     
-    @IBOutlet var tableView: UITableView!
-
+    // MARK: - View State
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -33,15 +39,27 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
         tableView.reloadData()
         setMessageLabel(arrayToCount: audioURL, messageLabel: messageLabel)
     }
+    
+    // MARK: - Custom Functions
+    
+    func setUI() {
+        setTableView(forTableView: tableView)
+        setNavigationBar(forClassWithName: String(AudioNotesViewController.self))
+    }
+}
+
+    // MARK: - UI
+
+extension AudioNotesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return audioURL.count
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellAudio {
@@ -61,7 +79,7 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
             let audioTitle = singleAudio.valueForKey("audiourl") as! String
             globalCoreDataFunctions.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
             audioURL.removeAtIndex(indexPath.row)
-            tableView.reloadData()            
+            tableView.reloadData()
         }
     }
     
@@ -77,10 +95,5 @@ class AudioNotesViewController: UIViewController, UITableViewDelegate, UIMaker {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
-    }
-    
-    func setUI() {
-        setTableView(forTableView: tableView)
-        setNavigationBar(forClassWithName: String(AudioNotesViewController.self))
     }
 }

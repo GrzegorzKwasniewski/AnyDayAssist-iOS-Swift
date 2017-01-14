@@ -11,12 +11,16 @@ import AVFoundation
 
 extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     
+    // MARK: - Properties
+    
     enum PlayingState { case Playing, NotPlaying }
     
     struct Alerts {
         static let DismissAlert = "Dismiss"
         static let AudioFileError = "Audio File Error"
     }
+    
+    // MARK: - Custom Functions
     
     func setupAudio() {
         do {
@@ -66,13 +70,3 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

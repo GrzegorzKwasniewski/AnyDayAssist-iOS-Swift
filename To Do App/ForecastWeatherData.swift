@@ -11,7 +11,11 @@ import Alamofire
 
 class ForecastWeatherData {
     
+    // MARK: - Properties
+    
     weak var delegate: ForecastWeatherDataDelegate?
+    
+    // MARK: - Custom Functions
 
     func downloadWeatherData(forCity city: String) {
         forecasts = []
@@ -20,9 +24,8 @@ class ForecastWeatherData {
         if let weatherUrl = NSURL(string: weatherUrl) {
             Alamofire.request(.GET, weatherUrl).responseJSON { (response) in
                 if let JSONDictionary = response.result.value as? Dictionary<String, AnyObject> {
-                    // if there is no data for city with given name
-                    if let codeError = JSONDictionary["cod"] as? String {
-                        // update UI without any data
+                    
+                    if let _ = JSONDictionary["cod"] as? String {
                         self.delegate?.updateTableCell()
                     }
                     
@@ -40,6 +43,8 @@ class ForecastWeatherData {
 }
 
 class SingleDayForecast {
+    
+    // MARK: - Properties
     
     var _cityName: String!
     var _weatherDescription: String!
@@ -82,6 +87,7 @@ class SingleDayForecast {
         return _date
     }
     
+    // MARK: - Initializers
     
     init(forecastDictionary dictionary: Dictionary<String, AnyObject>) {
         if let main = dictionary["temp"] as? Dictionary<String, AnyObject> {

@@ -11,8 +11,12 @@ import CoreData
 
 class CellAudio: UITableViewCell {
     
+    // MARK: - UI
+    
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var audioNoteTitleLabel: UILabel!
+    
+    // MARK: - Custom Functions
     
     func configureCell(singleNote: NSManagedObject, cellImage: UIImage) {
         cellImageView.image = cellImage

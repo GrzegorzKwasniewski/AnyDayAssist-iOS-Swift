@@ -9,6 +9,8 @@
 import UIKit
 
 public class StringHelperClass {
+    
+    // MARK: - Custom Functions
 
     class func removeSpecialCharsFromString (text: String) -> String {
         let acceptableChars : Set<Character> =

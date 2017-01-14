@@ -10,16 +10,19 @@ import UIKit
 
 class CustomTextView: UITextView {
 
-    // MARK: - IBInspectable
+    // MARK: - UI
+    
     @IBInspectable var insetByY: CGFloat = 0
     @IBInspectable var insetByX: CGFloat = 0
     @IBInspectable var tintCol: UIColor = UIColor.whiteColor()
     @IBInspectable var fontCol: UIColor = UIColor.whiteColor()
     @IBInspectable var shadowCol: UIColor = UIColor.darkGrayColor()
     
-    
     // MARK: - Properties
+    
     var textFont = UIFont(name: "Avenir Book", size: 14.0)
+    
+    // MARK: - Initializers
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
@@ -42,6 +45,8 @@ class CustomTextView: UITextView {
             self.font = UIFont(name: "Helvetica Neue", size: 14.0)
         }
     }
+    
+    // MARK: - Layout Functions
     
     override func setNeedsLayout() {
         self.backgroundColor = UIColor.clearColor()

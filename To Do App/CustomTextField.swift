@@ -10,7 +10,8 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-    // MARK: - Additional UI elements
+    // MARK: - UI
+    
     lazy var validateCityName: UIButton = {
         let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
         button.setImage(UIImage(named: "play"), forState: .Normal)
@@ -18,13 +19,15 @@ class CustomTextField: UITextField {
         return button
     }()
     
-    // MARK: - IBInspectable
     @IBInspectable var fieldForCityName: Bool = false
     @IBInspectable var customString: String = ""
     
     
     // MARK: - Properties
+    
     var textFont = UIFont(name: "Avenir Book", size: 14.0)
+    
+    // MARK: - Initializers
     
     override func drawRect(rect: CGRect) {
         self.commonInit()
@@ -53,15 +56,17 @@ class CustomTextField: UITextField {
         }
     }
     
-    // Placeholder text
+    // MARK: - Custom Functions
+
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 10, dy: 10)
     }
     
-    // Editable text
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 10, dy: 10)
     }
+    
+    // MARK: - Notifications
     
     func postNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName("validateCityName", object: nil)

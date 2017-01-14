@@ -14,10 +14,14 @@ let globalCoreDataFunctions = CoreDataFunctions()
 
 final class CoreDataFunctions {
     
+    // MARK: - Initializers
+    
     private init() {
         // do nothing - required to stop instances being
         // created by code in other files
     }
+    
+    // MARK: - Custom Functions
     
     func saveTextNote(note: String, extraNotes: String, priority: String, dueDate: String) {
         let newNote = NSEntityDescription.insertNewObjectForEntityForName("Notes", inManagedObjectContext: contextOfOurApp)

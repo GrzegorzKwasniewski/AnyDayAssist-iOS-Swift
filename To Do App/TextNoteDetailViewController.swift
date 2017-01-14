@@ -75,6 +75,10 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
     // MARK: - Custom Functions
     
+    @IBAction func backButtonForTest(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func saveNote(sender: AnyObject) {
         
         if let note = noteTitle.text where note == "" {
@@ -123,10 +127,6 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
             globalCoreDataFunctions.deleteObject(singleNote)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }
-    
-    @IBAction func backButtonForTest(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func setDate() {
@@ -185,7 +185,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     }
 }
 
-// MARK: - Set Constraints For Views
+    // MARK: - Set Constraints For Views
 
 extension TextNoteDetailViewController {
     
@@ -207,7 +207,7 @@ extension TextNoteDetailViewController {
 
 }
 
-// MARK: - PickerView Functions
+    // MARK: - PickerView Functions
 
 extension TextNoteDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     

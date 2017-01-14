@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-class TextNotesViewController: UIViewController {
+class TextNotesViewController: UIViewController, UIMaker {
+    
+    // MARK - UI
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var uiWasSet = false
     lazy var messageLabel: UILabel = {
@@ -17,13 +21,12 @@ class TextNotesViewController: UIViewController {
         return ml
     }()
     
-    @IBOutlet var tableView: UITableView!
+    // MARK - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(messageLabel)
-        setObserverForChange()
 
     }
     
@@ -45,24 +48,27 @@ class TextNotesViewController: UIViewController {
         
     }
     
-    func setObserverForChange() {
+    // MARK: - Custom Functions
     
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(TextNotesViewController.popoverViewWasDismissed(_:)),
-            name: "popoverViewWasDismissed",
-            object: nil)
+    func setUI() {
+        
+        setTableView(forTableView: tableView)
+        setNavigationBar(forClassWithName: String(TextNotesViewController.self))
         
     }
-
-    func popoverViewWasDismissed(notification: NSNotification) {
-
-        globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
-        tableView.reloadData()
-        setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "noteDetail" {
+            if let noteDetail = segue.destinationViewController as? TextNoteDetailViewController {
+                if let singleNote = sender as? NSManagedObject {
+                    noteDetail.singleNote = singleNote
+                }
+            }
+        }
     }
 }
+
+    // MARK: - TableView Functions
 
 extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -89,33 +95,11 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let singleNote = toDoNotes[indexPath.row]
         performSegueWithIdentifier("noteDetail", sender: singleNote)
-    }
-}
-
-extension TextNotesViewController: UIMaker {
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "noteDetail" {
-            if let noteDetail = segue.destinationViewController as? TextNoteDetailViewController {
-                if let singleNote = sender as? NSManagedObject {
-                    noteDetail.singleNote = singleNote
-                }
-            }
-        }
-    }
-    
-    func setUI() {
-        
-        setTableView(forTableView: tableView)
-        setNavigationBar(forClassWithName: String(TextNotesViewController.self))
-        
     }
 }

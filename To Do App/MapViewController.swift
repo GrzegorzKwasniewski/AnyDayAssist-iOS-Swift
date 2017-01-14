@@ -12,12 +12,18 @@ import CoreLocation
 import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMaker, UIMaker {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    // MARK: - Properties
 
     var locationManager:CLLocationManager!
     var placemarks: AnyObject!
     var error: NSError!
     
-    @IBOutlet var mapView: MKMapView!
+    // MARK: - View State
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +31,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        // if we try to add new place to visit
         if activPlace == -1 {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
@@ -60,6 +65,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIAlertMak
     override func viewWillAppear(animated: Bool) {
         setUI()
     }
+    
+    // MARK: - Custom Functions
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

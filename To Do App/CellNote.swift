@@ -11,10 +11,14 @@ import CoreData
 
 class CellNote: UITableViewCell {
     
+    // MARK: - UI
+    
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var noteTitleLabel: UILabel!
     @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
+    
+    // MARK: - Custom Functions
     
     func configureCell(singleNote: NSManagedObject, cellImage: UIImage) {
         cellImageView.image = cellImage

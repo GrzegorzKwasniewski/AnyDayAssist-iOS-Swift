@@ -10,9 +10,7 @@ import UIKit
 
 class CustomStackView: UIStackView {
 
-    // MARK: - Properties
-    
-    
+
     // MARK: - Initializers
     
     required init(coder aDecoder: NSCoder) {
