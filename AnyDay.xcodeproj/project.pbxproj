@@ -19,6 +19,7 @@
 		71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5C1E243426009E720E /* CustomPickerView.swift */; };
 		71749F5F1E24379C009E720E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5E1E24379C009E720E /* CustomLabel.swift */; };
 		7182D6D11E2ACAC3006B121D /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D01E2ACAC3006B121D /* CustomStackView.swift */; };
+		7182D6D31E2AD75F006B121D /* CellAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D21E2AD75F006B121D /* CellAudio.swift */; };
 		718CF0A01E29974000917EF5 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CF09F1E29974000917EF5 /* CustomDatePicker.swift */; };
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
 		718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D871E1CEA50C4001E7F17 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		71749F5C1E243426009E720E /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		71749F5E1E24379C009E720E /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		7182D6D01E2ACAC3006B121D /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		7182D6D21E2AD75F006B121D /* CellAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAudio.swift; sourceTree = "<group>"; };
 		718CF09F1E29974000917EF5 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		718D87151CEA50C4001E7F17 /* AnyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				718D87181CEA50C4001E7F17 /* AppDelegate.swift */,
 				716B39041D3A6A12002D8ABE /* CellNote.swift */,
 				714A80751D57426F00042456 /* CellWeather.swift */,
+				7182D6D21E2AD75F006B121D /* CellAudio.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
 				71B6CDA11E22940E00A10ED8 /* PopUpView.swift in Sources */,
 				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,
+				7182D6D31E2AD75F006B121D /* CellAudio.swift in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,
 				71FF6D6D1D2C56D80057B22E /* CoreDataFunctions.swift in Sources */,
 				71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */,

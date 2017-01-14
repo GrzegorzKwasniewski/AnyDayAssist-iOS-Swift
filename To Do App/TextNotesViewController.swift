@@ -79,7 +79,6 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
         if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellNote {
             
             let singleNote = toDoNotes[indexPath.row]
-            print(singleNote.valueForKey("note"))
             myCell.configureCell(singleNote, cellImage: UIImage(named: "notes")!)
             return myCell
             

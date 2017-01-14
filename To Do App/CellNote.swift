@@ -19,7 +19,6 @@ class CellNote: UITableViewCell {
     func configureCell(singleNote: NSManagedObject, cellImage: UIImage) {
         cellImageView.image = cellImage
         noteTitleLabel.text = singleNote.valueForKey("note") as? String
-        priorityLabel.text = singleNote.valueForKey("extraNotes") as? String
         priorityLabel.text = singleNote.valueForKey("priority") as? String
         dueDateLabel.text = singleNote.valueForKey("dueDate") as? String
     }

@@ -431,15 +431,15 @@
                                 <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="Tzi-sZ-gv1" customClass="Cell" customModule="AnyDay" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="Tzi-sZ-gv1" customClass="CellAudio" customModule="AnyDay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tzi-sZ-gv1" id="gQQ-Eo-cY2">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6qn-lf-uU4">
-                                                    <rect key="frame" x="9" y="5" width="23" height="28"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qn-lf-uU4">
+                                                    <rect key="frame" x="9" y="8" width="23" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="0ed-IR-HP2">
                                                             <variation key="heightClass=regular-widthClass=compact" constant="34"/>
@@ -474,7 +474,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhM-SH-zkB">
                                                     <rect key="frame" x="40" y="0.0" width="320" height="61"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -560,8 +560,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cellImage" destination="6qn-lf-uU4" id="zwf-P3-vjo"/>
-                                            <outlet property="noteTitle" destination="rhM-SH-zkB" id="OYT-w5-ezi"/>
+                                            <outlet property="audioNoteTitleLabel" destination="rhM-SH-zkB" id="w7S-Dz-Ks0"/>
+                                            <outlet property="cellImageView" destination="6qn-lf-uU4" id="e5z-om-DYd"/>
                                             <segue destination="2yT-xO-sfe" kind="show" id="HH0-2L-ZEJ"/>
                                         </connections>
                                     </tableViewCell>

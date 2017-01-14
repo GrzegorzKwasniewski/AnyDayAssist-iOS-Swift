@@ -10,13 +10,19 @@ import UIKit
 
 class CustomDatePicker: UIDatePicker {
     
+    // MARK: - Initializers
+    
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         self.commonInit()
     }
     
+    // MARK: - Custom Functions
+    
     func commonInit() {
     }
+    
+    // MARK: - Layout Functions
     
     override func setNeedsLayout() {
         self.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
@@ -26,5 +32,4 @@ class CustomDatePicker: UIDatePicker {
     override func setNeedsDisplay() {
         self.backgroundColor = UIColor.clearColor()
     }
-
 }
