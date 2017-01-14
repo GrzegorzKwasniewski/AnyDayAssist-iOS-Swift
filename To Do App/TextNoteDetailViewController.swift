@@ -11,71 +11,38 @@ import CoreData
 
 class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
-    lazy var noteTitle: CustomTextField = {
-        let uv = CustomTextField()
-        return uv
-    }()
+    // MARK: - UI
     
-    lazy var additionalNotes: CustomTextView = {
-        let uv = CustomTextView()
-        return uv
-    }()
+    lazy var priorityPicker = UIPickerView()
+    lazy var noteTitle: CustomTextField = CustomTextField()
+    lazy var additionalNotes: CustomTextView = CustomTextView()
+    lazy var customLable = CustomLabel(text: "set priority")
+    lazy var remainderLabel = CustomLabel(text: "set remainder on")
+    lazy var datePicker: CustomDatePicker = CustomDatePicker()
+    lazy var addNoteButton = CustomButton(bgColor: UIColor.whiteColor(), forAction: .Save)
+    lazy var deleteNoteButton = CustomButton(bgColor: UIColor.redColor(), forAction: .Delete)
+    var stackView = CustomStackView()
     
-    lazy var customLable: CustomLabel = {
-        let la = CustomLabel()
-        la.text = "set priority"
-        return la
-    }()
-    
-    lazy var priorityPicker: UIPickerView = {
-        let pv = UIPickerView()
-        return pv
-    }()
-    
-    lazy var remainderLabel: CustomLabel = {
-        let la = CustomLabel()
-        la.text = "set remainder on"
-        return la
-    }()
-    
-    lazy var datePicker: CustomDatePicker = {
-        let dp = CustomDatePicker()
-        return dp
-    }()
-    
-    lazy var addNoteButton: CustomButton = {
-        let bt = CustomButton(bgColor: UIColor.whiteColor())
-        bt.addTarget(self, action: #selector(saveNote), forControlEvents: UIControlEvents.TouchUpInside)
-        return bt
-    }()
-    
-    lazy var deleteNoteButton: CustomButton = {
-        let bt = CustomButton(bgColor: UIColor.redColor())
-        bt.addTarget(self, action: #selector(deleteNote), forControlEvents: UIControlEvents.TouchUpInside)
-        return bt
-    }()
-    
-    lazy var stackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .Horizontal
-        sv.addArrangedSubview(self.addNoteButton)
-        sv.addArrangedSubview(self.deleteNoteButton)
-        sv.distribution = .FillEqually
-        return sv
-    }()
+    // MARK: - Properties
     
     var singleNote: NSManagedObject?
     var note: String = ""
     var extraNotes: String = ""
     var priority: String = "heigh"
     var dueDate: String = ""
-    
     var priorities = ["heigh", "medium", "low"]
+    var marginForViews: CGFloat = 0
     
-    func postNotification() {}
+    // MARK: - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setObserverForChange()
+        
+        marginForViews = view.frame.width / 20
+        
+        stackView = CustomStackView(addViews: [addNoteButton, deleteNoteButton], withSpacing: 20)
         
         view.addSubview(noteTitle)
         view.addSubview(additionalNotes)
@@ -105,6 +72,8 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    // MARK: - Custom Functions
     
     func saveNote(sender: AnyObject) {
         
@@ -198,29 +167,47 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
             }
         }
     }
+    
+    func setObserverForChange() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(saveNote),
+            name: "saveAction",
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(deleteNote),
+            name: "deleteAction",
+            object: nil)
+        
+    }
 }
 
-//MARK: set constraints on views
+// MARK: - Set Constraints For Views
 
 extension TextNoteDetailViewController {
     
     func setConstraints() {
-        noteTitle.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 50, leftConstant: 50, bottomConstant: 0, rightConstant: 50, widthConstant: 0, heightConstant: view.frame.height / 20)
+        noteTitle.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 70, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 20)
     
-        additionalNotes.anchor(noteTitle.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 40, leftConstant: 50, bottomConstant: 0, rightConstant: 50, widthConstant: 0, heightConstant: view.frame.height / 10)
+        additionalNotes.anchor(noteTitle.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 40, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 10)
     
-        customLable.anchor(additionalNotes.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: 50, bottomConstant: 0, rightConstant: 50, widthConstant: 0, heightConstant: view.frame.height / 30)
+        customLable.anchor(additionalNotes.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 30)
     
-        priorityPicker.anchor(customLable.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: 50,     bottomConstant: 0, rightConstant: 50, widthConstant: 0, heightConstant: view.frame.height / 10)
+        priorityPicker.anchor(customLable.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 10)
     
-        remainderLabel.anchor(priorityPicker.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: 50, bottomConstant: 0, rightConstant: 50, widthConstant: 0, heightConstant: view.frame.height / 30)
+        remainderLabel.anchor(priorityPicker.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 30)
     
-        datePicker.anchor(remainderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: 50, bottomConstant: 0, rightConstant: 50, widthConstant: 0, heightConstant: view.frame.height / 5)
+        datePicker.anchor(remainderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 5)
     
-        stackView.anchor(datePicker.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: 50, bottomConstant: view.frame.height / 20, rightConstant: 50, widthConstant: 0, heightConstant: 0)
+        stackView.anchor(datePicker.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: view.frame.height / 20, rightConstant: marginForViews, widthConstant: 0, heightConstant: 0)
     }
 
 }
+
+// MARK: - PickerView Functions
 
 extension TextNoteDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
