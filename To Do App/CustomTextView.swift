@@ -22,14 +22,17 @@ class CustomTextView: UITextView {
     var textFont = UIFont(name: "Avenir Book", size: 14.0)
     
     override func drawRect(rect: CGRect) {
-        
+        super.drawRect(rect)
+        self.commonInit()
+    }
+    
+    func commonInit() {
         self.text = "additinal notes"
-        self.textContainerInset = UIEdgeInsets(top: insetByY, left: insetByX, bottom: insetByY, right: insetByX)
+        self.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         self.layer.masksToBounds = false
-        self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 3.0
-        self.tintColor = tintCol
-        self.textColor = fontCol
+        self.tintColor = UIColor.whiteColor()
+        self.textColor = UIColor.whiteColor()
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.grayColor().CGColor
         
@@ -38,5 +41,9 @@ class CustomTextView: UITextView {
         } else {
             self.font = UIFont(name: "Helvetica Neue", size: 14.0)
         }
+    }
+    
+    override func setNeedsLayout() {
+        self.backgroundColor = UIColor.clearColor()
     }
 }

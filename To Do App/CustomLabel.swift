@@ -11,7 +11,10 @@ import UIKit
 class CustomLabel: UILabel {
 
     // MARK: - Properties
+    
     var textFont = UIFont(name: "Avenir Book", size: 18.0)
+    
+    // MARK: - Initializers
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -19,20 +22,22 @@ class CustomLabel: UILabel {
         
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(text: String) {
+        super.init(frame: .zero)
+        self.text = text
         self.commonInit()
     }
+    
+    // MARK: - Custom Functions
     
     func commonInit() {
         self.textColor = UIColor.redColor()
         self.font = textFont
         self.textAlignment = .Center
         self.backgroundColor = UIColor.whiteColor()
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 5
         self.clipsToBounds = true
         self.layer.opacity = 0.9
-        //self.setProperties(1.0, borderColor:UIColor.blackColor())
     }
     
     func setProperties(borderWidth: Float, borderColor: UIColor) {

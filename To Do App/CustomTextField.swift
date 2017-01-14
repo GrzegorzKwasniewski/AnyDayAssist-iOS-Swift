@@ -10,6 +10,7 @@ import UIKit
 
 class CustomTextField: UITextField {
     
+    // MARK: - Additional UI elements
     lazy var validateCityName: UIButton = {
         let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
         button.setImage(UIImage(named: "play"), forState: .Normal)
@@ -20,34 +21,31 @@ class CustomTextField: UITextField {
     // MARK: - IBInspectable
     @IBInspectable var fieldForCityName: Bool = false
     @IBInspectable var customString: String = ""
-    @IBInspectable var insetByY: CGFloat = 0
-    @IBInspectable var insetByX: CGFloat = 0
-    @IBInspectable var tintCol: UIColor = UIColor.blueColor()
-    @IBInspectable var fontCol: UIColor = UIColor.whiteColor()
-    @IBInspectable var shadowCol: UIColor = UIColor.darkGrayColor()
     
     
     // MARK: - Properties
     var textFont = UIFont(name: "Avenir Book", size: 14.0)
     
     override func drawRect(rect: CGRect) {
-        
+        self.commonInit()
+    }
+    
+    func commonInit() {
         self.layer.masksToBounds = false
         self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 3.0
-        self.tintColor = tintCol
-        self.textColor = fontCol
+        self.tintColor = UIColor.whiteColor()
+        self.textColor = UIColor.whiteColor()
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.whiteColor().CGColor
         
-        self.attributedPlaceholder = NSAttributedString(string: customString, attributes: [NSForegroundColorAttributeName: fontCol])
+        self.attributedPlaceholder = NSAttributedString(string: customString, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         if fieldForCityName {
             self.rightView = validateCityName;
             self.rightViewMode = .Always;
         }
         
-
         if let fnt = textFont {
             self.font = fnt
         } else {
@@ -57,12 +55,12 @@ class CustomTextField: UITextField {
     
     // Placeholder text
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: insetByX, dy: insetByY)
+        return bounds.insetBy(dx: 10, dy: 10)
     }
     
     // Editable text
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: insetByX, dy: insetByY)
+        return bounds.insetBy(dx: 10, dy: 10)
     }
     
     func postNotification() {
