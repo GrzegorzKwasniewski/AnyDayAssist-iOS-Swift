@@ -1109,7 +1109,7 @@
                                 <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="GS8-Im-a4y" customClass="Cell" customModule="AnyDay" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="GS8-Im-a4y" customClass="CellPlace" customModule="AnyDay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="71"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GS8-Im-a4y" id="43d-cU-0xt">
@@ -1150,7 +1150,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVf-1n-LXG">
                                                     <rect key="frame" x="46" y="18" width="314" height="33"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -1212,8 +1212,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cellImage" destination="JCH-PV-G9P" id="dPV-oR-UFj"/>
-                                            <outlet property="noteTitle" destination="zVf-1n-LXG" id="ezn-1k-B53"/>
+                                            <outlet property="cellImageView" destination="JCH-PV-G9P" id="Yjz-IE-Hda"/>
+                                            <outlet property="placeTitleLabel" destination="zVf-1n-LXG" id="mRl-0z-p27"/>
                                             <segue destination="7FS-mo-6y2" kind="show" id="a2L-yk-lbu"/>
                                         </connections>
                                     </tableViewCell>
