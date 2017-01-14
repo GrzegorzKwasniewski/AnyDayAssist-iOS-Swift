@@ -10,28 +10,68 @@ import UIKit
 
 class CustomButton: UIButton {
     
+    // MARK: - Properties
+    
+    enum Action {
+        case Save
+        case Delete
+    }
+    
+    var actionToTake: Action = .Save
+    
+    // MARK: - Initializers
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         self.commonInit()
         
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(bgColor: UIColor, forAction action: Action) {
+        super.init(frame: .zero)
+        self.backgroundColor = bgColor
+        self.actionToTake = action
         self.commonInit()
     }
+    
+    // MARK - Custom functions
     
     func commonInit() {
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
         self.layer.opacity = 0.9
         self.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        //self.setProperties(1.0, borderColor:UIColor.blackColor())
+        self.addTarget(self, action: #selector(postNotification), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        setTitle()
+    }
+    
+    func setTitle() {
+        
+        switch actionToTake {
+        case .Save:
+            self.setTitle("Save", forState: .Normal)
+            self.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        case .Delete:
+            self.setTitle("Delete", forState: .Normal)
+            self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        }
     }
     
     func setProperties(borderWidth: Float, borderColor: UIColor) {
         self.layer.borderWidth = CGFloat(borderWidth)
         self.layer.borderColor = borderColor.CGColor
     }
-
+    
+    // MARK: - Notifications
+    
+    func postNotification() {
+        
+        switch actionToTake {
+        case .Save:
+            NSNotificationCenter.defaultCenter().postNotificationName("saveAction", object: nil)
+        case .Delete:
+            NSNotificationCenter.defaultCenter().postNotificationName("deleteAction", object: nil)
+        }
+    }
 }

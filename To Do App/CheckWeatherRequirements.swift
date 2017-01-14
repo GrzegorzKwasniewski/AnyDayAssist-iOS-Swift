@@ -11,7 +11,7 @@ import CoreLocation
 
 class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     
-    // MARK - outlets
+    // MARK - UI
     
     @IBOutlet weak var cityNameCenter: NSLayoutConstraint!
     @IBOutlet weak var cityName: UITextField!
@@ -20,14 +20,14 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     @IBOutlet weak var top: NSLayoutConstraint!
     @IBOutlet weak var imagesStackView: UIStackView!
     
-    // MARK - ivars
+    // MARK - Properties
     
     private var uiWasSet = false
     private var authorizationStatus:CLAuthorizationStatus!
     private var locationManager = LocationManager()
     private var stringValidation = StringValidation.isEmpty
     
-    // MARK - view state
+    // MARK - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         }
     }
     
-    // MARK - actions
+    // MARK - Actions
     
     @IBAction func checkWeatherForCity(sender: UITapGestureRecognizer) {
         imagesStackView.userInteractionEnabled = false

@@ -18,6 +18,7 @@
 		71749F5B1E242E0E009E720E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5A1E242E0E009E720E /* CustomTextView.swift */; };
 		71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5C1E243426009E720E /* CustomPickerView.swift */; };
 		71749F5F1E24379C009E720E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5E1E24379C009E720E /* CustomLabel.swift */; };
+		7182D6D11E2ACAC3006B121D /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D01E2ACAC3006B121D /* CustomStackView.swift */; };
 		718CF0A01E29974000917EF5 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CF09F1E29974000917EF5 /* CustomDatePicker.swift */; };
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
 		718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D871E1CEA50C4001E7F17 /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		71749F5A1E242E0E009E720E /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		71749F5C1E243426009E720E /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		71749F5E1E24379C009E720E /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		7182D6D01E2ACAC3006B121D /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		718CF09F1E29974000917EF5 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		718D87151CEA50C4001E7F17 /* AnyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				71749F5E1E24379C009E720E /* CustomLabel.swift */,
 				71DC8C541E26AC8500322B50 /* CustomButton.swift */,
 				718CF09F1E29974000917EF5 /* CustomDatePicker.swift */,
+				7182D6D01E2ACAC3006B121D /* CustomStackView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				71B6CDA71E22BDB500A10ED8 /* TextNoteDetailViewController.swift in Sources */,
 				7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */,
 				71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */,
+				7182D6D11E2ACAC3006B121D /* CustomStackView.swift in Sources */,
 				71749F5B1E242E0E009E720E /* CustomTextView.swift in Sources */,
 				71944F271D08C1E600206B4F /* Database.xcdatamodeld in Sources */,
 				7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */,
