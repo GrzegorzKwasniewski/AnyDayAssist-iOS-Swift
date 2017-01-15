@@ -15,19 +15,25 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     weak var delegate: LocationManagerUpdateDelegate?
     let locationManagerDelegate = CLLocationManager()
+    var longitude: Double = 0
+    var latitude: Double = 0
     
     // MARK: - Initializers
 
-    override init(){
+    override init() {
         super.init()
         locationManagerDelegate.delegate = self
         locationManagerDelegate.desiredAccuracy = kCLLocationAccuracyBest
+        locationManagerDelegate.startUpdatingLocation()
     }
     
     // MARK: - Custom Functions
     
     func startUpdatingLocation() {
-        locationManagerDelegate.startUpdatingLocation()
+    }
+    
+    func stopUpdatingLoaction() {
+        locationManagerDelegate.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -48,16 +54,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                     else {
                         NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)
                         return }
-                userCityName = city
+                
+                userLoactionCityName = city
                 userCityZipCode = zipCode
                 self.locationManagerDelegate.stopUpdatingLocation()
-                self.delegate?.performActionAfterLocationUpdate()
             }
         }
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        NSNotificationCenter.defaultCenter().postNotificationName("failedToGetUserLocation", object: nil)
-        print(error)
     }
 }

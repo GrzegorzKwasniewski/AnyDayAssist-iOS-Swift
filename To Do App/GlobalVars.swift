@@ -18,6 +18,7 @@ let contextOfOurApp: NSManagedObjectContext = appDelegate.managedObjectContext
 var weatherFromUserLocation = false
 var userCityName = String()
 var userCityZipCode = String()
+var userLoactionCityName = String()
 
 //TextNotesViewController.swift
 var toDoNotes = [NSManagedObject]()

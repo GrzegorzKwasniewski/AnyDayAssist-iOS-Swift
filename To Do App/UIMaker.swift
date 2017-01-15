@@ -49,19 +49,19 @@ extension UIMaker where Self: UIViewController {
         switch name {
         
         case "TextNotesViewController":
-            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.dissmisViewController))
             rightItem = UIBarButtonItem(title: "Add note >", style: .Plain, target: nil, action: #selector(UIViewController.addNewTextNote))
             
         case "PlacesViewController":
-            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.dissmisViewController))
             rightItem = UIBarButtonItem(title: "Add Place >", style: .Plain, target: nil, action: #selector(UIViewController.addNewPlaceToSee))
             
         case "AudioNotesViewController":
-            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            leftItem = UIBarButtonItem(title: "< Main", style: .Plain, target: nil, action: #selector(UIViewController.dissmisViewController))
             rightItem = UIBarButtonItem(title: "Add Record >", style: .Plain, target: nil, action: #selector(UIViewController.goToAudioRecordView))
             
         default:
-            leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(UIViewController.returnToMainScreen))
+            leftItem = UIBarButtonItem(title: "< Back", style: .Plain, target: nil, action: #selector(UIViewController.dissmisViewController))
         }
         
         if horizontalClass == .Regular && verticalCass == .Regular {

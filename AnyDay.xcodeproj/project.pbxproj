@@ -39,7 +39,7 @@
 		71B6CDA31E22975E00A10ED8 /* TextNotesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */; };
 		71B6CDA71E22BDB500A10ED8 /* TextNoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */; };
 		71B6CDA91E22C67100A10ED8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */; };
-		71B9F1291E2837F500871896 /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9F1281E2837F500871896 /* UIViewEx.swift */; };
+		71B9F1291E2837F500871896 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9F1281E2837F500871896 /* UIViewExtension.swift */; };
 		71CD64CD1D5517F80019F501 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CC1D5517F80019F501 /* GlobalVars.swift */; };
 		71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */; };
 		71DC8C551E26AC8500322B50 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC8C541E26AC8500322B50 /* CustomButton.swift */; };
@@ -92,7 +92,7 @@
 		71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesTableView.swift; sourceTree = "<group>"; };
 		71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteDetailViewController.swift; sourceTree = "<group>"; };
 		71B6CDA81E22C67100A10ED8 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		71B9F1281E2837F500871896 /* UIViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
+		71B9F1281E2837F500871896 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		71CD64CC1D5517F80019F501 /* GlobalVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		71DC8C541E26AC8500322B50 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 				71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */,
 				711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */,
 				71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */,
-				71B9F1281E2837F500871896 /* UIViewEx.swift */,
+				71B9F1281E2837F500871896 /* UIViewExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */,
 				71AF60FC1E23FEFD00847AD6 /* LocationManagerDelegate.swift in Sources */,
 				7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */,
-				71B9F1291E2837F500871896 /* UIViewEx.swift in Sources */,
+				71B9F1291E2837F500871896 /* UIViewExtension.swift in Sources */,
 				71FF6D7D1D2EF6BA0057B22E /* WeatherViewController.swift in Sources */,
 				71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */,
 				71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */,
@@ -586,7 +586,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDay;
 				PRODUCT_NAME = AnyDay;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4ba5a6a5-1d15-4ffc-943c-d599c0e807d0";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -596,14 +596,14 @@
 			baseConfigurationReference = D3997C8DE235D6447F6185BC /* Pods-AnyDay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Grzegorz Kwasniewski (7K692Z62S3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Grzegorz Kwasniewski (7K692Z62S3)";
 				INFOPLIST_FILE = "To Do App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDay;
 				PRODUCT_NAME = AnyDay;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4ba5a6a5-1d15-4ffc-943c-d599c0e807d0";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -13,6 +13,7 @@ class CustomPickerView: UIPickerView {
     // MARK: - Initializers
 
     override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
         self.showsSelectionIndicator = true
     }
 }

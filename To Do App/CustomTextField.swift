@@ -29,9 +29,25 @@ class CustomTextField: UITextField {
     
     // MARK: - Initializers
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
     override func drawRect(rect: CGRect) {
         self.commonInit()
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    init(placeholderText: String) {
+        super.init(frame: .zero)
+        self.customString = placeholderText
+        self.commonInit()
+    }
+    
+    // MARK: - Custom Functions
     
     func commonInit() {
         self.layer.masksToBounds = false
@@ -57,7 +73,7 @@ class CustomTextField: UITextField {
     }
     
     // MARK: - Custom Functions
-
+    
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 10, dy: 10)
     }

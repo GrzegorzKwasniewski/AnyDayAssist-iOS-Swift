@@ -33,6 +33,7 @@ class CustomTextView: UITextView {
         self.text = "additinal notes"
         self.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         self.layer.masksToBounds = false
+        self.autocapitalizationType = .None
         self.layer.cornerRadius = 3.0
         self.tintColor = UIColor.whiteColor()
         self.textColor = UIColor.whiteColor()

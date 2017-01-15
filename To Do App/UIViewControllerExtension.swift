@@ -12,7 +12,7 @@ extension UIViewController {
     
     // MARK: - Navigation
     
-    func returnToMainScreen() {
+    func dissmisViewController() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

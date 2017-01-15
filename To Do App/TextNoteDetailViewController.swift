@@ -14,9 +14,9 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     // MARK: - UI
     
     lazy var priorityPicker = UIPickerView()
-    lazy var noteTitle: CustomTextField = CustomTextField()
+    lazy var noteTitle: CustomTextField = CustomTextField(placeholderText: "note title")
     lazy var additionalNotes: CustomTextView = CustomTextView()
-    lazy var customLable = CustomLabel(text: "set priority")
+    lazy var priorityLabel = CustomLabel(text: "set priority")
     lazy var remainderLabel = CustomLabel(text: "set remainder on")
     lazy var datePicker: CustomDatePicker = CustomDatePicker()
     lazy var addNoteButton = CustomButton(bgColor: UIColor.whiteColor(), forAction: .Save)
@@ -44,14 +44,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         
         stackView = CustomStackView(addViews: [addNoteButton, deleteNoteButton], withSpacing: 20)
         
-        view.addSubview(noteTitle)
-        view.addSubview(additionalNotes)
-        view.addSubview(customLable)
-        view.addSubview(priorityPicker)
-        view.addSubview(remainderLabel)
-        view.addSubview(datePicker)
-        view.addSubview(stackView)
-        
+        addSubViews()
         setConstraints()
         setView()
         
@@ -61,9 +54,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         // TODO: Move to custom class
         deleteNoteButton.userInteractionEnabled = false
         deleteNoteButton.alpha = 0.2
-        
-        priorityPicker.selectRow(0, inComponent: 0, animated: false)
-        
+                
         if let singleNote = singleNote {
             setUI(with: singleNote)
         }
@@ -71,12 +62,19 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        setNavigationBar(forClassWithName: String(TextNoteDetailViewController.self))
     }
     
     // MARK: - Custom Functions
     
-    @IBAction func backButtonForTest(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func addSubViews() {
+        view.addSubview(noteTitle)
+        view.addSubview(additionalNotes)
+        view.addSubview(priorityLabel)
+        view.addSubview(priorityPicker)
+        view.addSubview(remainderLabel)
+        view.addSubview(datePicker)
+        view.addSubview(stackView)
     }
     
     func saveNote(sender: AnyObject) {
@@ -108,7 +106,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
                 localNotification.applicationIconBadgeNumber = 0
                 localNotification.soundName = UILocalNotificationDefaultSoundName
                 localNotification.alertTitle = self.note
-                localNotification.alertBody = "Body"
+                localNotification.alertBody = self.extraNotes
                 
                 UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
                 
@@ -138,7 +136,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     }
     
     func setUI(with singleNote: NSManagedObject) {
-        
+                
         deleteNoteButton.userInteractionEnabled = true
         deleteNoteButton.alpha = 1
         
@@ -168,6 +166,8 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         }
     }
     
+    // MARK: - Notifications
+    
     func setObserverForChange() {
         
         NSNotificationCenter.defaultCenter().addObserver(
@@ -185,18 +185,18 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     }
 }
 
-    // MARK: - Set Constraints For Views
+    // MARK: - Constraints For Views
 
 extension TextNoteDetailViewController {
     
     func setConstraints() {
-        noteTitle.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 70, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 20)
+        noteTitle.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 80, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 20)
     
         additionalNotes.anchor(noteTitle.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 40, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 10)
     
-        customLable.anchor(additionalNotes.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 30)
+        priorityLabel.anchor(additionalNotes.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 30)
     
-        priorityPicker.anchor(customLable.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 10)
+        priorityPicker.anchor(priorityLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 10)
     
         remainderLabel.anchor(priorityPicker.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 30)
     

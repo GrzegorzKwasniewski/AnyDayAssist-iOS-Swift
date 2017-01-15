@@ -27,25 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
         if application.applicationState == .Active {
-            // inside app
+            self.takeAction(notification)
         }
-        
-        self.takeAction(notification)
     }
     
     func takeAction(localNotification: UILocalNotification) {
         
-        let message = localNotification.alertTitle
-        let userName = "Marian"
+        let title = localNotification.alertTitle
+        let body = localNotification.alertBody
         
-        let alert = UIAlertController(title: "Hello \(userName)", message: "How are You!", preferredStyle: .ActionSheet)
-        let remindMeLater = UIAlertAction(title: "Later", style: .Destructive, handler: nil)
-        let sureAction = UIAlertAction(title: "Sure", style: .Default) { (alertAction) in
-            print("REDAME: Take some action")
-        }
-        
-        alert.addAction(remindMeLater)
-        alert.addAction(sureAction)
+        let alert = UIAlertController(title: title, message: body, preferredStyle: .Alert)
         
         self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
     }
