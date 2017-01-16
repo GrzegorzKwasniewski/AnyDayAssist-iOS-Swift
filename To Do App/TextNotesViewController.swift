@@ -102,7 +102,6 @@ extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let singleNote = toDoNotes[indexPath.row]
         performSegueWithIdentifier("noteDetail", sender: singleNote)
     }

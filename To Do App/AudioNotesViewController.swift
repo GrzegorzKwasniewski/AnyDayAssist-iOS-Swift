@@ -48,7 +48,7 @@ class AudioNotesViewController: UIViewController, UIMaker {
     }
 }
 
-    // MARK: - UI
+    // MARK: - TableView Functions
 
 extension AudioNotesViewController: UITableViewDelegate, UITableViewDataSource {
 
