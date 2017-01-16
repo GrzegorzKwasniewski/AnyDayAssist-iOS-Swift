@@ -12,8 +12,6 @@ class OptionsViewController: UIViewController, UIAlertMaker, UIMaker {
     
     // MARK: - Properties
     
-    var horizontalClass: UIUserInterfaceSizeClass!
-    var verticalCass: UIUserInterfaceSizeClass!
     
     // MARK: - View State
     

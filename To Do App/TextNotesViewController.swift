@@ -15,11 +15,14 @@ class TextNotesViewController: UIViewController, UIMaker {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var uiWasSet = false
     lazy var messageLabel: UILabel = {
         let ml = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
         return ml
     }()
+    
+    // MARK: Properties
+    
+    var uiWasSet = false
     
     // MARK - View State
     

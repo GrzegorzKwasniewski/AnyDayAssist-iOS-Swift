@@ -15,19 +15,23 @@ class PlacesViewController: UIViewController, UIMaker {
     
     @IBOutlet weak var tableView: UITableView!
     
+    lazy var messageLabel: UILabel = {
+        let ml = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        return ml
+    }()
+    
     // MARK: - Properties
     
     var uiWasSet = false
     var messageLabelWasSet = false
-    var messageLabel: UILabel = UILabel()
     
     // MARK: - View State
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(messageLabel)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 70
-        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
     }
     
     override func viewWillAppear(animated: Bool) {

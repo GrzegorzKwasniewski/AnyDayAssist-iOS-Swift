@@ -12,6 +12,7 @@
 		7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */; };
 		714A80761D57426F00042456 /* CellWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A80751D57426F00042456 /* CellWeather.swift */; };
 		714A80781D5754A900042456 /* ForecastWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A80771D5754A900042456 /* ForecastWeatherDataDelegate.swift */; };
+		714FFE0E1E2D85F8004BC7E3 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714FFE0D1E2D85F8004BC7E3 /* LocalNotifications.swift */; };
 		7163D02F1D4CD754005FEFB6 /* UIAlertMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */; };
 		7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */; };
 		716B39051D3A6A12002D8ABE /* CellNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B39041D3A6A12002D8ABE /* CellNote.swift */; };
@@ -63,6 +64,7 @@
 		7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataDelegate.swift; sourceTree = "<group>"; };
 		714A80751D57426F00042456 /* CellWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellWeather.swift; sourceTree = "<group>"; };
 		714A80771D5754A900042456 /* ForecastWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherDataDelegate.swift; sourceTree = "<group>"; };
+		714FFE0D1E2D85F8004BC7E3 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		7163D02E1D4CD754005FEFB6 /* UIAlertMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertMaker.swift; sourceTree = "<group>"; };
 		7163D0301D4CDF3D005FEFB6 /* UIMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMaker.swift; sourceTree = "<group>"; };
 		716B39041D3A6A12002D8ABE /* CellNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellNote.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				71FF6D6C1D2C56D80057B22E /* CoreDataFunctions.swift */,
 				71FFDC3B1D4685F7009A4EEE /* Reachability.swift */,
 				71FC57FA1D47D43D00AFB948 /* StringHelperClass.swift */,
+				714FFE0D1E2D85F8004BC7E3 /* LocalNotifications.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */,
 				71FC57FB1D47D43D00AFB948 /* StringHelperClass.swift in Sources */,
 				711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */,
+				714FFE0E1E2D85F8004BC7E3 /* LocalNotifications.swift in Sources */,
 				71DC8C551E26AC8500322B50 /* CustomButton.swift in Sources */,
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
 				71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */,
