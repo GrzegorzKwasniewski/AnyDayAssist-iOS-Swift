@@ -22,6 +22,10 @@
 		7182D6D11E2ACAC3006B121D /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D01E2ACAC3006B121D /* CustomStackView.swift */; };
 		7182D6D31E2AD75F006B121D /* CellAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D21E2AD75F006B121D /* CellAudio.swift */; };
 		7182D6D51E2ADA74006B121D /* CellPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D41E2ADA74006B121D /* CellPlace.swift */; };
+		718677A31E2FDD0700FB7EF1 /* AudioNotesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718677A21E2FDD0700FB7EF1 /* AudioNotesDatasource.swift */; };
+		718677A51E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */; };
+		718677A81E2FF11A00FB7EF1 /* CellAudioNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718677A61E2FF11A00FB7EF1 /* CellAudioNote.swift */; };
+		718677A91E2FF11A00FB7EF1 /* CellAudioNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 718677A71E2FF11A00FB7EF1 /* CellAudioNote.xib */; };
 		718CF0A01E29974000917EF5 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CF09F1E29974000917EF5 /* CustomDatePicker.swift */; };
 		718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D87181CEA50C4001E7F17 /* AppDelegate.swift */; };
 		718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718D871E1CEA50C4001E7F17 /* Main.storyboard */; };
@@ -74,6 +78,10 @@
 		7182D6D01E2ACAC3006B121D /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		7182D6D21E2AD75F006B121D /* CellAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAudio.swift; sourceTree = "<group>"; };
 		7182D6D41E2ADA74006B121D /* CellPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPlace.swift; sourceTree = "<group>"; };
+		718677A21E2FDD0700FB7EF1 /* AudioNotesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesDatasource.swift; sourceTree = "<group>"; };
+		718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewDatasource.swift; sourceTree = "<group>"; };
+		718677A61E2FF11A00FB7EF1 /* CellAudioNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAudioNote.swift; sourceTree = "<group>"; };
+		718677A71E2FF11A00FB7EF1 /* CellAudioNote.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAudioNote.xib; sourceTree = "<group>"; };
 		718CF09F1E29974000917EF5 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		718D87151CEA50C4001E7F17 /* AnyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718D87181CEA50C4001E7F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +168,15 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		718677A11E2FDCD800FB7EF1 /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				718677A21E2FDD0700FB7EF1 /* AudioNotesDatasource.swift */,
+				718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */,
+			);
+			name = Datasources;
+			sourceTree = "<group>";
+		};
 		718D870C1CEA50C4001E7F17 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +199,7 @@
 		718D87171CEA50C4001E7F17 /* AnyDay */ = {
 			isa = PBXGroup;
 			children = (
+				718677A11E2FDCD800FB7EF1 /* Datasources */,
 				71B6CD9D1E22938600A10ED8 /* Stroyboards */,
 				71DE25D21D4D1A400051EB47 /* Controller */,
 				71DE25D31D4D1A9D0051EB47 /* View */,
@@ -201,6 +219,8 @@
 			children = (
 				718D871E1CEA50C4001E7F17 /* Main.storyboard */,
 				718D87231CEA50C4001E7F17 /* LaunchScreen.storyboard */,
+				718677A61E2FF11A00FB7EF1 /* CellAudioNote.swift */,
+				718677A71E2FF11A00FB7EF1 /* CellAudioNote.xib */,
 			);
 			name = Stroyboards;
 			sourceTree = "<group>";
@@ -368,6 +388,7 @@
 			files = (
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
+				718677A91E2FF11A00FB7EF1 /* CellAudioNote.xib in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +455,7 @@
 				71B6CDA31E22975E00A10ED8 /* TextNotesTableView.swift in Sources */,
 				718CF0A01E29974000917EF5 /* CustomDatePicker.swift in Sources */,
 				71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */,
+				718677A51E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift in Sources */,
 				714A80761D57426F00042456 /* CellWeather.swift in Sources */,
 				7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */,
 				71B6CDA91E22C67100A10ED8 /* CustomTextField.swift in Sources */,
@@ -458,6 +480,7 @@
 				71DC8C551E26AC8500322B50 /* CustomButton.swift in Sources */,
 				718D872E1CEA5105001E7F17 /* UserData.xcdatamodeld in Sources */,
 				71E810AD1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift in Sources */,
+				718677A81E2FF11A00FB7EF1 /* CellAudioNote.swift in Sources */,
 				71AF60FC1E23FEFD00847AD6 /* LocationManagerDelegate.swift in Sources */,
 				7163D0311D4CDF3D005FEFB6 /* UIMaker.swift in Sources */,
 				71B9F1291E2837F500871896 /* UIViewExtension.swift in Sources */,
@@ -466,6 +489,7 @@
 				71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */,
 				71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */,
 				7182D6D51E2ADA74006B121D /* CellPlace.swift in Sources */,
+				718677A31E2FDD0700FB7EF1 /* AudioNotesDatasource.swift in Sources */,
 				71749F5F1E24379C009E720E /* CustomLabel.swift in Sources */,
 				71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */,
 				71944F351D13256100206B4F /* AudioPlayBackViewController.swift in Sources */,

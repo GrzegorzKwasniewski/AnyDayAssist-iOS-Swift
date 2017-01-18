@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-class AudioNotesViewController: UIViewController, UIMaker {
+protocol AudioNotesDelegate {
+}
+
+class AudioNotesViewController: UIViewController, AudioNotesDelegate, UIMaker {
     
     // MARK: - UI
     
@@ -24,6 +27,8 @@ class AudioNotesViewController: UIViewController, UIMaker {
     
     var uiWasSet = false
     var messageLabelWasSet = false
+    var tableDatasource: AudioNotesDatasource?
+    var tableDelegate: AudioNotesTableDelegate?
     
     // MARK: - View State
     
@@ -32,7 +37,10 @@ class AudioNotesViewController: UIViewController, UIMaker {
         view.addSubview(messageLabel)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        messageLabel = UILabel(frame: CGRectMake(0 , 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        
+        CoreDataFunctions.sharedInstance.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
+        tableDelegate = AudioNotesTableDelegate(self)
+        tableDatasource = AudioNotesDatasource(items: audioURL, tableView: self.tableView, delegate: tableDelegate!)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,55 +58,5 @@ class AudioNotesViewController: UIViewController, UIMaker {
     func setUI() {
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(AudioNotesViewController.self))
-    }
-}
-
-    // MARK: - TableView Functions
-
-extension AudioNotesViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return audioURL.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellAudio {
-            
-            let audioNote = audioURL[indexPath.row]
-            myCell.configureCell(audioNote, cellImage: UIImage(named: "microphone")!)
-            return myCell
-            
-        } else {
-            return CellAudio()
-        }
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            let singleAudio = audioURL[indexPath.row]
-            let audioTitle = singleAudio.valueForKey("audiourl") as! String
-            CoreDataFunctions.sharedInstance.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
-            audioURL.removeAtIndex(indexPath.row)
-            tableView.reloadData()
-        }
-    }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        activeAudioNote = indexPath.row
-        return indexPath
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.3)
-    }
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = .clearColor()
     }
 }
