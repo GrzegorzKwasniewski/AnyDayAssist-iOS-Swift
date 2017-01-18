@@ -21,25 +21,39 @@ final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
         self.delegate = delegate
         super.init()
         let bundle = NSBundle(forClass: self.dynamicType)
-        let cellNib = UINib(nibName: "CellAudioNote", bundle: bundle)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "CellAudioNote")
-        //tableView.registerClass(CellAudioNote.self, forCellReuseIdentifier: "CellAudioNote")
+        let cellNib = UINib(nibName: String(CellAudioNote.self), bundle: bundle)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: String(CellAudioNote.self))
         self.setupTableView()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let myCell = tableView.dequeueReusableCellWithIdentifier("CellAudioNote", forIndexPath: indexPath) as? CellAudioNote {
+        if let myCell = tableView.dequeueReusableCellWithIdentifier(String(CellAudioNote.self), forIndexPath: indexPath) as? CellAudioNote {
             
             let audioNote = items[indexPath.row]
             myCell.configureCell(audioNote, cellImage: UIImage(named: "microphone")!)
-            return myCell
+            
+            if let _ = myCell.audioNoteTitle.text {
+                return myCell
+            } else {
+                return CellAudioNote()
+            }
             
         } else {
             return CellAudioNote()
+        }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let singleAudio = items[indexPath.row]
+            let audioTitle = singleAudio.valueForKey("audiourl") as! String
+            CoreDataFunctions.sharedInstance.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
+            items.removeAtIndex(indexPath.row)
+            tableView.reloadData()
         }
     }
 }
@@ -50,16 +64,6 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     
     init(_ delegate: AudioNotesDelegate) {
         self.delegate = delegate
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            let singleAudio = audioURL[indexPath.row]
-            let audioTitle = singleAudio.valueForKey("audiourl") as! String
-            CoreDataFunctions.sharedInstance.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
-            audioURL.removeAtIndex(indexPath.row)
-            tableView.reloadData()
-        }
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
@@ -75,6 +79,12 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = .clearColor()
     }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.clearColor()
+    }
+
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return CellNote.height()

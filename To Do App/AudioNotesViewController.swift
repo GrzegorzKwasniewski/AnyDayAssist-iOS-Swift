@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 
 protocol AudioNotesDelegate {
+    //func reloadTableView()
 }
 
-class AudioNotesViewController: UIViewController, AudioNotesDelegate, UIMaker {
+class AudioNotesViewController: UIViewController, UIMaker {
     
     // MARK: - UI
     
@@ -29,6 +30,7 @@ class AudioNotesViewController: UIViewController, AudioNotesDelegate, UIMaker {
     var messageLabelWasSet = false
     var tableDatasource: AudioNotesDatasource?
     var tableDelegate: AudioNotesTableDelegate?
+    var audioURL: [NSManagedObject] = [NSManagedObject]()
     
     // MARK: - View State
     
@@ -37,19 +39,21 @@ class AudioNotesViewController: UIViewController, AudioNotesDelegate, UIMaker {
         view.addSubview(messageLabel)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        
-        CoreDataFunctions.sharedInstance.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
+
         tableDelegate = AudioNotesTableDelegate(self)
-        tableDatasource = AudioNotesDatasource(items: audioURL, tableView: self.tableView, delegate: tableDelegate!)
+
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         if !uiWasSet {
             setUI()
             uiWasSet = true
         }
+        
         CoreDataFunctions.sharedInstance.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
-        tableView.reloadData()
+        tableDatasource = AudioNotesDatasource(items: audioURL, tableView: self.tableView, delegate: tableDelegate!)
+
         setMessageLabel(arrayToCount: audioURL, messageLabel: messageLabel)
     }
     
@@ -59,4 +63,9 @@ class AudioNotesViewController: UIViewController, AudioNotesDelegate, UIMaker {
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(AudioNotesViewController.self))
     }
+}
+
+extension AudioNotesViewController: AudioNotesDelegate {
+
+
 }

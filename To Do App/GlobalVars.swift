@@ -28,7 +28,7 @@ var placesToVisit = [NSManagedObject]()
 var activPlace = -1
 
 //AudioNotesViewController.swift
-var audioURL: [NSManagedObject] = [NSManagedObject]()
+//var audioURL: [NSManagedObject] = [NSManagedObject]()
 var activeAudioNote: Int?
 
 //ForecastWeatherData.swift

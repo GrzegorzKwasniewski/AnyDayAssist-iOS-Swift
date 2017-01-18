@@ -37,8 +37,8 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     }
 
     func prepareAudioURL() {
-        let url = audioURL[activeAudioNote!].valueForKey("audiourl") as! String
-        recordedAudioURL = NSURL(string: url)
+//        let url = audioURL[activeAudioNote!].valueForKey("audiourl") as! String
+//        recordedAudioURL = NSURL(string: url)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
