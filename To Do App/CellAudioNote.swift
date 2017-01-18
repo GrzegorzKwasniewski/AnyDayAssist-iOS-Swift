@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class CellAudioNote: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    // MARK: - UI
+    
+    @IBOutlet weak var audioNoteTitle: UILabel!
+    @IBOutlet weak var cellImageView: UIImageView!
+
+    
+    // MARK: - Custom Functions
+    
+    func configureCell(singleNote: NSManagedObject, cellImage: UIImage) {
+        cellImageView.image = cellImage
+        audioNoteTitle.text = singleNote.valueForKey("audiotitle") as? String
+    }
 }
