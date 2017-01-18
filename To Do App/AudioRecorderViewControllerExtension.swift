@@ -30,7 +30,7 @@ extension AudioRecorderViewController {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        globalCoreDataFunctions.saveAudioTitleAndURL(audioFileTitle, audioFileUrl: audioFileURL)
+        CoreDataFunctions.sharedInstance.saveAudioTitleAndURL(audioFileTitle, audioFileUrl: audioFileURL)
     }
     
     func stopRecordnigSession() {

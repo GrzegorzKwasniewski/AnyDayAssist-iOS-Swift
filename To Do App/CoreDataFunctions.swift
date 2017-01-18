@@ -10,17 +10,12 @@ import UIKit
 import Foundation
 import CoreData
 
-let globalCoreDataFunctions = CoreDataFunctions()
-
 final class CoreDataFunctions {
     
     // MARK: - Initializers
     
-    private init() {
-        // do nothing - required to stop instances being
-        // created by code in other files
-    }
-    
+    static let sharedInstance = CoreDataFunctions()
+
     // MARK: - Custom Functions
     
     func saveTextNote(note: String, extraNotes: String, priority: String, dueDate: String) {

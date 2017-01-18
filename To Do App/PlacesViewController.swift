@@ -39,7 +39,7 @@ class PlacesViewController: UIViewController, UIMaker {
             setUI()
             uiWasSet = true
         }
-        globalCoreDataFunctions.getDataFromEntity("Places", managedObjects: &placesToVisit)
+        CoreDataFunctions.sharedInstance.getDataFromEntity("Places", managedObjects: &placesToVisit)
         tableView.reloadData()
         setMessageLabel(arrayToCount: placesToVisit, messageLabel: messageLabel)
     }
@@ -96,7 +96,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let singlePlace = placesToVisit[indexPath.row]
             let placeTitle = singlePlace.valueForKey("title") as! String
-            globalCoreDataFunctions.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
+            CoreDataFunctions.sharedInstance.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
             placesToVisit.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }

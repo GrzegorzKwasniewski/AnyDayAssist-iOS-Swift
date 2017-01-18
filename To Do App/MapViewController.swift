@@ -157,7 +157,7 @@ extension MapViewController: CLLocationManagerDelegate {
                     locationName = touchLocation.name!
                 }
                 
-                globalCoreDataFunctions.saveMarkedPlace(locationName, latitude: coordinates.latitude, longitude: coordinates.longitude)
+                CoreDataFunctions.sharedInstance.saveMarkedPlace(locationName, latitude: coordinates.latitude, longitude: coordinates.longitude)
                 self.addAnnotation(coordinates, title: locationName, subtitle: "New location added")
             }
         })

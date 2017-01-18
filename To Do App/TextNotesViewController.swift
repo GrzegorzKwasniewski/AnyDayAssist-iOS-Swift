@@ -45,7 +45,7 @@ class TextNotesViewController: UIViewController, UIMaker {
             
         }
         
-        globalCoreDataFunctions.getDataFromEntity("Notes", managedObjects: &toDoNotes)
+        CoreDataFunctions.sharedInstance.getDataFromEntity("Notes", managedObjects: &toDoNotes)
         tableView.reloadData()
         setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
         

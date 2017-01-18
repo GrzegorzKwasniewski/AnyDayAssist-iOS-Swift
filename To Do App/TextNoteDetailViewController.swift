@@ -99,7 +99,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
                 singleNote.setValue(priority, forKey: "priority")
                 singleNote.setValue(dueDate, forKey: "dueDate")
                 
-                globalCoreDataFunctions.updateTextNote(singleNote)
+                CoreDataFunctions.sharedInstance.updateTextNote(singleNote)
                 LocalNotifications.sharedInstance.setLocalNotification(withDate: datePicker.date, withTitle: note, withBody: extraNotes)
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -107,7 +107,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
 
             } else {
                 LocalNotifications.sharedInstance.setLocalNotification(withDate: datePicker.date, withTitle: note, withBody: extraNotes)
-                globalCoreDataFunctions.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)
+                CoreDataFunctions.sharedInstance.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -115,7 +115,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
     func deleteNote(sender: AnyObject) {
         if let singleNote = singleNote {
-            globalCoreDataFunctions.deleteObject(singleNote)
+            CoreDataFunctions.sharedInstance.deleteObject(singleNote)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

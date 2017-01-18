@@ -40,7 +40,7 @@ class AudioNotesViewController: UIViewController, UIMaker {
             setUI()
             uiWasSet = true
         }
-        globalCoreDataFunctions.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
+        CoreDataFunctions.sharedInstance.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
         tableView.reloadData()
         setMessageLabel(arrayToCount: audioURL, messageLabel: messageLabel)
     }
@@ -82,7 +82,7 @@ extension AudioNotesViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let singleAudio = audioURL[indexPath.row]
             let audioTitle = singleAudio.valueForKey("audiourl") as! String
-            globalCoreDataFunctions.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
+            CoreDataFunctions.sharedInstance.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
             audioURL.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
