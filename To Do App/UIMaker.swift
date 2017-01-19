@@ -76,7 +76,7 @@ extension UIMaker where Self: UIViewController {
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationBar.shadowImage = UIImage()
         navigationBar.translucent = true
-        navigationBar.backgroundColor = UIColor.clearColor()
+        navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.3)
         
         leftItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
         rightItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica Neue", size: fontSize)!], forState: UIControlState.Normal)
@@ -124,8 +124,8 @@ extension UIMaker where Self: UIViewController {
         }
         
         tableView.contentInset = UIEdgeInsetsMake(topMargin, 0, 0, 0);
-        tableView.backgroundView = imageView
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.tableHeaderView = UIView(frame: CGRectZero)
         tableView.backgroundColor = .clearColor()
         
     }

@@ -55,6 +55,7 @@ class TextNotesViewController: UIViewController, UIMaker {
     
     func setUI() {
         
+        setView()
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(TextNotesViewController.self))
         

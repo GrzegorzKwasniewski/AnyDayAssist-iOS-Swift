@@ -53,8 +53,11 @@ class PlacesViewController: UIViewController, UIMaker {
     }
     
     func setUI() {
+        
+        setView()
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(PlacesViewController.self))
+        
     }
 }
 
