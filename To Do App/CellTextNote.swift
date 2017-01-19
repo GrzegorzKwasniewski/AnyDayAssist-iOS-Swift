@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import CoreData
 
-class CellTextNotes: UITableViewCell {
+class CellTextNote: UITableViewCell {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var cellImageView: UIImageView!
+    @IBOutlet weak var noteTitleLabel: UILabel!
+    @IBOutlet weak var priorityLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
+    
+    // MARK: - Initializers
 
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
+    // MARK: - Custom Functions
+    
+    func configureCell(singleNote: NSManagedObject, cellImage: UIImage) {
+        cellImageView.image = cellImage
+        noteTitleLabel.text = singleNote.valueForKey("note") as? String
+        priorityLabel.text = singleNote.valueForKey("priority") as? String
+        dueDateLabel.text = singleNote.valueForKey("dueDate") as? String
+    }
 }

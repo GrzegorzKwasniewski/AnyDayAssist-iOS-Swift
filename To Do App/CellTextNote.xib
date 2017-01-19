@@ -1,18 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CellTextNotes" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellTextNote" rowHeight="69" id="KGk-i7-Jjw" customClass="CellTextNote" customModule="AnyDay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="437" height="69"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="437" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oZQ-vW-l8l">
+                        <rect key="frame" x="378" y="9" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Lfu-Nm-4q6"/>
+                            <constraint firstAttribute="height" constant="50" id="oia-Sa-Zga"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="1DE-L4-dQl">
+                        <rect key="frame" x="8" y="8" width="421" height="52"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-JY-1L7">
+                                <rect key="frame" x="0.0" y="0.0" width="42" height="28"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suk-7a-yER">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="28"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-RA-Qal">
+                                <rect key="frame" x="0.0" y="28" width="421" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apg-JO-sfc">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="24"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-l7-Vn5">
+                                        <rect key="frame" x="211" y="0.0" width="210" height="24"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="j3W-RA-Qal" firstAttribute="leading" secondItem="1DE-L4-dQl" secondAttribute="leading" id="F5Z-PO-FCc"/>
+                            <constraint firstAttribute="trailing" secondItem="j3W-RA-Qal" secondAttribute="trailing" id="XGX-jn-Wew"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="1DE-L4-dQl" secondAttribute="bottom" id="OO8-lY-C5e"/>
+                    <constraint firstItem="1DE-L4-dQl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="UT1-yv-LLL"/>
+                    <constraint firstItem="oZQ-vW-l8l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="Z6Z-Dd-0R7"/>
+                    <constraint firstItem="1DE-L4-dQl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="esQ-0v-0jd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1DE-L4-dQl" secondAttribute="trailing" id="lJq-5T-MD9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="oZQ-vW-l8l" secondAttribute="trailing" constant="1" id="qPj-bn-AyC"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cellImageView" destination="oZQ-vW-l8l" id="uXV-tL-aQ3"/>
+                <outlet property="dueDateLabel" destination="iUJ-l7-Vn5" id="iLk-tW-wuS"/>
+                <outlet property="noteTitleLabel" destination="Suk-7a-yER" id="jrR-4m-hYR"/>
+                <outlet property="priorityLabel" destination="apg-JO-sfc" id="uqn-nY-RAC"/>
+            </connections>
+            <point key="canvasLocation" x="619.5" y="361.5"/>
         </tableViewCell>
     </objects>
 </document>
