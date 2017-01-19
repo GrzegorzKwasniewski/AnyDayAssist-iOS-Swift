@@ -14,7 +14,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Properties
     
     weak var delegate: LocationManagerUpdateDelegate?
-    let locationManagerDelegate = CLLocationManager()
+    let locationManager = CLLocationManager()
     var longitude: Double = 0
     var latitude: Double = 0
     
@@ -22,9 +22,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
     override init() {
         super.init()
-        locationManagerDelegate.delegate = self
-        locationManagerDelegate.desiredAccuracy = kCLLocationAccuracyBest
-        locationManagerDelegate.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
     // MARK: - Custom Functions
@@ -33,7 +33,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func stopUpdatingLoaction() {
-        locationManagerDelegate.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -57,7 +57,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 
                 userLoactionCityName = city
                 userCityZipCode = zipCode
-                self.locationManagerDelegate.stopUpdatingLocation()
+                self.locationManager.stopUpdatingLocation()
             }
         }
     }
