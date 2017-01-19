@@ -50,7 +50,7 @@
         <!--Text Note Detail View Controller-->
         <scene sceneID="9jL-Gb-RM7">
             <objects>
-                <viewController id="AFR-rD-VhO" customClass="TextNoteDetailViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TextNoteDetailViewController" id="AFR-rD-VhO" customClass="TextNoteDetailViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hw6-nm-OEx"/>
                         <viewControllerLayoutGuide type="bottom" id="ufM-xS-cou"/>
@@ -2325,7 +2325,7 @@
         <image name="weather" width="100" height="102"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="57c-i3-sbi"/>
         <segue reference="a2L-yk-lbu"/>
+        <segue reference="jts-Hu-bCy"/>
     </inferredMetricsTieBreakers>
 </document>

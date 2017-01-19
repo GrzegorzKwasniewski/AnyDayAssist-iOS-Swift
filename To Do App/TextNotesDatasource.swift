@@ -45,16 +45,11 @@ final class TextNotesDatasource: NSObject, ItemsTableViewDatasource {
 
 class TextNotesTableDelegate: NSObject, UITableViewDelegate {
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        activeAudioNote = indexPath.row
-        return indexPath
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
         let singleNote = toDoNotes[indexPath.row]
-        //performSegueWithIdentifier("noteDetail", sender: singleNote)
+        NSNotificationCenter.defaultCenter().postNotificationName("showNoteDetailView", object: singleNote)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

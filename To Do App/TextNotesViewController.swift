@@ -31,6 +31,8 @@ class TextNotesViewController: UIViewController, UIMaker {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setObserverForChange()
+        
         view.addSubview(messageLabel)
         tableDelegate = TextNotesTableDelegate()
 
@@ -64,52 +66,26 @@ class TextNotesViewController: UIViewController, UIMaker {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "noteDetail" {
-            if let noteDetail = segue.destinationViewController as? TextNoteDetailViewController {
-                if let singleNote = sender as? NSManagedObject {
-                    noteDetail.singleNote = singleNote
-                }
-            }
-        }
+    // MARK: - Notifications
+    
+    func setObserverForChange() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(showNoteDetailView(_:)),
+            name: "showNoteDetailView",
+            object: nil)
+        
+    }
+    
+    // MARK: - View Transition
+    
+    func showNoteDetailView(notification: NSNotification) {
+        let singleNote = notification.object as! NSManagedObject
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier(String(TextNoteDetailViewController.self)) as! TextNoteDetailViewController
+        controller.singleNote = singleNote
+
+        controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        self.presentViewController(controller, animated: true, completion: nil)
     }
 }
-
-    // MARK: - TableView Functions
-
-//extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
-//    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-//        return toDoNotes.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        
-//        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellNote {
-//            
-//            let singleNote = toDoNotes[indexPath.row]
-//            myCell.configureCell(singleNote, cellImage: UIImage(named: "notes")!)
-//            return myCell
-//            
-//        } else {
-//            
-//            return CellNote()
-//            
-//        }
-//    }
-//    
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.backgroundColor = .clearColor()
-//    }
-//    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-//        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-//        let singleNote = toDoNotes[indexPath.row]
-//        performSegueWithIdentifier("noteDetail", sender: singleNote)
-//    }
-//}

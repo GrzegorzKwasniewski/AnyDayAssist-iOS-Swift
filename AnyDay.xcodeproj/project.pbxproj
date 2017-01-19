@@ -258,13 +258,13 @@
 				71FF6D7A1D2EB4990057B22E /* MainViewController.swift */,
 				71FF6D7C1D2EF6BA0057B22E /* WeatherViewController.swift */,
 				71E810AC1D3F9A5E00B305B8 /* CheckWeatherRequirements.swift */,
-				71FF6D781D2E77780057B22E /* TextNotesViewController.swift */,
 				71944F2A1D0DACE300206B4F /* PlacesViewController.swift */,
 				71944F2C1D0DCC6600206B4F /* MapViewController.swift */,
 				71944F361D13259C00206B4F /* AudioNotesViewController.swift */,
 				71944F321D13254200206B4F /* AudioRecorderViewController.swift */,
 				71944F341D13256100206B4F /* AudioPlayBackViewController.swift */,
 				71E810B41D44E0C700B305B8 /* OptionsViewController.swift */,
+				71FF6D781D2E77780057B22E /* TextNotesViewController.swift */,
 				71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */,
 			);
 			name = Controller;
