@@ -10,6 +10,9 @@
 		7104B26A1E313C0800CB2121 /* TextNotesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104B2691E313C0800CB2121 /* TextNotesDatasource.swift */; };
 		7104B26D1E313C9D00CB2121 /* CellTextNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104B26B1E313C9D00CB2121 /* CellTextNote.swift */; };
 		7104B26E1E313C9D00CB2121 /* CellTextNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7104B26C1E313C9D00CB2121 /* CellTextNote.xib */; };
+		7104B2701E317B1700CB2121 /* PlacesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104B26F1E317B1700CB2121 /* PlacesDatasource.swift */; };
+		7104B2731E317BE200CB2121 /* CellPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104B2711E317BE200CB2121 /* CellPlace.swift */; };
+		7104B2741E317BE200CB2121 /* CellPlace.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7104B2721E317BE200CB2121 /* CellPlace.xib */; };
 		7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */; };
 		711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */; };
 		7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */; };
@@ -22,7 +25,6 @@
 		71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5C1E243426009E720E /* CustomPickerView.swift */; };
 		71749F5F1E24379C009E720E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71749F5E1E24379C009E720E /* CustomLabel.swift */; };
 		7182D6D11E2ACAC3006B121D /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D01E2ACAC3006B121D /* CustomStackView.swift */; };
-		7182D6D51E2ADA74006B121D /* CellPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182D6D41E2ADA74006B121D /* CellPlace.swift */; };
 		718677A31E2FDD0700FB7EF1 /* AudioNotesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718677A21E2FDD0700FB7EF1 /* AudioNotesDatasource.swift */; };
 		718677A51E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */; };
 		718677A81E2FF11A00FB7EF1 /* CellAudioNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718677A61E2FF11A00FB7EF1 /* CellAudioNote.swift */; };
@@ -67,6 +69,9 @@
 		7104B2691E313C0800CB2121 /* TextNotesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesDatasource.swift; sourceTree = "<group>"; };
 		7104B26B1E313C9D00CB2121 /* CellTextNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellTextNote.swift; sourceTree = "<group>"; };
 		7104B26C1E313C9D00CB2121 /* CellTextNote.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellTextNote.xib; sourceTree = "<group>"; };
+		7104B26F1E317B1700CB2121 /* PlacesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesDatasource.swift; sourceTree = "<group>"; };
+		7104B2711E317BE200CB2121 /* CellPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPlace.swift; sourceTree = "<group>"; };
+		7104B2721E317BE200CB2121 /* CellPlace.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellPlace.xib; sourceTree = "<group>"; };
 		7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewControllerExtension.swift; sourceTree = "<group>"; };
 		7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +84,6 @@
 		71749F5C1E243426009E720E /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		71749F5E1E24379C009E720E /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		7182D6D01E2ACAC3006B121D /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
-		7182D6D41E2ADA74006B121D /* CellPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPlace.swift; sourceTree = "<group>"; };
 		718677A21E2FDD0700FB7EF1 /* AudioNotesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesDatasource.swift; sourceTree = "<group>"; };
 		718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewDatasource.swift; sourceTree = "<group>"; };
 		718677A61E2FF11A00FB7EF1 /* CellAudioNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAudioNote.swift; sourceTree = "<group>"; };
@@ -153,9 +157,10 @@
 				718677A61E2FF11A00FB7EF1 /* CellAudioNote.swift */,
 				718677A71E2FF11A00FB7EF1 /* CellAudioNote.xib */,
 				714A80751D57426F00042456 /* CellWeather.swift */,
-				7182D6D41E2ADA74006B121D /* CellPlace.swift */,
 				7104B26B1E313C9D00CB2121 /* CellTextNote.swift */,
 				7104B26C1E313C9D00CB2121 /* CellTextNote.xib */,
+				7104B2711E317BE200CB2121 /* CellPlace.swift */,
+				7104B2721E317BE200CB2121 /* CellPlace.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			children = (
 				718677A21E2FDD0700FB7EF1 /* AudioNotesDatasource.swift */,
 				7104B2691E313C0800CB2121 /* TextNotesDatasource.swift */,
+				7104B26F1E317B1700CB2121 /* PlacesDatasource.swift */,
 				718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */,
 			);
 			name = Datasources;
@@ -391,6 +397,7 @@
 			files = (
 				7104B26E1E313C9D00CB2121 /* CellTextNote.xib in Resources */,
 				718D87251CEA50C4001E7F17 /* LaunchScreen.storyboard in Resources */,
+				7104B2741E317BE200CB2121 /* CellPlace.xib in Resources */,
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
 				718677A91E2FF11A00FB7EF1 /* CellAudioNote.xib in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
@@ -454,6 +461,7 @@
 			files = (
 				71944F2B1D0DACE300206B4F /* PlacesViewController.swift in Sources */,
 				71922A561D70D2020046F019 /* LocationManager.swift in Sources */,
+				7104B2731E317BE200CB2121 /* CellPlace.swift in Sources */,
 				71DE25DB1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift in Sources */,
 				71B6CDA31E22975E00A10ED8 /* TextNotesTableView.swift in Sources */,
 				718CF0A01E29974000917EF5 /* CustomDatePicker.swift in Sources */,
@@ -475,6 +483,7 @@
 				71E810B51D44E0C700B305B8 /* OptionsViewController.swift in Sources */,
 				71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */,
 				7104B26D1E313C9D00CB2121 /* CellTextNote.swift in Sources */,
+				7104B2701E317B1700CB2121 /* PlacesDatasource.swift in Sources */,
 				718D87191CEA50C4001E7F17 /* AppDelegate.swift in Sources */,
 				71FF6D6D1D2C56D80057B22E /* CoreDataFunctions.swift in Sources */,
 				71749F5D1E243426009E720E /* CustomPickerView.swift in Sources */,
@@ -492,7 +501,6 @@
 				71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */,
 				71FF6D7B1D2EB4990057B22E /* MainViewController.swift in Sources */,
 				71944F2D1D0DCC6600206B4F /* MapViewController.swift in Sources */,
-				7182D6D51E2ADA74006B121D /* CellPlace.swift in Sources */,
 				718677A31E2FDD0700FB7EF1 /* AudioNotesDatasource.swift in Sources */,
 				71749F5F1E24379C009E720E /* CustomLabel.swift in Sources */,
 				71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */,

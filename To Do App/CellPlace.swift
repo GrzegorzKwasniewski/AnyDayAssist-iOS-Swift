@@ -1,8 +1,8 @@
 //
-//  CellPlace.swift
+//  CellPlace2.swift
 //  AnyDay
 //
-//  Created by Grzegorz Kwaśniewski on 14/01/17.
+//  Created by Grzegorz Kwaśniewski on 19/01/17.
 //  Copyright © 2017 Grzegorz Kwaśniewski. All rights reserved.
 //
 

@@ -21,7 +21,6 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
 
     var locationManager = CLLocationManager()
     var placemarks: AnyObject!
-    var error: NSError!
     
     // MARK: - View State
 
