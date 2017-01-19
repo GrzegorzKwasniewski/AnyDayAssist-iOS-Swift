@@ -15,6 +15,12 @@ class CellAudioNote: UITableViewCell {
     
     @IBOutlet weak var audioNoteTitle: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!
+    
+    // MARK: - Initializers
+    
+    override func awakeFromNib() {
+        
+    }
 
     
     // MARK: - Custom Functions

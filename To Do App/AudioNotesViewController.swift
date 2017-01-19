@@ -38,7 +38,7 @@ class AudioNotesViewController: UIViewController, UIMaker {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
 
-        tableDelegate = AudioNotesTableDelegate(self)
+        tableDelegate = AudioNotesTableDelegate()
 
     }
     

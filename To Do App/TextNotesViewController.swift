@@ -23,6 +23,8 @@ class TextNotesViewController: UIViewController, UIMaker {
     // MARK: Properties
     
     var uiWasSet = false
+    var tableDatasource: TextNotesDatasource?
+    var tableDelegate: TextNotesTableDelegate?
     
     // MARK - View State
     
@@ -30,6 +32,7 @@ class TextNotesViewController: UIViewController, UIMaker {
         super.viewDidLoad()
         
         view.addSubview(messageLabel)
+        tableDelegate = TextNotesTableDelegate()
 
     }
     
@@ -46,7 +49,7 @@ class TextNotesViewController: UIViewController, UIMaker {
         }
         
         CoreDataFunctions.sharedInstance.getDataFromEntity("Notes", managedObjects: &toDoNotes)
-        tableView.reloadData()
+        tableDatasource = TextNotesDatasource(items: toDoNotes, tableView: self.tableView, delegate: tableDelegate!)
         setMessageLabel(arrayToCount: toDoNotes, messageLabel: messageLabel)
         
     }
@@ -74,39 +77,39 @@ class TextNotesViewController: UIViewController, UIMaker {
 
     // MARK: - TableView Functions
 
-extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return toDoNotes.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellNote {
-            
-            let singleNote = toDoNotes[indexPath.row]
-            myCell.configureCell(singleNote, cellImage: UIImage(named: "notes")!)
-            return myCell
-            
-        } else {
-            
-            return CellNote()
-            
-        }
-    }
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = .clearColor()
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-        let singleNote = toDoNotes[indexPath.row]
-        performSegueWithIdentifier("noteDetail", sender: singleNote)
-    }
-}
+//extension TextNotesViewController: UITableViewDelegate, UITableViewDataSource {
+//    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+//        return toDoNotes.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        
+//        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellNote {
+//            
+//            let singleNote = toDoNotes[indexPath.row]
+//            myCell.configureCell(singleNote, cellImage: UIImage(named: "notes")!)
+//            return myCell
+//            
+//        } else {
+//            
+//            return CellNote()
+//            
+//        }
+//    }
+//    
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        cell.backgroundColor = .clearColor()
+//    }
+//    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+//        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
+//        let singleNote = toDoNotes[indexPath.row]
+//        performSegueWithIdentifier("noteDetail", sender: singleNote)
+//    }
+//}

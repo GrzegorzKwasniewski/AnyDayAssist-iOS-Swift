@@ -1,15 +1,15 @@
 //
-//  AudioNotesDatasource.swift
+//  TextNotesDatasource.swift
 //  AnyDay
 //
-//  Created by Grzegorz Kwaśniewski on 18/01/17.
+//  Created by Grzegorz Kwaśniewski on 19/01/17.
 //  Copyright © 2017 Grzegorz Kwaśniewski. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
+final class TextNotesDatasource: NSObject, ItemsTableViewDatasource {
     
     var items: [NSManagedObject]
     weak var tableView: UITableView?
@@ -21,8 +21,8 @@ final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
         self.delegate = delegate
         super.init()
         let bundle = NSBundle(forClass: self.dynamicType)
-        let cellNib = UINib(nibName: String(CellAudioNote.self), bundle: bundle)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: String(CellAudioNote.self))
+        let cellNib = UINib(nibName: String(CellTextNote.self), bundle: bundle)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: String(CellTextNote.self))
         self.setupTableView()
     }
     
@@ -31,35 +31,19 @@ final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let myCell = tableView.dequeueReusableCellWithIdentifier(String(CellAudioNote.self), forIndexPath: indexPath) as? CellAudioNote {
+        if let myCell = tableView.dequeueReusableCellWithIdentifier(String(CellTextNote.self), forIndexPath: indexPath) as? CellTextNote {
             
-            let audioNote = items[indexPath.row]
-            myCell.configureCell(audioNote, cellImage: UIImage(named: "microphone")!)
+            let textNote = items[indexPath.row]
+            myCell.configureCell(textNote, cellImage: UIImage(named: "notes")!)
             return myCell
             
         } else {
-            return CellAudioNote()
-        }
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            let singleAudio = items[indexPath.row]
-            let audioTitle = singleAudio.valueForKey("audiourl") as! String
-            CoreDataFunctions.sharedInstance.removeFromEntity("AudioNotes" , title: audioTitle, predicateFormat: "audiourl == %@")
-            items.removeAtIndex(indexPath.row)
-            tableView.reloadData()
+            return CellTextNote()
         }
     }
 }
 
-class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
-    
-    //let delegate: UIViewController
-    
-//    init(_ delegate: UIViewController) {
-//        self.delegate = delegate
-//    }
+class TextNotesTableDelegate: NSObject, UITableViewDelegate {
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         activeAudioNote = indexPath.row
@@ -69,6 +53,8 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
+        let singleNote = toDoNotes[indexPath.row]
+        //performSegueWithIdentifier("noteDetail", sender: singleNote)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -79,9 +65,6 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.clearColor()
     }
-
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CellNote.height()
-//    }
 }
+
+
