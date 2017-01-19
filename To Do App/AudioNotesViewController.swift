@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-protocol AudioNotesDelegate {
-    //func reloadTableView()
-}
+protocol AudioNotesDelegate {}
 
 class AudioNotesViewController: UIViewController, UIMaker {
     
@@ -60,6 +58,7 @@ class AudioNotesViewController: UIViewController, UIMaker {
     // MARK: - Custom Functions
     
     func setUI() {
+        setView()
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(AudioNotesViewController.self))
     }

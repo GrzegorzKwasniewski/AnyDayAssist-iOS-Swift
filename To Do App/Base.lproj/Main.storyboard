@@ -435,17 +435,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cbu-qK-R9V">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cbu-qK-R9V">
+                                <rect key="frame" x="-8" y="0.0" width="391" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9P1-He-TPc" firstAttribute="top" secondItem="Cbu-qK-R9V" secondAttribute="bottom" id="6VF-H3-CFH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Cbu-qK-R9V" secondAttribute="trailing" constant="-20" id="8f6-qL-sek"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cbu-qK-R9V" secondAttribute="trailing" constant="-28" id="8f6-qL-sek"/>
                             <constraint firstItem="Cbu-qK-R9V" firstAttribute="top" secondItem="mcf-Yh-tgv" secondAttribute="topMargin" id="al7-Bm-Avl"/>
-                            <constraint firstItem="Cbu-qK-R9V" firstAttribute="leading" secondItem="mcf-Yh-tgv" secondAttribute="leadingMargin" constant="-20" id="ple-gr-AGN"/>
+                            <constraint firstItem="Cbu-qK-R9V" firstAttribute="leading" secondItem="mcf-Yh-tgv" secondAttribute="leadingMargin" constant="-28" id="ple-gr-AGN"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>

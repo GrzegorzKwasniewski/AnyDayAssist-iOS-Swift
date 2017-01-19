@@ -35,12 +35,7 @@ final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
             
             let audioNote = items[indexPath.row]
             myCell.configureCell(audioNote, cellImage: UIImage(named: "microphone")!)
-            
-            if let _ = myCell.audioNoteTitle.text {
-                return myCell
-            } else {
-                return CellAudioNote()
-            }
+            return myCell
             
         } else {
             return CellAudioNote()
@@ -60,9 +55,9 @@ final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
 
 class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     
-    let delegate: AudioNotesDelegate
+    let delegate: UIViewController
     
-    init(_ delegate: AudioNotesDelegate) {
+    init(_ delegate: UIViewController) {
         self.delegate = delegate
     }
     
@@ -73,7 +68,7 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.3)
+        selectedCell.contentView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
