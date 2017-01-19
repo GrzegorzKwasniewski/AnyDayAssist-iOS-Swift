@@ -48,7 +48,7 @@ class TextNotesTableDelegate: NSObject, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
-        let singleNote = toDoNotes[indexPath.row]
+        let singleNote = indexPath.row
         NSNotificationCenter.defaultCenter().postNotificationName("showNoteDetailView", object: singleNote)
     }
     

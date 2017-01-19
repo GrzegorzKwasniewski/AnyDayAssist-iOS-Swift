@@ -28,7 +28,7 @@ class AudioNotesViewController: UIViewController, UIMaker {
     var messageLabelWasSet = false
     var tableDatasource: AudioNotesDatasource?
     var tableDelegate: AudioNotesTableDelegate?
-    var audioURL: [NSManagedObject] = [NSManagedObject]()
+    var audioUrls: [NSManagedObject] = [NSManagedObject]()
     
     // MARK: - View State
     
@@ -49,10 +49,10 @@ class AudioNotesViewController: UIViewController, UIMaker {
             uiWasSet = true
         }
         
-        CoreDataFunctions.sharedInstance.getDataFromEntity("AudioNotes", managedObjects: &audioURL)
-        tableDatasource = AudioNotesDatasource(items: audioURL, tableView: self.tableView, delegate: tableDelegate!)
+        CoreDataFunctions.sharedInstance.getDataFromEntity("AudioNotes", managedObjects: &audioUrls)
+        tableDatasource = AudioNotesDatasource(items: audioUrls, tableView: self.tableView, delegate: tableDelegate!)
 
-        setMessageLabel(arrayToCount: audioURL, messageLabel: messageLabel)
+        setMessageLabel(arrayToCount: audioUrls, messageLabel: messageLabel)
     }
     
     // MARK: - Custom Functions

@@ -21,7 +21,7 @@ var userCityZipCode = String()
 var userLoactionCityName = String()
 
 //TextNotesViewController.swift
-var toDoNotes = [NSManagedObject]()
+// var toDoNotes = [NSManagedObject]()
 
 //PlacesViewController.swift
 var placesToVisit = [NSManagedObject]()
