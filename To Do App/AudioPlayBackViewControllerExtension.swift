@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-
+import CoreData
 extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     
     // MARK: - Properties
@@ -36,9 +36,9 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
         player.play()
     }
 
-    func prepareAudioURL() {
-//        let url = audioURL[activeAudioNote!].valueForKey("audiourl") as! String
-//        recordedAudioURL = NSURL(string: url)
+    func prepareAudioURL(withUrl url: NSManagedObject) {
+        let url = url.valueForKey("audiourl") as! String
+        recordedAudioURL = NSURL(string: url)!
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {

@@ -18,6 +18,7 @@ final class AudioNotesDatasource: NSObject, ItemsTableViewDatasource {
     required init(items: [NSManagedObject], tableView: UITableView, delegate: UITableViewDelegate) {
         self.items = items
         self.tableView = tableView
+        self.tableView!.rowHeight = UITableViewAutomaticDimension
         self.delegate = delegate
         super.init()
         let bundle = NSBundle(forClass: self.dynamicType)
@@ -62,13 +63,15 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
 //    }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        activeAudioNote = indexPath.row
+        //activeAudioNote = indexPath.row
         return indexPath
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
+        let singleAudioNote = indexPath.row
+        NSNotificationCenter.defaultCenter().postNotificationName("showAudioNoteDetailView", object: singleAudioNote)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -81,7 +84,7 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     }
 
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CellNote.height()
-//    }
+    func tableView(tableView: UITableView, heightForRowAt indexPath: NSIndexPath) -> CGFloat {
+        return CellAudioNote().cellHeight()
+    }
 }

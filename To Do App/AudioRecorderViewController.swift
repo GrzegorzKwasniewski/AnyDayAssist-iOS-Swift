@@ -38,6 +38,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
     
     @IBAction func recordAudio(sender: AnyObject) {
         recordButton.enabled = false
+        recordButton.alpha = 0.1
         stopRecordingButton.enabled = true
         createRecordingSession()
         getRecordingTime()
@@ -46,6 +47,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
     
     @IBAction func stopRecordingAudio(sender: AnyObject) {
         recordButton.enabled = true
+        recordButton.alpha = 1
         stopRecordingButton.enabled = false
         stopRecordnigSession()
         setNavigationBarVisibility(true)

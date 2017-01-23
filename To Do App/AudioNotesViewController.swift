@@ -34,9 +34,10 @@ class AudioNotesViewController: UIViewController, UIMaker {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setObserverForChange()
+        
         view.addSubview(messageLabel)
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
 
         tableDelegate = AudioNotesTableDelegate()
 
@@ -62,7 +63,33 @@ class AudioNotesViewController: UIViewController, UIMaker {
         setTableView(forTableView: tableView)
         setNavigationBar(forClassWithName: String(AudioNotesViewController.self))
     }
+    
+    // MARK: - Notifications
+    
+    func setObserverForChange() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(showAudioNoteDetailView(_:)),
+            name: "showAudioNoteDetailView",
+            object: nil)
+        
+    }
+    
+    // MARK: - View Transition
+    
+    func showAudioNoteDetailView(notification: NSNotification) {
+        let singleAudioNoteNumber = notification.object as! NSInteger
+        let singleAudioNote = audioUrls[singleAudioNoteNumber]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier(String(AudioPlayBackViewController.self)) as! AudioPlayBackViewController
+        controller.audioUrl = singleAudioNote
+        
+        controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }
+
+
 
 extension AudioNotesViewController: AudioNotesDelegate {
 

@@ -23,7 +23,8 @@ class AudioPlayBackViewController: UIViewController, UIMaker {
     // MARK: - Properties
 
     var stopTimer: NSTimer = NSTimer()
-    var recordedAudioURL: NSURL!
+    var recordedAudioURL = NSURL()
+    var audioUrl: NSManagedObject?
     var player: AVAudioPlayer = AVAudioPlayer()
 
     // MARK: - View State
@@ -31,7 +32,7 @@ class AudioPlayBackViewController: UIViewController, UIMaker {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI(PlayingState.Playing)
-        prepareAudioURL()
+        prepareAudioURL(withUrl: audioUrl!)
         setupAudio()
         updateTimeSlider()
     }
