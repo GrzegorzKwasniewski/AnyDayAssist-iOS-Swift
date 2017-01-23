@@ -30,11 +30,16 @@ extension UIViewController {
     
     // MARK: Animations
     
-    func rotationAnimation(layer: CALayer) {
+    func rotationAnimation(layer: CALayer, reverse: Bool) {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
-        rotationAnimation.toValue = M_PI * 2
-        rotationAnimation.duration = 4
+        if reverse {
+            rotationAnimation.toValue = -M_PI * 2
+            rotationAnimation.duration = 40
+        } else {
+            rotationAnimation.toValue = M_PI * 2
+            rotationAnimation.duration = 6
+        }
         rotationAnimation.repeatCount = Float.infinity
         
         layer.addAnimation(rotationAnimation, forKey: nil)

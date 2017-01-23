@@ -386,40 +386,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtZ-G4-fO0">
-                                <rect key="frame" x="153" y="233" width="69" height="98"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="0Ix-AX-sQZ"/>
-                                    <constraint firstAttribute="width" constant="153" id="0oL-OT-WQT"/>
-                                    <constraint firstAttribute="height" constant="98" id="Bkt-jA-Ohj"/>
-                                    <constraint firstAttribute="width" constant="69" id="rCE-CL-iSP"/>
-                                </constraints>
-                                <state key="normal" image="microphone"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="0Ix-AX-sQZ"/>
-                                        <exclude reference="0oL-OT-WQT"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="154" y="233" width="69" height="98"/>
-                                    <mask key="constraints">
-                                        <include reference="Bkt-jA-Ohj"/>
-                                        <include reference="rCE-CL-iSP"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="0Ix-AX-sQZ"/>
-                                        <include reference="0oL-OT-WQT"/>
-                                        <exclude reference="Bkt-jA-Ohj"/>
-                                        <exclude reference="rCE-CL-iSP"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="recordAudio:" destination="HXy-Ml-bRR" eventType="touchUpInside" id="FGh-Fi-RXP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-ea-plC">
                                 <rect key="frame" x="163" y="387" width="50" height="50"/>
                                 <constraints>
@@ -455,6 +421,41 @@
                                 </variation>
                                 <connections>
                                     <action selector="stopRecordingAudio:" destination="HXy-Ml-bRR" eventType="touchUpInside" id="7pI-rd-afe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtZ-G4-fO0">
+                                <rect key="frame" x="153" y="233" width="69" height="98"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="0Ix-AX-sQZ"/>
+                                    <constraint firstAttribute="width" constant="153" id="0oL-OT-WQT"/>
+                                    <constraint firstAttribute="height" constant="98" id="Bkt-jA-Ohj"/>
+                                    <constraint firstAttribute="width" constant="69" id="rCE-CL-iSP"/>
+                                </constraints>
+                                <state key="normal" image="microphone"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0Ix-AX-sQZ"/>
+                                        <exclude reference="0oL-OT-WQT"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="154" y="233" width="69" height="98"/>
+                                    <mask key="constraints">
+                                        <include reference="Bkt-jA-Ohj"/>
+                                        <include reference="rCE-CL-iSP"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="0Ix-AX-sQZ"/>
+                                        <include reference="0oL-OT-WQT"/>
+                                        <exclude reference="Bkt-jA-Ohj"/>
+                                        <exclude reference="rCE-CL-iSP"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="recordAudio:" destination="HXy-Ml-bRR" eventType="touchUpInside" id="FGh-Fi-RXP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1174,6 +1175,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="settingsButton" destination="bRk-sz-GPs" id="o7R-gi-k0n"/>
                         <outlet property="weatherButton" destination="khh-Tk-PR2" id="SPA-v6-o6N"/>
                     </connections>
                 </viewController>

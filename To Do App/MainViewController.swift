@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UIMaker {
     // MARK: - UI
     
     @IBOutlet weak var weatherButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     lazy var imageView: UIImageView = {
         let iv = UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
@@ -29,6 +30,7 @@ class MainViewController: UIViewController, UIMaker {
     
     override func viewWillAppear(animated: Bool) {
         setNewBackgroundColor(useUIImageView: imageView)
-        rotationAnimation(weatherButton.layer)
+        rotationAnimation(weatherButton.layer, reverse: false)
+        rotationAnimation(settingsButton.layer, reverse: true)
     }
 }
