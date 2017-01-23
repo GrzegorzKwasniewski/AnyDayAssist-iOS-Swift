@@ -39,7 +39,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="5qz-c3-cZU" id="8Ng-dQ-B7z"/>
-                        <segue destination="AFR-rD-VhO" kind="show" identifier="addNewTextNote" id="57c-i3-sbi"/>
+                        <segue destination="AFR-rD-VhO" kind="presentation" identifier="addNewTextNote" modalTransitionStyle="coverVertical" id="57c-i3-sbi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUw-Uj-cVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,7 +68,7 @@
         <!--MapViewController-->
         <scene sceneID="0e7-5C-mrJ">
             <objects>
-                <viewController id="7FS-mo-6y2" userLabel="MapViewController" customClass="MapViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="7FS-mo-6y2" userLabel="MapViewController" customClass="MapViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xml-DI-d7A"/>
                         <viewControllerLayoutGuide type="bottom" id="jiP-ZY-lpP"/>
@@ -367,7 +367,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="Cbu-qK-R9V" id="Fgw-6K-bxA"/>
-                        <segue destination="HXy-Ml-bRR" kind="show" identifier="goToAudioRecordView" id="BaZ-81-GuF"/>
+                        <segue destination="HXy-Ml-bRR" kind="presentation" identifier="goToAudioRecordView" modalTransitionStyle="coverVertical" id="BaZ-81-GuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWf-RA-H55" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -905,7 +905,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="djq-eI-TT0" id="8bb-vE-NJg"/>
-                        <segue destination="7FS-mo-6y2" kind="show" identifier="addNewPlaceToSee" id="coq-3l-arg"/>
+                        <segue destination="7FS-mo-6y2" kind="presentation" identifier="addNewPlaceToSee" modalTransitionStyle="crossDissolve" id="coq-3l-arg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ov3-eZ-rb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -990,7 +990,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="CNb-o2-5ID" kind="show" id="ka6-kg-7QA"/>
+                                    <segue destination="CNb-o2-5ID" kind="presentation" modalTransitionStyle="coverVertical" id="ka6-kg-7QA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRk-sz-GPs" userLabel="Settings">
@@ -1057,7 +1057,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="pOQ-2S-EZE" kind="show" id="2Ux-nF-bvY"/>
+                                    <segue destination="pOQ-2S-EZE" kind="presentation" modalTransitionStyle="coverVertical" id="2Ux-nF-bvY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xww-oh-HTR" userLabel="Notes">
@@ -1091,7 +1091,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="AIL-6Q-On9" kind="show" id="qBd-Tr-uiC"/>
+                                    <segue destination="AIL-6Q-On9" kind="presentation" modalTransitionStyle="coverVertical" id="qBd-Tr-uiC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1289,7 +1289,7 @@
                         <outlet property="imagesStackView" destination="OIk-H8-bBV" id="r1U-9x-Uxa"/>
                         <outlet property="top" destination="bgt-RK-clw" id="ajE-6L-v4f"/>
                         <outlet property="userImage" destination="8yV-83-ZOJ" id="Krq-4s-AzN"/>
-                        <segue destination="YPL-Xn-Ush" kind="show" identifier="showWeather" id="bb0-yG-1XK"/>
+                        <segue destination="YPL-Xn-Ush" kind="presentation" identifier="showWeather" modalTransitionStyle="coverVertical" id="bb0-yG-1XK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tA3-xC-atv" userLabel="First Responder" sceneMemberID="firstResponder"/>
