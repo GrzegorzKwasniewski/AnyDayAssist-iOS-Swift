@@ -33,7 +33,7 @@ extension UIMaker where Self: UIViewController {
         }
     }
 
-    func setNavigationBar(forClassWithName name: String) {
+    func setNavigationBar(forClassWithName name: String) -> UINavigationBar {
         let horizontalClass = self.traitCollection.horizontalSizeClass;
         let verticalCass = self.traitCollection.verticalSizeClass;
         
@@ -88,6 +88,8 @@ extension UIMaker where Self: UIViewController {
         navigationBar.items = [navigationItem]
         
         view.addSubview(navigationBar)
+        
+        return navigationBar
     }
     
     func setView() {

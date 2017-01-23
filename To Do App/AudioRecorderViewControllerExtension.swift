@@ -11,12 +11,15 @@ import AVFoundation
 
 extension AudioRecorderViewController {
     
+    
+    
     // MARK: - Custom Functions
 
     func createRecordingSession() {
         let recordingTime = getRecordingTime()
         let audioFileTitle = "AudioNote_time_\(recordingTime)"
-        let audioFileURL = createRecordFileURL(audioFileTitle)
+        
+        audioFileURL = createRecordFileURL(audioFileTitle)
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         
@@ -30,7 +33,7 @@ extension AudioRecorderViewController {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        CoreDataFunctions.sharedInstance.saveAudioTitleAndURL(audioFileTitle, audioFileUrl: audioFileURL)
+
     }
     
     func stopRecordnigSession() {

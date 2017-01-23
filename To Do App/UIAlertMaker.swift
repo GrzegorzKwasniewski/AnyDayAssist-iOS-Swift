@@ -30,6 +30,26 @@ extension UIAlertMaker where Self: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func showAlertToSaveAudioNote(withTitle title: String, withMessage message: String) {
+        
+        var noteTitle = ""
+        
+        let blueColor = UIColor(red: 19/255, green: 103/255, blue: 255/255, alpha: 1)
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Note title"
+            textField.textColor = blueColor
+            textField.tintColor = blueColor
+        }
+        alert.addAction(UIAlertAction(title: "Save", style: .Cancel, handler: { (alertAction) in
+            noteTitle = alert.textFields![0].text!
+            NSNotificationCenter.defaultCenter().postNotificationName("saveAudioNote", object: noteTitle)
+        }))
+        alert.addAction(UIAlertAction(title: "Don't save", style: .Destructive, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func showLoadingHUD() {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "Loading..."

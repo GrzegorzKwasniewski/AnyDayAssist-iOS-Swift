@@ -19,6 +19,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
     
     // MARK: - Properties
     
+    var audioFileURL = NSURL()
     var navigationBar = UINavigationBar()
     var audioRecorder: AVAudioRecorder!
     
@@ -26,6 +27,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setObserverForChange()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +49,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
         stopRecordingButton.enabled = false
         stopRecordnigSession()
         setNavigationBarVisibility(true)
+        showAlertToSaveAudioNote(withTitle: "Save audio note?", withMessage: "You will lose this record permanently if You don't save it")
     }
     
     func setUI() {
@@ -68,4 +71,21 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
             }
         }
     }
- }
+    
+    // MARK: - Notifications
+    
+    func setObserverForChange() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(saveAudioNote(_:)),
+            name: "saveAudioNote",
+            object: nil)
+        
+    }
+    
+    func saveAudioNote(notification: NSNotification) {
+        let audioNoteTitle = notification.object as! String
+        CoreDataFunctions.sharedInstance.saveAudioTitleAndURL(audioNoteTitle, audioFileUrl: audioFileURL)
+        showAlert(withTitle: "Full Success!", withMessage: "Audio note was saved!")
+    }
+}
