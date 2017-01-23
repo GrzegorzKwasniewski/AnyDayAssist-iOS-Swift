@@ -15,7 +15,14 @@ class CustomTextField: UITextField {
     lazy var validateCityName: UIButton = {
         let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
         button.setImage(UIImage(named: "play"), forState: .Normal)
-        button.addTarget(self, action: #selector(postNotification), forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(validateCityNameNotification), forControlEvents: UIControlEvents.TouchUpInside)
+        return button
+    }()
+    
+    lazy var cancelCityValidation: UIButton = {
+        let button: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+        button.setImage(UIImage(named: "stop"), forState: .Normal)
+        button.addTarget(self, action: #selector(cancelCityValidationNotification), forControlEvents: UIControlEvents.TouchUpInside)
         return button
     }()
     
@@ -62,7 +69,9 @@ class CustomTextField: UITextField {
         
         if fieldForCityName {
             self.rightView = validateCityName;
+            self.leftView = cancelCityValidation
             self.rightViewMode = .Always;
+            self.leftViewMode = .Always
         }
         
         if let fnt = textFont {
@@ -84,7 +93,11 @@ class CustomTextField: UITextField {
     
     // MARK: - Notifications
     
-    func postNotification() {
+    func validateCityNameNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName("validateCityName", object: nil)
+    }
+    
+    func cancelCityValidationNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName("cancelCityValidation", object: nil)
     }
 }

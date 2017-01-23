@@ -23,7 +23,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
     // MARK - Properties
     
     private var uiWasSet = false
-    private var authorizationStatus:CLAuthorizationStatus!
+    private var authorizationStatus: CLAuthorizationStatus!
     private var locationManager = LocationManager()
     private var stringValidation = StringValidation.isEmpty
     
@@ -37,7 +37,7 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         authorizationStatus = CLLocationManager.authorizationStatus()
         
         if authorizationStatus == CLAuthorizationStatus.NotDetermined {
-            locationManager.locationManagerDelegate.requestWhenInUseAuthorization()
+            locationManager.locationManager.requestWhenInUseAuthorization()
         }
     }
     
@@ -66,7 +66,6 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
                 self.cityNameCenter.constant = 0
                 self.view.layoutIfNeeded()
             }, completion: nil)
-        
     }
     
     @IBAction func checkWeatherForUserLocation(sender: AnyObject) {
@@ -102,12 +101,30 @@ class CheckWeatherRequirements: UIViewController, UIAlertMaker, UIMaker {
         }
     }
     
+    func cancelCityValidation() {
+        imagesStackView.userInteractionEnabled = true
+        UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
+            self.cityImage.alpha = 0.8
+            self.cityNameCenter.constant -= self.view.bounds.width
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+
+    }
+    
+    // MARK: - Notifications
+    
     func setObserverForChange() {
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: #selector(validateCityName),
             name: "validateCityName",
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(cancelCityValidation),
+            name: "cancelCityValidation",
             object: nil)
         
     }
