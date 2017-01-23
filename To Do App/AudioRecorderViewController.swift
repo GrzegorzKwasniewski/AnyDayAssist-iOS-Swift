@@ -19,6 +19,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
     
     // MARK: - Properties
     
+    var navigationBar = UINavigationBar()
     var audioRecorder: AVAudioRecorder!
     
     // MARK: - View State
@@ -38,17 +39,33 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
         stopRecordingButton.enabled = true
         createRecordingSession()
         getRecordingTime()
+        setNavigationBarVisibility(false)
     }
     
     @IBAction func stopRecordingAudio(sender: AnyObject) {
         recordButton.enabled = true
         stopRecordingButton.enabled = false
         stopRecordnigSession()
+        setNavigationBarVisibility(true)
     }
     
     func setUI() {
         stopRecordingButton.enabled = false
         setView()
-        setNavigationBar(forClassWithName: String(AudioRecorderViewController.self))
+        navigationBar = setNavigationBar(forClassWithName: String(AudioRecorderViewController.self))
+    }
+    
+    func setNavigationBarVisibility(visible: Bool) {
+        if visible {
+            navigationBar.userInteractionEnabled = true
+            UIView.animateWithDuration(0.4) {
+                self.navigationBar.alpha = 1
+            }
+        } else {
+            navigationBar.userInteractionEnabled = false
+            UIView.animateWithDuration(0.4) {
+                self.navigationBar.alpha = 0
+            }
+        }
     }
  }
