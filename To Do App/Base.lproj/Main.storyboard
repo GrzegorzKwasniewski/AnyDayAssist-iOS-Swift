@@ -514,10 +514,10 @@
             </objects>
             <point key="canvasLocation" x="3171.5" y="873.5"/>
         </scene>
-        <!--AudioPlayBackViewController-->
+        <!--AudioPlayBack-->
         <scene sceneID="NjM-XL-yXy">
             <objects>
-                <viewController storyboardIdentifier="AudioPlayBackViewController" title="AudioPlayBackViewController" id="2yT-xO-sfe" customClass="AudioPlayBackViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AudioPlayBack" id="2yT-xO-sfe" customClass="AudioPlayBackViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZZU-TM-l4B"/>
                         <viewControllerLayoutGuide type="bottom" id="OYK-fR-RRw"/>
@@ -721,7 +721,7 @@
                                     <action selector="playAudioNote:" destination="2yT-xO-sfe" eventType="touchUpInside" id="bmy-9y-Veu"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-JF-oHI">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-JF-oHI">
                                 <rect key="frame" x="80" y="483" width="209" height="31"/>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="60" y="431" width="193" height="31"/>

@@ -20,10 +20,16 @@ var userCityName = String()
 var userCityZipCode = String()
 var userLoactionCityName = String()
 
+//TextNotesViewController.swift
+// var toDoNotes = [NSManagedObject]()
 
 //PlacesViewController.swift
+var placesToVisit = [NSManagedObject]()
 var activPlace = -1
 
+//AudioNotesViewController.swift
+//var audioURL: [NSManagedObject] = [NSManagedObject]()
+var activeAudioNote: Int?
 
 //ForecastWeatherData.swift
 var forecasts = [SingleDayForecast]()
