@@ -21,6 +21,8 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
 
     var locationManager = CLLocationManager()
     var placemarks: AnyObject!
+    var places: [NSManagedObject] = []
+    var singlePlace: NSManagedObject?
     
     // MARK: - View State
 
@@ -29,16 +31,14 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        if activPlace == -1 {
+        if let singlePlace = singlePlace {
+            self.mapView.setRegion(getRegion(), animated: true)
+            self.mapView.addAnnotation(createAnnotation())
+        } else {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
             mapView.showsCompass = true
-
-        } else {
-            
-            self.mapView.setRegion(getRegion(), animated: true)
-            self.mapView.addAnnotation(createAnnotation())
         }
         
         longPressHandler()
@@ -67,8 +67,8 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
     
     func getCoordinates() -> CLLocationCoordinate2D {
     
-        let latitude = placesToVisit[activPlace].valueForKey("latitude") as! Double
-        let longitude = placesToVisit[activPlace].valueForKey("longitude") as! Double
+        let latitude = singlePlace!.valueForKey("latitude") as! Double
+        let longitude = singlePlace!.valueForKey("longitude") as! Double
         let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         
         return coordinate
@@ -79,7 +79,7 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
     
         let annotation = MKPointAnnotation()
         annotation.coordinate = getCoordinates()
-        annotation.title = placesToVisit[activPlace].valueForKey("title") as? String
+        annotation.title = singlePlace!.valueForKey("title") as? String
         annotation.subtitle = "Need to visit this place"
         
         return annotation
