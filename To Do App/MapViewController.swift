@@ -18,27 +18,27 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
-
+    
     var locationManager = CLLocationManager()
     var placemarks: AnyObject!
+    var places: [NSManagedObject] = []
+    var singlePlace: NSManagedObject?
     
     // MARK: - View State
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        if activPlace == -1 {
+        if let singlePlace = singlePlace {
+            self.mapView.setRegion(getRegion(), animated: true)
+            self.mapView.addAnnotation(createAnnotation())
+        } else {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
             mapView.showsCompass = true
-
-        } else {
-            
-            self.mapView.setRegion(getRegion(), animated: true)
-            self.mapView.addAnnotation(createAnnotation())
         }
         
         longPressHandler()
@@ -66,20 +66,20 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
     }
     
     func getCoordinates() -> CLLocationCoordinate2D {
-    
-        let latitude = placesToVisit[activPlace].valueForKey("latitude") as! Double
-        let longitude = placesToVisit[activPlace].valueForKey("longitude") as! Double
+        
+        let latitude = singlePlace!.valueForKey("latitude") as! Double
+        let longitude = singlePlace!.valueForKey("longitude") as! Double
         let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         
         return coordinate
-    
+        
     }
     
     func createAnnotation() -> MKPointAnnotation {
-    
+        
         let annotation = MKPointAnnotation()
         annotation.coordinate = getCoordinates()
-        annotation.title = placesToVisit[activPlace].valueForKey("title") as? String
+        annotation.title = singlePlace!.valueForKey("title") as? String
         annotation.subtitle = "Need to visit this place"
         
         return annotation
@@ -108,12 +108,12 @@ class MapViewController: UIViewController, UIAlertMaker, UIMaker {
     func longPressHandler() {
         let longPress = UILongPressGestureRecognizer(target: self, action:#selector(MapViewController.longPressGesture(_:)))
         longPress.minimumPressDuration = 1.0
-        mapView.addGestureRecognizer(longPress)        
+        mapView.addGestureRecognizer(longPress)
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-   
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let userLocation:CLLocation = locations[0]
