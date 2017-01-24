@@ -61,5 +61,3 @@ class TextNotesTableDelegate: NSObject, UITableViewDelegate {
         selectedCell.contentView.backgroundColor = UIColor.clearColor()
     }
 }
-
-

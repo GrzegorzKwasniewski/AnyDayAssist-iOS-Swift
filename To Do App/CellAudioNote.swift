@@ -29,4 +29,8 @@ class CellAudioNote: UITableViewCell {
         cellImageView.image = cellImage
         audioNoteTitle.text = singleNote.valueForKey("audiotitle") as? String
     }
+    
+    func cellHeight() -> CGFloat {
+        return 100
+    }
 }
