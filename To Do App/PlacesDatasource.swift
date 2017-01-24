@@ -48,8 +48,8 @@ class PlacesTableDelegate: NSObject, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         selectedCell.contentView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
-        let singleNote = indexPath.row
-        NSNotificationCenter.defaultCenter().postNotificationName("showNoteDetailView", object: singleNote)
+        let singlePlace = indexPath.row
+        NSNotificationCenter.defaultCenter().postNotificationName("showPlace", object: singlePlace)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

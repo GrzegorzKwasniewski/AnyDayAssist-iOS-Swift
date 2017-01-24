@@ -26,12 +26,15 @@ class PlacesViewController: UIViewController, UIMaker {
     var messageLabelWasSet = false
     var tableDatasource: PlacesDatasource?
     var tableDelegate: PlacesTableDelegate?
-    var audioUrls: [NSManagedObject] = [NSManagedObject]()
+    var places: [NSManagedObject] = [NSManagedObject]()
     
     // MARK: - View State
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setObserverForChange()
+        
         view.addSubview(messageLabel)
         tableDelegate = PlacesTableDelegate()
         
@@ -45,18 +48,12 @@ class PlacesViewController: UIViewController, UIMaker {
             uiWasSet = true
         }
         
-        CoreDataFunctions.sharedInstance.getDataFromEntity("Places", managedObjects: &placesToVisit)
-        tableDatasource = PlacesDatasource(items: placesToVisit, tableView: self.tableView, delegate: tableDelegate!)
-        setMessageLabel(arrayToCount: placesToVisit, messageLabel: messageLabel)
+        CoreDataFunctions.sharedInstance.getDataFromEntity("Places", managedObjects: &places)
+        tableDatasource = PlacesDatasource(items: places, tableView: self.tableView, delegate: tableDelegate!)
+        setMessageLabel(arrayToCount: places, messageLabel: messageLabel)
     }
     
     // MARK: - Custom Functions
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addNewPlaceToSee" {
-            activPlace = -1
-        }
-    }
     
     func setUI() {
         
@@ -65,54 +62,28 @@ class PlacesViewController: UIViewController, UIMaker {
         setNavigationBar(forClassWithName: String(PlacesViewController.self))
         
     }
+    
+    // MARK: - Notifications
+    
+    func setObserverForChange() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(showPlace(_:)),
+            name: "showPlace",
+            object: nil)
+        
+    }
+    
+    // MARK: - View Transition
+    
+    func showPlace(notification: NSNotification) {
+        let singlePlaceNumber = notification.object as! NSInteger
+        let singlePlacee = places[singlePlaceNumber]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier(String(MapViewController.self)) as! MapViewController
+        controller.singlePlace = singlePlacee
+        
+        controller.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }
-
-//    // MARK: - TableView Functions
-//
-//extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
-//    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return placesToVisit.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        
-//        if let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? CellPlace {
-//            
-//            let place = placesToVisit[indexPath.row]
-//            myCell.configureCell(place, cellImage: UIImage(named: "place")!)
-//            return myCell
-//            
-//        } else {
-//            return CellPlace()
-//        }
-//    }
-//    
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.backgroundColor = .clearColor()
-//    }
-//    
-//    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-//        activPlace = indexPath.row
-//        return indexPath
-//    }
-//    
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            let singlePlace = placesToVisit[indexPath.row]
-//            let placeTitle = singlePlace.valueForKey("title") as! String
-//            CoreDataFunctions.sharedInstance.removeFromEntity("Places", title: placeTitle, predicateFormat: "title == %@")
-//            placesToVisit.removeAtIndex(indexPath.row)
-//            tableView.reloadData()
-//        }
-//    }
-//    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-//        selectedCell.contentView.backgroundColor = UIColor(white: 100, alpha: 0.5)
-//    }
-//}
