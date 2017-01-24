@@ -26,9 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
-        if application.applicationState == .Active {
-            self.takeAction(notification)
-        }
+//        if application.applicationState == .Active {
+//            self.takeAction(notification)
+//        }
     }
     
     func takeAction(localNotification: UILocalNotification) {
