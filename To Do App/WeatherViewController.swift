@@ -19,8 +19,6 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var descriptionOfWeather: UILabel!
     @IBOutlet weak var temperatureAverage: UILabel!
-    @IBOutlet weak var temperatureMin: UILabel!
-    @IBOutlet weak var temperatureMax: UILabel!
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
     @IBOutlet weak var humidity: UILabel!
@@ -156,12 +154,10 @@ extension WeatherViewController: CurrentWeatherDataDelegate {
         
         self.hideLoadingHUD()
         
-        self.weatherIcon.image = UIImage(named: currentWeatherData.weatherDescription)
+        //self.weatherIcon.image = UIImage(named: currentWeatherData.weatherDescription)
         self.cityName.text = currentWeatherData.cityName
         self.descriptionOfWeather.text = currentWeatherData.weatherDescription
-        self.temperatureAverage.text = "\(currentWeatherData.currentTemp)°C"
-        self.temperatureMin.text = "\(currentWeatherData.temperatureMin)°C"
-        self.temperatureMax.text = "\(currentWeatherData.temperatureMax)°C"
+        self.temperatureAverage.text = "\(currentWeatherData.currentTemp)°"
         self.pressure.text = "\(currentWeatherData.pressure) mb"
         self.windSpeed.text = "\(currentWeatherData.windSpeed) km h"
         self.humidity.text = "\(currentWeatherData.humidity) %"
