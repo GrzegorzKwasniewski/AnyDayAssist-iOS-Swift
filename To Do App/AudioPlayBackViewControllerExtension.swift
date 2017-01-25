@@ -44,11 +44,12 @@ extension AudioPlayBackViewController: AVAudioPlayerDelegate, UIAlertMaker {
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
             configureUI(PlayingState.NotPlaying)
+            setNavigationBarVisibility(true)
         }
     }
     
     func updateTimeSlider() {
-        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AudioPlayBackViewController.updateSlider), userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(AudioPlayBackViewController.updateSlider), userInfo: nil, repeats: true)
     }
     
     func updateSlider() {

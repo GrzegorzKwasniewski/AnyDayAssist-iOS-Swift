@@ -26,24 +26,21 @@ class AudioPlayBackViewController: UIViewController, UIMaker {
     var recordedAudioURL = NSURL()
     var audioUrl: NSManagedObject?
     var player: AVAudioPlayer = AVAudioPlayer()
+    var navigationBar = UINavigationBar()
 
     // MARK: - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI(PlayingState.Playing)
+        configureUI(PlayingState.NotPlaying)
         prepareAudioURL(withUrl: audioUrl!)
         setupAudio()
-        updateTimeSlider()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        playSound()
-    }
+
     
     override func viewWillAppear(animated: Bool) {
         setUI()
-        timeSlider.maximumValue = Float((player.duration))
     }
     
     // MARK: - Custom Functions
@@ -57,11 +54,15 @@ class AudioPlayBackViewController: UIViewController, UIMaker {
     }
     
     @IBAction func playAudioNote(sender: AnyObject) {
+        updateTimeSlider()
+        timeSlider.maximumValue = Float((player.duration))
         player.play()
+        setNavigationBarVisibility(false)
         configureUI(PlayingState.Playing)
     }
     
     @IBAction func stopAudioNote(sender: AnyObject) {
+        setNavigationBarVisibility(true)
         player.stop()
         setupAudio()
         timeSlider.value = Float(player.currentTime)
@@ -79,6 +80,21 @@ class AudioPlayBackViewController: UIViewController, UIMaker {
 
     func setUI() {
         setView()
-        setNavigationBar(forClassWithName: String(AudioPlayBackViewController.self))
+        navigationBar = setNavigationBar(forClassWithName: String(AudioRecorderViewController.self))
+
+    }
+    
+    func setNavigationBarVisibility(visible: Bool) {
+        if visible {
+            navigationBar.userInteractionEnabled = true
+            UIView.animateWithDuration(0.4) {
+                self.navigationBar.alpha = 1
+            }
+        } else {
+            navigationBar.userInteractionEnabled = false
+            UIView.animateWithDuration(0.4) {
+                self.navigationBar.alpha = 0
+            }
+        }
     }
 }

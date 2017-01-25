@@ -84,7 +84,7 @@ class AudioNotesTableDelegate: NSObject, UITableViewDelegate {
     }
 
     
-    func tableView(tableView: UITableView, heightForRowAt indexPath: NSIndexPath) -> CGFloat {
-        return CellAudioNote().cellHeight()
-    }
+//    func tableView(tableView: UITableView, heightForRowAt indexPath: NSIndexPath) -> CGFloat {
+//        //return CellAudioNote().cellHeight()
+//    }
 }

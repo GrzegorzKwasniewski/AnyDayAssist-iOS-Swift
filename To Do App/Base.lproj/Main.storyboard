@@ -390,19 +390,19 @@
                                 <rect key="frame" x="16" y="120" width="343" height="447"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="101" translatesAutoresizingMaskIntoConstraints="NO" id="nUk-YT-6fp">
-                                        <rect key="frame" x="0.0" y="86" width="343" height="276"/>
+                                        <rect key="frame" x="0.0" y="91" width="343" height="266"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ovq-Sr-i8I">
-                                                <rect key="frame" x="129" y="0.0" width="85" height="115"/>
+                                                <rect key="frame" x="132" y="0.0" width="80" height="105"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtZ-G4-fO0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="115"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="105"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="208" id="0Ix-AX-sQZ"/>
                                                             <constraint firstAttribute="width" constant="153" id="0oL-OT-WQT"/>
-                                                            <constraint firstAttribute="height" constant="115" id="Bkt-jA-Ohj"/>
-                                                            <constraint firstAttribute="width" constant="85" id="oqm-I0-ocB"/>
+                                                            <constraint firstAttribute="height" constant="105" id="Bkt-jA-Ohj"/>
+                                                            <constraint firstAttribute="width" constant="80" id="oqm-I0-ocB"/>
                                                         </constraints>
                                                         <state key="normal" image="microphone"/>
                                                         <variation key="default">
@@ -430,7 +430,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TKH-f8-eUH">
-                                                <rect key="frame" x="142" y="216" width="60" height="60"/>
+                                                <rect key="frame" x="142" y="206" width="60" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-ea-plC">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
