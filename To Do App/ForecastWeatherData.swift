@@ -109,8 +109,8 @@ class SingleDayForecast {
         if let date = dictionary["dt"] as? Double {
             let unixConvertedDay = NSDate(timeIntervalSince1970: date)
             let dateFormater = NSDateFormatter()
-            dateFormater.dateStyle = .NoStyle
-            dateFormater.timeStyle = .MediumStyle
+            dateFormater.dateStyle = .MediumStyle
+            dateFormater.timeStyle = .NoStyle
             self._date = dateFormater.stringFromDate(unixConvertedDay)        
         }
     }
