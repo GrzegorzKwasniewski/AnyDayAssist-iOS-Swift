@@ -15,7 +15,6 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     // MARK: UI
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var descriptionOfWeather: UILabel!
     @IBOutlet weak var temperatureAverage: UILabel!
@@ -34,11 +33,22 @@ class WeatherViewController: UIViewController, UIAlertMaker, UIMaker {
     var forecastWeatherData: ForecastWeatherData = ForecastWeatherData()
     var authorizationStatus:CLAuthorizationStatus!
     var locationManager = LocationManager()
+    var weatherDataLabels = [UIView]()
     
     // MARK: - View State
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        weatherDataLabels = [
+            cityName,
+            descriptionOfWeather,
+            temperatureAverage,
+            pressure,
+            windSpeed,
+            humidity
+        ]
+        weatherDataLabels.forEach({$0.alpha = 0})
         
         setObserverForChange()
         
@@ -154,13 +164,14 @@ extension WeatherViewController: CurrentWeatherDataDelegate {
         
         self.hideLoadingHUD()
         
-        //self.weatherIcon.image = UIImage(named: currentWeatherData.weatherDescription)
         self.cityName.text = currentWeatherData.cityName
         self.descriptionOfWeather.text = currentWeatherData.weatherDescription
         self.temperatureAverage.text = "\(currentWeatherData.currentTemp)°"
         self.pressure.text = "\(currentWeatherData.pressure) mb"
         self.windSpeed.text = "\(currentWeatherData.windSpeed) km h"
         self.humidity.text = "\(currentWeatherData.humidity) %"
+        
+        weatherDataLabels.forEach({$0.animateAlpha()})
         
     }
 }

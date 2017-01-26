@@ -15,8 +15,29 @@ class CellWeather: UITableViewCell {
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var date: UILabel!
     @IBOutlet var weatherDescription: UILabel!
-    @IBOutlet var temperatureMin: UILabel!
-    @IBOutlet var temperatureMax: UILabel!
+    @IBOutlet var temperatureMinVaule: UILabel!
+    @IBOutlet var temperatureMaxVaule: UILabel!
+    @IBOutlet var temperatureMinLabel: UILabel!
+    @IBOutlet var temperatureMaxLabel: UILabel!
+    
+    // MARK: - Properties
+    
+    var views = [UIView]()
+    
+    // MARK: - Initializers
+    
+    override func awakeFromNib() {
+        views = [
+            cellImage,
+            date,
+            weatherDescription,
+            temperatureMinVaule,
+            temperatureMaxVaule,
+            temperatureMinLabel,
+            temperatureMaxLabel
+        ]
+        views.forEach({$0.alpha = 0})
+    }
     
     // MARK: - Custom Functions
     
@@ -25,7 +46,9 @@ class CellWeather: UITableViewCell {
         cellImage.image = UIImage(named: singleDayForecast.weatherDescription)
         date.text = singleDayForecast.date
         weatherDescription.text = singleDayForecast.weatherDescription
-        temperatureMin.text = singleDayForecast.temperatureMin
-        temperatureMax.text = singleDayForecast.temperatureMax        
+        temperatureMinVaule.text = singleDayForecast.temperatureMin
+        temperatureMaxVaule.text = singleDayForecast.temperatureMax
+        
+        views.forEach({$0.animateAlpha()})
     }
 }

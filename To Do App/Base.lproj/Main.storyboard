@@ -1491,8 +1491,10 @@
                                                 <connections>
                                                     <outlet property="cellImage" destination="6WW-Xa-acP" id="39s-XL-oHj"/>
                                                     <outlet property="date" destination="tHm-qS-0Y0" id="UCV-cX-IwA"/>
-                                                    <outlet property="temperatureMax" destination="Duk-Bq-GJO" id="Y87-X4-dLQ"/>
-                                                    <outlet property="temperatureMin" destination="Tg7-6P-NV3" id="QL5-1D-gPz"/>
+                                                    <outlet property="temperatureMaxLabel" destination="bNI-W8-dBd" id="Cf9-83-nUU"/>
+                                                    <outlet property="temperatureMaxVaule" destination="Duk-Bq-GJO" id="UaI-d2-oPS"/>
+                                                    <outlet property="temperatureMinLabel" destination="SO9-XQ-BCZ" id="fuc-uY-FuZ"/>
+                                                    <outlet property="temperatureMinVaule" destination="Tg7-6P-NV3" id="ML0-oE-buX"/>
                                                     <outlet property="weatherDescription" destination="xce-9K-YBe" id="Rrd-hm-t8d"/>
                                                 </connections>
                                             </tableViewCell>

@@ -56,4 +56,11 @@ extension UIView {
         
         return anchors
     }
+    
+    func animateAlpha() {
+        
+        UIView.animateWithDuration(1) {
+            self.alpha = 1
+        }
+    }
 }
