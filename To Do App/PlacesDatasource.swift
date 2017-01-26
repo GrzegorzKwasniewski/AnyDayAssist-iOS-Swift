@@ -18,6 +18,8 @@ final class PlacesDatasource: NSObject, ItemsTableViewDatasource {
     required init(items: [NSManagedObject], tableView: UITableView, delegate: UITableViewDelegate) {
         self.items = items
         self.tableView = tableView
+        self.tableView!.rowHeight = UITableViewAutomaticDimension
+        self.tableView!.estimatedRowHeight = 70
         self.delegate = delegate
         super.init()
         let bundle = NSBundle(forClass: self.dynamicType)

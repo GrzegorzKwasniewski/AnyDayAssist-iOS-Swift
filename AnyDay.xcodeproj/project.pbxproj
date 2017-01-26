@@ -371,7 +371,6 @@
 				TargetAttributes = {
 					718D87141CEA50C4001E7F17 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 7K692Z62S3;
 					};
 				};
 			};
@@ -640,7 +639,7 @@
 			baseConfigurationReference = D3997C8DE235D6447F6185BC /* Pods-AnyDay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Grzegorz Kwasniewski (7K692Z62S3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Grzegorz Kwasniewski (7K692Z62S3)";
 				INFOPLIST_FILE = "To Do App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

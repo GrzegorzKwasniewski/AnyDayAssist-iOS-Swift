@@ -15,29 +15,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBK-dw-3tv">
-                        <rect key="frame" x="8" y="8" width="343" height="36"/>
+                        <rect key="frame" x="18" y="8" width="323" height="36"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-A5-chw">
-                                <rect key="frame" x="0.0" y="0.0" width="293" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="263" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3to-vA-d3f">
-                                <rect key="frame" x="293" y="0.0" width="50" height="36"/>
+                                <rect key="frame" x="263" y="0.0" width="60" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="DiD-bF-ZIa"/>
-                                    <constraint firstAttribute="height" constant="36" id="YlT-sQ-ZJL"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="36" id="WBh-wZ-wYg"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QFd-A5-chw" secondAttribute="trailing" constant="60" id="ah4-zQ-eUP"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QBK-dw-3tv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="EiH-35-FMf"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QBK-dw-3tv" secondAttribute="bottom" id="atz-lX-Bdx"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="QBK-dw-3tv" secondAttribute="trailing" id="ecL-2O-svl"/>
-                    <constraint firstItem="QBK-dw-3tv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="qfZ-Uq-J3q"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QBK-dw-3tv" secondAttribute="trailing" constant="10" id="ecL-2O-svl"/>
+                    <constraint firstItem="QBK-dw-3tv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="qfZ-Uq-J3q"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -37,9 +37,7 @@ class PlacesViewController: UIViewController, UIMaker {
         
         view.addSubview(messageLabel)
         tableDelegate = PlacesTableDelegate()
-        
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 70
+
     }
     
     override func viewWillAppear(animated: Bool) {
