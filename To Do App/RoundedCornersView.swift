@@ -1,15 +1,15 @@
 //
-//  RoundCornersView.swift
+//  RoundedView.swift
 //  AnyDay
 //
-//  Created by Grzegorz Kwaśniewski on 26/01/17.
+//  Created by Grzegorz Kwaśniewski on 27/01/17.
 //  Copyright © 2017 Grzegorz Kwaśniewski. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable
-class RoundedButton: UIButton {
+class RoundedCornersView: UIView {
     
     @IBInspectable var cornerRadius: CGFloat {
         
@@ -18,8 +18,8 @@ class RoundedButton: UIButton {
         }
         
         set {
-            self.layer.cornerRadius = newValue
-            self.clipsToBounds = newValue > 0
+            layer.cornerRadius = newValue
+            clipsToBounds = newValue > 0
         }
     }
 }

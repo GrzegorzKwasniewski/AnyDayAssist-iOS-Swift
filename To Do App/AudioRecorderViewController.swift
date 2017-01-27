@@ -51,7 +51,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, UI
         stopRecordingButton.enabled = false
         stopRecordnigSession()
         setNavigationBarVisibility(true)
-        showAlertToSaveAudioNote(withTitle: "Save audio note?", withMessage: "You will lose this record permanently if You don't save it")
+        showAlertToSaveAudioNote()
     }
     
     func setUI() {

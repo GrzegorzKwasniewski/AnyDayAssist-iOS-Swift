@@ -169,7 +169,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pkc-5X-wJT">
                                 <rect key="frame" x="16" y="183" width="343" height="240"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-vX-gO9" customClass="RoundedButton" customModule="AnyDay" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-vX-gO9" customClass="RoundedCornersButton" customModule="AnyDay" customModuleProvider="target">
                                         <rect key="frame" x="117" y="0.0" width="109" height="35"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -207,7 +207,7 @@
                                             <action selector="setBackgroundColorBlue:" destination="Thp-d8-BZa" eventType="touchUpInside" id="oQm-Xz-PER"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Roh-TL-Ued" customClass="RoundedButton" customModule="AnyDay" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Roh-TL-Ued" customClass="RoundedCornersButton" customModule="AnyDay" customModuleProvider="target">
                                         <rect key="frame" x="117" y="103" width="109" height="35"/>
                                         <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -245,7 +245,7 @@
                                             <action selector="setBackgroundColorRed:" destination="Thp-d8-BZa" eventType="touchUpInside" id="wbk-Hy-8P9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohU-y2-xWy" customClass="RoundedButton" customModule="AnyDay" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohU-y2-xWy" customClass="RoundedCornersButton" customModule="AnyDay" customModuleProvider="target">
                                         <rect key="frame" x="117" y="205" width="109" height="35"/>
                                         <color key="backgroundColor" red="0.38912160288165676" green="0.7635593716923077" blue="0.014683834071005866" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -474,6 +474,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQF-GH-fkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3171.5" y="873.5"/>
+        </scene>
+        <!--SaveAudioNoteAlert-->
+        <scene sceneID="wLX-ey-VAc">
+            <objects>
+                <viewController storyboardIdentifier="SaveAudioNoteAlert" title="SaveAudioNoteAlert" id="vGq-Ie-sT6" customClass="SaveAudioNoteAlert" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ksl-a0-LFw"/>
+                        <viewControllerLayoutGuide type="bottom" id="cHQ-UO-jyx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y8H-ZO-hG9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2N3-eR-W7m" customClass="RoundedCornersView" customModule="AnyDay" customModuleProvider="target">
+                                <rect key="frame" x="67" y="254" width="240" height="160"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will lose this record permanently if You don't save it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGm-ne-OJE">
+                                        <rect key="frame" x="12" y="64" width="216" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-Ar-iyU">
+                                        <rect key="frame" x="12" y="115" width="216" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-ht-VWV" customClass="RoundedCornersButton" customModule="AnyDay" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="103" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveAudioNote:" destination="vGq-Ie-sT6" eventType="touchUpInside" id="lZZ-R3-dcQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3J-j6-taE" customClass="RoundedCornersButton" customModule="AnyDay" customModuleProvider="target">
+                                                <rect key="frame" x="113" y="0.0" width="103" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Don't save">
+                                                    <color key="titleColor" red="0.94509803920000002" green="0.32156862749999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="closePopUpView:" destination="vGq-Ie-sT6" eventType="touchUpInside" id="JJM-Jx-wzf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.32156862749999998" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="6fK-1d-Vfg"/>
+                                    <constraint firstAttribute="bottom" secondItem="ozQ-Ar-iyU" secondAttribute="bottom" constant="15" id="JZk-WS-Qyd"/>
+                                    <constraint firstItem="ozQ-Ar-iyU" firstAttribute="top" secondItem="AGm-ne-OJE" secondAttribute="bottom" constant="15" id="LXd-do-5YU"/>
+                                    <constraint firstAttribute="trailing" secondItem="ozQ-Ar-iyU" secondAttribute="trailing" constant="12" id="QyE-2a-19J"/>
+                                    <constraint firstAttribute="trailing" secondItem="AGm-ne-OJE" secondAttribute="trailing" constant="12" id="TdP-rN-XLK"/>
+                                    <constraint firstAttribute="height" constant="160" id="iG7-iM-4vu"/>
+                                    <constraint firstItem="AGm-ne-OJE" firstAttribute="leading" secondItem="2N3-eR-W7m" secondAttribute="leading" constant="12" id="xat-ja-kkv"/>
+                                    <constraint firstItem="ozQ-Ar-iyU" firstAttribute="leading" secondItem="2N3-eR-W7m" secondAttribute="leading" constant="12" id="z5Z-Fz-7gJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2N3-eR-W7m" firstAttribute="centerX" secondItem="y8H-ZO-hG9" secondAttribute="centerX" id="05b-cv-mg9"/>
+                            <constraint firstItem="2N3-eR-W7m" firstAttribute="centerY" secondItem="y8H-ZO-hG9" secondAttribute="centerY" id="paS-fw-PG3"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="alertView" destination="2N3-eR-W7m" id="yUY-ag-CAf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YFv-gV-G9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3638.5" y="867.5"/>
         </scene>
         <!--AudioPlayBackViewController-->
         <scene sceneID="NjM-XL-yXy">

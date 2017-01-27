@@ -45,6 +45,8 @@ class AudioNotesViewController: UIViewController, UIMaker {
     
     override func viewWillAppear(animated: Bool) {
         
+        audioUrls = []
+        
         if !uiWasSet {
             setUI()
             uiWasSet = true

@@ -30,24 +30,14 @@ extension UIAlertMaker where Self: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func showAlertToSaveAudioNote(withTitle title: String, withMessage message: String) {
+    func showAlertToSaveAudioNote() {
         
-        var noteTitle = ""
+        let popUpView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(String(SaveAudioNoteAlert.self)) as! SaveAudioNoteAlert
+        self.addChildViewController(popUpView)
+        popUpView.view.frame = self.view.frame
+        self.view.addSubview(popUpView.view)
+        popUpView.didMoveToParentViewController(self)
         
-        let blueColor = UIColor(red: 19/255, green: 103/255, blue: 255/255, alpha: 1)
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "Note title"
-            textField.textColor = blueColor
-            textField.tintColor = blueColor
-        }
-        alert.addAction(UIAlertAction(title: "Save", style: .Cancel, handler: { (alertAction) in
-            noteTitle = alert.textFields![0].text!
-            NSNotificationCenter.defaultCenter().postNotificationName("saveAudioNote", object: noteTitle)
-        }))
-        alert.addAction(UIAlertAction(title: "Don't save", style: .Destructive, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func showLoadingHUD() {
