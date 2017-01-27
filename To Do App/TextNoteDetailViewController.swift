@@ -20,7 +20,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     lazy var remainderLabel = CustomLabel(text: "set remainder on")
     lazy var datePicker: CustomDatePicker = CustomDatePicker()
     lazy var addNoteButton = CustomButton(bgColor: UIColor.whiteColor(), forAction: .Save)
-    lazy var deleteNoteButton = CustomButton(bgColor: UIColor.redColor(), forAction: .Delete)
+    lazy var deleteNoteButton = CustomButton(bgColor: UIColor(red: 241/255, green: 82/255, blue: 78/255, alpha: 1), forAction: .Delete)
     var stackView = CustomStackView()
     
     // MARK: - Properties
@@ -193,9 +193,9 @@ extension TextNoteDetailViewController {
     
         remainderLabel.anchor(priorityPicker.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 30)
     
-        datePicker.anchor(remainderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 5)
+        datePicker.anchor(remainderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: 0)
     
-        stackView.anchor(datePicker.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: view.frame.height / 20, rightConstant: marginForViews, widthConstant: 0, heightConstant: 0)
+        stackView.anchor(datePicker.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: view.frame.height / 20, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 15)
     }
 
 }

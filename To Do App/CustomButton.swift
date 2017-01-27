@@ -51,7 +51,7 @@ class CustomButton: UIButton {
         switch actionToTake {
         case .Save:
             self.setTitle("Save", forState: .Normal)
-            self.setTitleColor(UIColor.blueColor(), forState: .Normal)
+            self.setTitleColor(UIColor(red: 0, green: 128/255, blue: 1, alpha: 1), forState: .Normal)
         case .Delete:
             self.setTitle("Delete", forState: .Normal)
             self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
