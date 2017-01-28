@@ -25,10 +25,11 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     
     // MARK: - Properties
     
+    var priorityPickerDatasource: PriorityPickerDatasource?
     var singleNote: NSManagedObject?
     var note: String = ""
     var extraNotes: String = ""
-    var priority: String = "heigh"
+    //var priority: String = "heigh"
     var dueDate: String = ""
     var priorities = ["heigh", "medium", "low"]
     var marginForViews: CGFloat = 0
@@ -46,8 +47,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         setConstraints()
         setView()
         
-        priorityPicker.delegate = self
-        priorityPicker.dataSource = self
+        priorityPickerDatasource = PriorityPickerDatasource(priorities: priorities, pickerView: priorityPicker)
                 
         deleteNoteButton.userInteractionEnabled = false
         deleteNoteButton.alpha = 0.2
@@ -93,7 +93,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
             if let singleNote = singleNote {
                 singleNote.setValue(note, forKey: "note")
                 singleNote.setValue(extraNotes, forKey: "extraNotes")
-                singleNote.setValue(priority, forKey: "priority")
+                singleNote.setValue(PriorityPickerDatasource.priority, forKey: "priority")
                 singleNote.setValue(dueDate, forKey: "dueDate")
                 
                 CoreDataFunctions.sharedInstance.updateTextNote(singleNote)
@@ -104,7 +104,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
 
             } else {
                 LocalNotifications.sharedInstance.setLocalNotification(withDate: datePicker.date, withTitle: note, withBody: extraNotes)
-                CoreDataFunctions.sharedInstance.saveTextNote(note, extraNotes: extraNotes, priority: priority, dueDate: dueDate)
+                CoreDataFunctions.sharedInstance.saveTextNote(note, extraNotes: extraNotes, priority: PriorityPickerDatasource.priority, dueDate: dueDate)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -186,36 +186,6 @@ extension TextNoteDetailViewController {
         datePicker.anchor(remainderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: 0, rightConstant: marginForViews, widthConstant: 0, heightConstant: 0)
     
         stackView.anchor(datePicker.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: view.frame.height / 20, leftConstant: marginForViews, bottomConstant: view.frame.height / 20, rightConstant: marginForViews, widthConstant: 0, heightConstant: view.frame.height / 15)
-    }
-
-}
-
-    // MARK: - PickerView Functions
-
-extension TextNoteDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        let priority = priorities[row]
-        return priority
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return priorities.count
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        priority = priorities[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = priorities[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
-        return myTitle
     }
 }
             

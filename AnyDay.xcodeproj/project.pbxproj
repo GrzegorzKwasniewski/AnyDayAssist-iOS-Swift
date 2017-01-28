@@ -46,6 +46,7 @@
 		71944F371D13259C00206B4F /* AudioNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71944F361D13259C00206B4F /* AudioNotesViewController.swift */; };
 		719D12B01E3CCC8B007CEEBC /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12AF1E3CCC8B007CEEBC /* Notifier.swift */; };
 		719D12B21E3CD092007CEEBC /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12B11E3CD092007CEEBC /* Selector.swift */; };
+		719D12B41E3D4468007CEEBC /* PriorityPickerDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12B31E3D4468007CEEBC /* PriorityPickerDatasource.swift */; };
 		71AF60FC1E23FEFD00847AD6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF60FB1E23FEFD00847AD6 /* LocationManagerDelegate.swift */; };
 		71B6CDA31E22975E00A10ED8 /* TextNotesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */; };
 		71B6CDA71E22BDB500A10ED8 /* TextNoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */; };
@@ -112,6 +113,7 @@
 		71944F361D13259C00206B4F /* AudioNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioNotesViewController.swift; sourceTree = "<group>"; };
 		719D12AF1E3CCC8B007CEEBC /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		719D12B11E3CD092007CEEBC /* Selector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selector.swift; sourceTree = "<group>"; };
+		719D12B31E3D4468007CEEBC /* PriorityPickerDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityPickerDatasource.swift; sourceTree = "<group>"; };
 		71AF60FB1E23FEFD00847AD6 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesTableView.swift; sourceTree = "<group>"; };
 		71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteDetailViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				7104B2691E313C0800CB2121 /* TextNotesDatasource.swift */,
 				7104B26F1E317B1700CB2121 /* PlacesDatasource.swift */,
 				718677A41E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift */,
+				719D12B31E3D4468007CEEBC /* PriorityPickerDatasource.swift */,
 			);
 			name = Datasources;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				718CF0A01E29974000917EF5 /* CustomDatePicker.swift in Sources */,
 				71FF6D791D2E77780057B22E /* TextNotesViewController.swift in Sources */,
 				718677A51E2FDD5D00FB7EF1 /* ItemsTableViewDatasource.swift in Sources */,
+				719D12B41E3D4468007CEEBC /* PriorityPickerDatasource.swift in Sources */,
 				714A80761D57426F00042456 /* CellWeather.swift in Sources */,
 				7104B26A1E313C0800CB2121 /* TextNotesDatasource.swift in Sources */,
 				719D12B21E3CD092007CEEBC /* Selector.swift in Sources */,
