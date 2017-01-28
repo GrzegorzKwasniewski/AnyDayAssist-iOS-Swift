@@ -69,9 +69,14 @@ class CustomButton: UIButton {
         
         switch actionToTake {
         case .Save:
-            NSNotificationCenter.defaultCenter().postNotificationName("saveAction", object: nil)
+            CustomButton.postNotification(.saveNote)
         case .Delete:
-            NSNotificationCenter.defaultCenter().postNotificationName("deleteAction", object: nil)
+            CustomButton.postNotification(.deleteNote)
         }
     }
+}
+
+extension CustomButton: Notifier {
+
+
 }

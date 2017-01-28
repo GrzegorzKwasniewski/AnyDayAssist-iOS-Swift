@@ -38,20 +38,17 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setObserverForChange()
-        
         marginForViews = view.frame.width / 20
-        
         stackView = CustomStackView(addViews: [addNoteButton, deleteNoteButton], withSpacing: 20)
         
+        addObserversForChange()
         addSubViews()
         setConstraints()
         setView()
         
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
-        
-        // TODO: Move to custom class
+                
         deleteNoteButton.userInteractionEnabled = false
         deleteNoteButton.alpha = 0.2
                 
@@ -77,7 +74,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         view.addSubview(stackView)
     }
     
-    func saveNote(sender: AnyObject) {
+    func saveNote(notification: NSNotification) {
         
         if let note = noteTitle.text where note == "" {
             showAlert(withTitle: "Note title is empty", withMessage: "You need to specify at least note title")
@@ -113,7 +110,7 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         }
     }
     
-    func deleteNote(sender: AnyObject) {
+    func deleteNote(notification: NSNotification) {
         if let singleNote = singleNote {
             CoreDataFunctions.sharedInstance.deleteObject(singleNote)
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -158,22 +155,15 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
             }
         }
     }
-    
-    // MARK: - Notifications
-    
-    func setObserverForChange() {
+}
+
+
+extension TextNoteDetailViewController: Notifier {
+
+    func addObserversForChange() {
         
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(saveNote),
-            name: "saveAction",
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(deleteNote),
-            name: "deleteAction",
-            object: nil)
+        TextNoteDetailViewController.addObserver(self, selector: .saveNote, notification: .saveNote)
+        TextNoteDetailViewController.addObserver(self, selector: .deleteNote, notification: .deleteNote)
         
     }
 }
