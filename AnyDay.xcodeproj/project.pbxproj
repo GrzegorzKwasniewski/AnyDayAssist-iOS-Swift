@@ -47,6 +47,7 @@
 		719D12B01E3CCC8B007CEEBC /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12AF1E3CCC8B007CEEBC /* Notifier.swift */; };
 		719D12B21E3CD092007CEEBC /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12B11E3CD092007CEEBC /* Selector.swift */; };
 		719D12B41E3D4468007CEEBC /* PriorityPickerDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12B31E3D4468007CEEBC /* PriorityPickerDatasource.swift */; };
+		719D12BC1E3D5242007CEEBC /* AnyDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D12BB1E3D5242007CEEBC /* AnyDayUITests.swift */; };
 		71AF60FC1E23FEFD00847AD6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF60FB1E23FEFD00847AD6 /* LocationManagerDelegate.swift */; };
 		71B6CDA31E22975E00A10ED8 /* TextNotesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */; };
 		71B6CDA71E22BDB500A10ED8 /* TextNoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */; };
@@ -69,6 +70,16 @@
 		71FFDC3C1D4685F7009A4EEE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFDC3B1D4685F7009A4EEE /* Reachability.swift */; };
 		751824833641F74F0F78972B /* Pods_AnyDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E80FA579C3465B3655680CC /* Pods_AnyDay.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		719D12BE1E3D5242007CEEBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 718D870D1CEA50C4001E7F17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 718D87141CEA50C4001E7F17;
+			remoteInfo = AnyDay;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0BD1F8CCF4874DA380EDA617 /* Pods-AnyDay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyDay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyDay/Pods-AnyDay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +125,9 @@
 		719D12AF1E3CCC8B007CEEBC /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		719D12B11E3CD092007CEEBC /* Selector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selector.swift; sourceTree = "<group>"; };
 		719D12B31E3D4468007CEEBC /* PriorityPickerDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityPickerDatasource.swift; sourceTree = "<group>"; };
+		719D12B91E3D5242007CEEBC /* AnyDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		719D12BB1E3D5242007CEEBC /* AnyDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDayUITests.swift; sourceTree = "<group>"; };
+		719D12BD1E3D5242007CEEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71AF60FB1E23FEFD00847AD6 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		71B6CDA21E22975E00A10ED8 /* TextNotesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNotesTableView.swift; sourceTree = "<group>"; };
 		71B6CDA61E22BDB500A10ED8 /* TextNoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNoteDetailViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +159,13 @@
 			files = (
 				71944F2F1D0DCCCD00206B4F /* CoreLocation.framework in Frameworks */,
 				751824833641F74F0F78972B /* Pods_AnyDay.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		719D12B61E3D5242007CEEBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +228,7 @@
 			children = (
 				71944F2E1D0DCCCD00206B4F /* CoreLocation.framework */,
 				718D87171CEA50C4001E7F17 /* AnyDay */,
+				719D12BA1E3D5242007CEEBC /* AnyDayUITests */,
 				718D87161CEA50C4001E7F17 /* Products */,
 				CA8FF50A82EA3A20CA0B1B51 /* Pods */,
 				A7538B6CC1635646DB061FA0 /* Frameworks */,
@@ -217,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				718D87151CEA50C4001E7F17 /* AnyDay.app */,
+				719D12B91E3D5242007CEEBC /* AnyDayUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +260,15 @@
 			);
 			name = AnyDay;
 			path = "To Do App";
+			sourceTree = "<group>";
+		};
+		719D12BA1E3D5242007CEEBC /* AnyDayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				719D12BB1E3D5242007CEEBC /* AnyDayUITests.swift */,
+				719D12BD1E3D5242007CEEBC /* Info.plist */,
+			);
+			path = AnyDayUITests;
 			sourceTree = "<group>";
 		};
 		71B6CD9D1E22938600A10ED8 /* Stroyboards */ = {
@@ -382,6 +414,24 @@
 			productReference = 718D87151CEA50C4001E7F17 /* AnyDay.app */;
 			productType = "com.apple.product-type.application";
 		};
+		719D12B81E3D5242007CEEBC /* AnyDayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 719D12C01E3D5242007CEEBC /* Build configuration list for PBXNativeTarget "AnyDayUITests" */;
+			buildPhases = (
+				719D12B51E3D5242007CEEBC /* Sources */,
+				719D12B61E3D5242007CEEBC /* Frameworks */,
+				719D12B71E3D5242007CEEBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				719D12BF1E3D5242007CEEBC /* PBXTargetDependency */,
+			);
+			name = AnyDayUITests;
+			productName = AnyDayUITests;
+			productReference = 719D12B91E3D5242007CEEBC /* AnyDayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -394,6 +444,10 @@
 				TargetAttributes = {
 					718D87141CEA50C4001E7F17 = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					719D12B81E3D5242007CEEBC = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 718D87141CEA50C4001E7F17;
 					};
 				};
 			};
@@ -411,6 +465,7 @@
 			projectRoot = "";
 			targets = (
 				718D87141CEA50C4001E7F17 /* AnyDay */,
+				719D12B81E3D5242007CEEBC /* AnyDayUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -426,6 +481,13 @@
 				718D87221CEA50C4001E7F17 /* Assets.xcassets in Resources */,
 				718677A91E2FF11A00FB7EF1 /* CellAudioNote.xib in Resources */,
 				718D87201CEA50C4001E7F17 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		719D12B71E3D5242007CEEBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +602,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		719D12B51E3D5242007CEEBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				719D12BC1E3D5242007CEEBC /* AnyDayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		719D12BF1E3D5242007CEEBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 718D87141CEA50C4001E7F17 /* AnyDay */;
+			targetProxy = 719D12BE1E3D5242007CEEBC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		718D871E1CEA50C4001E7F17 /* Main.storyboard */ = {
@@ -679,6 +757,30 @@
 			};
 			name = Release;
 		};
+		719D12C11E3D5242007CEEBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AnyDayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4ba5a6a5-1d15-4ffc-943c-d599c0e807d0";
+				TEST_TARGET_NAME = AnyDay;
+			};
+			name = Debug;
+		};
+		719D12C21E3D5242007CEEBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AnyDayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4ba5a6a5-1d15-4ffc-943c-d599c0e807d0";
+				TEST_TARGET_NAME = AnyDay;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -699,6 +801,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		719D12C01E3D5242007CEEBC /* Build configuration list for PBXNativeTarget "AnyDayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				719D12C11E3D5242007CEEBC /* Debug */,
+				719D12C21E3D5242007CEEBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
