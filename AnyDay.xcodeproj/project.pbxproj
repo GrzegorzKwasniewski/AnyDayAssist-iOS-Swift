@@ -56,6 +56,7 @@
 		71CD64CD1D5517F80019F501 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CC1D5517F80019F501 /* GlobalVars.swift */; };
 		71CD64CF1D5518140019F501 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */; };
 		71D0E3371E39EE1400A31DFA /* RoundedCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D0E3361E39EE1400A31DFA /* RoundedCornersButton.swift */; };
+		71D423361E5D757C008411A6 /* AnyDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D423351E5D757C008411A6 /* AnyDayTests.swift */; };
 		71DC8C551E26AC8500322B50 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC8C541E26AC8500322B50 /* CustomButton.swift */; };
 		71DE25D91D4FC6040051EB47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */; };
 		71DE25DB1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */; };
@@ -73,6 +74,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		719D12BE1E3D5242007CEEBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 718D870D1CEA50C4001E7F17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 718D87141CEA50C4001E7F17;
+			remoteInfo = AnyDay;
+		};
+		71D423381E5D757C008411A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 718D870D1CEA50C4001E7F17 /* Project object */;
 			proxyType = 1;
@@ -136,6 +144,9 @@
 		71CD64CC1D5517F80019F501 /* GlobalVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		71CD64CE1D5518140019F501 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		71D0E3361E39EE1400A31DFA /* RoundedCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersButton.swift; sourceTree = "<group>"; };
+		71D423331E5D757C008411A6 /* AnyDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		71D423351E5D757C008411A6 /* AnyDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDayTests.swift; sourceTree = "<group>"; };
+		71D423371E5D757C008411A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71DC8C541E26AC8500322B50 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		71DE25D81D4FC6040051EB47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		71DE25DA1D4FCB180051EB47 /* AudioRecorderViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -163,6 +174,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		719D12B61E3D5242007CEEBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71D423301E5D757C008411A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,6 +247,7 @@
 				71944F2E1D0DCCCD00206B4F /* CoreLocation.framework */,
 				718D87171CEA50C4001E7F17 /* AnyDay */,
 				719D12BA1E3D5242007CEEBC /* AnyDayUITests */,
+				71D423341E5D757C008411A6 /* AnyDayTests */,
 				718D87161CEA50C4001E7F17 /* Products */,
 				CA8FF50A82EA3A20CA0B1B51 /* Pods */,
 				A7538B6CC1635646DB061FA0 /* Frameworks */,
@@ -240,6 +259,7 @@
 			children = (
 				718D87151CEA50C4001E7F17 /* AnyDay.app */,
 				719D12B91E3D5242007CEEBC /* AnyDayUITests.xctest */,
+				71D423331E5D757C008411A6 /* AnyDayTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +324,15 @@
 				710E83A41E3B4BBA00DC137C /* RoundedCornersView.swift */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		71D423341E5D757C008411A6 /* AnyDayTests */ = {
+			isa = PBXGroup;
+			children = (
+				71D423351E5D757C008411A6 /* AnyDayTests.swift */,
+				71D423371E5D757C008411A6 /* Info.plist */,
+			);
+			path = AnyDayTests;
 			sourceTree = "<group>";
 		};
 		71DE25D21D4D1A400051EB47 /* Controller */ = {
@@ -432,6 +461,24 @@
 			productReference = 719D12B91E3D5242007CEEBC /* AnyDayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		71D423321E5D757C008411A6 /* AnyDayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71D4233A1E5D757D008411A6 /* Build configuration list for PBXNativeTarget "AnyDayTests" */;
+			buildPhases = (
+				71D4232F1E5D757C008411A6 /* Sources */,
+				71D423301E5D757C008411A6 /* Frameworks */,
+				71D423311E5D757C008411A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71D423391E5D757C008411A6 /* PBXTargetDependency */,
+			);
+			name = AnyDayTests;
+			productName = AnyDayTests;
+			productReference = 71D423331E5D757C008411A6 /* AnyDayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -446,6 +493,10 @@
 						CreatedOnToolsVersion = 7.3;
 					};
 					719D12B81E3D5242007CEEBC = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 718D87141CEA50C4001E7F17;
+					};
+					71D423321E5D757C008411A6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 718D87141CEA50C4001E7F17;
 					};
@@ -466,6 +517,7 @@
 			targets = (
 				718D87141CEA50C4001E7F17 /* AnyDay */,
 				719D12B81E3D5242007CEEBC /* AnyDayUITests */,
+				71D423321E5D757C008411A6 /* AnyDayTests */,
 			);
 		};
 /* End PBXProject section */
@@ -485,6 +537,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		719D12B71E3D5242007CEEBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71D423311E5D757C008411A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -610,6 +669,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71D4232F1E5D757C008411A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71D423361E5D757C008411A6 /* AnyDayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -617,6 +684,11 @@
 			isa = PBXTargetDependency;
 			target = 718D87141CEA50C4001E7F17 /* AnyDay */;
 			targetProxy = 719D12BE1E3D5242007CEEBC /* PBXContainerItemProxy */;
+		};
+		71D423391E5D757C008411A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 718D87141CEA50C4001E7F17 /* AnyDay */;
+			targetProxy = 71D423381E5D757C008411A6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -781,6 +853,30 @@
 			};
 			name = Release;
 		};
+		71D4233B1E5D757D008411A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AnyDayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyDay.app/AnyDay";
+			};
+			name = Debug;
+		};
+		71D4233C1E5D757D008411A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AnyDayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyDay.app/AnyDay";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -807,6 +903,15 @@
 			buildConfigurations = (
 				719D12C11E3D5242007CEEBC /* Debug */,
 				719D12C21E3D5242007CEEBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71D4233A1E5D757D008411A6 /* Build configuration list for PBXNativeTarget "AnyDayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71D4233B1E5D757D008411A6 /* Debug */,
+				71D4233C1E5D757D008411A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

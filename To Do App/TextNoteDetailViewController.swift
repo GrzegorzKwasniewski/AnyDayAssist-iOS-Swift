@@ -29,7 +29,6 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
     var singleNote: NSManagedObject?
     var note: String = ""
     var extraNotes: String = ""
-    //var priority: String = "heigh"
     var dueDate: String = ""
     var priorities = ["heigh", "medium", "low"]
     var marginForViews: CGFloat = 0
@@ -49,11 +48,11 @@ class TextNoteDetailViewController: UIViewController, UIMaker, UIAlertMaker {
         
         priorityPickerDatasource = PriorityPickerDatasource(priorities: priorities, pickerView: priorityPicker)
                 
-        deleteNoteButton.userInteractionEnabled = false
-        deleteNoteButton.alpha = 0.2
-                
         if let singleNote = singleNote {
             setUI(with: singleNote)
+        } else {
+            deleteNoteButton.userInteractionEnabled = false
+            deleteNoteButton.alpha = 0.2
         }
     }
     

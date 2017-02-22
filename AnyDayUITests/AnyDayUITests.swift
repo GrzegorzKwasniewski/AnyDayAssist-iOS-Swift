@@ -28,9 +28,34 @@ class AnyDayUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testChangingBackgroundToGreenColor() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        XCUIDevice.sharedDevice().orientation = .Portrait
+        
+        let app = XCUIApplication()
+        app.buttons["settings"].tap()
+        delay(1.0) {
+            app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Button).elementBoundByIndex(2).tap()
+        }
+        
+        delay(1.0) {
+            app.alerts["Green background"].collectionViews.buttons["Close"].tap()
+        }
+        
+        delay(1.0) {
+            XCUIApplication().navigationBars.buttons["< Back"].tap()
+        }
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
 }

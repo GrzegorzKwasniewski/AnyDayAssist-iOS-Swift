@@ -8,7 +8,7 @@
         <!--Text Notes View Controller-->
         <scene sceneID="L3n-av-bVH">
             <objects>
-                <viewController id="AIL-6Q-On9" customClass="TextNotesViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TextNotesViewController" id="AIL-6Q-On9" customClass="TextNotesViewController" customModule="AnyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v7E-r4-PzB"/>
                         <viewControllerLayoutGuide type="bottom" id="Uo8-Pv-vCE"/>
