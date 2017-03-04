@@ -17,6 +17,7 @@
 		7116C8591D564C9B004699E0 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */; };
 		711843A11D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */; };
 		7128FAA71D5600030023115C /* CurrentWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */; };
+		712A5FBB1E6B672200F4763A /* StringHelperClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A5FBA1E6B672200F4763A /* StringHelperClassTests.swift */; };
 		714A80761D57426F00042456 /* CellWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A80751D57426F00042456 /* CellWeather.swift */; };
 		714A80781D5754A900042456 /* ForecastWeatherDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A80771D5754A900042456 /* ForecastWeatherDataDelegate.swift */; };
 		714FFE0E1E2D85F8004BC7E3 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714FFE0D1E2D85F8004BC7E3 /* LocalNotifications.swift */; };
@@ -102,6 +103,7 @@
 		7116C8581D564C9B004699E0 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		711843A01D24568800E3CBB2 /* AudioPlayBackViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayBackViewControllerExtension.swift; sourceTree = "<group>"; };
 		7128FAA61D5600030023115C /* CurrentWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataDelegate.swift; sourceTree = "<group>"; };
+		712A5FBA1E6B672200F4763A /* StringHelperClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelperClassTests.swift; sourceTree = "<group>"; };
 		714A80751D57426F00042456 /* CellWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellWeather.swift; sourceTree = "<group>"; };
 		714A80771D5754A900042456 /* ForecastWeatherDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastWeatherDataDelegate.swift; sourceTree = "<group>"; };
 		714FFE0D1E2D85F8004BC7E3 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				71D423351E5D757C008411A6 /* TextNotesVCTests.swift */,
 				71D4233D1E5DBF16008411A6 /* TextNotesDatasourceTest.swift */,
 				71D423371E5D757C008411A6 /* Info.plist */,
+				712A5FBA1E6B672200F4763A /* StringHelperClassTests.swift */,
 			);
 			path = AnyDayTests;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712A5FBB1E6B672200F4763A /* StringHelperClassTests.swift in Sources */,
 				71D423361E5D757C008411A6 /* TextNotesVCTests.swift in Sources */,
 				71D4233E1E5DBF16008411A6 /* TextNotesDatasourceTest.swift in Sources */,
 			);
@@ -861,10 +865,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AnyDayTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyDay.app/AnyDay";
 			};
 			name = Debug;
@@ -873,6 +879,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AnyDayTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.incodewebelieve.AnyDayTests;
@@ -918,6 +925,7 @@
 				71D4233C1E5D757D008411A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
