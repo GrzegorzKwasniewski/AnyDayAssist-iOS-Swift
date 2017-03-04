@@ -8,6 +8,7 @@
 
 import XCTest
 
+@testable import AnyDay
 class StringHelperClassTests: XCTestCase {
     
     override func setUp() {
@@ -18,5 +19,16 @@ class StringHelperClassTests: XCTestCase {
         super.tearDown()
     }
     
+    func test_LanguageSpecificSignsAreRemoved() {
+        
+        let polishText = "Bącki"
+        let portugueseText = "Macarrão"
+        
+        let formatedPolishText = StringHelperClass.removeSpecialCharsFromString(polishText)
+        let formatedPortugueseText = StringHelperClass.removeSpecialCharsFromString(portugueseText)
+        
+        XCTAssertEqual(formatedPolishText, "Backi")
+        XCTAssertEqual(formatedPortugueseText, "Macarrao")
+    }
     
 }

@@ -335,8 +335,8 @@
 			children = (
 				71D423351E5D757C008411A6 /* TextNotesVCTests.swift */,
 				71D4233D1E5DBF16008411A6 /* TextNotesDatasourceTest.swift */,
-				71D423371E5D757C008411A6 /* Info.plist */,
 				712A5FBA1E6B672200F4763A /* StringHelperClassTests.swift */,
+				71D423371E5D757C008411A6 /* Info.plist */,
 			);
 			path = AnyDayTests;
 			sourceTree = "<group>";
