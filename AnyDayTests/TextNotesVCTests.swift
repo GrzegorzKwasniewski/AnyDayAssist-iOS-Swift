@@ -31,11 +31,14 @@ class TextNotesVCTests: XCTestCase {
     
     func test_TableViewIsNotNilInTextNotesViewController() {
         XCTAssertNotNil(textNotesVC.tableView)
-        //XCTAssertTrue(textNotesVC.tableView.dataSource is TextNotesDatasource)
     }
     
     func test_TableViewDelegateIsNotNil() {
         XCTAssertNotNil(textNotesVC.tableDelegate)
+    }
+    
+    func test_DeafultCenterIsNotNil() {
+        XCTAssertNotNil(textNotesVC.notificationCenter)
     }
     
     func test_MessageLabelDisaplyInfoIfArrayIsEqualZero() {

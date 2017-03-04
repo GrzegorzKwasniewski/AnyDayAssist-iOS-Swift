@@ -22,6 +22,7 @@ class TextNotesViewController: UIViewController, UIMaker {
     
     // MARK: Properties
     
+    var notificationCenter = NSNotificationCenter.defaultCenter()
     var uiWasSet = false
     var tableDatasource: TextNotesDatasource?
     var tableDelegate: TextNotesTableDelegate?
@@ -31,7 +32,7 @@ class TextNotesViewController: UIViewController, UIMaker {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         setObserverForChange()
         
         view.addSubview(messageLabel)
@@ -70,7 +71,7 @@ class TextNotesViewController: UIViewController, UIMaker {
     // MARK: - Notifications
     
     func setObserverForChange() {
-        NSNotificationCenter.defaultCenter().addObserver(
+        notificationCenter.addObserver(
             self,
             selector: #selector(showNoteDetailView(_:)),
             name: "showNoteDetailView",
