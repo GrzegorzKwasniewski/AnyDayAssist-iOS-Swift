@@ -139,6 +139,7 @@ extension UIMaker where Self: UIViewController {
     }
     
     func setMessageLabel(arrayToCount array: [NSManagedObject], messageLabel label: UILabel) {
+        label.tag = 100
         label.font = UIFont(name: "Helvetica Neue", size: 20)
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center

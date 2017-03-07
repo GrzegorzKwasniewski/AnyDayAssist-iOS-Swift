@@ -14,12 +14,15 @@ class TextNotesVCTests: XCTestCase {
     
     var storyboard = UIStoryboard()
     var textNotesVC = TextNotesViewController()
+    var testedLabel = UILabel()
     
     override func setUp() {
         super.setUp()
         
         storyboard = UIStoryboard(name: "Main", bundle: nil)
         textNotesVC = storyboard.instantiateViewControllerWithIdentifier("TextNotesViewController") as! TextNotesViewController
+        
+        testedLabel = textNotesVC.messageLabel
         
         // we need this to access viewDidLoad()
         _ = textNotesVC.view
@@ -37,8 +40,63 @@ class TextNotesVCTests: XCTestCase {
         XCTAssertNotNil(textNotesVC.tableDelegate)
     }
     
+    func test_ShouldSetTableViewDelegate() {
+        textNotesVC.viewWillAppear(true)
+        XCTAssertTrue(textNotesVC.tableView.delegate is TextNotesTableDelegate)
+    }
+    
     func test_DeafultCenterIsNotNil() {
         XCTAssertNotNil(textNotesVC.notificationCenter)
+    }
+    
+    func test_MessageLabelIsNotNil() {
+        XCTAssertNotNil(textNotesVC.messageLabel)
+    }
+    
+    func test_MessageLableHasCorrectPositions() {
+        
+        XCTAssertEqual(testedLabel.bounds.size.width, textNotesVC.view.bounds.width)
+        XCTAssertEqual(testedLabel.bounds.size.height, textNotesVC.view.bounds.height)
+        
+        XCTAssertEqual(testedLabel.bounds.origin.x, 0)
+        XCTAssertEqual(testedLabel.bounds.origin.y, 0)
+    }
+    
+    func test_MessageLabelHasCorrectTag() {
+        textNotesVC.viewWillAppear(true)
+        XCTAssertEqual(testedLabel.tag, 100)
+    }
+    
+    func test_MessageLabelIsSubViewOfViewController() {
+        
+        textNotesVC.viewWillAppear(true)
+        
+        let subviews = textNotesVC.view.subviews
+        var searchedSubView: UILabel?
+        
+        for subview in subviews {
+            if subview.tag == 100 {
+                searchedSubView = subview as? UILabel
+            }
+        }
+        
+        XCTAssertNotNil(searchedSubView)
+    }
+    
+    // TODO: Napisz resztę testów dla UILabel
+    
+    func test_ProperitesOfMessageLabel() {
+        
+        let testArray = [NSManagedObject]()
+        
+        textNotesVC.setMessageLabel(arrayToCount: testArray, messageLabel: testedLabel)
+        
+        XCTAssertEqual(testedLabel.font.familyName, "Helvetica Neue")
+        XCTAssertEqual(testedLabel.font.pointSize, 20)
+        
+        XCTAssertEqual(testedLabel.textColor, UIColor.whiteColor())
+        XCTAssertEqual(testedLabel.textAlignment, NSTextAlignment.Center, "Text should be centered")
+        
     }
     
     func test_MessageLabelDisaplyInfoIfArrayIsEqualZero() {
