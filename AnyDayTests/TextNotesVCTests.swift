@@ -15,6 +15,8 @@ class TextNotesVCTests: XCTestCase {
     var storyboard = UIStoryboard()
     var textNotesVC = TextNotesViewController()
     var testedLabel = UILabel()
+    var subviews = [UIView]()
+
     
     override func setUp() {
         super.setUp()
@@ -26,6 +28,10 @@ class TextNotesVCTests: XCTestCase {
         
         // we need this to access viewDidLoad()
         _ = textNotesVC.view
+        
+        textNotesVC.viewWillAppear(true)
+        
+        subviews = textNotesVC.view.subviews
     }
     
     override func tearDown() {
@@ -69,9 +75,6 @@ class TextNotesVCTests: XCTestCase {
     
     func test_MessageLabelIsSubViewOfViewController() {
         
-        textNotesVC.viewWillAppear(true)
-        
-        let subviews = textNotesVC.view.subviews
         var searchedSubView: UILabel?
         
         for subview in subviews {
@@ -82,9 +85,7 @@ class TextNotesVCTests: XCTestCase {
         
         XCTAssertNotNil(searchedSubView)
     }
-    
-    // TODO: Napisz resztę testów dla UILabel
-    
+        
     func test_ProperitesOfMessageLabel() {
         
         let testArray = [NSManagedObject]()
@@ -99,6 +100,51 @@ class TextNotesVCTests: XCTestCase {
         
     }
     
+    func test_ImageViewIsSubViewOfViewController() {
+        
+        var searchedSubView: UIImageView?
+        
+        for subview in subviews {
+            if subview.tag == 200 {
+                searchedSubView = subview as? UIImageView
+            }
+        }
+        
+        XCTAssertNotNil(searchedSubView)
+        
+    }
+    
+    func test_ImageViewSizeIsValid() {
+        
+        var searchedSubView: UIImageView?
+        
+        for subview in subviews {
+            
+            // TODO: Chane naumbers to enums
+            if subview.tag == 200 {
+                searchedSubView = subview as? UIImageView
+            }
+        }
+        
+        XCTAssertEqual(searchedSubView?.bounds.size.width, textNotesVC.view.bounds.width, "Width of ImageView should be equal to width of main view")
+        XCTAssertEqual(searchedSubView?.bounds.size.height, textNotesVC.view.bounds.height, "Width of ImageView should be equal to height of main view")
+    }
+    
+    func test_BackgorundImageIsNotNilInImageView() {
+        
+        var searchedSubView: UIImageView?
+        
+        for subview in subviews {
+            
+            if subview.tag == 200 {
+                searchedSubView = subview as? UIImageView
+            }
+        }
+        
+        XCTAssertNotNil(searchedSubView?.image, "Background image can't be nil")
+        
+    }
+    
     func test_MessageLabelDisaplyInfoIfArrayIsEqualZero() {
         
         let testLabel = UILabel(frame: CGRectMake(0 , 0, textNotesVC.view.bounds.size.width, textNotesVC.view.bounds.size.height))
@@ -108,6 +154,8 @@ class TextNotesVCTests: XCTestCase {
         
         XCTAssertEqual(testLabel.text, "There's nothing here...")
     }
+    
+    // TODO: How can I test that view was send to the background?
     
     func test_MessageLabelDontDisaplyInfoIfArrayIsGreaterThanZero() {
         

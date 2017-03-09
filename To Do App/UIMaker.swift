@@ -101,6 +101,8 @@ extension UIMaker where Self: UIViewController {
             imageView.image = UIImage(named: "bg_blue.jpg")
         }
         
+        imageView.tag = 200
+        
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
     }
