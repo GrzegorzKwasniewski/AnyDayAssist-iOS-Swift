@@ -11,11 +11,13 @@ import XCTest
 @testable import AnyDay
 class StringHelperClassTests: XCTestCase {
     
-    var stringValidation: StringValidation = .isEmpty
-    let textField = UITextField()
+    var stringValidation: StringValidation!
+    var textField: UITextField!
     
     override func setUp() {
         super.setUp()
+        stringValidation = .isEmpty
+        textField = UITextField()
     }
     
     override func tearDown() {
@@ -60,6 +62,16 @@ class StringHelperClassTests: XCTestCase {
         
         XCTAssertEqual(stringValidation, StringValidation.isValid)
 
+    }
+    
+    func test_CityNameIsEmpty() {
+    
+        textField.text = ""
+        
+        stringValidation = StringHelperClass.validateCityNameFromUser(withTextField: textField)
+        
+        XCTAssertEqual(stringValidation, StringValidation.isEmpty, "Function don't return information that string is empty")
+        
     }
     
 }

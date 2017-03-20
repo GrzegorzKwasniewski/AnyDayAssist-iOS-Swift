@@ -275,12 +275,12 @@
 				71B6CD9D1E22938600A10ED8 /* Stroyboards */,
 				71DE25D21D4D1A400051EB47 /* Controller */,
 				71DE25D31D4D1A9D0051EB47 /* View */,
+				71B6CD9E1E22939900A10ED8 /* CoreData */,
 				71DE25D41D4D1AC70051EB47 /* Model */,
 				7182D6D71E2AE67F006B121D /* Services */,
 				7163D02D1D4CD735005FEFB6 /* Protocols */,
 				71DE25D71D4FC5D00051EB47 /* Extensions */,
 				71DE25D51D4D1AF30051EB47 /* Resources */,
-				71B6CD9E1E22939900A10ED8 /* CoreData */,
 			);
 			name = AnyDay;
 			path = "To Do App";
