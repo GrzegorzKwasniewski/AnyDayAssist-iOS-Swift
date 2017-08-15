@@ -2,7 +2,7 @@ Any Day Assist
 =============
 
 <p></p>
-<p>App for organasing daily tasks. This is my first app created for iOS.</p>
+<p>App for organising daily tasks. This is my first app created for iOS.</p>
 <p></p>
 <p>It'a a good starting point if You want to learn basics about:</p>
 
