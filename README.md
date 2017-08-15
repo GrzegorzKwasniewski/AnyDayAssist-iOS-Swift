@@ -11,6 +11,7 @@ Any Day Assist
   - AVFoundation
   - Core Data
   - Core Location
+  - Local notifications
   
   Download app
   =============
@@ -20,10 +21,9 @@ Any Day Assist
 Screenshots:
  =============
  
-![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/wtr_01.jpeg) 
-![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/wtr_02.jpeg) 
-![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/wtr_03.jpeg) 
-![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/wtr_04.jpeg)
+![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/ada_01.jpeg) 
+![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/ada_02.jpeg) 
+![alt tag](http://www.grzegorzkwasniewski.com/wp-content/uploads/2017/08/ada_03.jpeg) 
 
 
 License
